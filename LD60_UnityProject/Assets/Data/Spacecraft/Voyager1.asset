@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Voyager1
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Voyager 1
-  <Portrait>k__BackingField: {fileID: 0}
-  <Accent>k__BackingField: {r: 0.95, g: 0.93, b: 0.85, a: 1}
+  <Portrait>k__BackingField: {fileID: 21300000, guid: accfd7ac2c0076449be76e31ebecb883, type: 3}
+  <Accent>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <IsPlayer>k__BackingField: 1
   <LaunchYear>k__BackingField: 1977
   <LastContactYear>k__BackingField: 0
   <GivesRecordTrack>k__BackingField: 0
   <Epitaph>k__BackingField: 
-  <FreeFlightDistanceAu>k__BackingField: 167
-  <FreeFlightAngleDegrees>k__BackingField: 35
-  <DisplayDiameter>k__BackingField: 0.3
+  <FreeFlightDistanceAu>k__BackingField: 311.1
+  <FreeFlightAngleDegrees>k__BackingField: 27.1
+  <DisplayDiameter>k__BackingField: 2.17

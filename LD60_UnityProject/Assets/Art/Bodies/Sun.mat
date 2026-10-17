@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sun
+  m_Shader: {fileID: 4800000, guid: b3f41c9d27e84a2ea1c6d05f7b9e3a84, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _DOTS_ON
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: c9084896148b94c439b78c02ae6b37e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Cutoff: 0.01
+    - _DifferentialSpin: 0.35
+    - _DiscRadius: 0.365
+    - _DotPitch: 0.082
+    - _DotRadius: 0.782
+    - _DotSoftness: 0
+    - _Dots: 1
+    - _FarSideDim: 0.12
+    - _FarSideDrift: 0.04
+    - _Flatten: 0.5
+    - _LimbDarken: 0.25
+    - _OuterPassthrough: 1
+    - _Spin: 0
+    - _TerminatorBow: 0.35
+    - _TerminatorOffset: 0
+    - _TerminatorSoftness: 0.06
+    - _Tilt: 0
+    m_Colors:
+    - _BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DiscCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _LimbColor: {r: 0.75, g: 0.22, b: 0.05, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SunDir: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

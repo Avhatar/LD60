@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Neptune
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Neptune
-  <SemiMajorAxisAu>k__BackingField: 30.07
+  <SemiMajorAxisAu>k__BackingField: 74.1
   <OrbitalPeriodDays>k__BackingField: 60182
   <RotationPeriodHours>k__BackingField: 16.11
   <MeanLongitudeJ2000Degrees>k__BackingField: 304.88
   <DisplayRadiusOverride>k__BackingField: 0
-  <DisplayDiameter>k__BackingField: 0.39
+  <DisplayDiameter>k__BackingField: 1.44
   <Tint>k__BackingField: {r: 0.35, g: 0.48, b: 0.82, a: 1}
-  <Texture>k__BackingField: {fileID: 0}
+  <Surface>k__BackingField: {fileID: 2800000, guid: b9bfa4905600e924ba65deae2ea9407a, type: 3}
+  <SurfaceDiscRadius>k__BackingField: 0.337
+  <Material>k__BackingField: {fileID: 2100000, guid: a91ee4207d745864a8027df83d3457c4, type: 2}
   <DrawOrbitRing>k__BackingField: 1
   <Spacecraft>k__BackingField: []

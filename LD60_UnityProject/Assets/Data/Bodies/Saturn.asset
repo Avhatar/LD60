@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Saturn
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Saturn
-  <SemiMajorAxisAu>k__BackingField: 9.537
+  <SemiMajorAxisAu>k__BackingField: 18.75
   <OrbitalPeriodDays>k__BackingField: 10759.22
   <RotationPeriodHours>k__BackingField: 10.656
   <MeanLongitudeJ2000Degrees>k__BackingField: 49.94
   <DisplayRadiusOverride>k__BackingField: 0
-  <DisplayDiameter>k__BackingField: 0.55
+  <DisplayDiameter>k__BackingField: 2.26
   <Tint>k__BackingField: {r: 0.85, g: 0.78, b: 0.58, a: 1}
-  <Texture>k__BackingField: {fileID: 0}
+  <Surface>k__BackingField: {fileID: 2800000, guid: e26c4f1c2f6838544b3e72a2cf360001, type: 3}
+  <SurfaceDiscRadius>k__BackingField: 0.284
+  <Material>k__BackingField: {fileID: 2100000, guid: 28fd7cdc231bb8341b3bb568d3be81c7, type: 2}
   <DrawOrbitRing>k__BackingField: 1
   <Spacecraft>k__BackingField: []

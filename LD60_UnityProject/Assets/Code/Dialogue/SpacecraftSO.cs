@@ -45,5 +45,12 @@ namespace LD60.Dialogue
         {
             return LastContactYear > 0 && year > LastContactYear;
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            GameDataSO.NotifyChanged();
+        }
+#endif
     }
 }

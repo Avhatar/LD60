@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using LD60.Settings;
 using LD60.Signals;
 
 namespace LD60.UI
@@ -10,6 +11,8 @@ namespace LD60.UI
         [SerializeField] private SignalLauncher _launcher;
         [SerializeField] private TMP_Text _label;
         [SerializeField] private Vector2 _pointerOffset = new Vector2(18f, -18f);
+
+        private UiTextSO _text;
 
         private void Start()
         {
@@ -30,6 +33,17 @@ namespace LD60.UI
                 enabled = false;
                 return;
             }
+
+            _text = Core.Config == null ? null : Core.Config.UiText;
+
+            if (_text == null)
+            {
+                Debug.LogError($"{nameof(SignalAimReadout)}: {nameof(_text)} is null in {nameof(Start)}. " +
+                               "Required to read the localized readout lines. " +
+                               "Fix: assign the UiText asset to the Ui Text slot on the Core asset.");
+                enabled = false;
+                return;
+            }
         }
 
         private void Update()
@@ -40,19 +54,30 @@ namespace LD60.UI
                 return;
 
             _label.rectTransform.position = (Vector3)(mouse.position.ReadValue() + _pointerOffset);
+            _label.text = BuildText();
+        }
 
+        private string BuildText()
+        {
             if (!_launcher.IsReady)
+                return _text.NoCarrier.Value;
+
+            string pause = Core.IsPaused ? "\n" + _text.Paused.Value : string.Empty;
+
+            if (!_launcher.IsAiming)
             {
-                _label.text = "NO CARRIER";
-                return;
+                string hit = string.IsNullOrEmpty(_launcher.LastHitName)
+                    ? string.Empty
+                    : "\n" + _text.HitPrefix.Value + _launcher.LastHitName;
+
+                return _text.AimHint.Value + pause + hit;
             }
 
-            _label.text = string.Format("{0:0.0}°  ×{1:0.00}  {2:0.0}W{3}{4}",
+            return string.Format(_text.AimReadoutFormat.Value,
                 _launcher.WidthDegrees,
-                _launcher.SpeedMultiplier,
+                _launcher.Speed,
                 _launcher.CurrentCost,
-                Core.IsPaused ? "\nPAUSED" : string.Empty,
-                string.IsNullOrEmpty(_launcher.LastHitName) ? string.Empty : "\nHIT: " + _launcher.LastHitName);
+                _launcher.PowerDots) + pause;
         }
     }
 }

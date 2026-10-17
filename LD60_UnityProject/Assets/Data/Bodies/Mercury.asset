@@ -18,8 +18,10 @@ MonoBehaviour:
   <RotationPeriodHours>k__BackingField: 1407.6
   <MeanLongitudeJ2000Degrees>k__BackingField: 252.25
   <DisplayRadiusOverride>k__BackingField: 0
-  <DisplayDiameter>k__BackingField: 0.18
+  <DisplayDiameter>k__BackingField: 0.51
   <Tint>k__BackingField: {r: 0.62, g: 0.58, b: 0.54, a: 1}
-  <Texture>k__BackingField: {fileID: 0}
+  <Surface>k__BackingField: {fileID: 2800000, guid: 5938661d803647f47b0349fc6d7c68cd, type: 3}
+  <SurfaceDiscRadius>k__BackingField: 0.33
+  <Material>k__BackingField: {fileID: 2100000, guid: 533f59db8d9933d4e9fd615254a6f43f, type: 2}
   <DrawOrbitRing>k__BackingField: 1
   <Spacecraft>k__BackingField: []

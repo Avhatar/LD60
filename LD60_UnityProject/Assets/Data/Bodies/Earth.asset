@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Earth
-  <SemiMajorAxisAu>k__BackingField: 1
+  <SemiMajorAxisAu>k__BackingField: 1.72
   <OrbitalPeriodDays>k__BackingField: 365.26
   <RotationPeriodHours>k__BackingField: 23.934
   <MeanLongitudeJ2000Degrees>k__BackingField: 100.46
   <DisplayRadiusOverride>k__BackingField: 0
-  <DisplayDiameter>k__BackingField: 0.28
-  <Tint>k__BackingField: {r: 0.4, g: 0.6, b: 0.85, a: 1}
-  <Texture>k__BackingField: {fileID: 0}
+  <DisplayDiameter>k__BackingField: 1.07
+  <Tint>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
+  <Surface>k__BackingField: {fileID: 2800000, guid: e4691d3e43db2974d86228f0286638f0, type: 3}
+  <SurfaceDiscRadius>k__BackingField: 0.335
+  <Material>k__BackingField: {fileID: 2100000, guid: f33207d51e863fb4988c5cfdabef0a19, type: 2}
   <DrawOrbitRing>k__BackingField: 1
   <Spacecraft>k__BackingField: []

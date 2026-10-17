@@ -133,7 +133,7 @@ namespace NodeGraphAvr.Dialogue
             runner.RaiseChoice(new ChoiceRequest(runner, texts, lineIndices));
         }
 
-        protected override void OnRuntimeStateRebuilt()
+        protected internal override void OnRuntimeStateRebuilt()
         {
             for (var i = 0; i < _options.Count; i++)
             {

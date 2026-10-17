@@ -9,7 +9,20 @@ namespace LD60
         [SerializeField] private CoreSO _config;
 
         public static CoreSO Config { get; private set; }
-        public static bool IsPaused { get; private set; }
+
+        private static bool _manualPause;
+        private static bool _heldPause;
+
+        public static bool IsPaused
+        {
+            get { return _manualPause || _heldPause; }
+        }
+
+        public static void SetPauseHold(bool held)
+        {
+            _heldPause = held;
+            Time.timeScale = IsPaused ? 0f : 1f;
+        }
 
         private void Awake()
         {
@@ -23,22 +36,42 @@ namespace LD60
             }
 
             Config = _config;
-            IsPaused = false;
+            _manualPause = false;
+            _heldPause = false;
             Time.timeScale = 1f;
         }
 
         private void Update()
         {
+            if (LanguageToggleRequested())
+                Localization.Toggle();
+
             if (!PauseToggleRequested())
                 return;
 
-            IsPaused = !IsPaused;
+            _manualPause = !_manualPause;
             Time.timeScale = IsPaused ? 0f : 1f;
         }
 
         private void OnDestroy()
         {
             Time.timeScale = 1f;
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (!Application.isPlaying || _config == null)
+                return;
+
+            Config = _config;
+            GameDataSO.NotifyChanged();
+        }
+#endif
+
+        private static bool LanguageToggleRequested()
+        {
+            return Keyboard.current != null && Keyboard.current.f2Key.wasPressedThisFrame;
         }
 
         private static bool PauseToggleRequested()

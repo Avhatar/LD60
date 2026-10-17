@@ -19,8 +19,8 @@ namespace NodeGraphAvr.Dialogue
         [ActorPicker]
         [SerializeField] private ActorData _actor;
 
-        [Tooltip("The line of text this node says when entered.")]
-        [SerializeField] private string _text = "";
+        [Tooltip("The line of text this node says when entered, in every supported language.")]
+        [SerializeField] private LD60.LocalizedString _text = new LD60.LocalizedString();
 
         public ActorData Actor
         {
@@ -30,13 +30,17 @@ namespace NodeGraphAvr.Dialogue
 
         public string Text
         {
+            get { return _text.Value; }
+        }
+
+        public LD60.LocalizedString Line
+        {
             get { return _text; }
-            internal set { _text = value; }
         }
 
         internal override void Enter(DialogueRunner runner)
         {
-            runner.RaiseSay(new SayRequest(runner, _actor, _text));
+            runner.RaiseSay(new SayRequest(runner, _actor, _text.Value));
         }
     }
 }

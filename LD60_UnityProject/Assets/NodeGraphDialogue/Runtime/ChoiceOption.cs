@@ -13,8 +13,8 @@ namespace NodeGraphAvr.Dialogue
     [System.Serializable]
     public class ChoiceOption
     {
-        [Tooltip("Text shown to the player for this option.")]
-        [SerializeField] private string _text = "";
+        [Tooltip("Text shown to the player for this option, in every supported language.")]
+        [SerializeField] private LD60.LocalizedString _text = new LD60.LocalizedString();
 
         [Tooltip("Uid of the out-connection carrying this option's flow. Empty means the option has no line and selecting it ends the dialogue in success.")]
         [HideInInspector]
@@ -25,8 +25,12 @@ namespace NodeGraphAvr.Dialogue
 
         public string Text
         {
+            get { return _text.Value; }
+        }
+
+        public LD60.LocalizedString Line
+        {
             get { return _text; }
-            internal set { _text = value; }
         }
 
         public string LineUid
@@ -45,7 +49,7 @@ namespace NodeGraphAvr.Dialogue
 
         public ChoiceOption(string text)
         {
-            _text = text;
+            _text = new LD60.LocalizedString(text, text);
         }
     }
 }

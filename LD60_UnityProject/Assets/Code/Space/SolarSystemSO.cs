@@ -4,7 +4,7 @@ using LD60.Dialogue;
 namespace LD60.Space
 {
     [CreateAssetMenu(fileName = "SolarSystem", menuName = "LD60/Solar System")]
-    public class SolarSystemSO : ScriptableObject
+    public class SolarSystemSO : GameDataSO
     {
         [field: SerializeField] public float InnerRadius { get; private set; } = 0.9f;
         [field: SerializeField] public float LogScale { get; private set; } = 4f;
@@ -12,6 +12,14 @@ namespace LD60.Space
         [field: SerializeField] public int OrbitRingSegments { get; private set; } = 128;
         [field: SerializeField] public float OrbitRingWidth { get; private set; } = 0.015f;
         [field: SerializeField] public Color OrbitRingColor { get; private set; } = new Color(1f, 1f, 1f, 0.18f);
+        [field: SerializeField, Tooltip("Simulated days a body with the reference rotation period takes to spin once. " +
+            "Real periods run far too fast at the orrery time scale, so spin is retimed rather than simulated.")]
+        public float SpinDaysPerTurnAtReference { get; private set; } = 12f;
+        [field: SerializeField, Tooltip("Rotation period that maps exactly onto Spin Days Per Turn At Reference. Earth by default.")]
+        public float SpinReferencePeriodHours { get; private set; } = 23.934f;
+        [field: SerializeField, Range(0f, 1f), Tooltip("How much of the real spread between rotation periods survives the retiming. " +
+            "0 spins every body at the same rate, 1 keeps the real ratios.")]
+        public float SpinPeriodCompression { get; private set; } = 0.35f;
         [field: SerializeField] public CelestialBodySO[] Bodies { get; private set; } = new CelestialBodySO[0];
         [field: SerializeField] public SpacecraftSO[] FreeFlyers { get; private set; } = new SpacecraftSO[0];
 
@@ -30,6 +38,21 @@ namespace LD60.Space
                 return body.DisplayRadiusOverride;
 
             return DisplayRadiusForAu(body.SemiMajorAxisAu);
+        }
+
+        /// <summary>
+        /// Screen spin rate in turns per simulated day. Keeps the sign of the real rotation period,
+        /// so retrograde bodies such as Venus and Uranus spin backwards.
+        /// </summary>
+        public float SpinTurnsPerDay(CelestialBodySO body)
+        {
+            if (SpinDaysPerTurnAtReference <= 0f || body.RotationPeriodHours == 0f)
+                return 0f;
+
+            float reference = SpinReferencePeriodHours > 0f ? SpinReferencePeriodHours : 23.934f;
+            float ratio = Mathf.Pow(reference / Mathf.Abs(body.RotationPeriodHours), SpinPeriodCompression);
+
+            return Mathf.Sign(body.RotationPeriodHours) * ratio / SpinDaysPerTurnAtReference;
         }
 
 #if UNITY_EDITOR

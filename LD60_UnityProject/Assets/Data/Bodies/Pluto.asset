@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
+  m_Name: Pluto
+  m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Pluto
+  <SemiMajorAxisAu>k__BackingField: 123.2
+  <OrbitalPeriodDays>k__BackingField: 90560
+  <RotationPeriodHours>k__BackingField: 153.29
+  <MeanLongitudeJ2000Degrees>k__BackingField: 238.93
+  <DisplayRadiusOverride>k__BackingField: 0
+  <DisplayDiameter>k__BackingField: 0.47
+  <Tint>k__BackingField: {r: 0.76, g: 0.66, b: 0.58, a: 1}
+  <Surface>k__BackingField: {fileID: 2800000, guid: 37da951b205facb4a8234168fae23ea8, type: 3}
+  <SurfaceDiscRadius>k__BackingField: 0.335
+  <Material>k__BackingField: {fileID: 2100000, guid: ad8a9b20a0ac1af488eac822e9d66694, type: 2}
+  <DrawOrbitRing>k__BackingField: 1
+  <Spacecraft>k__BackingField: []

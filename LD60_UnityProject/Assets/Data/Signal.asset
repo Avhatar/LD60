@@ -12,23 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d4ee2155edb064eba13f3f46875e5b, type: 3}
   m_Name: Signal
   m_EditorClassIdentifier: 
-  <BaseSpeed>k__BackingField: 3
-  <MinSpeedMultiplier>k__BackingField: 0.5
-  <MaxSpeedMultiplier>k__BackingField: 3
-  <DefaultSpeedMultiplier>k__BackingField: 1
-  <SpeedDragSensitivity>k__BackingField: 0.01
+  <MinSpeed>k__BackingField: 1.5
+  <MaxSpeed>k__BackingField: 12
+  <SpeedNearDistance>k__BackingField: 1
+  <SpeedFarDistance>k__BackingField: 14
   <MinWidthDegrees>k__BackingField: 1.5
   <MaxWidthDegrees>k__BackingField: 30
   <DefaultWidthDegrees>k__BackingField: 6
   <WidthScrollStepDegrees>k__BackingField: 1
+  <MinDots>k__BackingField: 3
+  <MaxDots>k__BackingField: 48
+  <SecondsToFullPower>k__BackingField: 1.2
+  <DotSize>k__BackingField: 0.13
+  <PreviewArcRadius>k__BackingField: 2.2
   <MaxTravelRadius>k__BackingField: 26
+  <PauseWhileAiming>k__BackingField: 0
   <BaseCostWatts>k__BackingField: 2
   <CostPerWidthDegree>k__BackingField: 0.35
-  <CostPerSpeedMultiplier>k__BackingField: 1.5
+  <CostPerSpeedUnit>k__BackingField: 0.4
+  <CostPerDot>k__BackingField: 0.25
   <PreviewColor>k__BackingField: {r: 0.4, g: 0.8, b: 1, a: 0.35}
   <SignalColor>k__BackingField: {r: 0.6, g: 0.95, b: 1, a: 0.95}
   <HitFlashColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <HitFlashSeconds>k__BackingField: 0.45
   <PreviewLineWidth>k__BackingField: 0.025
-  <SignalLineWidth>k__BackingField: 0.06
   <ArcSegments>k__BackingField: 24

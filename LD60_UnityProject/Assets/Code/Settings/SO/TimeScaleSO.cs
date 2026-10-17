@@ -3,7 +3,7 @@ using UnityEngine;
 namespace LD60.Settings
 {
     [CreateAssetMenu(fileName = "TimeScale", menuName = "LD60/Time Scale")]
-    public class TimeScaleSO : ScriptableObject
+    public class TimeScaleSO : GameDataSO
     {
         [field: SerializeField] public float SimulatedYearsPerRun { get; private set; } = 5f;
         [field: SerializeField] public float RunDurationSeconds { get; private set; } = 1200f;
