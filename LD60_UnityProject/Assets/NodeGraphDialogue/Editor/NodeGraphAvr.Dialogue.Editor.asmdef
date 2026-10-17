@@ -1,0 +1,20 @@
+{
+    "name": "NodeGraphAvr.Dialogue.Editor",
+    "rootNamespace": "NodeGraphAvr.Dialogue.Editor",
+    "references": [
+        "NodeGraphAvr",
+        "NodeGraphAvr.Dialogue",
+        "NodeGraphAvr.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

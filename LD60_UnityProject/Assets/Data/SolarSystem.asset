@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e01acd635ae6842a04131d36c99a6f, type: 3}
+  m_Name: SolarSystem
+  m_EditorClassIdentifier: 
+  <InnerRadius>k__BackingField: 0.9
+  <LogScale>k__BackingField: 4
+  <AxisReferenceAu>k__BackingField: 0.25
+  <OrbitRingSegments>k__BackingField: 128
+  <OrbitRingWidth>k__BackingField: 0.015
+  <OrbitRingColor>k__BackingField: {r: 1, g: 1, b: 1, a: 0.18}
+  <Bodies>k__BackingField:
+  - {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
+  - {fileID: 11400000, guid: 75e6b3773c184f349b9e1076979e00bc, type: 2}
+  - {fileID: 11400000, guid: 86b812e7edcb13e49a2ebbee847dad3b, type: 2}
+  - {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
+  - {fileID: 11400000, guid: 78373faa4e17f3047808d93d8ed398bf, type: 2}
+  - {fileID: 11400000, guid: f0685a268637b0e4abc60b124fe287b7, type: 2}
+  - {fileID: 11400000, guid: 78ab93cb3d128564a9fac2140e97b339, type: 2}
+  - {fileID: 11400000, guid: 54232f5f1ca43da49b716c13f8af6e7c, type: 2}
+  - {fileID: 11400000, guid: 6ccb7e2f593e2f94294259bd7ad8850e, type: 2}
+  <FreeFlyers>k__BackingField:
+  - {fileID: 11400000, guid: fa5f23fcade604644aa3dcb3909d2e87, type: 2}

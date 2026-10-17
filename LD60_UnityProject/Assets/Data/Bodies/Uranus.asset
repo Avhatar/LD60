@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
+  m_Name: Uranus
+  m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Uranus
+  <SemiMajorAxisAu>k__BackingField: 19.191
+  <OrbitalPeriodDays>k__BackingField: 30688.5
+  <RotationPeriodHours>k__BackingField: -17.24
+  <MeanLongitudeJ2000Degrees>k__BackingField: 313.23
+  <DisplayRadiusOverride>k__BackingField: 0
+  <DisplayDiameter>k__BackingField: 0.4
+  <Tint>k__BackingField: {r: 0.6, g: 0.8, b: 0.82, a: 1}
+  <Texture>k__BackingField: {fileID: 0}
+  <DrawOrbitRing>k__BackingField: 1
+  <Spacecraft>k__BackingField: []
