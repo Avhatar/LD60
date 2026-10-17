@@ -74,6 +74,9 @@ Shader "LD60/Space/Body"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
+            static const float DotsVanishBelowPixelsPerCell = 0.7;
+            static const float DotsFullAbovePixelsPerCell = 1.4;
+
             TEXTURE2D(_BaseMap);
             SAMPLER(sampler_BaseMap);
 
@@ -138,9 +141,15 @@ Shader "LD60/Space/Body"
                     float2 cellCenter = round(grid);
 
                     float dotRadius = _DotRadius * 0.5;
-                    float softness = max(_DotSoftness * 0.5, length(fwidth(grid)) * 0.5);
-                    dotMask = 1.0 - smoothstep(dotRadius - softness, dotRadius + softness, length(grid - cellCenter));
-                    uv = cellCenter / cells + _DiscCenter.xy;
+                    float pixelsPerCell = 1.0 / max(max(fwidth(grid.x), fwidth(grid.y)), 1e-5);
+                    float resolved = smoothstep(DotsVanishBelowPixelsPerCell, DotsFullAbovePixelsPerCell, pixelsPerCell);
+
+                    float softness = min(max(_DotSoftness * 0.5, length(fwidth(grid)) * 0.5), dotRadius);
+                    float sharpMask = 1.0 - smoothstep(dotRadius - softness, dotRadius + softness, length(grid - cellCenter));
+                    float averageCoverage = saturate(PI * dotRadius * dotRadius);
+
+                    dotMask = lerp(averageCoverage, sharpMask, resolved);
+                    uv = lerp(uv, cellCenter / cells + _DiscCenter.xy, resolved);
                 #endif
 
                 float2 p = (uv - _DiscCenter.xy) / max(_DiscRadius, 1e-4);

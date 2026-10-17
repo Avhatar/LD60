@@ -39,8 +39,8 @@ namespace LD60.Space
         private FreeFlyerView[] _freeFlyers = new FreeFlyerView[0];
         private MaterialPropertyBlock _propertyBlock;
         private Mesh _quad;
-        private double _elapsedDays;
         private bool _dataDirty;
+        private ActPeriod _syncedAct;
 
         private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         private static readonly int BaseMapId = Shader.PropertyToID("_BaseMap");
@@ -69,7 +69,7 @@ namespace LD60.Space
 
         public double CurrentDaysSinceJ2000
         {
-            get { return _timeScale == null ? 0d : _timeScale.DaysSinceJ2000AtRunStart + _elapsedDays; }
+            get { return Core.DaysSinceJ2000; }
         }
 
         public Transform GetBodyTransform(int index)
@@ -100,6 +100,56 @@ namespace LD60.Space
                 return 0f;
 
             return _bodies[index].Data.DisplayDiameter * _bodies[index].Data.SurfaceDiscRadius;
+        }
+
+        public float GetHitRadiusOf(CelestialBodySO body)
+        {
+            for (int i = 0; i < _bodies.Length; i++)
+            {
+                if (_bodies[i].Data == body)
+                    return body.DisplayDiameter * body.SurfaceDiscRadius;
+            }
+
+            return 0f;
+        }
+
+        public bool TryPredictBodyPosition(CelestialBodySO body, double daysAhead, out Vector2 position)
+        {
+            position = Vector2.zero;
+
+            for (int i = 0; i < _bodies.Length; i++)
+            {
+                if (_bodies[i].Data != body)
+                    continue;
+
+                if (_bodies[i].Data.OrbitalPeriodDays <= 0f || _bodies[i].OrbitRadius <= 0f)
+                {
+                    position = _bodies[i].Root.position;
+                    return true;
+                }
+
+                ActPeriod act = Core.CurrentAct;
+                double elapsed = act == null ? CurrentDaysSinceJ2000 : CurrentDaysSinceJ2000 - act.StartDaysSinceJ2000;
+                double startAngle = act == null ? 0d : act.StartAngleFor(body);
+                double degrees = startAngle + (elapsed + daysAhead) / _bodies[i].Data.OrbitalPeriodDays * 360d;
+                float radians = (float)(degrees % 360d) * Mathf.Deg2Rad;
+                position = (Vector2)transform.position
+                         + new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)) * _bodies[i].OrbitRadius;
+                return true;
+            }
+
+            return false;
+        }
+
+        public Transform FindBodyTransform(CelestialBodySO body)
+        {
+            for (int i = 0; i < _bodies.Length; i++)
+            {
+                if (_bodies[i].Data == body)
+                    return _bodies[i].Root;
+            }
+
+            return null;
         }
 
         public CelestialBodySO GetBody(int index)
@@ -154,6 +204,7 @@ namespace LD60.Space
             _system = Core.Config.SolarSystem;
             _timeScale = Core.Config.TimeScale;
 
+
             if (_system == null)
             {
                 Debug.LogError($"{nameof(Orrery)}: {nameof(SolarSystemSO)} is null in {nameof(Start)}. " +
@@ -189,11 +240,13 @@ namespace LD60.Space
 
         private void Update()
         {
+            if (!ReferenceEquals(Core.CurrentAct, _syncedAct))
+                _dataDirty = true;
+
             if (_dataDirty)
                 SyncData();
 
-            double deltaDays = UnityEngine.Time.deltaTime * _timeScale.DaysPerSecond;
-            _elapsedDays += deltaDays;
+            double deltaDays = Core.DeltaDays;
 
             UpdateBodyPositions();
             UpdateFlashes();
@@ -203,6 +256,7 @@ namespace LD60.Space
         private void SyncData()
         {
             _dataDirty = false;
+            _syncedAct = Core.CurrentAct;
 
             if (Core.Config == null)
             {
@@ -357,38 +411,72 @@ namespace LD60.Space
 
         private void SyncFreeFlyers()
         {
-            ResizeFreeFlyers(_system.FreeFlyers.Length);
+            ActPeriod act = Core.CurrentAct;
+            ResizeFreeFlyers(CountFreeFlyers(act));
             PlayerAnchor = null;
 
-            for (int i = 0; i < _freeFlyers.Length; i++)
+            if (act == null)
+                return;
+
+            int slot = 0;
+
+            for (int i = 0; i < act.Spacecraft.Length; i++)
             {
-                FreeFlyerView view = _freeFlyers[i];
-                SpacecraftSO data = _system.FreeFlyers[i];
+                ActSpacecraftSO entry = act.Spacecraft[i];
 
-                if (data == null)
+                if (entry == null)
                 {
-                    Debug.LogError($"{nameof(Orrery)}: {nameof(SpacecraftSO)} at index {i} is null in {nameof(SyncFreeFlyers)}. " +
-                                   "Required to place a spacecraft that is not anchored to a body. " +
-                                   "Fix: remove the empty slot from the Free Flyers list on the SolarSystem asset.");
-
-                    view.Data = null;
-                    view.Root.gameObject.SetActive(false);
+                    Debug.LogError($"{nameof(Orrery)}: {nameof(ActSpacecraftSO)} at index {i} is null in {nameof(SyncFreeFlyers)}. " +
+                                   "Required to know which spacecraft this act places. " +
+                                   $"Fix: remove the empty slot from the Spacecraft list of act '{act.Name}' on the TimeScale asset.");
                     continue;
                 }
 
-                view.Data = data;
+                if (entry.Body != null)
+                    continue;
+
+                if (entry.Spacecraft == null)
+                {
+                    Debug.LogError($"{nameof(Orrery)}: {nameof(entry.Spacecraft)} is null on '{entry.name}' in {nameof(SyncFreeFlyers)}. " +
+                                   "Required to know which spacecraft to draw and whether it is the player. " +
+                                   $"Fix: assign a Spacecraft asset to the Spacecraft slot on '{entry.name}'.");
+                    continue;
+                }
+
+                FreeFlyerView view = _freeFlyers[slot];
+                slot++;
+
+                view.Data = entry.Spacecraft;
                 view.Root.gameObject.SetActive(true);
-                view.Root.name = data.DisplayName;
+                view.Root.name = entry.Spacecraft.DisplayName;
 
                 SyncFreeFlyerVisual(view);
 
-                float radius = _system.DisplayRadiusForAu(data.FreeFlightDistanceAu);
-                float radians = data.FreeFlightAngleDegrees * Mathf.Deg2Rad;
+                float radius = _system.DisplayRadiusForAu(entry.DistanceAu);
+                float radians = entry.AngleDegrees * Mathf.Deg2Rad;
                 view.Root.localPosition = new Vector3(Mathf.Cos(radians) * radius, Mathf.Sin(radians) * radius, 0f);
 
-                if (data.IsPlayer)
+                if (entry.Spacecraft.IsPlayer)
                     PlayerAnchor = view.Root;
             }
+        }
+
+        private static int CountFreeFlyers(ActPeriod act)
+        {
+            if (act == null)
+                return 0;
+
+            int count = 0;
+
+            for (int i = 0; i < act.Spacecraft.Length; i++)
+            {
+                ActSpacecraftSO entry = act.Spacecraft[i];
+
+                if (entry != null && entry.Body == null && entry.Spacecraft != null)
+                    count++;
+            }
+
+            return count;
         }
 
         private void ResizeFreeFlyers(int count)
@@ -551,7 +639,8 @@ namespace LD60.Space
 
         private void UpdateBodyPositions()
         {
-            double days = CurrentDaysSinceJ2000;
+            ActPeriod act = Core.CurrentAct;
+            double days = act == null ? CurrentDaysSinceJ2000 : CurrentDaysSinceJ2000 - act.StartDaysSinceJ2000;
 
             for (int i = 0; i < _bodies.Length; i++)
             {
@@ -566,7 +655,8 @@ namespace LD60.Space
                     continue;
                 }
 
-                double degrees = view.Data.MeanLongitudeJ2000Degrees + days / view.Data.OrbitalPeriodDays * 360d;
+                double startAngle = act == null ? 0d : act.StartAngleFor(view.Data);
+                double degrees = startAngle + days / view.Data.OrbitalPeriodDays * 360d;
                 float radians = (float)(degrees % 360d) * Mathf.Deg2Rad;
                 view.Root.localPosition = new Vector3(Mathf.Cos(radians) * view.OrbitRadius, Mathf.Sin(radians) * view.OrbitRadius, 0f);
             }

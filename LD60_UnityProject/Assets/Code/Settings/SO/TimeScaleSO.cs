@@ -5,20 +5,21 @@ namespace LD60.Settings
     [CreateAssetMenu(fileName = "TimeScale", menuName = "LD60/Time Scale")]
     public class TimeScaleSO : GameDataSO
     {
-        [field: SerializeField] public float SimulatedYearsPerRun { get; private set; } = 5f;
-        [field: SerializeField] public float RunDurationSeconds { get; private set; } = 1200f;
-        [field: SerializeField] public double DaysSinceJ2000AtRunStart { get; private set; } = 9786d;
+        [field: SerializeField] public ActPeriod[] Acts { get; private set; } = new ActPeriod[0];
+        [field: SerializeField] public int StartActIndex { get; private set; }
         [field: SerializeField] public float SignalTravelSecondsAtVoyager { get; private set; } = 8f;
 
-        public double DaysPerSecond
+        public int ActCount
         {
-            get
-            {
-                if (RunDurationSeconds <= 0f)
-                    return 0d;
+            get { return Acts == null ? 0 : Acts.Length; }
+        }
 
-                return SimulatedYearsPerRun * 365.25d / RunDurationSeconds;
-            }
+        public ActPeriod GetAct(int index)
+        {
+            if (Acts == null || index < 0 || index >= Acts.Length)
+                return null;
+
+            return Acts[index];
         }
     }
 }

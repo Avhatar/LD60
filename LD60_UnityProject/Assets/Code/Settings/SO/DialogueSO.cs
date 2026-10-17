@@ -11,5 +11,7 @@ namespace LD60.Settings
         [field: SerializeField] public Vector2 CaretSize { get; private set; } = new Vector2(12f, 20f);
         [field: SerializeField] public Vector2 CaretOffset { get; private set; } = new Vector2(6f, 0f);
         [field: SerializeField, Range(0.05f, 2f)] public float CaretBlinkSeconds { get; private set; } = 0.45f;
+
+        [field: SerializeField, Range(0f, 2f)] public float BlurFadeSeconds { get; private set; } = 0.25f;
     }
 }

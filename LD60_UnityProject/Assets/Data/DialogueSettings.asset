@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypewriterCharactersPerSecond>k__BackingField: 30
   <TypewriterSound>k__BackingField: {fileID: 11400000, guid: 2b93f26d9487429aa62c668a08424044, type: 2}
-  <CaretSize>k__BackingField: {x: 10, y: 22}
+  <CaretSize>k__BackingField: {x: 14, y: 20}
   <CaretOffset>k__BackingField: {x: 4, y: 0}
-  <CaretColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <CaretBlinkSeconds>k__BackingField: 0.45
+  <BlurFadeSeconds>k__BackingField: 0.45

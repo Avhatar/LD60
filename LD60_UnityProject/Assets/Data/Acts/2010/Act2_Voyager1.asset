@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4266de03b1f454e8ac70f1bb8f48c1, type: 3}
+  m_Name: Act2_Voyager1
+  m_EditorClassIdentifier: 
+  <Spacecraft>k__BackingField: {fileID: 11400000, guid: fa5f23fcade604644aa3dcb3909d2e87, type: 2}
+  <Body>k__BackingField: {fileID: 0}
+  <DistanceAu>k__BackingField: 209.6
+  <AngleDegrees>k__BackingField: 27.1
+  <TransmitTo>k__BackingField: {fileID: 0}
+  <ArcWidthDegrees>k__BackingField: 10
+  <DotCount>k__BackingField: 12
+  <Speed>k__BackingField: 1.2
+  <TransmitPeriodSeconds>k__BackingField: 0
+  <DotsToCapture>k__BackingField: 0
+  <InterceptDialogue>k__BackingField: {fileID: 0}

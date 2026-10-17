@@ -21,7 +21,6 @@ namespace LD60.Space
             "0 spins every body at the same rate, 1 keeps the real ratios.")]
         public float SpinPeriodCompression { get; private set; } = 0.35f;
         [field: SerializeField] public CelestialBodySO[] Bodies { get; private set; } = new CelestialBodySO[0];
-        [field: SerializeField] public SpacecraftSO[] FreeFlyers { get; private set; } = new SpacecraftSO[0];
 
         public float DisplayRadiusForAu(float semiMajorAxisAu)
         {
@@ -63,7 +62,6 @@ namespace LD60.Space
             float[] axes = { 0f, 0.387f, 0.723f, 1.000f, 1.524f, 5.203f, 9.537f, 19.191f, 30.070f };
             float[] periods = { 0f, 87.97f, 224.70f, 365.26f, 686.98f, 4332.59f, 10759.22f, 30688.5f, 60182f };
             float[] rotations = { 609.12f, 1407.6f, -5832.5f, 23.934f, 24.623f, 9.925f, 10.656f, -17.24f, 16.11f };
-            float[] longitudes = { 0f, 252.25f, 181.98f, 100.46f, 355.43f, 34.40f, 49.94f, 313.23f, 304.88f };
             float[] diameters = { 1.1f, 0.18f, 0.26f, 0.28f, 0.22f, 0.62f, 0.55f, 0.40f, 0.39f };
             Color[] tints =
             {
@@ -82,7 +80,7 @@ namespace LD60.Space
                 if (body == null)
                 {
                     body = CreateInstance<CelestialBodySO>();
-                    body.ApplyOrbitalData(names[i], axes[i], periods[i], rotations[i], longitudes[i], diameters[i], tints[i]);
+                    body.ApplyOrbitalData(names[i], axes[i], periods[i], rotations[i], diameters[i], tints[i]);
                     UnityEditor.AssetDatabase.CreateAsset(body, path);
                 }
 

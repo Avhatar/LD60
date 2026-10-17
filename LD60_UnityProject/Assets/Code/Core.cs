@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using LD60.Settings;
 
 namespace LD60
 {
@@ -32,6 +33,67 @@ namespace LD60
         public static bool IsDialogueMode
         {
             get { return Mode == GameMode.Dialogue; }
+        }
+
+        public static double DaysSinceJ2000 { get; private set; }
+
+        public static double DeltaDays { get; private set; }
+
+        public static int ActIndex { get; private set; }
+
+        public static DateTime CurrentDate
+        {
+            get { return GameDate.FromDaysSinceJ2000(DaysSinceJ2000); }
+        }
+
+        public static ActPeriod CurrentAct
+        {
+            get
+            {
+                if (Config == null || Config.TimeScale == null)
+                    return null;
+
+                return Config.TimeScale.GetAct(ActIndex);
+            }
+        }
+
+        public static float ActProgress
+        {
+            get
+            {
+                ActPeriod act = CurrentAct;
+
+                if (act == null || act.SpanDays == 0d)
+                    return 0f;
+
+                return Mathf.Clamp01((float)((DaysSinceJ2000 - act.StartDaysSinceJ2000) / act.SpanDays));
+            }
+        }
+
+        public static void SetAct(int index)
+        {
+            if (Config == null || Config.TimeScale == null)
+            {
+                Debug.LogError($"{nameof(Core)}: {nameof(CoreSO.TimeScale)} is null in {nameof(SetAct)}. " +
+                               $"Required to read the start and end dates of act {index}. " +
+                               "Fix: assign the TimeScale asset to the Time Scale slot on the Core asset.");
+                return;
+            }
+
+            ActPeriod act = Config.TimeScale.GetAct(index);
+
+            if (act == null)
+            {
+                Debug.LogError($"{nameof(Core)}: act {index} is missing in {nameof(SetAct)}. " +
+                               "Required to know when the run starts and when it ends, so the date on screen can run. " +
+                               "Fix: add the act to the Acts list on the TimeScale asset, " +
+                               "or point Start Act Index at an act that exists.");
+                return;
+            }
+
+            ActIndex = index;
+            DaysSinceJ2000 = act.StartDaysSinceJ2000;
+            DeltaDays = 0d;
         }
 
         public static void SetMode(GameMode mode)
@@ -70,10 +132,26 @@ namespace LD60
             _heldPause = false;
             _dialoguePause = false;
             Time.timeScale = 1f;
+
+            ActIndex = 0;
+            DaysSinceJ2000 = 0d;
+            DeltaDays = 0d;
+
+            if (_config.TimeScale == null)
+            {
+                Debug.LogError($"{nameof(Core)}: {nameof(CoreSO.TimeScale)} is null in {nameof(Awake)}. " +
+                               "Required to know which act the run starts in and how fast the date advances. " +
+                               "Fix: assign the TimeScale asset to the Time Scale slot on the Core asset.");
+                return;
+            }
+
+            SetAct(_config.TimeScale.StartActIndex);
         }
 
         private void Update()
         {
+            AdvanceClock();
+
             if (LanguageToggleRequested())
                 Localization.Toggle();
 
@@ -106,6 +184,32 @@ namespace LD60
         private static void ApplyTimeScale()
         {
             Time.timeScale = IsPaused ? 0f : 1f;
+        }
+
+        private static void AdvanceClock()
+        {
+            DeltaDays = 0d;
+
+            ActPeriod act = CurrentAct;
+
+            if (act == null)
+                return;
+
+            double step = Time.deltaTime * act.DaysPerSecond;
+
+            if (step == 0d)
+                return;
+
+            double end = act.EndDaysSinceJ2000;
+            double next = DaysSinceJ2000 + step;
+
+            if (step > 0d && next > end)
+                next = end;
+            else if (step < 0d && next < end)
+                next = end;
+
+            DeltaDays = next - DaysSinceJ2000;
+            DaysSinceJ2000 = next;
         }
 
         private static bool LanguageToggleRequested()

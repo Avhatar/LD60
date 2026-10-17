@@ -32,12 +32,6 @@ namespace LD60.Dialogue
         [field: Tooltip("Shown on the final screen in place of the track that was never collected.")]
         [field: SerializeField, TextArea(2, 4)] public string Epitaph { get; private set; }
 
-        [field: Tooltip("Distance from the Sun, for craft that are not anchored to a body.")]
-        [field: SerializeField] public float FreeFlightDistanceAu { get; private set; }
-
-        [field: Tooltip("Heliocentric angle, for craft that are not anchored to a body.")]
-        [field: SerializeField] public float FreeFlightAngleDegrees { get; private set; }
-
         [field: Tooltip("Size of the marker drawn on the orrery.")]
         [field: SerializeField] public float DisplayDiameter { get; private set; } = 0.28f;
 

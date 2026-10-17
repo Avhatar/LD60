@@ -20,6 +20,7 @@ namespace LD60.Signals
         private int _inFlightCount;
         private float _speed;
         private float _travelled;
+        private float _age;
 
         public void Launch(SignalSO settings, Orrery orrery, SignalLauncher launcher, Material dotMaterial,
             Vector2 origin, Vector2 direction, float widthDegrees, float speed, int dotCount)
@@ -69,6 +70,14 @@ namespace LD60.Signals
                 return;
             }
 
+            _age += Time.deltaTime;
+
+            if (_age >= _settings.DotLifetimeSeconds)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             if (_inFlightCount > 0)
             {
                 _travelled += _speed * Time.deltaTime;
@@ -81,8 +90,6 @@ namespace LD60.Signals
 
         private void AdvanceDots()
         {
-            bool beyondRange = _travelled >= _settings.MaxTravelRadius;
-
             for (int i = 0; i < _count; i++)
             {
                 if (!_inFlight[i])
@@ -101,15 +108,7 @@ namespace LD60.Signals
                     _positions[i] = (Vector2)_orrery.GetBodyTransform(body).position + _landedOffsets[i];
                     _orrery.FlashBody(body, _settings.HitFlashColor, _settings.HitFlashSeconds);
                     _launcher.ReportHit(_orrery.GetBody(body).DisplayName);
-                    continue;
                 }
-
-                if (!beyondRange)
-                    continue;
-
-                _inFlight[i] = false;
-                _inFlightCount--;
-                _visible[i] = false;
             }
         }
 

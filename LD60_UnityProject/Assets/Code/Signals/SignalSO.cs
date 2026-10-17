@@ -37,6 +37,21 @@ namespace LD60.Signals
         [field: SerializeField] public float LandedSurfaceOffset { get; private set; } = 0.05f;
         [field: SerializeField] public float PreviewArcRadius { get; private set; } = 2.2f;
         [field: SerializeField] public float MaxTravelRadius { get; private set; } = 26f;
+
+        [field: Tooltip("How long dots stay on screen after they were sent. They also vanish early if their sender transmits again.")]
+        [field: SerializeField] public float DotLifetimeSeconds { get; private set; } = 10f;
+
+        [field: Tooltip("Colour a dot turns when it lands on the body the transmission was addressed to.")]
+        [field: SerializeField] public Color ArrivedColor { get; private set; } = new Color(0.45f, 1f, 0.55f, 0.95f);
+
+        [field: Tooltip("Colour of transmissions sent by other spacecraft.")]
+        [field: SerializeField] public Color ForeignColor { get; private set; } = new Color(0.95f, 0.72f, 0.35f, 0.9f);
+
+        [field: Tooltip("Dot size of transmissions sent by other spacecraft.")]
+        [field: SerializeField] public float ForeignDotSize { get; private set; } = 0.11f;
+
+        [field: Tooltip("How far along its path a foreign transmission first becomes visible. Zero means it leaves its sender in plain sight.")]
+        [field: SerializeField, Range(0f, 0.9f)] public float ForeignSpawnFraction { get; private set; }
         [field: SerializeField] public bool PauseWhileAiming { get; private set; }
 
         [field: SerializeField] public float BaseCostWatts { get; private set; } = 1f;

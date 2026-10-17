@@ -27,6 +27,9 @@ MonoBehaviour:
   <LandedSurfaceOffset>k__BackingField: 0.1
   <PreviewArcRadius>k__BackingField: 2.2
   <MaxTravelRadius>k__BackingField: 26
+  <ForeignColor>k__BackingField: {r: 0.95, g: 0.72, b: 0.35, a: 0.9}
+  <ForeignDotSize>k__BackingField: 0.11
+  <ForeignSpawnFraction>k__BackingField: 0
   <PauseWhileAiming>k__BackingField: 0
   <BaseCostWatts>k__BackingField: 2
   <CostPerWidthDegree>k__BackingField: 0.35

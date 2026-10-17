@@ -12,7 +12,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ab8836a6639e74cabaa7e6ce049daf, type: 3}
   m_Name: TimeScale
   m_EditorClassIdentifier: 
-  <SimulatedYearsPerRun>k__BackingField: 5
-  <RunDurationSeconds>k__BackingField: 1200
-  <DaysSinceJ2000AtRunStart>k__BackingField: 9786
+  <Acts>k__BackingField:
+  - <Name>k__BackingField: Act 1 - 1990
+    <Start>k__BackingField:
+      _year: 1990
+      _month: 2
+      _day: 14
+    <End>k__BackingField:
+      _year: 1995
+      _month: 2
+      _day: 14
+    <RealSecondsDuration>k__BackingField: 1200
+    <Placements>k__BackingField:
+    - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
+      <StartAngleDegrees>k__BackingField: 0
+    - <Body>k__BackingField: {fileID: 11400000, guid: 75e6b3773c184f349b9e1076979e00bc, type: 2}
+      <StartAngleDegrees>k__BackingField: 247.21667
+    - <Body>k__BackingField: {fileID: 11400000, guid: 86b812e7edcb13e49a2ebbee847dad3b, type: 2}
+      <StartAngleDegrees>k__BackingField: 161.47258
+    - <Body>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
+      <StartAngleDegrees>k__BackingField: 144.41783
+    - <Body>k__BackingField: {fileID: 11400000, guid: 78373faa4e17f3047808d93d8ed398bf, type: 2}
+      <StartAngleDegrees>k__BackingField: 264.71988
+    - <Body>k__BackingField: {fileID: 11400000, guid: 80f13753d2ce482a85f4b2867124488d, type: 2}
+      <StartAngleDegrees>k__BackingField: 178.96655
+    - <Body>k__BackingField: {fileID: 11400000, guid: f0685a268637b0e4abc60b124fe287b7, type: 2}
+      <StartAngleDegrees>k__BackingField: 96.01268
+    - <Body>k__BackingField: {fileID: 11400000, guid: 78ab93cb3d128564a9fac2140e97b339, type: 2}
+      <StartAngleDegrees>k__BackingField: 289.2175
+    - <Body>k__BackingField: {fileID: 11400000, guid: 54232f5f1ca43da49b716c13f8af6e7c, type: 2}
+      <StartAngleDegrees>k__BackingField: 270.90536
+    - <Body>k__BackingField: {fileID: 11400000, guid: 6ccb7e2f593e2f94294259bd7ad8850e, type: 2}
+      <StartAngleDegrees>k__BackingField: 283.29745
+    - <Body>k__BackingField: {fileID: 11400000, guid: b178aae1b3734e429b99ef2793f634a1, type: 2}
+      <StartAngleDegrees>k__BackingField: 224.58725
+    <Spacecraft>k__BackingField:
+    - {fileID: 11400000, guid: e22c22a04b3f18b44926b17c2f52a7e7, type: 2}
+    - {fileID: 11400000, guid: ccc2575a594eee6499252285c9e800cf, type: 2}
+  - <Name>k__BackingField: Act 2 - 2010
+    <Start>k__BackingField:
+      _year: 2010
+      _month: 4
+      _day: 22
+    <End>k__BackingField:
+      _year: 2015
+      _month: 4
+      _day: 22
+    <RealSecondsDuration>k__BackingField: 1200
+    <Placements>k__BackingField:
+    - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
+      <StartAngleDegrees>k__BackingField: 0
+    - <Body>k__BackingField: {fileID: 11400000, guid: 75e6b3773c184f349b9e1076979e00bc, type: 2}
+      <StartAngleDegrees>k__BackingField: 175.68277
+    - <Body>k__BackingField: {fileID: 11400000, guid: 86b812e7edcb13e49a2ebbee847dad3b, type: 2}
+      <StartAngleDegrees>k__BackingField: 92.42067
+    - <Body>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
+      <StartAngleDegrees>k__BackingField: 210.25566
+    - <Body>k__BackingField: {fileID: 11400000, guid: 78373faa4e17f3047808d93d8ed398bf, type: 2}
+      <StartAngleDegrees>k__BackingField: 167.88922
+    - <Body>k__BackingField: {fileID: 11400000, guid: 80f13753d2ce482a85f4b2867124488d, type: 2}
+      <StartAngleDegrees>k__BackingField: 317.14963
+    - <Body>k__BackingField: {fileID: 11400000, guid: f0685a268637b0e4abc60b124fe287b7, type: 2}
+      <StartAngleDegrees>k__BackingField: 345.68875
+    - <Body>k__BackingField: {fileID: 11400000, guid: 78ab93cb3d128564a9fac2140e97b339, type: 2}
+      <StartAngleDegrees>k__BackingField: 175.88222
+    - <Body>k__BackingField: {fileID: 11400000, guid: 54232f5f1ca43da49b716c13f8af6e7c, type: 2}
+      <StartAngleDegrees>k__BackingField: 357.38464
+    - <Body>k__BackingField: {fileID: 11400000, guid: 6ccb7e2f593e2f94294259bd7ad8850e, type: 2}
+      <StartAngleDegrees>k__BackingField: 327.3957
+    - <Body>k__BackingField: {fileID: 11400000, guid: b178aae1b3734e429b99ef2793f634a1, type: 2}
+      <StartAngleDegrees>k__BackingField: 253.8929
+    <Spacecraft>k__BackingField:
+    - {fileID: 11400000, guid: ebafcba22f746154196110366bef8d60, type: 2}
+  - <Name>k__BackingField: Act 3 - 2026
+    <Start>k__BackingField:
+      _year: 2026
+      _month: 10
+      _day: 17
+    <End>k__BackingField:
+      _year: 2031
+      _month: 10
+      _day: 17
+    <RealSecondsDuration>k__BackingField: 1200
+    <Placements>k__BackingField:
+    - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
+      <StartAngleDegrees>k__BackingField: 0
+    - <Body>k__BackingField: {fileID: 11400000, guid: 75e6b3773c184f349b9e1076979e00bc, type: 2}
+      <StartAngleDegrees>k__BackingField: 339.5383
+    - <Body>k__BackingField: {fileID: 11400000, guid: 86b812e7edcb13e49a2ebbee847dad3b, type: 2}
+      <StartAngleDegrees>k__BackingField: 20.484886
+    - <Body>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
+      <StartAngleDegrees>k__BackingField: 25.534483
+    - <Body>k__BackingField: {fileID: 11400000, guid: 78373faa4e17f3047808d93d8ed398bf, type: 2}
+      <StartAngleDegrees>k__BackingField: 83.61437
+    - <Body>k__BackingField: {fileID: 11400000, guid: 80f13753d2ce482a85f4b2867124488d, type: 2}
+      <StartAngleDegrees>k__BackingField: 166.32738
+    - <Body>k__BackingField: {fileID: 11400000, guid: f0685a268637b0e4abc60b124fe287b7, type: 2}
+      <StartAngleDegrees>k__BackingField: 123.71771
+    - <Body>k__BackingField: {fileID: 11400000, guid: 78ab93cb3d128564a9fac2140e97b339, type: 2}
+      <StartAngleDegrees>k__BackingField: 17.376385
+    - <Body>k__BackingField: {fileID: 11400000, guid: 54232f5f1ca43da49b716c13f8af6e7c, type: 2}
+      <StartAngleDegrees>k__BackingField: 68.0274
+    - <Body>k__BackingField: {fileID: 11400000, guid: 6ccb7e2f593e2f94294259bd7ad8850e, type: 2}
+      <StartAngleDegrees>k__BackingField: 3.4184334
+    - <Body>k__BackingField: {fileID: 11400000, guid: b178aae1b3734e429b99ef2793f634a1, type: 2}
+      <StartAngleDegrees>k__BackingField: 277.83194
+    <Spacecraft>k__BackingField:
+    - {fileID: 11400000, guid: caacee7a9de9253448505e6ce027b02e, type: 2}
+  <StartActIndex>k__BackingField: 0
   <SignalTravelSecondsAtVoyager>k__BackingField: 8

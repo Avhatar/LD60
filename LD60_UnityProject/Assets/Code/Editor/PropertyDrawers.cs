@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using LD60.Settings;
 
 namespace LD60.EditorTools
 {
@@ -75,6 +76,49 @@ namespace LD60.EditorTools
 
             _measured.text = string.IsNullOrEmpty(text) ? " " : text;
             return Mathf.Clamp(EditorStyles.textArea.CalcHeight(_measured, width), singleLine, singleLine * MaxLines);
+        }
+    }
+
+    [CustomPropertyDrawer(typeof(GameDate))]
+    public class GameDateDrawer : PropertyDrawer
+    {
+        private const float CellSpacing = 4f;
+
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            SerializedProperty year = property.FindPropertyRelative("_year");
+            SerializedProperty month = property.FindPropertyRelative("_month");
+            SerializedProperty day = property.FindPropertyRelative("_day");
+
+            if (year == null || month == null || day == null)
+            {
+                EditorGUI.PropertyField(position, property, label, true);
+                return;
+            }
+
+            EditorGUI.BeginProperty(position, label, property);
+
+            Rect row = EditorGUI.PrefixLabel(position, label);
+            float cell = (row.width - CellSpacing * 2f) / 3f;
+            int indent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = 0;
+
+            day.intValue = DrawCell(new Rect(row.x, row.y, cell, EditorGUIUtility.singleLineHeight), day.intValue, 1, 31);
+            month.intValue = DrawCell(new Rect(row.x + cell + CellSpacing, row.y, cell, EditorGUIUtility.singleLineHeight), month.intValue, 1, 12);
+            year.intValue = DrawCell(new Rect(row.x + (cell + CellSpacing) * 2f, row.y, cell, EditorGUIUtility.singleLineHeight), year.intValue, 1, 9999);
+
+            EditorGUI.indentLevel = indent;
+            EditorGUI.EndProperty();
+        }
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            return EditorGUIUtility.singleLineHeight;
+        }
+
+        private static int DrawCell(Rect rect, int value, int min, int max)
+        {
+            return Mathf.Clamp(EditorGUI.IntField(rect, value), min, max);
         }
     }
 }
