@@ -40,10 +40,6 @@ namespace LD60.Space
             return DisplayRadiusForAu(body.SemiMajorAxisAu);
         }
 
-        /// <summary>
-        /// Screen spin rate in turns per simulated day. Keeps the sign of the real rotation period,
-        /// so retrograde bodies such as Venus and Uranus spin backwards.
-        /// </summary>
         public float SpinTurnsPerDay(CelestialBodySO body)
         {
             if (SpinDaysPerTurnAtReference <= 0f || body.RotationPeriodHours == 0f)

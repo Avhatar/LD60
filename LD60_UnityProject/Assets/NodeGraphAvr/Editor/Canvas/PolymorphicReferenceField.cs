@@ -4,14 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Draws one [SerializeReference] field: a header naming the assigned type (or its
-    /// one-line self-description when it has one), a picker opening the searchable type
-    /// browser, a remove button, and the assigned object's own fields below. Assignment
-    /// goes through the graph's mutation seam so it lands as a single undo step and marks
-    /// the session dirty; removal rides the owning panel's apply cycle. Shared by the
-    /// action and condition drawers — nothing here knows what an action is.
-    /// </summary>
     public static class PolymorphicReferenceField
     {
         private const float Spacing = 2f;

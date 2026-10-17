@@ -3,11 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Property drawer for every [SerializeReference] field or list element holding a
-    /// GraphCondition. Mirrors the action drawer — the shared polymorphic field does the
-    /// drawing, this only supplies the base type, summary, and validation line.
-    /// </summary>
     [CustomPropertyDrawer(typeof(GraphCondition), true)]
     public class GraphConditionDrawer : PropertyDrawer
     {

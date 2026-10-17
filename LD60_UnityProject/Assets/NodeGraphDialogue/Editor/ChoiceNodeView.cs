@@ -3,13 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue.Editor
 {
-    /// <summary>
-    /// Canvas view of a ChoiceNode: draws it as a chat bubble whose body lists the options —
-    /// the first one on a small node, more of them as the author grows it — and maps every
-    /// outgoing line to the option that owns it (port slot = option index, label = option text),
-    /// keeping the ownership as lines are created, adopted by relink, or removed, so any option
-    /// can be wired in any order and the port squares always mirror the option list.
-    /// </summary>
     [CustomNodeView(typeof(ChoiceNode))]
     public class ChoiceNodeView : DialogueBubbleNodeView
     {
@@ -17,13 +10,6 @@ namespace NodeGraphAvr.Dialogue.Editor
         private GraphCondition[] _cachedConditions = new GraphCondition[0];
         private string _body = "";
 
-        /// <summary>
-        /// The option texts, one numbered line each — the number is the option's own position, so
-        /// the body reads in step with the port squares below it and with the option list in the
-        /// panel. An option that is gated names its condition in square brackets, so a graph shows
-        /// which branches are not always offered. Rebuilt only when an option's text or condition
-        /// instance actually changes — this runs every repaint, so the comparison must not allocate.
-        /// </summary>
         protected override string GetBodyText()
         {
             var options = ((ChoiceNode)Node).Options;
@@ -49,7 +35,6 @@ namespace NodeGraphAvr.Dialogue.Editor
             return _body;
         }
 
-        /// <summary>True when the option that owns this out-connection is gated by a condition.</summary>
         public override bool IsOutSlotConditional(int slot)
         {
             var options = ((ChoiceNode)Node).Options;

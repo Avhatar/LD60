@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Popup browser for the canvas creation menu: folders from the entries' category
-    /// paths, a search field that flattens the whole tree by relevance, starred
-    /// favorites persisted per graph kind, keyboard navigation, and a footer showing
-    /// the hovered entry's description. Selecting an entry invokes its action and
-    /// closes the popup.
-    /// </summary>
     public class NodeCreationBrowser : PopupWindowContent
     {
         private const string SearchControlName = "NodeCreationBrowserSearch";

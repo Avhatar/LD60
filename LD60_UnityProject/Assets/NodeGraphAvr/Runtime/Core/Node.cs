@@ -4,14 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// Base class for all graph nodes: stable identity, canvas position, authoring
-    /// metadata, and per-type connection policy (max in/out slots, connection type,
-    /// connect vetoes). Plain serializable class — nodes are persisted as part of
-    /// their Graph, never as separate assets. Nodes hold no drawing code; all visuals
-    /// live in the editor assembly. Out-connections are serialized state in child
-    /// order; in-connections are runtime state rebuilt by Graph.RebuildRuntimeState.
-    /// </summary>
     [Serializable]
     public abstract class Node
     {
@@ -44,13 +36,8 @@ namespace NodeGraphAvr
             internal set { _graph = value; }
         }
 
-        /// <summary>
-        /// Size a node is created with: the footprint nodes had before they were resizable — a
-        /// header plus one line of body. Anything more is the author's decision, not a default.
-        /// </summary>
         public static readonly Vector2 DefaultSize = new Vector2(160f, 40f);
 
-        /// <summary>Smallest size a node may be resized to, so it never collapses out of reach.</summary>
         public static readonly Vector2 MinSize = new Vector2(80f, 36f);
 
         public Vector2 Position
@@ -99,8 +86,6 @@ namespace NodeGraphAvr
 
         private static readonly Dictionary<Type, string> _displayNames = new Dictionary<Type, string>();
 
-        /// <summary>Author-facing name of an authored type — node, action, or condition:
-        /// its [Name] attribute, or the type name.</summary>
         public static string DisplayNameOf(Type nodeType)
         {
             if (nodeType == null)

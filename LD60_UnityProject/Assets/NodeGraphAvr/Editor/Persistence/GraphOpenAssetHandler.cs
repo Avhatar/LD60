@@ -3,9 +3,6 @@ using UnityEditor.Callbacks;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Routes double-clicking an imported graph asset to the graph editor window.
-    /// </summary>
     public static class GraphOpenAssetHandler
     {
         [OnOpenAsset(1)]

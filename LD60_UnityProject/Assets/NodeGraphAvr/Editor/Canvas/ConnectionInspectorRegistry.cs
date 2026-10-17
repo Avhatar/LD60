@@ -5,12 +5,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Maps source-node types to their connection inspectors. Inspectors declare
-    /// their target with [CustomConnectionInspector(typeof(X))] and are discovered
-    /// via TypeCache; resolution walks the node's base-type chain. Node types without
-    /// an inspector resolve to null — the panel then shows only the generic summary.
-    /// </summary>
     public static class ConnectionInspectorRegistry
     {
         private static Dictionary<Type, ConnectionInspector> _declared;

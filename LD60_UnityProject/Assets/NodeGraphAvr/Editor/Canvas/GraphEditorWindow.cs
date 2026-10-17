@@ -6,22 +6,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// The graph editing window: hosts the IMGUI canvas (background grid, pan, zoom),
-    /// draws node views as GUILayout windows with selection, drag, creation, and
-    /// context menus, draws connection views with port-drag creation and relink,
-    /// drives save through Ctrl+S and the toolbar, guards unsaved changes on close
-    /// via hasUnsavedChanges, and survives domain reload by stashing the working copy
-    /// as JSON. Invariant: node window ids are node list indices, so the node list
-    /// must never change during a GUI pass — structural mutations from canvas input
-    /// are handled after the windows are drawn, and menu callbacks run outside OnGUI.
-    /// Connection mutations (connect, relink, disconnect on mouse-up) are safe
-    /// mid-pass because they never touch the node list. Second invariant: the zoom
-    /// area escapes Unity's implicit window GUI group and must restore it at its
-    /// measured origin, not at a hardcoded tab height — everything drawn after the
-    /// canvas (the inspector panel, tooltips) lives in the restored group and shifts
-    /// with it.
-    /// </summary>
     public class GraphEditorWindow : EditorWindow
     {
         private const float MinZoom = 0.1f;
@@ -872,12 +856,6 @@ namespace NodeGraphAvr.Editor
             return view;
         }
 
-        /// <summary>
-        /// Zooms by a multiplier, keeping the canvas point under the cursor in place. A notch
-        /// multiplies rather than adds, so it moves the view by the same visual amount at every
-        /// level: an additive step is a tenth of the scale near 1 but half of it near the floor,
-        /// which is what made deep zoom-out unusable when the floor was raised.
-        /// </summary>
         private void ZoomAround(Vector2 canvasLocalPoint, float zoomMultiplier)
         {
             var graph = _session.WorkingCopy;
@@ -1610,11 +1588,6 @@ namespace NodeGraphAvr.Editor
                 Handles.DrawSolidRectangleWithOutline(rect, Color.clear, color);
         }
 
-        /// <summary>
-        /// Size a node is actually drawn at: the author's size, never narrower than what its
-        /// output ports need. The resize gesture clamps to the same floor, so the drawn box and
-        /// the stored size stay the same thing.
-        /// </summary>
         private Vector2 EffectiveNodeSize(Node node)
         {
             var size = node.Size;
@@ -1823,12 +1796,6 @@ namespace NodeGraphAvr.Editor
             Repaint();
         }
 
-        /// <summary>
-        /// Handles the source end of a line being dragged onto another out-slot of the node it
-        /// already leaves from. Relinking to the same node is a no-op in the model — child order is
-        /// data, not a slot — so without this the line would simply snap back to where it started.
-        /// Which slot means what is the view's business; occupied slots exchange lines.
-        /// </summary>
         private bool TryMoveConnectionToSlot(Connection connection, Vector2 drawSpacePosition, Graph graph)
         {
             var source = connection.Source;
@@ -1967,11 +1934,6 @@ namespace NodeGraphAvr.Editor
             return _resizingNode != null && ReferenceEquals(_resizingNode, node);
         }
 
-        /// <summary>
-        /// Carries a node resize started at its bottom-right corner. Like the group resize, it
-        /// runs at canvas level rather than inside the node window: a drag wanders off the node
-        /// long before it ends, and a window only sees events over its own rect.
-        /// </summary>
         private void HandleNodeResizeGesture(Event e, Graph graph)
         {
             if (_resizingNode == null)

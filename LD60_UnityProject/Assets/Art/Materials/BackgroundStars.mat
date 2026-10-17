@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BackgroundStars
+  m_Shader: {fileID: 4800000, guid: 00a2bc63c711c7444b416e31824df64f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BigStarChance: 0.12
+    - _ColorVariance: 0.6
+    - _EdgeFade: 0
+    - _PixelSize: 0.05
+    - _SparkleBoost: 0.6
+    - _SparkleChance: 0.2
+    - _SparkleLength: 2
+    - _SparkleSharpness: 6
+    - _SparkleSpeed: 0.25
+    - _TwinkleAmount: 0.5
+    - _TwinkleSpeed: 0.35
+    m_Colors:
+    - _BackgroundColor: {r: 0.015, g: 0.02, b: 0.049999982, a: 1}
+    - _Drift: {r: 0, g: 0, b: 0, a: 0}
+    - _LayerBrightness: {r: 0.35, g: 0.65, b: 1, a: 0}
+    - _LayerCell: {r: 6, g: 10, b: 16, a: 0}
+    - _LayerFill: {r: 0.06, g: 0.04, b: 0.025, a: 0}
+    - _LayerParallax: {r: 0.08, g: 0.25, b: 0.55, a: 0}
+    - _StarColor: {r: 1, g: 1, b: 1, a: 1}
+    - _StarColorAlt: {r: 0.54999995, g: 0.75, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

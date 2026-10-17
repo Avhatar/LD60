@@ -47,14 +47,10 @@ namespace LD60.Space
         private static readonly int DiscRadiusId = Shader.PropertyToID("_DiscRadius");
         private static readonly int SpinId = Shader.PropertyToID("_Spin");
         private static readonly int SunDirId = Shader.PropertyToID("_SunDir");
+        private static readonly int OrbitRadiusId = Shader.PropertyToID("_OrbitRadius");
 
         public Transform PlayerAnchor { get; private set; }
 
-        /// <summary>
-        /// Created on demand rather than once in Start: a script recompile while the game is running
-        /// reloads the domain, and a <see cref="MaterialPropertyBlock"/> cannot survive that, so the
-        /// field comes back null while everything around it is restored.
-        /// </summary>
         private MaterialPropertyBlock PropertyBlock
         {
             get
@@ -345,6 +341,7 @@ namespace LD60.Space
                 view.Ring.sharedMaterial = _orbitMaterial;
                 PropertyBlock.Clear();
                 PropertyBlock.SetColor(BaseColorId, _system.OrbitRingColor);
+                PropertyBlock.SetFloat(OrbitRadiusId, view.OrbitRadius);
                 view.Ring.SetPropertyBlock(PropertyBlock);
             }
 
@@ -428,7 +425,7 @@ namespace LD60.Space
         private void SyncFreeFlyerVisual(FreeFlyerView view)
         {
             SpacecraftSO data = view.Data;
-            bool wantsSprite = data.Portrait != null;
+            bool wantsSprite = data.SpaceSprite != null;
 
             if (view.Visual == null || wantsSprite != (view.Sprite != null))
             {
@@ -467,20 +464,16 @@ namespace LD60.Space
                 return;
             }
 
-            view.Sprite.sprite = data.Portrait;
+            view.Sprite.sprite = data.SpaceSprite;
             view.Sprite.color = data.Accent;
 
             if (_spacecraftMaterial != null)
                 view.Sprite.sharedMaterial = _spacecraftMaterial;
 
-            float extent = Mathf.Max(data.Portrait.bounds.size.x, data.Portrait.bounds.size.y);
+            float extent = Mathf.Max(data.SpaceSprite.bounds.size.x, data.SpaceSprite.bounds.size.y);
             view.Visual.localScale = Vector3.one * (extent > 0f ? data.DisplayDiameter / extent : 1f);
         }
 
-        /// <summary>
-        /// Pushes everything the body shader needs in one block. Spin has to ride along with the
-        /// tint because a property block is all-or-nothing: setting it again would drop the rest.
-        /// </summary>
         private void ApplyBodyBlock(BodyView view)
         {
             PropertyBlock.Clear();
@@ -501,11 +494,6 @@ namespace LD60.Space
             view.Renderer.SetPropertyBlock(PropertyBlock);
         }
 
-        /// <summary>
-        /// Direction from the body towards the centre of the system, in the quad's own space.
-        /// Zero at the centre itself, which the shader reads as "never shadowed" - so the star
-        /// needs no special case.
-        /// </summary>
         private static Vector4 DirectionToStar(BodyView view)
         {
             Vector3 position = view.Root.localPosition;
@@ -554,10 +542,6 @@ namespace LD60.Space
 
                 if (view.SpinTurnsPerDay != 0f)
                 {
-                    // Deliberately not wrapped into a single turn. The shader can spin latitudes at
-                    // different rates (_DifferentialSpin), and a whole-turn wrap is a whole turn only
-                    // at the equator: every other latitude snaps by the differential share of it.
-                    // The double counter stays exact far beyond any run length.
                     view.SpinTurns += deltaDays * view.SpinTurnsPerDay;
                 }
 

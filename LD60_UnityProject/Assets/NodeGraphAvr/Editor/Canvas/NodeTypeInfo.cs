@@ -3,13 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Cached authoring metadata of one node, action or condition type — display name, menu
-    /// category, description, and the tint **declared in code** — resolved once from the
-    /// type's attributes. The canvas reads it on the draw path, so resolution must never
-    /// repeat per repaint. What the canvas actually draws with comes from the two static
-    /// resolvers below, which layer the project's NodeStyleConfig over these defaults.
-    /// </summary>
     public class NodeTypeInfo
     {
         private static readonly System.Collections.Generic.Dictionary<Type, NodeTypeInfo> _cache =
@@ -23,28 +16,12 @@ namespace NodeGraphAvr.Editor
 
         public string MenuPath { get; private set; }
 
-        /// <summary>
-        /// What a type draws with when neither code nor the project says otherwise. There is no
-        /// such thing as a colorless node: a type without [NodeColor] uses this.
-        /// </summary>
         public static readonly Color FallbackColor = new Color(0.541f, 0.541f, 0.565f, 1f);
 
-        /// <summary>True when the type declares its own [NodeColor] in code.</summary>
         public bool HasColor { get; private set; }
 
-        /// <summary>
-        /// The type's default color: what its [NodeColor] declares, or the fallback when it
-        /// declares none. Always a usable color; a project override is layered on top of it by
-        /// the resolvers below, never here.
-        /// </summary>
         public Color Color { get; private set; }
 
-        /// <summary>
-        /// Color this type claims as its own — a project override, or a declared [NodeColor].
-        /// False means the type expresses no preference and takes the fallback, which is what
-        /// lets an assigned action's color win over a host node that has an opinion while a
-        /// colorless action leaves that opinion alone.
-        /// </summary>
         public static bool TryGetOwnColor(Type type, out Color color)
         {
             if (NodeStyleCache.TryGetColor(type, out color))
@@ -55,20 +32,11 @@ namespace NodeGraphAvr.Editor
             return info.HasColor;
         }
 
-        /// <summary>
-        /// Effective color of one type: its override, its declared color, or the fallback. Every
-        /// lookup is cached, so this stays two dictionary lookups on the draw path.
-        /// </summary>
         public static Color GetTypeColor(Type type)
         {
             return TryGetOwnColor(type, out var color) ? color : FallbackColor;
         }
 
-        /// <summary>
-        /// Resolves the color a node draws with: an assigned action's own color wins, so an
-        /// action node looks like what it does; otherwise the node type's own color; otherwise
-        /// the fallback. Overrides are honored on either side.
-        /// </summary>
         public static Color GetColor(Node node)
         {
             if (node == null)

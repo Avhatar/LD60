@@ -4,14 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// One authored unit of behaviour a graph can run: parameters are its serialized
-    /// fields, the result is a single success flag. Execution is callback-driven, not
-    /// tick-driven — an instant action completes synchronously inside OnExecute, one that
-    /// takes time starts a routine on the context's coroutine host and calls EndAction
-    /// later. Actions are plain serializable data stored inside their graph; they hold no
-    /// drawing code and know nothing of any concrete graph kind.
-    /// </summary>
     [Serializable]
     public abstract class GraphAction
     {
@@ -126,11 +118,6 @@ namespace NodeGraphAvr
         }
     }
 
-    /// <summary>
-    /// Action that requires a specific component (or interface) on its agent. The
-    /// component is resolved once per agent and cached; a missing one is a logged error
-    /// and a failed action rather than a silent no-op.
-    /// </summary>
     public abstract class GraphAction<T> : GraphAction where T : class
     {
         public sealed override Type AgentType => typeof(T);

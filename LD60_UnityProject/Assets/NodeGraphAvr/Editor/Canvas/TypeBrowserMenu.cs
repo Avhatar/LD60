@@ -5,14 +5,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Shows the searchable type browser for any polymorphic base type — the same popup
-    /// the canvas uses to create nodes, so actions and conditions inherit its folders,
-    /// search, favourites and keyboard navigation for free. Entries are described by the
-    /// candidate types' own [Name] / [Category] / [Description] attributes; abstract
-    /// types and test assemblies never appear. TypeCache is queried when the user opens
-    /// the browser, never on a draw path.
-    /// </summary>
     public static class TypeBrowserMenu
     {
         public static void Show(Rect activator, string title, string prefsKey, Type baseType, Action<Type> onPicked)

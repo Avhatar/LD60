@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Copy/paste buffer for canvas nodes: serializes a node selection to a small
-    /// JSON payload (same node-block format as the on-disk files) and pastes it back
-    /// as fresh clones — new uids, fields and comments preserved, connections kept
-    /// only between copied nodes, waypoints translated with the nodes. Every paste
-    /// mutation goes through the graph's mutation API, so one paste = one undo step.
-    /// </summary>
     public static class GraphClipboard
     {
         private const string Marker = "clipboard";

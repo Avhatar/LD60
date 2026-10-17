@@ -6,13 +6,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Owns the editing working copy of one graph asset: a graph deserialized from
-    /// the asset's JSON into an unsaved ScriptableObject, independent of the imported
-    /// object. Tracks dirtiness through the mutation guard and undo events, rebuilds
-    /// runtime state after undo/redo, and saves by rewriting the JSON file and
-    /// reimporting it. Created per window target; the owner must call Dispose.
-    /// </summary>
     public class GraphWindowSession
     {
         public Graph WorkingCopy { get; private set; }

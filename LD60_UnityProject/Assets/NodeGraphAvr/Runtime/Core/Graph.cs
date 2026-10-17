@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// Base class of all graph kinds: owns the node list, declares per-kind policy,
-    /// and exposes the only sanctioned mutation API. Every mutation notifies
-    /// MutationGuard before changing state so the editor can record undo. The start
-    /// node is the first node in the list by convention. In-memory representation
-    /// only — persistence to disk is handled by the editor assembly.
-    /// </summary>
     public abstract class Graph : ScriptableObject
     {
         [Tooltip("All nodes of the graph. The first node is the start node by convention.")]

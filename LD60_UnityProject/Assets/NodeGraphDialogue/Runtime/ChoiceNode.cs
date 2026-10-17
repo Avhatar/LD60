@@ -3,13 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// Dialogue branching node: presents its options to the consumer and continues along
-    /// the out-connection owned by the selected option. Options own their authored text
-    /// and an explicit line binding (by connection uid), so any option can be wired in
-    /// any order and option order is purely the author's — nothing reorders it. Legacy
-    /// graphs without bindings are bound positionally when runtime state is rebuilt.
-    /// </summary>
     [Name("Choice")]
     [Description("Branches the dialogue: the player picks one authored option and the walk continues along the line that option owns.")]
     [NodeColor("9A7BC8")]
@@ -49,12 +42,6 @@ namespace NodeGraphAvr.Dialogue
             return FindLineIndex(uid);
         }
 
-        /// <summary>
-        /// Hands an existing outgoing line to another option. The option that held it takes
-        /// whatever the receiving option had — nothing when it was unwired — so dragging a line
-        /// from one option to another swaps them instead of dropping a binding on the floor.
-        /// The caller notifies the mutation guard; this only rewrites the bindings.
-        /// </summary>
         internal void MoveLineToOption(Connection connection, int optionIndex)
         {
             if (connection == null || optionIndex < 0 || optionIndex >= _options.Count)

@@ -3,11 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// Shipped coroutine host: runs action routines on a MonoBehaviour the caller owns.
-    /// The caller keeps ownership — when that component is destroyed its routines die
-    /// with it, which is exactly the desired lifetime for a graph run it started.
-    /// </summary>
     public class MonoBehaviourCoroutineHost : ICoroutineHost
     {
         private readonly MonoBehaviour _owner;

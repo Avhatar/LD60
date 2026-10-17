@@ -4,11 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// Dialogue graph kind: a vertical flow of DialogueNode-derived nodes where many
-    /// lines may converge into one node and branching is done by dedicated nodes.
-    /// Executed by DialogueRunner as an event-driven cursor walk.
-    /// </summary>
     [GraphTypeId("dlg")]
     public class DialogueGraph : Graph
     {

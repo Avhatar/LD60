@@ -3,19 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Right-side inspector panel of the graph window: edits the selected node's
-    /// name, comment, and own data fields through a SerializedObject over the
-    /// working copy (Unity records undo on the property path; the undo recorder's
-    /// modification hook feeds the session's dirty flag), shows a read-only summary
-    /// for a selected connection, and graph info when nothing is selected.
-    ///
-    /// The window draws it **before** the canvas, in the untouched GUI state: the canvas
-    /// escapes and rebuilds the window's GUI group to get its zoom, and inside that
-    /// reconstructed group a text field's caret is placed outside the visible clip — the field
-    /// takes typing but shows no cursor. The canvas is clipped to end where this panel begins,
-    /// so nothing is drawn under it and the order costs no overlap.
-    /// </summary>
     public class GraphInspectorPanel
     {
         public const float DefaultWidth = 260f;

@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Property drawer for every [SerializeReference] field or list element holding a
-    /// GraphAction, wherever it appears: on a node, inside a nested authoring class, or
-    /// inside another action. All the work lives in PolymorphicReferenceField; this only
-    /// supplies the base type, the action's self-description, and its validation line.
-    /// </summary>
     [CustomPropertyDrawer(typeof(GraphAction), true)]
     public class GraphActionDrawer : PropertyDrawer
     {

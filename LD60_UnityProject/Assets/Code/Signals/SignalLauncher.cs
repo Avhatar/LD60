@@ -145,6 +145,14 @@ namespace LD60.Signals
             if (_dataDirty)
                 SyncData();
 
+            if (!Core.IsGameMode)
+            {
+                if (IsAiming)
+                    EndAiming();
+
+                return;
+            }
+
             if (_origin == null)
                 _origin = _orrery.PlayerAnchor;
 

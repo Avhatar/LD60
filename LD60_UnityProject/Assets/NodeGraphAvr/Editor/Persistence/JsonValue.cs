@@ -12,11 +12,6 @@ namespace NodeGraphAvr.Editor
         Null
     }
 
-    /// <summary>
-    /// Minimal JSON DOM node produced by JsonParser: a tagged union of object, array,
-    /// string, number, bool, and null. Read-side counterpart of JsonWriter; carries
-    /// small typed accessors used by the graph deserializer.
-    /// </summary>
     public sealed class JsonValue
     {
         public JsonKind Kind;

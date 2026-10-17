@@ -4,12 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue.Editor
 {
-    /// <summary>
-    /// Draws an [ActorPicker] field as a popup fed by the owning dialogue graph's
-    /// declared actors plus the dialogue system config's global ones. A current value
-    /// missing from that union stays listed so it is never silently lost; outside a
-    /// dialogue graph the field falls back to a plain object field.
-    /// </summary>
     [CustomPropertyDrawer(typeof(ActorPickerAttribute))]
     public class ActorPickerDrawer : PropertyDrawer
     {

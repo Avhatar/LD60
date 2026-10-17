@@ -1,13 +1,18 @@
-using NodeGraphAvr.Dialogue;
+﻿using NodeGraphAvr.Dialogue;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LD60.Dialogue
 {
     [CreateAssetMenu(fileName = "Spacecraft", menuName = "LD60/Spacecraft")]
     public class SpacecraftSO : ActorData
     {
-        [field: Tooltip("Avatar shown next to this spacecraft's lines.")]
-        [field: SerializeField] public Sprite Portrait { get; private set; }
+        [field: Tooltip("Sprite drawn for this spacecraft on the orrery. Empty falls back to a tinted quad.")]
+        [field: FormerlySerializedAs("<Portrait>k__BackingField")]
+        [field: SerializeField] public Sprite SpaceSprite { get; private set; }
+
+        [field: Tooltip("Avatar shown next to this spacecraft's lines in dialogue.")]
+        [field: SerializeField] public Sprite DialoguePortrait { get; private set; }
 
         [field: Tooltip("Color of this spacecraft's name and signal on the orrery.")]
         [field: SerializeField] public Color Accent { get; private set; } = Color.white;

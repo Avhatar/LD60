@@ -2,13 +2,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// Raised when a SayNode is entered: one actor says one line. The consumer shows
-    /// the line and calls Advance() when it is done; the continuation is an instance
-    /// method, so no closure is allocated. A request outlives its usefulness when the
-    /// dialogue stops or moves on — a stale or repeated Advance is ignored with a
-    /// warning.
-    /// </summary>
     public class SayRequest
     {
         private readonly DialogueRunner _runner;

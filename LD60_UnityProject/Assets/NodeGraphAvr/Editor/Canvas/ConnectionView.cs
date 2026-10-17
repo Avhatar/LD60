@@ -3,14 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Canvas view of one connection: draws the line as a chain of bezier segments
-    /// through the connection's waypoints (smooth tangents by default, straight
-    /// segments in sharp-bends mode), handles click selection, relink-by-drag of
-    /// either end, waypoint dragging, double-click point insertion, and the context
-    /// menus. Pure presentation — every model change goes through the graph's
-    /// mutation API via the owning window.
-    /// </summary>
     public class ConnectionView
     {
         public enum RelinkEnd
@@ -133,12 +125,6 @@ namespace NodeGraphAvr.Editor
             _labelStyle.Draw(rect, _labelContent, false, false, false, false);
         }
 
-        /// <summary>
-        /// Breaks a line label into rows of at most <paramref name="maxChars"/> characters so a long
-        /// option text stops stretching across the canvas. Breaks on the last space that fits, and
-        /// mid-word only when a single word is longer than a row. Runs once per label change, not
-        /// per repaint, so building a string here is fine.
-        /// </summary>
         private static string Wrap(string text, int maxChars)
         {
             if (text.Length <= maxChars)

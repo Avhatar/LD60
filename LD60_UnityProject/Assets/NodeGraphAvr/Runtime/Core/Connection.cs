@@ -4,11 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// A directed link between two nodes of the same graph. Plain serializable class,
-    /// persisted inside the source node's out-list; endpoints are shared references.
-    /// Carries no behavior of its own in the MVP — subclasses may add per-edge data later.
-    /// </summary>
     [Serializable]
     public class Connection
     {

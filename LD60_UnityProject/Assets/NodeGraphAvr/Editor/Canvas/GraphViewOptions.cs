@@ -2,11 +2,6 @@ using UnityEditor;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Canvas view toggles of the graph window — what the canvas draws, not what the
-    /// graph holds. Values live in EditorPrefs and are cached in memory, because the
-    /// draw path reads them on every repaint.
-    /// </summary>
     public static class GraphViewOptions
     {
         private const string ShowConnectionLabelsKey = "NodeGraphAvr.View.ShowConnectionLabels";

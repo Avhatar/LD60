@@ -17,3 +17,4 @@ MonoBehaviour:
   <Signal>k__BackingField: {fileID: 11400000, guid: b34fe4372faeed44aacebfd6cd933510, type: 2}
   <Audio>k__BackingField: {fileID: 11400000, guid: 6b641173b8e96414d82ca966b4305db3, type: 2}
   <UiText>k__BackingField: {fileID: 11400000, guid: d7bf75d5e1268e74f9f32e9017a7dae1, type: 2}
+  <Dialogue>k__BackingField: {fileID: 11400000, guid: 2d09379782b035a41abb2517426b2ecb, type: 2}

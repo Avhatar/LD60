@@ -4,12 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Generated rounded-rectangle chrome for the canvas: the window style a node view asks
-    /// for instead of the square editor window, and the matching outline. Textures are built
-    /// once per radius (and rebuilt only when the editor skin flips), nine-sliced so corners
-    /// never stretch at any node size, and cached — nothing here allocates on a repaint.
-    /// </summary>
     public static class CanvasShapes
     {
         private const int MinRadius = 2;
@@ -31,25 +25,8 @@ namespace NodeGraphAvr.Editor
         private static readonly Color _separatorDark = new Color(0f, 0f, 0f, 0.55f);
         private static readonly Color _separatorLight = new Color(0f, 0f, 0f, 0.3f);
 
-        /// <summary>
-        /// Height of a node's header strip: where the title is drawn and where the body starts.
-        /// </summary>
         public const int NodeHeaderHeight = 20;
 
-        /// <summary>
-        /// Window style for a node: square (radius 0) or rounded, with the title either at the
-        /// top — leaving the rest of the box to the body — or centered in the box for a node
-        /// that has no body to show. Styles are cached per radius and title placement.
-        ///
-        /// The skin's title metrics are unusable as-is here: it reserves 22px of top padding and
-        /// then lifts the title 18px back out of it with a negative contentOffset, which on a
-        /// short node puts the title at or above the frame edge and makes MiddleCenter center the
-        /// text on a shifted area rather than on the node. Padding and content offset are
-        /// therefore set explicitly. Its `overflow`, on the other hand, is kept: the skin's window
-        /// texture carries transparent margins and draws its visible frame only in the expanded
-        /// area, so zeroing it would inset the frame and leave a gap to the node's outline. Only
-        /// the generated rounded textures, which fill their rect exactly, zero it.
-        /// </summary>
         public static GUIStyle WindowStyle(int radius, bool centeredTitle)
         {
             var cache = centeredTitle ? _centeredWindowStyles : _windowStyles;
@@ -85,12 +62,6 @@ namespace NodeGraphAvr.Editor
             return style;
         }
 
-        /// <summary>
-        /// Pins the title colour across every style state. The skin's window style paints its title
-        /// pure black while hovered, active or focused and light grey only when idle, which on a
-        /// canvas full of windows reads as a node's name turning black under the pointer. A node's
-        /// look is ours to decide — tint, outline, selection — so hovering must change nothing.
-        /// </summary>
         private static void ApplyTitleColor(GUIStyle style)
         {
             var color = style.normal.textColor;
@@ -104,10 +75,6 @@ namespace NodeGraphAvr.Editor
                 states[i].textColor = color;
         }
 
-        /// <summary>
-        /// Draws a rounded outline of the given color around a rect, matching the shape a
-        /// rounded window of that radius draws. Repaint-only, like every outline on the canvas.
-        /// </summary>
         public static void DrawRoundedOutline(Rect rect, Color color, int radius)
         {
             var previous = GUI.color;
@@ -116,12 +83,6 @@ namespace NodeGraphAvr.Editor
             GUI.color = previous;
         }
 
-        /// <summary>
-        /// Separates a node's body from its header: shades the body area down so the tinted header
-        /// reads as a distinct strip, and draws the parting line along the body's top edge. The
-        /// shade follows the node's silhouette — square, or rounded at the bottom for a rounded
-        /// node — so it never spills past the frame. Repaint-only; textures cached per radius.
-        /// </summary>
         public static void DrawNodeBody(Rect rect, int radius)
         {
             if (rect.width <= 0f || rect.height <= 0f)
@@ -209,11 +170,6 @@ namespace NodeGraphAvr.Editor
             return BuildTexture(radius, Color.clear, Color.white, OutlineThickness, true);
         }
 
-        /// <summary>
-        /// Solid white mask of a node's body area: straight along the sides and the top, rounded at
-        /// the bottom two corners. Nine-sliced with a one-pixel top border, so the parting edge
-        /// stays crisp at any node height while the corners keep their shape.
-        /// </summary>
         private static Texture2D BuildBodyPanelTexture(int radius)
         {
             var width = radius * 2 + 2;
@@ -276,11 +232,6 @@ namespace NodeGraphAvr.Editor
             return Mathf.Sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy)) - radius;
         }
 
-        /// <summary>
-        /// Distance to a shape that rounds only its bottom corners. Row 0 of the texture is the
-        /// bottom one, so the arc centres sit at height <paramref name="radius"/> and everything
-        /// above them is measured against the straight sides.
-        /// </summary>
         private static float BottomBoundaryDistance(float x, float y, int width, int radius)
         {
             var cx = Mathf.Clamp(x, radius, width - radius);
@@ -302,10 +253,6 @@ namespace NodeGraphAvr.Editor
             Discard(_bodyPanelStyles);
         }
 
-        /// <summary>
-        /// Drops cached styles, destroying only the textures generated here. The radius-0 entries
-        /// draw the editor skin's own window texture — destroying that would break the whole UI.
-        /// </summary>
         private static void Discard(Dictionary<int, GUIStyle> styles)
         {
             foreach (var pair in styles)

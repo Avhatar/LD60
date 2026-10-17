@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73ac48fbf7dc30499f537abae4668fb, type: 3}
+  m_Name: SC_TextType
+  m_EditorClassIdentifier: 
+  <AudioClips>k__BackingField:
+  - {fileID: 8300000, guid: 9d79eec3d09a4146971bf34bcb937583, type: 3}
+  - {fileID: 8300000, guid: ff55a7e03791485180206eb5a87a8be3, type: 3}
+  - {fileID: 8300000, guid: 566dbe9d0a694e1ab599092c2c969e35, type: 3}
+  - {fileID: 8300000, guid: 823956ecc33a49198b5659b31437ed71, type: 3}
+  - {fileID: 8300000, guid: 0f306aa7e7744dba9bf7b3a33f7c37ea, type: 3}
+  <Volume>k__BackingField: 0.3
+  <VolumeVariance>k__BackingField: 0.05
+  <Pitch>k__BackingField: 1
+  <PitchVariance>k__BackingField: 0.07
+  <SpatialBlend>k__BackingField: 0
+  <StereoPan>k__BackingField: 0
+  <Loop>k__BackingField: 0
+  <RandomSound>k__BackingField: 1

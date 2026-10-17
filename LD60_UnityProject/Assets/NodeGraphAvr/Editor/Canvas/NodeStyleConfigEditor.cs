@@ -5,17 +5,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Inspector of the project's NodeStyleConfig: lists every node, action and condition type
-    /// found in code — nodes grouped by the graph kind that accepts them, each row naming the
-    /// type and its C# class and showing the color declared in code next to the color in force —
-    /// and writes an entry only where the author changes something. Display names repeat across
-    /// kinds (a dialogue Action and a behaviour-tree Action both exist), which is why the class
-    /// name is a column rather than a detail. The list itself is never stored; it is rebuilt from
-    /// TypeCache when the asset is selected, so it cannot drift from the code. Every edit goes
-    /// through SerializedObject, so undo and the dirty flag are Unity's, and each one invalidates
-    /// the canvas cache.
-    /// </summary>
     [CustomEditor(typeof(NodeStyleConfig))]
     public class NodeStyleConfigEditor : UnityEditor.Editor
     {
@@ -250,12 +239,6 @@ namespace NodeGraphAvr.Editor
             Apply();
         }
 
-        /// <summary>
-        /// Runs list-shrinking edits before anything is drawn. Deleting an entry mid-layout
-        /// changes how many controls the rest of the inspector draws, which IMGUI reports as a
-        /// mismatched layout group — so buttons only record what to do and this applies it on
-        /// the next pass.
-        /// </summary>
         private void ApplyPendingChanges()
         {
             if (_pendingRevertAll)
@@ -323,12 +306,6 @@ namespace NodeGraphAvr.Editor
                 _sections[i].Rows.Sort(CompareRows);
         }
 
-        /// <summary>
-        /// Discovers the graph kinds in the project so node rows can be grouped by the graph that
-        /// accepts them — display names repeat across kinds, so a flat node list is unreadable.
-        /// Reading BaseNodeType needs an instance, so one throwaway graph per kind is created and
-        /// destroyed here, in editor init, never on a draw path.
-        /// </summary>
         private static void CollectGraphKinds(List<Type> bases, List<Section> sections)
         {
             var graphTypes = TypeCache.GetTypesDerivedFrom<Graph>();

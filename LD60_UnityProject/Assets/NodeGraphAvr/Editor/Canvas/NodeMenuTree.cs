@@ -4,14 +4,8 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// The creation menu as data: flat items carrying slash-separated paths are folded
-    /// into a folder tree for browsing, and searched flat with a relevance order.
-    /// Pure logic with no GUI — the browser popup only renders what this produces.
-    /// </summary>
     public class NodeMenuTree
     {
-        /// <summary>One selectable entry of the creation menu.</summary>
         public class Item
         {
             public string Path;
@@ -25,7 +19,6 @@ namespace NodeGraphAvr.Editor
             public string Category { get; internal set; }
         }
 
-        /// <summary>One level of the menu: nested folders plus the items declared at that level.</summary>
         public class Folder
         {
             public string Name;
@@ -125,7 +118,6 @@ namespace NodeGraphAvr.Editor
             return (a, b) => Score(input, a.Name, a.Category).CompareTo(Score(input, b.Name, b.Category));
         }
 
-        /// <summary>Whether the input selects an entry: its words must occur in order along "category/name".</summary>
         public static bool Matches(string input, string name, string category)
         {
             if (string.IsNullOrEmpty(input) || name == null)
@@ -151,7 +143,6 @@ namespace NodeGraphAvr.Editor
             return true;
         }
 
-        /// <summary>Relevance of a match — lower is better, so results sort ascending.</summary>
         public static float Score(string input, string name, string category)
         {
             if (string.IsNullOrEmpty(input) || name == null)

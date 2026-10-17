@@ -24,6 +24,7 @@ MonoBehaviour:
   <MaxDots>k__BackingField: 48
   <SecondsToFullPower>k__BackingField: 1.2
   <DotSize>k__BackingField: 0.13
+  <LandedSurfaceOffset>k__BackingField: 0.1
   <PreviewArcRadius>k__BackingField: 2.2
   <MaxTravelRadius>k__BackingField: 26
   <PauseWhileAiming>k__BackingField: 0

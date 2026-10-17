@@ -1,0 +1,418 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 0.8
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "d0000000000000000000000000000001",
+      "type": "dlg.say",
+      "position": [
+        0,
+        0
+      ],
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Тест логики. Это реплика игрока, слева. Клик — дальше.",
+          "en": "Logic bench. This is the player line, on the left. Click to continue."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000001",
+          "target": "d0000000000000000000000000000046"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000046",
+      "type": "dlg.say",
+      "position": [
+        0,
+        140
+      ],
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "А это реплика NPC, справа. Печатается так же.",
+          "en": "And this is the NPC line, on the right. It types the same way."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000046",
+          "target": "d0000000000000000000000000000047"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000047",
+      "type": "dlg.say",
+      "position": [
+        0,
+        280
+      ],
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Вторая реплика NPC подряд: та же плашка, текст перепечатался.",
+          "en": "A second NPC line in a row: same bubble, the text was retyped."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000047",
+          "target": "d0000000000000000000000000000048"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000048",
+      "type": "dlg.say",
+      "position": [
+        0,
+        420
+      ],
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Дальше — список вариантов. Он появляется целиком и ждёт клика по строке.",
+          "en": "Next comes the option list. It appears at once and waits for a click on a line."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000048",
+          "target": "d0000000000000000000000000000002"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000002",
+      "type": "dlg.choice",
+      "position": [
+        0,
+        580
+      ],
+      "name": "Hub",
+      "data": {
+        "actor": null,
+        "options": [
+          {
+            "text": {
+              "ru": "Пинг: ping += 1",
+              "en": "Ping: ping += 1"
+            },
+            "lineUid": "e0000000000000000000000000000002"
+          },
+          {
+            "text": {
+              "ru": "Условие: виден при ping >= 2",
+              "en": "Condition: shown when ping >= 2"
+            },
+            "lineUid": "e0000000000000000000000000000003",
+            "visibleIf": {
+              "type": "ld60.cond.flag",
+              "data": {
+                "invert": false,
+                "key": "ping",
+                "comparison": "GreaterOrEqual",
+                "value": 2
+              }
+            }
+          },
+          {
+            "text": {
+              "ru": "Инверсия: виден пока met == 0",
+              "en": "Inverted: shown while met == 0"
+            },
+            "lineUid": "e0000000000000000000000000000004",
+            "visibleIf": {
+              "type": "ld60.cond.flag",
+              "data": {
+                "invert": true,
+                "key": "met",
+                "comparison": "Equal",
+                "value": 1
+              }
+            }
+          },
+          {
+            "text": {
+              "ru": "Экшен: met = 1",
+              "en": "Action: met = 1"
+            },
+            "lineUid": "e0000000000000000000000000000005"
+          },
+          {
+            "text": {
+              "ru": "Финал: успех",
+              "en": "Ending: success"
+            },
+            "lineUid": "e0000000000000000000000000000006"
+          },
+          {
+            "text": {
+              "ru": "Финал: провал",
+              "en": "Ending: failure"
+            },
+            "lineUid": "e0000000000000000000000000000007"
+          },
+          {
+            "text": {
+              "ru": "Вариант без линии (сразу успех)",
+              "en": "Option with no line (instant success)"
+            },
+            "lineUid": ""
+          }
+        ]
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000002",
+          "target": "d000000000000000000000000000000a"
+        },
+        {
+          "uid": "e0000000000000000000000000000003",
+          "target": "d0000000000000000000000000000014"
+        },
+        {
+          "uid": "e0000000000000000000000000000004",
+          "target": "d000000000000000000000000000001e"
+        },
+        {
+          "uid": "e0000000000000000000000000000005",
+          "target": "d0000000000000000000000000000028"
+        },
+        {
+          "uid": "e0000000000000000000000000000006",
+          "target": "d0000000000000000000000000000032"
+        },
+        {
+          "uid": "e0000000000000000000000000000007",
+          "target": "d000000000000000000000000000003c"
+        }
+      ]
+    },
+    {
+      "uid": "d000000000000000000000000000000a",
+      "type": "dlg.action",
+      "position": [
+        -900,
+        820
+      ],
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "ping",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "e000000000000000000000000000000a",
+          "target": "d000000000000000000000000000000b"
+        }
+      ]
+    },
+    {
+      "uid": "d000000000000000000000000000000b",
+      "type": "dlg.say",
+      "position": [
+        -900,
+        960
+      ],
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "ping увеличен на 1.",
+          "en": "ping increased by 1."
+        }
+      },
+      "out": [
+        {
+          "uid": "e000000000000000000000000000000b",
+          "target": "d0000000000000000000000000000002"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000014",
+      "type": "dlg.say",
+      "position": [
+        -450,
+        820
+      ],
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Условие ping >= 2 сработало.",
+          "en": "Condition ping >= 2 passed."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000014",
+          "target": "d0000000000000000000000000000002"
+        }
+      ]
+    },
+    {
+      "uid": "d000000000000000000000000000001e",
+      "type": "dlg.say",
+      "position": [
+        0,
+        820
+      ],
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Инверсия сработала: met всё ещё 0.",
+          "en": "Inversion passed: met is still 0."
+        }
+      },
+      "out": [
+        {
+          "uid": "e000000000000000000000000000001e",
+          "target": "d0000000000000000000000000000002"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000028",
+      "type": "dlg.action",
+      "position": [
+        450,
+        820
+      ],
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "met",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000028",
+          "target": "d0000000000000000000000000000029"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000029",
+      "type": "dlg.say",
+      "position": [
+        450,
+        960
+      ],
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "met = 1. Вариант с инверсией должен исчезнуть.",
+          "en": "met = 1. The inverted option should disappear now."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000029",
+          "target": "d0000000000000000000000000000002"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000032",
+      "type": "dlg.say",
+      "position": [
+        900,
+        820
+      ],
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Закрываю связь. Финал — успех.",
+          "en": "Closing the channel. Ending: success."
+        }
+      },
+      "out": [
+        {
+          "uid": "e0000000000000000000000000000032",
+          "target": "d0000000000000000000000000000033"
+        }
+      ]
+    },
+    {
+      "uid": "d0000000000000000000000000000033",
+      "type": "dlg.finish",
+      "position": [
+        900,
+        960
+      ],
+      "data": {
+        "success": true
+      }
+    },
+    {
+      "uid": "d000000000000000000000000000003c",
+      "type": "dlg.finish",
+      "position": [
+        1350,
+        820
+      ],
+      "data": {
+        "success": false
+      }
+    }
+  ]
+}

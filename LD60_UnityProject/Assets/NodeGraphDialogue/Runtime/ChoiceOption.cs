@@ -2,14 +2,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// One selectable option of a ChoiceNode. Owns the authored option text, an explicit
-    /// link to its outgoing line (by connection uid) so any option can be wired in any
-    /// order, and an optional condition deciding whether the option is offered at all.
-    /// Whatever should happen when the option is picked is authored as Action nodes on its
-    /// line, so it stays visible in the graph; the condition cannot be, because visibility
-    /// is decided before the option is shown.
-    /// </summary>
     [System.Serializable]
     public class ChoiceOption
     {

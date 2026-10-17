@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Serializes a Graph to the deterministic on-disk JSON format and back.
-    /// Envelope: version, kind id, view state, then nodes in list order — each node
-    /// carrying uid, type id, rounded position, optional name/comment/data, and its
-    /// out-connections inline for diff locality. Deserialization failures are logged
-    /// with actionable detail and yield null, never a half-built graph.
-    /// </summary>
     public static class GraphJsonSerializer
     {
         public const int CurrentFormatVersion = 1;

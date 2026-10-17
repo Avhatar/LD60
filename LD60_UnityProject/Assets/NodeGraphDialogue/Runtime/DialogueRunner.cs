@@ -4,17 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// Event-driven playback session over one DialogueGraph instance. Owns the cursor,
-    /// the running flag, and the one action a node may be waiting on; the graph and its
-    /// nodes stay pure data. Consumers subscribe to the per-instance request events and
-    /// call the continuation carried by each request; there is no update pump. Following
-    /// an out-connection index beyond the current node's children ends the dialogue in
-    /// success — reaching a leaf is the normal happy ending. Actions and conditions run on
-    /// the agent of the node's actor when one is bound, and on the starting object
-    /// otherwise; deciding which scene object plays an actor is the game's business, not
-    /// this class's.
-    /// </summary>
     public class DialogueRunner : IActionCompletion
     {
         private DialogueGraph _graph;

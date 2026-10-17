@@ -3,11 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// A titled rectangular frame on the graph canvas. Purely spatial authoring data:
-    /// it stores no node membership — the editor moves whatever nodes are inside the
-    /// rect when the frame is dragged. Persisted as part of its Graph.
-    /// </summary>
     [Serializable]
     public class NodeGroup
     {

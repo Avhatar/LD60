@@ -5,12 +5,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Bidirectional map between stable persistence ids ([GraphTypeId]) and C# types,
-    /// built lazily from TypeCache. The id is what graph files store instead of type
-    /// names, making C# renames a non-event for saved data. Duplicate ids are
-    /// reported as errors; the first registration wins.
-    /// </summary>
     public static class GraphTypeRegistry
     {
         private static Dictionary<string, Type> _typeById;

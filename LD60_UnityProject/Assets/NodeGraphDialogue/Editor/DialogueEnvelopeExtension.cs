@@ -2,11 +2,6 @@ using NodeGraphAvr.Editor;
 
 namespace NodeGraphAvr.Dialogue.Editor
 {
-    /// <summary>
-    /// Persists the dialogue graph's declared actor list as the optional top-level
-    /// "actors" array of guid+name objects, omitted when empty so files without
-    /// actors stay byte-identical.
-    /// </summary>
     [GraphEnvelopeExtension(typeof(DialogueGraph))]
     public class DialogueEnvelopeExtension : GraphEnvelopeExtension
     {

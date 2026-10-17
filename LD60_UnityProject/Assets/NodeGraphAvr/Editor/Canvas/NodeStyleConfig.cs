@@ -3,14 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Project-committed overrides of the authoring look of node, action and condition types:
-    /// the code attributes are the defaults, this asset is what the project decided instead.
-    /// Only overridden types are stored — the full list an author picks from is built from
-    /// code in this asset's own inspector, so adding or deleting a type never rewrites the
-    /// file and a deleted type leaves no residue. Editor-only chrome: nothing at runtime
-    /// reads it, and a project without the asset simply uses the code defaults.
-    /// </summary>
     [CreateAssetMenu(menuName = "NodeGraphAvr/Node Style Config", fileName = "NodeStyleConfig")]
     public class NodeStyleConfig : ScriptableObject
     {

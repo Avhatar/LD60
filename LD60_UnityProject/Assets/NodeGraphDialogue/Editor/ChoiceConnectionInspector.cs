@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue.Editor
 {
-    /// <summary>
-    /// Edits the choice option carried by a selected out-connection of a ChoiceNode: its
-    /// text and the condition deciding whether it is offered. Everything is written through
-    /// the node's options array at the property path of the option owning the line, so the
-    /// panel's apply/flush cycle records undo and dirties the session. What happens when
-    /// the option is picked is authored as Action nodes on its line, not here.
-    /// </summary>
     [CustomConnectionInspector(typeof(ChoiceNode))]
     public class ChoiceConnectionInspector : ConnectionInspector
     {

@@ -19,6 +19,7 @@ namespace LD60.Dialogue
         [SerializeField] private DialogueFlagSeed[] _initialFlags = new DialogueFlagSeed[0];
 
         private readonly Dictionary<string, int> _values = new Dictionary<string, int>();
+        private readonly System.Text.StringBuilder _report = new System.Text.StringBuilder();
 
         private void Awake()
         {
@@ -71,6 +72,23 @@ namespace LD60.Dialogue
         public void Add(string key, int delta)
         {
             Set(key, Get(key) + delta);
+        }
+
+        public string Describe()
+        {
+            if (_values.Count == 0)
+                return "<none>";
+
+            _report.Clear();
+            foreach (KeyValuePair<string, int> pair in _values)
+            {
+                if (_report.Length > 0)
+                    _report.Append(", ");
+
+                _report.Append(pair.Key).Append('=').Append(pair.Value);
+            }
+
+            return _report.ToString();
         }
     }
 }

@@ -5,12 +5,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Maps Graph subclasses to their envelope extensions. Extensions declare their
-    /// target with [GraphEnvelopeExtension(typeof(X))] and are discovered via
-    /// TypeCache; resolution walks the graph's base-type chain. Graph types without
-    /// an extension resolve to null — most kinds need none.
-    /// </summary>
     public static class GraphEnvelopeExtensionRegistry
     {
         private static Dictionary<Type, GraphEnvelopeExtension> _declared;

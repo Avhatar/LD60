@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,18 +11,46 @@ namespace LD60
 
         public static CoreSO Config { get; private set; }
 
+        public static GameMode Mode { get; private set; }
+
+        public static event Action<GameMode> ModeChanged;
+
         private static bool _manualPause;
         private static bool _heldPause;
+        private static bool _dialoguePause;
 
         public static bool IsPaused
         {
-            get { return _manualPause || _heldPause; }
+            get { return _manualPause || _heldPause || _dialoguePause; }
+        }
+
+        public static bool IsGameMode
+        {
+            get { return Mode == GameMode.Game; }
+        }
+
+        public static bool IsDialogueMode
+        {
+            get { return Mode == GameMode.Dialogue; }
+        }
+
+        public static void SetMode(GameMode mode)
+        {
+            if (Mode == mode)
+                return;
+
+            Mode = mode;
+            _dialoguePause = mode == GameMode.Dialogue;
+            ApplyTimeScale();
+
+            if (ModeChanged != null)
+                ModeChanged.Invoke(mode);
         }
 
         public static void SetPauseHold(bool held)
         {
             _heldPause = held;
-            Time.timeScale = IsPaused ? 0f : 1f;
+            ApplyTimeScale();
         }
 
         private void Awake()
@@ -36,8 +65,10 @@ namespace LD60
             }
 
             Config = _config;
+            Mode = GameMode.Game;
             _manualPause = false;
             _heldPause = false;
+            _dialoguePause = false;
             Time.timeScale = 1f;
         }
 
@@ -46,11 +77,14 @@ namespace LD60
             if (LanguageToggleRequested())
                 Localization.Toggle();
 
+            if (!IsGameMode)
+                return;
+
             if (!PauseToggleRequested())
                 return;
 
             _manualPause = !_manualPause;
-            Time.timeScale = IsPaused ? 0f : 1f;
+            ApplyTimeScale();
         }
 
         private void OnDestroy()
@@ -68,6 +102,11 @@ namespace LD60
             GameDataSO.NotifyChanged();
         }
 #endif
+
+        private static void ApplyTimeScale()
+        {
+            Time.timeScale = IsPaused ? 0f : 1f;
+        }
 
         private static bool LanguageToggleRequested()
         {

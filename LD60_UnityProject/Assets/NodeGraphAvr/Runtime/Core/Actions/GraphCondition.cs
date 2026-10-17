@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr
 {
-    /// <summary>
-    /// One authored yes/no check a graph can ask before doing something: parameters are
-    /// its serialized fields, the answer is synchronous. Conditions never take time —
-    /// anything that has to wait is an action. Like actions they are plain serializable
-    /// data stored inside their graph and know nothing of any concrete graph kind.
-    /// </summary>
     [Serializable]
     public abstract class GraphCondition
     {
@@ -50,10 +44,6 @@ namespace NodeGraphAvr
         protected abstract bool OnEvaluate();
     }
 
-    /// <summary>
-    /// Condition that requires a specific component (or interface) on its agent. A
-    /// missing component is a logged error and a failed check.
-    /// </summary>
     public abstract class GraphCondition<T> : GraphCondition where T : class
     {
         public sealed override Type AgentType => typeof(T);

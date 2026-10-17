@@ -4,13 +4,6 @@ using System.Text;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Deterministic JSON writer for the graph file format: fixed two-space
-    /// indentation, LF line endings, invariant culture, keys emitted strictly in
-    /// caller order. Has no reflection — callers drive the structure explicitly.
-    /// Small inline-array helpers keep vector-like values on one line for diff
-    /// locality.
-    /// </summary>
     public sealed class JsonWriter
     {
         private readonly StringBuilder _builder = new StringBuilder(1024);

@@ -38,6 +38,7 @@ Material:
     - _DotRadius: 0.782
     - _DotSoftness: 0
     - _Dots: 1
+    - _Emission: 1.79
     - _FarSideDim: 0.12
     - _FarSideDrift: 0.04
     - _Flatten: 0.5

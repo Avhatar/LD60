@@ -4,11 +4,6 @@ using System.Text;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Strict recursive-descent JSON parser producing the JsonValue DOM. Rejects
-    /// trailing commas, unterminated input, and garbage after the root value; every
-    /// error carries line and column via JsonParseException.
-    /// </summary>
     public static class JsonParser
     {
         public static JsonValue Parse(string text)
@@ -245,10 +240,6 @@ namespace NodeGraphAvr.Editor
             return value;
         }
 
-        /// <summary>
-        /// Read head over the input text tracking 1-based line and column for error
-        /// reporting.
-        /// </summary>
         private sealed class Cursor
         {
             private readonly string _text;

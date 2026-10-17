@@ -5,12 +5,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Maps node types to their canvas view classes. Views declare their target with
-    /// [CustomNodeView(typeof(X))] and are discovered via TypeCache; resolution walks
-    /// the node's base-type chain so a view for a base class covers its descendants.
-    /// Node types without any registered view get DefaultNodeView.
-    /// </summary>
     public static class NodeViewRegistry
     {
         private static Dictionary<Type, Type> _declaredViews;

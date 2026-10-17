@@ -2,11 +2,6 @@ using System.Collections.Generic;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// The set of currently selected canvas elements — nodes and connections. Holds
-    /// plain references into the working copy, so it must be pruned after undo/redo —
-    /// Unity's undo can replace managed instances, leaving stale references behind.
-    /// </summary>
     public class CanvasSelection
     {
         private readonly List<Node> _nodes = new List<Node>();

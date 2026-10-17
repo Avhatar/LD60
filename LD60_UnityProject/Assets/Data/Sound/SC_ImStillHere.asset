@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73ac48fbf7dc30499f537abae4668fb, type: 3}
+  m_Name: SC_ImStillHere
+  m_EditorClassIdentifier: 
+  <AudioClips>k__BackingField:
+  - {fileID: 8300000, guid: b8756d6abf0c267428bcd53075325db8, type: 3}
+  <Volume>k__BackingField: 0.195
+  <VolumeVariance>k__BackingField: 0
+  <Pitch>k__BackingField: 0.87
+  <PitchVariance>k__BackingField: 0
+  <SpatialBlend>k__BackingField: 0
+  <StereoPan>k__BackingField: 0
+  <Loop>k__BackingField: 1
+  <RandomSound>k__BackingField: 0

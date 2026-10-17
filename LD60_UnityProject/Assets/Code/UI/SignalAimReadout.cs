@@ -48,6 +48,17 @@ namespace LD60.UI
 
         private void Update()
         {
+            if (!Core.IsGameMode)
+            {
+                if (_label.enabled)
+                    _label.enabled = false;
+
+                return;
+            }
+
+            if (!_label.enabled)
+                _label.enabled = true;
+
             Mouse mouse = Mouse.current;
 
             if (mouse == null)

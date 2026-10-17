@@ -16,8 +16,11 @@ MonoBehaviour:
   <LogScale>k__BackingField: 4
   <AxisReferenceAu>k__BackingField: 0.25
   <OrbitRingSegments>k__BackingField: 128
-  <OrbitRingWidth>k__BackingField: 0.015
-  <OrbitRingColor>k__BackingField: {r: 1, g: 1, b: 1, a: 0.18}
+  <OrbitRingWidth>k__BackingField: 0.06
+  <OrbitRingColor>k__BackingField: {r: 0.8349056, g: 0.91561913, b: 1, a: 0.07058824}
+  <SpinDaysPerTurnAtReference>k__BackingField: 12
+  <SpinReferencePeriodHours>k__BackingField: 23.934
+  <SpinPeriodCompression>k__BackingField: 0.35
   <Bodies>k__BackingField:
   - {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
   - {fileID: 11400000, guid: 75e6b3773c184f349b9e1076979e00bc, type: 2}

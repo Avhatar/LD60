@@ -2,12 +2,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// One authored pair telling a dialogue run which scene object plays a given actor.
-    /// Exposed as a serialized list on whatever component starts the dialogue, so a test
-    /// scene can wire participants by hand; a real game usually computes the same pairs
-    /// at runtime and hands them over instead.
-    /// </summary>
     [System.Serializable]
     public class ActorAgentBinding
     {

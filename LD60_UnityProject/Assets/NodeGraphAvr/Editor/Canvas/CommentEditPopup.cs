@@ -3,11 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Small popup for quick-editing a node's comment from its context menu. The edit
-    /// is applied once, on close, through the graph's mutation API — one undo step per
-    /// editing session, applied whether the popup is confirmed or clicked away.
-    /// </summary>
     public class CommentEditPopup : PopupWindowContent
     {
         private readonly Graph _graph;

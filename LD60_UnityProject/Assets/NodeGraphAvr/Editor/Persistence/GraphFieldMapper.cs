@@ -6,19 +6,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Editor
 {
-    /// <summary>
-    /// Reflection bridge between node instances and their JSON "data" object. Maps a
-    /// deliberately closed set of field types (primitives, string, enums as strings,
-    /// Vector2/Vector3, List of primitives/strings/enums, nested [Serializable]
-    /// classes, ScriptableObject asset references stored as guid+name objects, and
-    /// [SerializeReference] fields or lists written polymorphically as type id plus
-    /// data); anything else fails loudly with the field name and the extension point.
-    /// A field is mapped when it is public, [SerializeField], or [SerializeReference] —
-    /// the same set Unity itself serializes. Only
-    /// fields declared below Node in the hierarchy are mapped — the base node state
-    /// (uid, position, comment, name, connections) is owned by the envelope. Field
-    /// order is declaration order, base class first.
-    /// </summary>
     public static class GraphFieldMapper
     {
         private static readonly Dictionary<Type, List<FieldInfo>> _fieldCache = new Dictionary<Type, List<FieldInfo>>();

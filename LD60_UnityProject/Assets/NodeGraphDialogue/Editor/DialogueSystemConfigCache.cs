@@ -2,12 +2,6 @@ using UnityEditor;
 
 namespace NodeGraphAvr.Dialogue.Editor
 {
-    /// <summary>
-    /// Locates the project's single DialogueSystemConfig asset once per domain and
-    /// caches it for the inspector panel's speaker dropdown. A config created after
-    /// the first lookup is picked up on the next domain reload — acceptable for an
-    /// asset that is created once per project.
-    /// </summary>
     public static class DialogueSystemConfigCache
     {
         private static DialogueSystemConfig _config;

@@ -3,14 +3,6 @@ using UnityEngine;
 
 namespace NodeGraphAvr.Dialogue
 {
-    /// <summary>
-    /// Raised when a ChoiceNode is entered. The consumer shows the option texts and
-    /// calls Select(index) with the player's pick; the dialogue continues along the
-    /// out-connection bound to that option (an option without a line ends the dialogue in
-    /// success). Options hidden by their condition are absent from this request, so indices
-    /// here are positions among the offered options, not in the node's authored list.
-    /// A stale or repeated Select is ignored with a warning.
-    /// </summary>
     public class ChoiceRequest
     {
         private readonly DialogueRunner _runner;

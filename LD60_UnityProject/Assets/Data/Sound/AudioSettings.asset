@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Pool2DSize>k__BackingField: 16
   <TailFadeSeconds>k__BackingField: 0.02
-  <BackgroundMusic>k__BackingField: {fileID: 0}
+  <BackgroundMusic>k__BackingField: {fileID: 11400000, guid: 9c18db9dd179ec941b56f0ca04c4a359, type: 2}
   <Default3DMinDistance>k__BackingField: 10
   <Default3DMaxDistance>k__BackingField: 150
   <Default3DRolloff>k__BackingField: 0
