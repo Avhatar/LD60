@@ -104,7 +104,7 @@ namespace LD60.UI
             if (!_label.enabled)
                 _label.enabled = true;
 
-            _label.text = Mathf.CeilToInt(_launcher.CooldownLeft).ToString();
+            _label.text = (Mathf.Ceil(_launcher.CooldownLeft * 10f) * 0.1f).ToString("F1");
             _label.rectTransform.position = (Vector3)((Vector2)_camera.WorldToScreenPoint(anchor.position)
                                            - new Vector2(0f, _settings.CooldownOffset));
         }

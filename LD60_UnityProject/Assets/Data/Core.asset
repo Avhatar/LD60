@@ -22,4 +22,4 @@ MonoBehaviour:
   <InterceptMarker>k__BackingField: {fileID: 11400000, guid: 29e8b9710404932498a92fa7de5850f9, type: 2}
   <Dialogue>k__BackingField: {fileID: 11400000, guid: 2d09379782b035a41abb2517426b2ecb, type: 2}
   <Intro>k__BackingField: {fileID: 11400000, guid: f03674db3bec70c4e8d77c8f5763bc3c, type: 2}
-  <IntroEnabled>k__BackingField: 0
+  <IntroEnabled>k__BackingField: 1

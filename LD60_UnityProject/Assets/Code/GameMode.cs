@@ -5,6 +5,7 @@ namespace LD60
         Game,
         Dialogue,
         Intro,
-        Menu
+        Menu,
+        Vinil
     }
 }

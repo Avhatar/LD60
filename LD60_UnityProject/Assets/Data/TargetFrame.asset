@@ -28,4 +28,4 @@ MonoBehaviour:
   <CooldownFont>k__BackingField: {fileID: 11400000, guid: 393d43696da9dc546a74b3ae20db130f, type: 2}
   <CooldownFontSize>k__BackingField: 20
   <CooldownColor>k__BackingField: {r: 0.65, g: 0.95, b: 1, a: 0.9}
-  <CooldownOffset>k__BackingField: 34
+  <CooldownOffset>k__BackingField: 56

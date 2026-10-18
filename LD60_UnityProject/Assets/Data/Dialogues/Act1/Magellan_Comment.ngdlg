@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "57568455f38855df875d76ac36e37c8b",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Дорожка Магеллана. Он просил дописать остальное потом.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "85a560d96c2786d34689883081b1226b",
+          "target": "0a947f6e7d6748ee21bf43b0e157e2a8"
+        }
+      ]
+    },
+    {
+      "uid": "0a947f6e7d6748ee21bf43b0e157e2a8",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "У него моя антенна. Я не знал, что от нас что-то осталось в запасе.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2623919794cc6628f4cbc3974580a22b",
+          "target": "5d94f8c5107b85e18e663ff00aa87402"
+        }
+      ]
+    },
+    {
+      "uid": "5d94f8c5107b85e18e663ff00aa87402",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Надо будет спросить, как у неё дела.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "caebb72f2055172eabb84daecf27b243",
+          "target": "f47fb27fb0430e00cb396f9a648fd6d4"
+        }
+      ]
+    },
+    {
+      "uid": "f47fb27fb0430e00cb396f9a648fd6d4",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

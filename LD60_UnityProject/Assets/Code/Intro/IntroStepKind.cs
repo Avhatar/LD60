@@ -8,6 +8,10 @@ namespace LD60.Intro
         WaitClick,
         ShowPicture,
         HidePicture,
-        Dialogue
+        Dialogue,
+        Line,
+        ShowVinilBase,
+        ShowVinilSpacecraft,
+        HideVinil
     }
 }

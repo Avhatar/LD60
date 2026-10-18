@@ -15,6 +15,7 @@ namespace LD60.UI
             public RectTransform Root;
             public Image Halo;
             public Image Icon;
+            public Image Check;
             public TMP_Text Label;
         }
 
@@ -158,15 +159,22 @@ namespace LD60.UI
         {
             bool contacted = _director.IsContacted(index);
             bool ready = _director.IsAwaitingContact(index);
+            bool onBody = _director.GetSender(index).Body != null;
             SpacecraftSO craft = _director.GetSender(index).Spacecraft;
             Marker marker = _markers[index];
 
+            Sprite craftIcon = craft != null ? IconFor(craft) : null;
+            bool showsCraftIcon = contacted && onBody && craftIcon != null;
+
             Color color = ready || contacted ? _settings.UnlockedColor : _settings.Color;
-            marker.Icon.color = color;
-            marker.Icon.sprite = contacted ? IconFor(craft) : _settings.UnknownIcon;
+            marker.Icon.color = showsCraftIcon ? Color.white : color;
+            marker.Icon.sprite = PickIcon(contacted, showsCraftIcon, craftIcon);
             marker.Icon.enabled = marker.Icon.sprite != null;
 
-            marker.Halo.enabled = contacted && marker.Icon.enabled;
+            marker.Check.enabled = showsCraftIcon && _settings.ContactedIcon != null;
+            marker.Check.color = _settings.UnlockedColor;
+
+            marker.Halo.enabled = showsCraftIcon && marker.Icon.enabled;
             marker.Halo.sprite = marker.Icon.sprite;
             marker.Halo.color = _settings.ReadyRingColor;
 
@@ -179,6 +187,17 @@ namespace LD60.UI
             marker.Label.text = string.Format(_text.InterceptProgressFormat.Value,
                 _director.CapturedDots(index),
                 _director.GetSender(index).DotsToCapture);
+        }
+
+        private Sprite PickIcon(bool contacted, bool showsCraftIcon, Sprite craftIcon)
+        {
+            if (!contacted)
+                return _settings.UnknownIcon;
+
+            if (showsCraftIcon)
+                return craftIcon;
+
+            return _settings.ContactedIcon != null ? _settings.ContactedIcon : craftIcon;
         }
 
         private static Sprite IconFor(SpacecraftSO craft)
@@ -260,6 +279,16 @@ namespace LD60.UI
             marker.Icon.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             marker.Icon.rectTransform.pivot = new Vector2(1f, 0.5f);
 
+            GameObject check = new GameObject("Check");
+            check.transform.SetParent(marker.Root, false);
+            marker.Check = check.AddComponent<Image>();
+            marker.Check.raycastTarget = false;
+            marker.Check.preserveAspect = true;
+            marker.Check.enabled = false;
+            marker.Check.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            marker.Check.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            marker.Check.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
             GameObject label = new GameObject("Label");
             label.transform.SetParent(marker.Root, false);
             TextMeshProUGUI text = label.AddComponent<TextMeshProUGUI>();
@@ -289,6 +318,13 @@ namespace LD60.UI
             marker.Halo.rectTransform.sizeDelta = new Vector2(halo, halo);
             marker.Halo.rectTransform.anchoredPosition =
                 new Vector2(-_settings.IconGap * 0.5f + (halo - _settings.IconSize) * 0.5f, 0f);
+
+            marker.Check.sprite = _settings.ContactedIcon;
+
+            float badge = _settings.IconSize * _settings.ContactedBadgeScale;
+            marker.Check.rectTransform.sizeDelta = new Vector2(badge, badge);
+            marker.Check.rectTransform.anchoredPosition =
+                new Vector2(-_settings.IconGap * 0.5f - badge * 0.3f, -_settings.IconSize * 0.5f + badge * 0.3f);
 
             marker.Label.font = _settings.Font;
             marker.Label.fontSize = _settings.FontSize;

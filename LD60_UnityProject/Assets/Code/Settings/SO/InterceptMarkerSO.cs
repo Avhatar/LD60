@@ -12,6 +12,12 @@ namespace LD60.Settings
         [field: SerializeField, Tooltip("Icon shown while we know someone is there but not who.")]
         public Sprite UnknownIcon { get; private set; }
 
+        [field: SerializeField, Tooltip("Mark shown once contact is made. It replaces the icon for a spacecraft flying in open space, where the craft itself is already on screen, and sits on top of the icon for one parked on a body.")]
+        public Sprite ContactedIcon { get; private set; }
+
+        [field: SerializeField, Tooltip("Size of the contact mark when it sits on top of an icon, as a fraction of the icon.")]
+        public float ContactedBadgeScale { get; private set; } = 0.65f;
+
         [field: SerializeField, Tooltip("Label size, in UI units at the canvas reference resolution.")]
         public float FontSize { get; private set; } = 22f;
 

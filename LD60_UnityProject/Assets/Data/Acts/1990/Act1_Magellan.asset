@@ -22,7 +22,7 @@ MonoBehaviour:
   <MotionScale>k__BackingField: 1
   <TransmitTo>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
   <ArcWidthDegrees>k__BackingField: 12
-  <DotCount>k__BackingField: 12
+  <DotCount>k__BackingField: 8
   <Speed>k__BackingField: 1
   <TransmitPeriodSeconds>k__BackingField: 9
   <DotsToCapture>k__BackingField: 3

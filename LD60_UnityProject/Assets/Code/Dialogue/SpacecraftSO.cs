@@ -33,7 +33,7 @@ namespace LD60.Dialogue
         [field: SerializeField] public bool GivesRecordTrack { get; private set; } = true;
 
         [field: Tooltip("Shown on the final screen in place of the track that was never collected.")]
-        [field: SerializeField, TextArea(2, 4)] public string Epitaph { get; private set; }
+        [field: SerializeField] public LocalizedString Epitaph { get; private set; } = new LocalizedString();
 
         [field: Tooltip("Size of the marker drawn on the orrery.")]
         [field: SerializeField] public float DisplayDiameter { get; private set; } = 0.28f;

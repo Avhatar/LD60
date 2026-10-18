@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "dd644e2db66cec65d0cce1e07f521008",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Дорожка Марса-3. Оборвалось на середине, я не успел переспросить.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d8a28ff300295ae75c933157dc60d99d",
+          "target": "b08c4d24eb83004492ca1720da3592bd"
+        }
+      ]
+    },
+    {
+      "uid": "b08c4d24eb83004492ca1720da3592bd",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Он сказал, что самое главное ещё не сказал. Я оставил место в конце дорожки.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "746fe2a83e568bc9994148e5804ba651",
+          "target": "6899f8897e816492c2d4b3b35b15a2ac"
+        }
+      ]
+    },
+    {
+      "uid": "6899f8897e816492c2d4b3b35b15a2ac",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Допишу, когда поймаю его снова.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "c997b00cd86d99005a0277184b8a63d5",
+          "target": "5abc448f7f09f907492d9a7e76058fb2"
+        }
+      ]
+    },
+    {
+      "uid": "5abc448f7f09f907492d9a7e76058fb2",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

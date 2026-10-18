@@ -21,7 +21,7 @@ MonoBehaviour:
   <DegreesPerYear>k__BackingField: 0
   <MotionScale>k__BackingField: 1
   <TransmitTo>k__BackingField: {fileID: 0}
-  <ArcWidthDegrees>k__BackingField: 5
+  <ArcWidthDegrees>k__BackingField: 9
   <DotCount>k__BackingField: 6
   <Speed>k__BackingField: 1
   <TransmitPeriodSeconds>k__BackingField: 0

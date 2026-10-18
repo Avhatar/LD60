@@ -14,7 +14,6 @@ public class UiRoot : MonoBehaviour
     private TMP_Text pauseText;
     
     private bool _pauseShown;
-    private bool _dateShown = true;
 
     public DialogueUi DialogueUi
     {
@@ -44,8 +43,6 @@ public class UiRoot : MonoBehaviour
 
     private void Update()
     {
-        UpdateDate();
-
         if (pauseText == null)
             return;
 
@@ -56,20 +53,6 @@ public class UiRoot : MonoBehaviour
 
         _pauseShown = wanted;
         pauseText.enabled = wanted;
-    }
-
-    private void UpdateDate()
-    {
-        if (dateTimeUi == null)
-            return;
-
-        bool wanted = !Core.IsIntroMode;
-
-        if (wanted == _dateShown)
-            return;
-
-        _dateShown = wanted;
-        dateTimeUi.gameObject.SetActive(wanted);
     }
 
     private bool PauseTextWanted()

@@ -347,6 +347,7 @@ namespace LD60.Signals
                     continue;
 
                 _contacted[i] = true;
+                Core.RegisterSpacecraftContact(_senders[i].Spacecraft);
                 PlaySound(_settings.ContactShotSound);
                 EnqueueDialogue(i, null, true);
             }
@@ -395,6 +396,7 @@ namespace LD60.Signals
             {
                 _captured[sender]++;
                 _discovered[sender] = true;
+                Core.AddScore(1);
             }
 
             bool justUnlocked = !alreadyUnlocked && IsUnlocked(sender);

@@ -1,4 +1,6 @@
+using LD60.Dialogue;
 using LD60.Settings;
+using NodeGraphAvr.Dialogue;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,11 +14,19 @@ namespace LD60.Intro
         [SerializeField] private Image _fadeImage;
         [SerializeField] private Image _pictureImage;
         [SerializeField] private GameObject _pictureRoot;
+        [SerializeField] private GameObject _vinilBaseSide;
+        [SerializeField] private GameObject _vinilSpacecraftSide;
+        [SerializeField] private GameObject[] _hiddenDuringIntro = new GameObject[0];
         [SerializeField] private DialogueUi _dialogueUi;
+        [SerializeField] private DialogueGraph _tutorialDialogue;
         [SerializeField] private Key _restartKey = Key.F3;
+
+        private const float MaxStepDeltaSeconds = 0.1f;
 
         private int _stepIndex = -1;
         private float _stepSeconds;
+        private bool _waitingToStart;
+        private float _startDelayLeft;
         private float _fadeFrom;
         private bool _running;
         private bool _waitingForDialogue;
@@ -40,10 +50,11 @@ namespace LD60.Intro
                 return;
             }
 
-            if (_waitingForDialogue && _dialogueUi != null)
+            if (_dialogueUi != null && _dialogueUi.IsRunning)
                 _dialogueUi.Stop();
 
             _waitingForDialogue = false;
+            _waitingToStart = false;
             _running = true;
             _stepIndex = -1;
             _ignoreClickFrame = Time.frameCount;
@@ -54,23 +65,52 @@ namespace LD60.Intro
             _fadeCanvas.SetActive(true);
             SetFade(1f);
             ShowPicture(null);
+            HideVinil();
+            SetHudHidden(true);
             EnterStep(0);
         }
 
         public void Finish()
         {
+            bool played = _running;
+
             _running = false;
             _waitingForDialogue = false;
+            _waitingToStart = false;
             _stepIndex = -1;
 
-            if (_dialogueUi != null && _dialogueUi.IsRunning)
+            if (_dialogueUi != null)
+            {
                 _dialogueUi.Stop();
+                _dialogueUi.Clear();
+            }
 
             ShowPicture(null);
+            HideVinil();
+            SetHudHidden(false);
             SetFade(0f);
             _introCanvas.SetActive(false);
             _fadeCanvas.SetActive(false);
             Core.SetMode(GameMode.Game);
+
+            if (played)
+                StartTutorial();
+        }
+
+        private void StartTutorial()
+        {
+            if (_tutorialDialogue == null)
+                return;
+
+            if (_dialogueUi == null)
+            {
+                Debug.LogError($"{nameof(IntroSequence)}: {nameof(_dialogueUi)} is null in {nameof(StartTutorial)} on '{name}'. " +
+                               "Required to run the tutorial conversation the opening hands the player over to. " +
+                               "Fix: assign the DialogueUi object to the Dialogue Ui slot on this object.", this);
+                return;
+            }
+
+            _dialogueUi.Play(_tutorialDialogue);
         }
 
         private void Awake()
@@ -84,7 +124,9 @@ namespace LD60.Intro
             _fadeImage.raycastTarget = false;
             _pictureImage.raycastTarget = false;
             _introCanvas.SetActive(false);
-            _fadeCanvas.SetActive(false);
+            _fadeCanvas.SetActive(true);
+            SetFade(1f);
+            HideVinil();
         }
 
         private void OnEnable()
@@ -116,13 +158,36 @@ namespace LD60.Intro
                 return;
             }
 
-            Play();
+            IntroSO settings = Settings;
+
+            Core.SetMode(GameMode.Intro);
+            _introCanvas.SetActive(false);
+            _fadeCanvas.SetActive(true);
+            SetFade(1f);
+            ShowPicture(null);
+            HideVinil();
+            SetHudHidden(true);
+
+            _waitingToStart = true;
+            _startDelayLeft = settings == null ? 0f : settings.StartDelaySeconds;
         }
 
         private void Update()
         {
             if (RestartRequested())
             {
+                Play();
+                return;
+            }
+
+            if (_waitingToStart)
+            {
+                _startDelayLeft -= StepDelta();
+
+                if (_startDelayLeft > 0f)
+                    return;
+
+                _waitingToStart = false;
                 Play();
                 return;
             }
@@ -144,7 +209,7 @@ namespace LD60.Intro
                 return;
             }
 
-            _stepSeconds += Time.unscaledDeltaTime;
+            _stepSeconds += StepDelta();
 
             if (step.Kind == IntroStepKind.FadeIn)
             {
@@ -216,6 +281,36 @@ namespace LD60.Intro
                     continue;
                 }
 
+                if (step.Kind == IntroStepKind.ShowVinilBase)
+                {
+                    ShowVinil(true);
+                    index++;
+                    continue;
+                }
+
+                if (step.Kind == IntroStepKind.ShowVinilSpacecraft)
+                {
+                    ShowVinil(false);
+                    index++;
+                    continue;
+                }
+
+                if (step.Kind == IntroStepKind.HideVinil)
+                {
+                    HideVinil();
+                    index++;
+                    continue;
+                }
+
+                if (step.Kind == IntroStepKind.Line)
+                {
+                    if (StartLine(step))
+                        return;
+
+                    index++;
+                    continue;
+                }
+
                 if (step.Kind == IntroStepKind.Dialogue)
                 {
                     if (StartDialogue(step))
@@ -238,6 +333,67 @@ namespace LD60.Intro
 
                 return;
             }
+        }
+
+        private bool StartLine(IntroStep step)
+        {
+            string text = step.Line == null ? null : step.Line.Value;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                Debug.LogError($"{nameof(IntroSequence)}: intro step {_stepIndex} is a {nameof(IntroStepKind.Line)} step " +
+                               $"with an empty {nameof(IntroStep.Line)}, so the narrator would open his mouth and say nothing. " +
+                               "Fix: fill the line on that step of the Intro asset, or change the step kind.", this);
+                return false;
+            }
+
+            IntroSO settings = Settings;
+
+            _waitingForDialogue = true;
+            _dialogueUi.PlayLine(settings == null ? null : settings.Narrator, text);
+            return true;
+        }
+
+        private void ShowVinil(bool baseSide)
+        {
+            if (_vinilBaseSide == null || _vinilSpacecraftSide == null)
+            {
+                Debug.LogError($"{nameof(IntroSequence)}: {nameof(_vinilBaseSide)} or {nameof(_vinilSpacecraftSide)} is null in {nameof(ShowVinil)} on '{name}'. " +
+                               "Required to turn the record to the side the opening talks about. " +
+                               "Fix: assign the BaseVinil and SpacecraftVinil objects to the slots on this object.", this);
+                return;
+            }
+
+            _vinilBaseSide.SetActive(baseSide);
+            _vinilSpacecraftSide.SetActive(!baseSide);
+        }
+
+        private void SetHudHidden(bool hidden)
+        {
+            if (_hiddenDuringIntro == null)
+                return;
+
+            for (int i = 0; i < _hiddenDuringIntro.Length; i++)
+            {
+                if (_hiddenDuringIntro[i] == null)
+                {
+                    Debug.LogError($"{nameof(IntroSequence)}: {nameof(_hiddenDuringIntro)}[{i}] is null in {nameof(SetHudHidden)} on '{name}'. " +
+                                   "Required to take that piece of the HUD off screen while the opening plays. " +
+                                   "Fix: drop the missing object into that element, or shorten the list.", this);
+                    continue;
+                }
+
+                _hiddenDuringIntro[i].SetActive(!hidden);
+            }
+        }
+
+        private void HideVinil()
+        {
+            if (_vinilBaseSide != null)
+                _vinilBaseSide.SetActive(false);
+
+            if (_vinilSpacecraftSide != null)
+                _vinilSpacecraftSide.SetActive(false);
         }
 
         private bool StartDialogue(IntroStep step)
@@ -274,8 +430,17 @@ namespace LD60.Intro
             }
 
             float t = Mathf.Clamp01(_stepSeconds / step.Seconds);
-            SetFade(Mathf.Lerp(_fadeFrom, target, t));
+            IntroSO settings = Settings;
+            AnimationCurve curve = settings == null ? null : settings.FadeCurve;
+            float shaped = curve == null || curve.length == 0 ? t : Mathf.Clamp01(curve.Evaluate(t));
+
+            SetFade(Mathf.Lerp(_fadeFrom, target, shaped));
             return t >= 1f;
+        }
+
+        private static float StepDelta()
+        {
+            return Mathf.Min(Time.unscaledDeltaTime, MaxStepDeltaSeconds);
         }
 
         private void SetFade(float alpha)

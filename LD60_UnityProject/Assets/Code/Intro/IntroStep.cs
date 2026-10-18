@@ -10,6 +10,7 @@ namespace LD60.Intro
         [field: SerializeField] public string Name { get; private set; } = "";
         [field: SerializeField] public IntroStepKind Kind { get; private set; } = IntroStepKind.Wait;
         [field: SerializeField] public float Seconds { get; private set; } = 1f;
+        [field: SerializeField] public LocalizedString Line { get; private set; } = new LocalizedString();
         [field: SerializeField] public Sprite Picture { get; private set; }
         [field: SerializeField] public DialogueGraph Dialogue { get; private set; }
     }

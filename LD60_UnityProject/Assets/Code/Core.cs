@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using LD60.Dialogue;
 using LD60.Settings;
 
 namespace LD60
@@ -21,10 +23,13 @@ namespace LD60
         private static bool _dialoguePause;
         private static bool _introPause;
         private static bool _menuPause;
+        private static bool _vinilPause;
+
+        private static readonly HashSet<SpacecraftSO> _contactedSpacecraft = new HashSet<SpacecraftSO>();
 
         public static bool IsPaused
         {
-            get { return _manualPause || _heldPause || _dialoguePause || _introPause || _menuPause; }
+            get { return _manualPause || _heldPause || _dialoguePause || _introPause || _menuPause || _vinilPause; }
         }
 
         public static bool IsGameMode
@@ -47,11 +52,53 @@ namespace LD60
             get { return Mode == GameMode.Menu; }
         }
 
+        public static bool IsVinilMode
+        {
+            get { return Mode == GameMode.Vinil; }
+        }
+
+        public static bool IsSpacecraftOnRecord(SpacecraftSO spacecraft)
+        {
+            if (spacecraft == null)
+                return false;
+
+            return spacecraft.IsPlayer || _contactedSpacecraft.Contains(spacecraft);
+        }
+
+        public static void RegisterSpacecraftContact(SpacecraftSO spacecraft)
+        {
+            if (spacecraft == null)
+            {
+                Debug.LogError($"{nameof(Core)}: {nameof(spacecraft)} is null in {nameof(RegisterSpacecraftContact)}. " +
+                               "Required to remember for the rest of the run which craft has already been talked to, " +
+                               "because the record keeps its slots across acts while the act's sender list does not. " +
+                               $"Fix: assign a Spacecraft asset to the Spacecraft slot of the {nameof(LD60.Space.ActSpacecraftSO)} that just answered.");
+                return;
+            }
+
+            _contactedSpacecraft.Add(spacecraft);
+        }
+
         public static double DaysSinceJ2000 { get; private set; }
 
         public static double DeltaDays { get; private set; }
 
         public static int ActIndex { get; private set; }
+
+        public static int Score { get; private set; }
+
+        public static event Action<int> ScoreChanged;
+
+        public static void AddScore(int amount)
+        {
+            if (amount <= 0)
+                return;
+
+            Score += amount;
+
+            if (ScoreChanged != null)
+                ScoreChanged.Invoke(amount);
+        }
 
         public static float Watts { get; private set; }
 
@@ -186,6 +233,7 @@ namespace LD60
             _dialoguePause = mode == GameMode.Dialogue;
             _introPause = mode == GameMode.Intro;
             _menuPause = mode == GameMode.Menu;
+            _vinilPause = mode == GameMode.Vinil;
             ApplyTimeScale();
 
             if (ModeChanged != null)
@@ -216,12 +264,15 @@ namespace LD60
             _dialoguePause = false;
             _introPause = false;
             _menuPause = false;
+            _vinilPause = false;
+            _contactedSpacecraft.Clear();
             Time.timeScale = 1f;
 
             ActIndex = 0;
             DaysSinceJ2000 = 0d;
             DeltaDays = 0d;
             Watts = 0f;
+            Score = 0;
 
             if (_config.Watt == null)
             {

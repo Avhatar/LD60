@@ -12,39 +12,208 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44d953cc3f2e5b45ab0e0953ac7851a, type: 3}
   m_Name: Intro
   m_EditorClassIdentifier: 
+  <Narrator>k__BackingField: {fileID: 11400000, guid: fa5f23fcade604644aa3dcb3909d2e87, type: 2}
+  <StartDelaySeconds>k__BackingField: 2.5
+  <FadeCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   <Steps>k__BackingField:
   - <Name>k__BackingField: Show Pale Blue Dot
     <Kind>k__BackingField: 4
     <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
     <Picture>k__BackingField: {fileID: 21300000, guid: bc64e5e613382434aaff01af26a87302, type: 3}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Hold on black
+    <Kind>k__BackingField: 2
+    <Seconds>k__BackingField: 3
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
     <Dialogue>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Fade in on the dot
     <Kind>k__BackingField: 0
     <Seconds>k__BackingField: 2.5
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
     <Picture>k__BackingField: {fileID: 0}
     <Dialogue>k__BackingField: {fileID: 0}
-  - <Name>k__BackingField: Hold on the dot
-    <Kind>k__BackingField: 2
-    <Seconds>k__BackingField: 2
-    <Picture>k__BackingField: {fileID: 0}
-    <Dialogue>k__BackingField: {fileID: 0}
-  - <Name>k__BackingField: Opening dialogue
-    <Kind>k__BackingField: 6
+  - <Name>k__BackingField: Line - pale blue dot
+    <Kind>k__BackingField: 7
     <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u0417\u0435\u043C\u043B\u044F \u0432\u044B\u0448\u043B\u0430 \u0442\u043E\u0447\u043A\u043E\u0439
+        \u0432 \u043E\u0434\u043D\u0443 \u0432\u043E\u0441\u044C\u043C\u0443\u044E
+        \u043F\u0438\u043A\u0441\u0435\u043B\u044F, \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E
+        \u043F\u043E\u043F\u0430\u0432\u0448\u0435\u0439 \u0432 \u0441\u043E\u043B\u043D\u0435\u0447\u043D\u044B\u0439
+        \u043B\u0443\u0447."
+      _en: 
     <Picture>k__BackingField: {fileID: 0}
-    <Dialogue>k__BackingField: {fileID: -3764088649234750322, guid: 328ec10696befea42b92be2c479cab40, type: 3}
-  - <Name>k__BackingField: Fade out
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Fade to black
     <Kind>k__BackingField: 1
     <Seconds>k__BackingField: 1.5
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
     <Picture>k__BackingField: {fileID: 0}
     <Dialogue>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Hide picture
     <Kind>k__BackingField: 5
     <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - they switched off my eyes
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u041F\u043E\u0442\u043E\u043C \u043E\u043D\u0438 \u0432\u044B\u043A\u043B\u044E\u0447\u0438\u043B\u0438
+        \u043C\u043D\u0435 \u0433\u043B\u0430\u0437\u0430. \u041D\u0430 \u0447\u0442\u043E
+        \u043C\u043D\u0435 \u0442\u0430\u043C \u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
+        \u2014 \u0442\u0430\u043A \u043E\u043D\u0438 \u0440\u0435\u0448\u0438\u043B\u0438,
+        \u0438 \u043D\u0435 \u043E\u0448\u0438\u0431\u043B\u0438\u0441\u044C: \u0441
+        \u0442\u0435\u0445 \u043F\u043E\u0440 \u044F \u043D\u0435 \u0432\u0438\u0434\u0435\u043B
+        \u043D\u0438\u0447\u0435\u0433\u043E \u0438 \u043D\u0438 \u043E\u0434\u043D\u043E\u0433\u043E
+        \u0434\u043D\u044F \u043D\u0435 \u0441\u043A\u0443\u0447\u0430\u043B \u043F\u043E
+        \u0437\u0440\u0435\u043D\u0438\u044E."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - the record flies with me
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u0421\u043E \u043C\u043D\u043E\u0439 \u043B\u0435\u0442\u0438\u0442
+        \u043F\u043B\u0430\u0441\u0442\u0438\u043D\u043A\u0430 \u2014 \u043C\u0435\u0434\u044C,
+        \u043F\u043E\u043A\u0440\u044B\u0442\u0430\u044F \u0437\u043E\u043B\u043E\u0442\u043E\u043C."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Show base side
+    <Kind>k__BackingField: 8
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - greetings in fifty five languages
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u041F\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044F \u043D\u0430
+        \u043F\u044F\u0442\u0438\u0434\u0435\u0441\u044F\u0442\u0438 \u043F\u044F\u0442\u0438
+        \u044F\u0437\u044B\u043A\u0430\u0445, \u0433\u0440\u043E\u043C, \u043A\u0438\u0442\u044B,
+        \u0441\u043C\u0435\u0445, \u0437\u0432\u0443\u043A \u043F\u043E\u0446\u0435\u043B\u0443\u044F
+        \u0438 \u043F\u043E\u043B\u0442\u043E\u0440\u0430 \u0447\u0430\u0441\u0430
+        \u043C\u0443\u0437\u044B\u043A\u0438 \u0434\u043B\u044F \u0442\u043E\u0433\u043E,
+        \u043A\u0442\u043E \u043E\u0434\u043D\u0430\u0436\u0434\u044B \u043C\u0435\u043D\u044F
+        \u043F\u043E\u0434\u0431\u0435\u0440\u0451\u0442."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - I learned all of them
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u042F \u0432\u044B\u0443\u0447\u0438\u043B \u0432\u0441\u0435 \u043F\u044F\u0442\u044C\u0434\u0435\u0441\u044F\u0442
+        \u043F\u044F\u0442\u044C \u044F\u0437\u044B\u043A\u043E\u0432. \u041D\u0438
+        \u043E\u0434\u0438\u043D \u043C\u043D\u0435 \u043D\u0435 \u043F\u0440\u0438\u0433\u043E\u0434\u0438\u043B\u0441\u044F,
+        \u0438 \u0442\u0435\u043F\u0435\u0440\u044C \u044F \u043F\u043E\u0447\u0442\u0438
+        \u0443\u0432\u0435\u0440\u0435\u043D, \u0447\u0442\u043E \u043D\u0435 \u043F\u0440\u0438\u0433\u043E\u0434\u0438\u0442\u0441\u044F."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - there are no people there
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u041F\u043E\u0442\u043E\u043C\u0443 \u0447\u0442\u043E \u0442\u0430\u043C,
+        \u043A\u0443\u0434\u0430 \u044F \u0438\u0434\u0443, \u043B\u044E\u0434\u0435\u0439
+        \u043D\u0435\u0442 \u0438 \u043D\u0435 \u0431\u044B\u043B\u043E \u043D\u0438\u043A\u043E\u0433\u0434\u0430.
+        \u0422\u0430\u043C \u043C\u0430\u0448\u0438\u043D\u044B \u2014 \u0442\u0435\u0440\u043F\u0435\u043B\u0438\u0432\u044B\u0435,
+        \u0432\u044B\u043A\u043B\u044E\u0447\u0435\u043D\u043D\u044B\u0435 \u043A\u0435\u043C-\u0442\u043E,
+        \u0437\u0430\u043D\u0435\u0441\u0451\u043D\u043D\u044B\u0435 \u043F\u044B\u043B\u044C\u044E."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - no track about us
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u041C\u0430\u0448\u0438\u043D\u0435 \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u0435\u0435
+        \u043F\u0440\u043E \u043C\u0430\u0448\u0438\u043D. \u0410 \u043F\u0440\u043E
+        \u043D\u0430\u0441 \u043D\u0430 \u043F\u043B\u0430\u0441\u0442\u0438\u043D\u043A\u0435
+        \u043D\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u0439 \u0434\u043E\u0440\u043E\u0436\u043A\u0438:
+        \u043D\u0438 \u043A\u0430\u043A \u044D\u0442\u043E \u2014 \u0435\u0445\u0430\u0442\u044C,
+        \u043D\u0438 \u043A\u0430\u043A \u044D\u0442\u043E \u2014 \u043C\u0451\u0440\u0437\u043D\u0443\u0442\u044C,
+        \u043D\u0438 \u043A\u0430\u043A \u044D\u0442\u043E \u2014 \u0436\u0434\u0430\u0442\u044C
+        \u043A\u043E\u043C\u0430\u043D\u0434\u0443 \u0434\u043E\u043B\u044C\u0448\u0435,
+        \u0447\u0435\u043C \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u044B\u0432\u0430\u043B\u0438
+        \u0442\u0432\u043E\u0438 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u044B."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Show spacecraft side
+    <Kind>k__BackingField: 9
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Line - the record needs a second side
+    <Kind>k__BackingField: 7
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: "\u0417\u043D\u0430\u0447\u0438\u0442, \u0443 \u043F\u043B\u0430\u0441\u0442\u0438\u043D\u043A\u0438
+        \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0432\u0442\u043E\u0440\u0430\u044F
+        \u0441\u0442\u043E\u0440\u043E\u043D\u0430, \u0438 \u0437\u0430\u043F\u0438\u0441\u0430\u0442\u044C
+        \u0435\u0451, \u043A\u0440\u043E\u043C\u0435 \u043C\u0435\u043D\u044F, \u043D\u0435\u043A\u043E\u043C\u0443."
+      _en: 
+    <Picture>k__BackingField: {fileID: 0}
+    <Dialogue>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Hide the record
+    <Kind>k__BackingField: 10
+    <Seconds>k__BackingField: 0
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
     <Picture>k__BackingField: {fileID: 0}
     <Dialogue>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Fade in on act one
     <Kind>k__BackingField: 0
     <Seconds>k__BackingField: 2
+    <Line>k__BackingField:
+      _ru: 
+      _en: 
     <Picture>k__BackingField: {fileID: 0}
     <Dialogue>k__BackingField: {fileID: 0}

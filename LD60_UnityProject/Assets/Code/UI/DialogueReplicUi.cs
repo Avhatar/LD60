@@ -107,12 +107,39 @@ public class DialogueReplicUi : MonoBehaviour, IPointerClickHandler
 
         replicText.ForceMeshUpdate();
         _characterCount = replicText.textInfo.characterCount;
+
         if (_characterCount <= 0)
+        {
+            if (string.IsNullOrEmpty(replicText.text))
+                return;
+
+            replicText.maxVisibleCharacters = 0;
+            IsTyping = true;
+            _typeRoutine = StartCoroutine(TypeAfterLayout(settings));
             return;
+        }
 
         replicText.maxVisibleCharacters = 0;
         IsTyping = true;
         _typeRoutine = StartCoroutine(TypeRoutine(settings));
+    }
+
+    private IEnumerator TypeAfterLayout(DialogueSO settings)
+    {
+        yield return null;
+
+        replicText.ForceMeshUpdate();
+        _characterCount = replicText.textInfo.characterCount;
+
+        if (_characterCount <= 0)
+        {
+            IsTyping = false;
+            _typeRoutine = null;
+            replicText.maxVisibleCharacters = int.MaxValue;
+            yield break;
+        }
+
+        yield return TypeRoutine(settings);
     }
 
     public void CompleteTyping()

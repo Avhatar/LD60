@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "10f9624d9607c183a9e0a93ccf237ed8",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Дорожка изделия 4В-1. Она сказала: отказ в пределах минуты, — и отключилась ровно тогда.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a3bb1fb33e90722d627bf3e377200088",
+          "target": "ef5f68db2463cd6bbd92e7477ad313b0"
+        }
+      ]
+    },
+    {
+      "uid": "ef5f68db2463cd6bbd92e7477ad313b0",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Хорошая точность. Я бы так не смог, у меня приборы врут на доли процента.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1a17d83dc101d8446de4daa03cc33069",
+          "target": "99c66320a208c86da4e8064ddd9d2b14"
+        }
+      ]
+    },
+    {
+      "uid": "99c66320a208c86da4e8064ddd9d2b14",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Надо будет перезвонить, когда у неё закончится смена.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ce3db6ed9bb5e947d40f88efef425d4a",
+          "target": "a41a421dc96b3fe581d034039f4440ff"
+        }
+      ]
+    },
+    {
+      "uid": "a41a421dc96b3fe581d034039f4440ff",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

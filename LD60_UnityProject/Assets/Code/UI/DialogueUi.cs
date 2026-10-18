@@ -35,12 +35,13 @@ public class DialogueUi : MonoBehaviour
     private int _pendingSelectionIndex;
     private int _ignoreClickFrame = -1;
     private GameMode _modeBeforePlay;
+    private bool _pendingLine;
 
     public event Action<bool> Finished;
 
     public bool IsRunning
     {
-        get { return _runner != null && _runner.IsRunning; }
+        get { return _pendingLine || (_runner != null && _runner.IsRunning); }
     }
 
     public bool IsWaitingForChoice
@@ -84,8 +85,56 @@ public class DialogueUi : MonoBehaviour
         _runner.Play();
     }
 
+    public void PlayLine(SpacecraftSO actor, string text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            Debug.LogError($"{nameof(DialogueUi)}: {nameof(text)} is empty in {nameof(PlayLine)}. " +
+                           "Required as the line the speaker puts on screen. " +
+                           "Fix: fill the line on the step that asked for it.", this);
+            return;
+        }
+
+        if (_runner != null)
+            Stop();
+
+        _pendingLine = false;
+        _choice = null;
+        _pendingSay = null;
+        _pendingSelection = null;
+
+        _modeBeforePlay = Core.Mode == GameMode.Dialogue ? GameMode.Game : Core.Mode;
+        Core.SetMode(GameMode.Dialogue);
+        _ignoreClickFrame = Time.frameCount;
+        _player = actor;
+
+        bool isPlayer = actor == null || actor.IsPlayer;
+        DialogueReplicUi replic = ResolveReplic(isPlayer);
+
+        if (replic == null)
+        {
+            Core.SetMode(_modeBeforePlay);
+            return;
+        }
+
+        HideOtherCaret(isPlayer);
+        replic.Show(actor == null ? null : actor.DialoguePortrait, text);
+        replic.BeginTyping();
+
+        _typingReplic = replic;
+        _pendingLine = true;
+    }
+
     public void Stop()
     {
+        if (_pendingLine)
+        {
+            _pendingLine = false;
+            _typingReplic = null;
+            Release();
+            return;
+        }
+
         if (_runner == null)
             return;
 
@@ -97,6 +146,7 @@ public class DialogueUi : MonoBehaviour
 
     public void Clear()
     {
+        _pendingLine = false;
         _choice = null;
         _pendingSay = null;
         _pendingSelection = null;
@@ -177,6 +227,18 @@ public class DialogueUi : MonoBehaviour
 
     private void Continue()
     {
+        if (_pendingLine)
+        {
+            _pendingLine = false;
+            _typingReplic = null;
+            Core.SetMode(_modeBeforePlay);
+
+            if (Finished != null)
+                Finished.Invoke(true);
+
+            return;
+        }
+
         if (_pendingSay != null)
         {
             SayRequest request = _pendingSay;
