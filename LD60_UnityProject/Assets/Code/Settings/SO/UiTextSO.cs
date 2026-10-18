@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LD60.Settings
 {
@@ -40,6 +40,10 @@ namespace LD60.Settings
 
         [field: SerializeField] public LocalizedString FinishLabel { get; private set; } =
             new LocalizedString("ЗАВЕРШИТЬ", "FINISH");
+
+        [field: SerializeField] public LocalizedString TheEndLabel { get; private set; } =
+            new LocalizedString("Конец.\nМожно закрыть приложение.",
+                                "The End.\nYou can close the application.");
 
         [field: SerializeField] public LocalizedString HelpText { get; private set; } =
             new LocalizedString(

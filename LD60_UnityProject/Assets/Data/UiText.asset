@@ -49,6 +49,12 @@ MonoBehaviour:
   <FinishLabel>k__BackingField:
     _ru: "\u0417\u0410\u0412\u0415\u0420\u0428\u0418\u0422\u042C"
     _en: FINISH
+  <TheEndLabel>k__BackingField:
+    _ru: "\u041A\u043E\u043D\u0435\u0446.\n\u041C\u043E\u0436\u043D\u043E \u0437\u0430\u043A\u0440\u044B\u0442\u044C
+      \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435."
+    _en: 'The End.
+
+      You can close the application.'
   <HelpText>k__BackingField:
     _ru: "\u0423\u041F\u0420\u0410\u0412\u041B\u0415\u041D\u0418\u0415\n\n\u041B\u041A\u041C
       \u2014 \u043D\u0430\u0432\u0435\u0441\u0442\u0438 \u0430\u043D\u0442\u0435\u043D\u043D\u0443,

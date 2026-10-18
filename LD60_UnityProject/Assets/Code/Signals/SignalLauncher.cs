@@ -56,7 +56,7 @@ namespace LD60.Signals
 
         public bool HasPowerForShot
         {
-            get { return Core.Watts >= CurrentCost; }
+            get { return Core.Watts > 0f; }
         }
 
         public bool IsReady

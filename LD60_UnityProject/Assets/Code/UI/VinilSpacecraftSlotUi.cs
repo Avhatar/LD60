@@ -97,7 +97,7 @@ public class VinilSpacecraftSlotUi : MonoBehaviour, IPointerEnterHandler, IPoint
         if (_hoverOutline == null)
             Debug.LogError($"{nameof(VinilSpacecraftSlotUi)}: {nameof(_hoverOutline)} is null in {nameof(Refresh)} on '{name}'. " +
                            "Required to light the slot green while the cursor is over it, which is the only sign the portrait can be clicked. " +
-                           "Fix: assign the Outline component of the slot's background Image in the Inspector.", this);
+                           "Fix: assign the Outline component of the slot's MachineIcon Image in the Inspector — it must sit on the portrait, not on the Question mark, which is hidden exactly when the slot becomes clickable.", this);
 
         if (questionMarkRectTransform == null)
         {
@@ -162,12 +162,14 @@ public class VinilSpacecraftSlotUi : MonoBehaviour, IPointerEnterHandler, IPoint
             return;
         }
 
-        if (_hoverOutline == null)
+        if (_hoverOutline == null || _hoverOutline.gameObject != spacecraftIconImage.gameObject)
         {
-            _hoverOutline = GetComponentInChildren<Outline>(true);
+            _hoverOutline = spacecraftIconImage.GetComponent<Outline>();
 
-            if (_hoverOutline != null)
-                UnityEditor.EditorUtility.SetDirty(this);
+            if (_hoverOutline == null)
+                _hoverOutline = UnityEditor.Undo.AddComponent<Outline>(spacecraftIconImage.gameObject);
+
+            UnityEditor.EditorUtility.SetDirty(this);
         }
 
         if (spacecraftNameLabel == null)

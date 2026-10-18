@@ -16,12 +16,13 @@ MonoBehaviour:
     _ru: "\u0417\u0435\u043C\u043B\u044F"
     _en: Earth
   <SemiMajorAxisAu>k__BackingField: 1.72
-  <OrbitalPeriodDays>k__BackingField: 365.26
+  <OrbitalPeriodDays>k__BackingField: 265.26
   <RotationPeriodHours>k__BackingField: 23.934
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 1.07
   <Tint>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
   <Surface>k__BackingField: {fileID: 2800000, guid: e4691d3e43db2974d86228f0286638f0, type: 3}
   <SurfaceDiscRadius>k__BackingField: 0.335
+  <Ring>k__BackingField: {fileID: 0}
   <Material>k__BackingField: {fileID: 2100000, guid: f33207d51e863fb4988c5cfdabef0a19, type: 2}
   <DrawOrbitRing>k__BackingField: 1

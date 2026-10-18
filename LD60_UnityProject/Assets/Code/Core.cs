@@ -139,7 +139,7 @@ namespace LD60
             if (amount <= 0f)
                 return true;
 
-            if (Watts < amount)
+            if (Watts <= 0f)
                 return false;
 
             Watts -= amount;

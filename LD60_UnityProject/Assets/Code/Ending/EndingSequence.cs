@@ -1,4 +1,4 @@
-using LD60.Settings;
+﻿using LD60.Settings;
 using LD60.Space;
 using LD60.UI;
 using NodeGraphAvr.Dialogue;
@@ -16,6 +16,7 @@ namespace LD60.Ending
         [SerializeField] private DialogueUi _dialogueUi;
         [SerializeField] private VinilRoot _vinilRoot;
         [SerializeField] private LocalizedText _finishLabel;
+        [SerializeField] private LocalizedText _theEndLabel;
         [SerializeField] private GameObject[] _hiddenDuringEnding = new GameObject[0];
 
         private EndingPhase _phase = EndingPhase.Watching;
@@ -161,6 +162,8 @@ namespace LD60.Ending
             if (_phase != EndingPhase.Record)
                 return;
 
+            _dialogueUi.Stop();
+
             EndingSO settings = Settings;
             DialogueGraph farewell = settings == null ? null : settings.FarewellDialogue;
 
@@ -235,6 +238,7 @@ namespace LD60.Ending
             {
                 _dialogueUi.Clear();
                 _vinilRoot.CloseFinal();
+                ShowTheEnd();
                 _phase = EndingPhase.Done;
             }
         }
@@ -244,6 +248,28 @@ namespace LD60.Ending
             SetHudHidden(true);
             ApplyFinishLabel();
             _vinilRoot.OpenFinal();
+        }
+
+        private void ShowTheEnd()
+        {
+            if (_theEndLabel == null)
+            {
+                Debug.LogError($"{nameof(EndingSequence)}: {nameof(_theEndLabel)} is null in {nameof(ShowTheEnd)} on '{name}'. " +
+                               "Required to tell the player the game is over once the screen has gone black. " +
+                               "Fix: assign the TheEnd label object to the The End Label slot on this object.", this);
+                return;
+            }
+
+            if (Core.Config == null || Core.Config.UiText == null)
+            {
+                Debug.LogError($"{nameof(EndingSequence)}: {nameof(CoreSO.UiText)} is null in {nameof(ShowTheEnd)} on '{name}'. " +
+                               "Required to write the closing line on the black screen. " +
+                               "Fix: assign the UiText asset to the Ui Text slot on the Core asset.", this);
+                return;
+            }
+
+            _theEndLabel.SetText(Core.Config.UiText.TheEndLabel);
+            _theEndLabel.gameObject.SetActive(true);
         }
 
         private void ApplyFinishLabel()

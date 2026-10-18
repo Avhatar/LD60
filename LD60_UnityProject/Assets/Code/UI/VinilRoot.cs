@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using LD60;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -106,6 +106,9 @@ public class VinilRoot : MonoBehaviour
     private void RequestFinish()
     {
         if (!_locked)
+            return;
+
+        if (_dialogueUi.IsRunning)
             return;
 
         if (FinishRequested != null)

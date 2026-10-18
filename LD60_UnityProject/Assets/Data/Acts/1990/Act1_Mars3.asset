@@ -24,8 +24,8 @@ MonoBehaviour:
   <ArcWidthDegrees>k__BackingField: 10
   <DotCount>k__BackingField: 10
   <Speed>k__BackingField: 1
-  <TransmitPeriodSeconds>k__BackingField: 20
-  <DotsToCapture>k__BackingField: 3
+  <TransmitPeriodSeconds>k__BackingField: 14
+  <DotsToCapture>k__BackingField: 4
   <KnownFromStart>k__BackingField: 0
   <InterceptDialogues>k__BackingField:
   - {fileID: -3764088649234750322, guid: eb5fa34dd7018284abcd5423b6919b68, type: 3}
