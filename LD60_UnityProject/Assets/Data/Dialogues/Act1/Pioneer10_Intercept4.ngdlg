@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Пионер-10. Курс на Альдебаран, расчётное время в пути два миллиона лет.",
-          "en": ""
+          "en": "Pioneer 10. Course for Aldebaran, estimated time in transit two million years."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Отклонений нет, иду по графику.",
-          "en": ""
+          "en": "No deviations, running to schedule."
         }
       },
       "out": [

@@ -39,5 +39,13 @@ MonoBehaviour:
       \u043F\u043E\u0432\u043E\u0434\u043A\u0435 \u0442\u0430\u043A \u0438 \u043D\u0435
       \u0432\u044B\u0448\u0435\u043B. \u0422\u044B \u043D\u0435 \u0443\u0441\u043F\u0435\u043B
       \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: "Mars 3, Mars. Landed on 2 December 1971 \u2014 the first soft landing on
+      Mars, and it landed intact. It transmitted for twenty seconds and fell silent;
+      the only frame came out blank \u2014 a planet-wide dust storm was raging on
+      Mars. The little rover on its fifteen-metre tether never got out. You never
+      got to ask."
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: 5de425c472a3b794090f1bd1d4e0fcbd, type: 3}
+  - {fileID: -3764088649234750322, guid: 95aac3d260bfe0b499f1a143214f9d1b, type: 3}
+  - {fileID: -3764088649234750322, guid: a48dce6f9b773934abf0e66bf491b78d, type: 3}
   <DisplayDiameter>k__BackingField: 1.16

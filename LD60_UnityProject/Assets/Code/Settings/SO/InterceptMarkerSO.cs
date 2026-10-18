@@ -62,5 +62,17 @@ namespace LD60.Settings
 
         [field: SerializeField, Tooltip("How much larger the green halo behind a contacted icon is.")]
         public float IconOutlineScale { get; private set; } = 1.25f;
+
+        [field: SerializeField, Tooltip("Colour of the line and the ring that point at whoever is speaking an intercepted line.")]
+        public Color DialogueTraceColor { get; private set; } = new Color(0.45f, 1f, 0.55f, 0.9f);
+
+        [field: SerializeField, Tooltip("Stroke width of the line drawn from the caught dot back to its sender, in world units.")]
+        public float DialogueTraceWidth { get; private set; } = 0.008f;
+
+        [field: SerializeField, Tooltip("Multiplies the trace colour above 1 so bloom picks it up. 1 = no glow.")]
+        public float DialogueTraceEmission { get; private set; } = 2f;
+
+        [field: SerializeField, Tooltip("How long the trace takes to dim away once the conversation it belongs to is over.")]
+        public float DialogueTraceFadeSeconds { get; private set; } = 2f;
     }
 }

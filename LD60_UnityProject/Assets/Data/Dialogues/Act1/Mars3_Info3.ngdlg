@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+      "name": "Mars3"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5a64b689046a67eeb310d99ac363586e",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Причину молчания точно не установили.",
+          "en": "The cause of the silence was never firmly established."
+        }
+      },
+      "out": [
+        {
+          "uid": "efb90c04f9cac38c635dab32b951da0a",
+          "target": "92ee281dace9c8658262b71f4a409c54"
+        }
+      ]
+    },
+    {
+      "uid": "92ee281dace9c8658262b71f4a409c54",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "На борту был ПрОП-М — ровер массой четыре с половиной килограмма на пятнадцатиметровом кабеле, первый марсоход в истории. Он так и не сошёл с аппарата.",
+          "en": "On board was PrOP-M — a rover weighing four and a half kilograms on a fifteen-metre cable, the first Mars rover in history. It never left the lander."
+        }
+      },
+      "out": [
+        {
+          "uid": "97a4abd4827fcc80b5ffd29cf91aba7f",
+          "target": "4691e51dfa140021d7194c3a36dfea1a"
+        }
+      ]
+    },
+    {
+      "uid": "4691e51dfa140021d7194c3a36dfea1a",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

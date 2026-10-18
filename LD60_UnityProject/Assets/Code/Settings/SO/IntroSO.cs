@@ -1,5 +1,6 @@
 using LD60.Dialogue;
 using LD60.Intro;
+using NodeGraphAvr.Dialogue;
 using UnityEngine;
 
 namespace LD60.Settings
@@ -8,6 +9,7 @@ namespace LD60.Settings
     public class IntroSO : GameDataSO
     {
         [field: SerializeField] public SpacecraftSO Narrator { get; private set; }
+        [field: SerializeField] public DialogueGraph TutorialDialogue { get; private set; }
 
         [field: SerializeField, Range(0f, 20f)] public float StartDelaySeconds { get; private set; } = 5f;
 

@@ -1,3 +1,4 @@
+using System;
 using LD60;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,17 +17,40 @@ public class VinilRoot : MonoBehaviour
     private Button changeVinilSideButton;
     [SerializeField]
     private VinilSpacecraftSlotUi[] allSpaceCraftsVinilSlots;
+    [SerializeField]
+    private DialogueUi _dialogueUi;
+
+    [SerializeField]
+    private Button finishButton;
 
     private Button _toggleButton;
     private bool _open;
+    private bool _locked;
     private bool _spacecraftSideShown = true;
+
+    public event Action FinishRequested;
+
+    public void OpenFinal()
+    {
+        _locked = true;
+        _spacecraftSideShown = true;
+        Open();
+    }
+
+    public void CloseFinal()
+    {
+        _locked = false;
+        _open = false;
+        ApplySides();
+    }
 
     private void Awake()
     {
         bool wired = Wired(vinilUiToggleButtonImage, nameof(vinilUiToggleButtonImage), "to let the player open and close the record")
                      & Wired(vinilBaseHuman, nameof(vinilBaseHuman), "to show the side the musicians are pressed on")
                      & Wired(vinilSpacecraft, nameof(vinilSpacecraft), "to show the side the run fills with spacecraft")
-                     & Wired(changeVinilSideButton, nameof(changeVinilSideButton), "to let the player turn the record over");
+                     & Wired(changeVinilSideButton, nameof(changeVinilSideButton), "to let the player turn the record over")
+                     & Wired(_dialogueUi, nameof(_dialogueUi), "to run the reference entry when the player clicks a portrait on the record");
 
         if (!wired)
         {
@@ -47,6 +71,10 @@ public class VinilRoot : MonoBehaviour
 
         _toggleButton.onClick.AddListener(Toggle);
         changeVinilSideButton.onClick.AddListener(FlipSide);
+
+        if (finishButton != null)
+            finishButton.onClick.AddListener(RequestFinish);
+
         ApplySides();
     }
 
@@ -54,7 +82,7 @@ public class VinilRoot : MonoBehaviour
     {
         if (_open)
         {
-            if (CloseRequested())
+            if (!_locked && CloseRequested())
                 Close();
 
             return;
@@ -66,10 +94,22 @@ public class VinilRoot : MonoBehaviour
 
     private void Toggle()
     {
+        if (_locked)
+            return;
+
         if (_open)
             Close();
         else if (Core.IsGameMode)
             Open();
+    }
+
+    private void RequestFinish()
+    {
+        if (!_locked)
+            return;
+
+        if (FinishRequested != null)
+            FinishRequested.Invoke();
     }
 
     private void Open()
@@ -77,7 +117,9 @@ public class VinilRoot : MonoBehaviour
         _open = true;
         ApplySides();
         RefreshSlots();
-        Core.SetMode(GameMode.Vinil);
+
+        if (!_locked)
+            Core.SetMode(GameMode.Vinil);
     }
 
     private void Close()
@@ -98,6 +140,12 @@ public class VinilRoot : MonoBehaviour
         vinilSpacecraft.gameObject.SetActive(_open && _spacecraftSideShown);
         vinilBaseHuman.gameObject.SetActive(_open && !_spacecraftSideShown);
         changeVinilSideButton.gameObject.SetActive(_open);
+
+        if (vinilUiToggleButtonImage != null)
+            vinilUiToggleButtonImage.gameObject.SetActive(!_locked);
+
+        if (finishButton != null)
+            finishButton.gameObject.SetActive(_open && _locked);
     }
 
     private void RefreshSlots()
@@ -115,7 +163,7 @@ public class VinilRoot : MonoBehaviour
                 continue;
             }
 
-            allSpaceCraftsVinilSlots[i].Refresh();
+            allSpaceCraftsVinilSlots[i].Refresh(_dialogueUi);
         }
     }
 
@@ -140,7 +188,7 @@ public class VinilRoot : MonoBehaviour
         if (Keyboard.current == null)
             return false;
 
-        return Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.vKey.wasPressedThisFrame;
+        return Keyboard.current.qKey.wasPressedThisFrame || Keyboard.current.vKey.wasPressedThisFrame;
     }
 
 #if UNITY_EDITOR

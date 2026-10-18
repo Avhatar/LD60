@@ -22,8 +22,8 @@ MonoBehaviour:
       _year: 1995
       _month: 2
       _day: 14
-    <RealSecondsDuration>k__BackingField: 1200
-    <BudgetWatts>k__BackingField: 120
+    <RealSecondsDuration>k__BackingField: 500
+    <BudgetWatts>k__BackingField: 80
     <Placements>k__BackingField:
     - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
       <StartAngleDegrees>k__BackingField: 0
@@ -40,11 +40,11 @@ MonoBehaviour:
     - <Body>k__BackingField: {fileID: 11400000, guid: f0685a268637b0e4abc60b124fe287b7, type: 2}
       <StartAngleDegrees>k__BackingField: 96.01268
     - <Body>k__BackingField: {fileID: 11400000, guid: 78ab93cb3d128564a9fac2140e97b339, type: 2}
-      <StartAngleDegrees>k__BackingField: 289.2175
+      <StartAngleDegrees>k__BackingField: 317
     - <Body>k__BackingField: {fileID: 11400000, guid: 54232f5f1ca43da49b716c13f8af6e7c, type: 2}
-      <StartAngleDegrees>k__BackingField: 270.90536
+      <StartAngleDegrees>k__BackingField: 229
     - <Body>k__BackingField: {fileID: 11400000, guid: 6ccb7e2f593e2f94294259bd7ad8850e, type: 2}
-      <StartAngleDegrees>k__BackingField: 283.29745
+      <StartAngleDegrees>k__BackingField: 171
     - <Body>k__BackingField: {fileID: 11400000, guid: b178aae1b3734e429b99ef2793f634a1, type: 2}
       <StartAngleDegrees>k__BackingField: 224.58725
     <Spacecraft>k__BackingField:
@@ -65,8 +65,8 @@ MonoBehaviour:
       _year: 2015
       _month: 4
       _day: 22
-    <RealSecondsDuration>k__BackingField: 1200
-    <BudgetWatts>k__BackingField: 80
+    <RealSecondsDuration>k__BackingField: 500
+    <BudgetWatts>k__BackingField: 60
     <Placements>k__BackingField:
     - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
       <StartAngleDegrees>k__BackingField: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
       _year: 2031
       _month: 10
       _day: 17
-    <RealSecondsDuration>k__BackingField: 1200
+    <RealSecondsDuration>k__BackingField: 500
     <BudgetWatts>k__BackingField: 50
     <Placements>k__BackingField:
     - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}

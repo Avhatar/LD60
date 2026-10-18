@@ -23,7 +23,7 @@ MonoBehaviour:
   <WattsFormat>k__BackingField: 0
   <ChangeFormat>k__BackingField: +0;-0
   <ChangeRise>k__BackingField: 80
-  <ChangeSeconds>k__BackingField: 1.1
+  <ChangeSeconds>k__BackingField: 2.5
   <ChangeSolidFraction>k__BackingField: 0.3
   <ChangeGainColor>k__BackingField: {r: 0.45, g: 1, b: 0.55, a: 1}
   <ChangeSpendColor>k__BackingField: {r: 1, g: 0.37, b: 0.37, a: 1}

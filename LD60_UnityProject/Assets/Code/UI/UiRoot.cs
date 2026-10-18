@@ -12,8 +12,13 @@ public class UiRoot : MonoBehaviour
 
     [SerializeField]
     private TMP_Text pauseText;
-    
+
+    [SerializeField]
+    private GameObject changeLanguageText;
+
     private bool _pauseShown;
+    private bool _languageHintDone;
+    private float _languageHintLeft = -1f;
 
     public DialogueUi DialogueUi
     {
@@ -41,8 +46,33 @@ public class UiRoot : MonoBehaviour
         pauseText.enabled = _pauseShown;
     }
 
+    private void Start()
+    {
+        if (changeLanguageText == null)
+        {
+            Debug.LogError($"{nameof(UiRoot)}: {nameof(changeLanguageText)} is null in {nameof(Start)} on '{name}'. " +
+                           "Required to tell the player once, at the very start, which key switches the language. " +
+                           "Fix: assign the ChangeLanguageText object to the Change Language Text slot on this object.", this);
+            _languageHintDone = true;
+            return;
+        }
+
+        _languageHintLeft = LanguageHintSeconds;
+
+        if (_languageHintLeft <= 0f)
+        {
+            _languageHintDone = true;
+            changeLanguageText.SetActive(false);
+            return;
+        }
+
+        changeLanguageText.SetActive(true);
+    }
+
     private void Update()
     {
+        UpdateLanguageHint();
+
         if (pauseText == null)
             return;
 
@@ -53,6 +83,25 @@ public class UiRoot : MonoBehaviour
 
         _pauseShown = wanted;
         pauseText.enabled = wanted;
+    }
+
+    private void UpdateLanguageHint()
+    {
+        if (_languageHintDone || changeLanguageText == null)
+            return;
+
+        _languageHintLeft -= Mathf.Min(Time.unscaledDeltaTime, 0.1f);
+
+        if (_languageHintLeft > 0f)
+            return;
+
+        _languageHintDone = true;
+        changeLanguageText.SetActive(false);
+    }
+
+    private static float LanguageHintSeconds
+    {
+        get { return Core.Config == null ? 0f : Core.Config.LanguageHintSeconds; }
     }
 
     private bool PauseTextWanted()

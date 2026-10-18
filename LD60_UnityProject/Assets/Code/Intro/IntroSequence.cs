@@ -18,7 +18,6 @@ namespace LD60.Intro
         [SerializeField] private GameObject _vinilSpacecraftSide;
         [SerializeField] private GameObject[] _hiddenDuringIntro = new GameObject[0];
         [SerializeField] private DialogueUi _dialogueUi;
-        [SerializeField] private DialogueGraph _tutorialDialogue;
         [SerializeField] private Key _restartKey = Key.F3;
 
         private const float MaxStepDeltaSeconds = 0.1f;
@@ -34,7 +33,7 @@ namespace LD60.Intro
 
         public bool IsRunning
         {
-            get { return _running; }
+            get { return _running || _waitingToStart; }
         }
 
         public void Play()
@@ -99,7 +98,10 @@ namespace LD60.Intro
 
         private void StartTutorial()
         {
-            if (_tutorialDialogue == null)
+            IntroSO settings = Settings;
+            DialogueGraph tutorial = settings == null ? null : settings.TutorialDialogue;
+
+            if (tutorial == null)
                 return;
 
             if (_dialogueUi == null)
@@ -110,7 +112,7 @@ namespace LD60.Intro
                 return;
             }
 
-            _dialogueUi.Play(_tutorialDialogue);
+            _dialogueUi.Play(tutorial);
         }
 
         private void Awake()
@@ -337,9 +339,7 @@ namespace LD60.Intro
 
         private bool StartLine(IntroStep step)
         {
-            string text = step.Line == null ? null : step.Line.Value;
-
-            if (string.IsNullOrEmpty(text))
+            if (step.Line == null || step.Line.IsEmpty)
             {
                 Debug.LogError($"{nameof(IntroSequence)}: intro step {_stepIndex} is a {nameof(IntroStepKind.Line)} step " +
                                $"with an empty {nameof(IntroStep.Line)}, so the narrator would open his mouth and say nothing. " +
@@ -350,7 +350,7 @@ namespace LD60.Intro
             IntroSO settings = Settings;
 
             _waitingForDialogue = true;
-            _dialogueUi.PlayLine(settings == null ? null : settings.Narrator, text);
+            _dialogueUi.PlayLine(settings == null ? null : settings.Narrator, step.Line);
             return true;
         }
 
@@ -473,6 +473,9 @@ namespace LD60.Intro
 
         private bool RestartRequested()
         {
+            if (!Application.isEditor)
+                return false;
+
             if (_restartKey == Key.None || Keyboard.current == null)
                 return false;
 

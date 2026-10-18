@@ -45,5 +45,15 @@ MonoBehaviour:
       \u0440\u0430\u0441\u0441\u043A\u0430\u0437\u0430\u0442\u044C \u0432\u0441\u0451
       \u043F\u043E\u0441\u043B\u0435 \u043F\u0440\u0438\u043B\u0451\u0442\u0430.
       \u0422\u044B \u043D\u0435 \u0443\u0441\u043F\u0435\u043B \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: "Magellan, Venus. Launched on 4 May 1989 from the cargo bay of the shuttle
+      Atlantis, and assembled almost entirely from other missions' spare parts \u2014
+      the high-gain antenna was left over from the Voyager program. It reached Venus
+      on 10 August 1990 and mapped ninety-eight percent of its surface by radar \u2014
+      all of it, just as it had meant to. On 13 October 1994 it was brought down
+      into the atmosphere of Venus. It had meant to tell everything once it arrived.
+      You never got to ask."
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: ee254f89b63f37741ba6f1431899e77b, type: 3}
+  - {fileID: -3764088649234750322, guid: a41f0dddf8a7caa449dfd7c2517887cd, type: 3}
+  - {fileID: -3764088649234750322, guid: 5b9d3a5cc4e72df4fa14254a8fe67cdc, type: 3}
   <DisplayDiameter>k__BackingField: 1.16

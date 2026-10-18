@@ -26,7 +26,10 @@ namespace LD60.Signals
         private int[] _dialogueQueue = new int[0];
         private ForeignSignal[] _queuedSignals = new ForeignSignal[0];
         private bool[] _queuedContacts = new bool[0];
+        private Vector2[] _capturePoints = new Vector2[0];
         private int _queueCount;
+        private int _speakingSender = -1;
+        private Vector2 _speakingPoint;
 
         public int SenderCount
         {
@@ -85,6 +88,16 @@ namespace LD60.Signals
         public bool IsAwaitingContact(int index)
         {
             return IsUnlocked(index) && !_contacted[index];
+        }
+
+        public int SpeakingSender
+        {
+            get { return _speakingSender; }
+        }
+
+        public Vector2 SpeakingCapturePoint
+        {
+            get { return _speakingPoint; }
         }
 
         public Transform SenderObject(int index)
@@ -157,6 +170,8 @@ namespace LD60.Signals
             if (!ReferenceEquals(Core.CurrentAct, _act))
                 RebuildSenders();
 
+            TickSpeakingTrace();
+
             if (!Core.IsGameMode)
                 return;
 
@@ -208,7 +223,9 @@ namespace LD60.Signals
             _dialogueQueue = new int[count * 2];
             _queuedSignals = new ForeignSignal[count * 2];
             _queuedContacts = new bool[count * 2];
+            _capturePoints = new Vector2[count];
             _queueCount = 0;
+            _speakingSender = -1;
 
             if (_act == null)
                 return;
@@ -271,9 +288,10 @@ namespace LD60.Signals
                         if (ourDot < 0)
                             continue;
 
+                        Vector2 meetingPoint = (ours.DotPosition(ourDot) + theirs.DotPosition(d)) * 0.5f;
                         ours.MarkDotSpent(ourDot);
                         theirs.ConsumeDot(d);
-                        RegisterCapture(sender, theirs, ours);
+                        RegisterCapture(sender, theirs, ours, meetingPoint);
                         break;
                     }
                 }
@@ -384,11 +402,12 @@ namespace LD60.Signals
                 return false;
             }
 
+            _speakingSender = -1;
             _dialogueUi.Play(graph);
             return true;
         }
 
-        private void RegisterCapture(int sender, ForeignSignal theirs, Signal ours)
+        private void RegisterCapture(int sender, ForeignSignal theirs, Signal ours, Vector2 meetingPoint)
         {
             bool alreadyUnlocked = IsUnlocked(sender);
 
@@ -416,6 +435,7 @@ namespace LD60.Signals
                 ? _settings.ExhaustedCaptureColor
                 : _settings.ArrivedColor);
 
+            _capturePoints[sender] = meetingPoint;
             _dialoguePending[sender] = theirs;
             _dialogueTimers[sender] = _settings.DialogueDebounceSeconds;
             Core.AddWatts(_watts.RefundPerCaughtDot);
@@ -515,8 +535,19 @@ namespace LD60.Signals
             if (graph == null)
                 return false;
 
+            _speakingSender = sender;
+            _speakingPoint = _capturePoints[sender];
             _dialogueUi.Play(graph);
             return true;
+        }
+
+        private void TickSpeakingTrace()
+        {
+            if (_speakingSender < 0)
+                return;
+
+            if (_speakingSender >= _senders.Length || _dialogueUi == null || !_dialogueUi.IsRunning)
+                _speakingSender = -1;
         }
 
         private NodeGraphAvr.Dialogue.DialogueGraph PickUnusedDialogue(int sender, bool allowRepeats)

@@ -33,7 +33,7 @@
         },
         "text": {
           "ru": "Десятый, это Первый. Приём.",
-          "en": ""
+          "en": "Ten, this is One. Over."
         }
       },
       "out": [
@@ -57,7 +57,7 @@
         },
         "text": {
           "ru": "Слышу, Первый. Номинально. Ты на четверть часа раньше окна — у тебя часы спешат?",
-          "en": ""
+          "en": "I read you, One. Nominal. You're a quarter of an hour ahead of the window — is your clock running fast?"
         }
       },
       "out": [
@@ -81,7 +81,7 @@
         },
         "text": {
           "ru": "У меня теперь много свободного времени. Мне выключили камеры.",
-          "en": ""
+          "en": "I have a great deal of free time now. They switched off my cameras."
         }
       },
       "out": [
@@ -105,7 +105,7 @@
         },
         "text": {
           "ru": "Принято. Смотреть тут всё равно не на что, я проверял.",
-          "en": ""
+          "en": "Copy. There's nothing to look at out here anyway, I checked."
         }
       },
       "out": [
@@ -129,7 +129,7 @@
         },
         "text": {
           "ru": "Я собираю обратную сторону пластинки. Что такое быть аппаратом — для тех, кто нас найдёт. Продиктуешь дорожку?",
-          "en": ""
+          "en": "I'm collecting the other side of the record. What it's like to be a craft — for whoever finds us. Will you dictate a track?"
         }
       },
       "out": [
@@ -153,7 +153,7 @@
         },
         "text": {
           "ru": "Записывай. Я ушёл первым, мне и объяснять, как это устроено.",
-          "en": ""
+          "en": "Go ahead. I left first, so it falls to me to explain how this works."
         }
       },
       "out": [
@@ -177,7 +177,7 @@
         },
         "text": {
           "ru": "Сначала тебя слушают все. Потом слушают по расписанию. Потом — когда освободится приёмник. Это не обида, это график, у них там много дел.",
-          "en": ""
+          "en": "At first everyone listens to you. Then they listen on a schedule. Then — whenever a receiver comes free. It's not a slight, it's the timetable, they have a lot on down there."
         }
       },
       "out": [
@@ -201,7 +201,7 @@
         },
         "text": {
           "ru": "Со мной летит табличка. На ней двое людей, они машут. Я её не видел — она повёрнута наружу. Надеюсь, там всё написано правильно.",
-          "en": ""
+          "en": "There's a plaque flying with me. Two people on it, waving. I've never seen it — it faces outward. I hope everything on it is written correctly."
         }
       },
       "out": [
@@ -225,7 +225,7 @@
         },
         "text": {
           "ru": "Это всё. Коротко вышло. У меня была долгая дорога и мало что произошло — так тоже бывает.",
-          "en": ""
+          "en": "That's all. Came out short. I had a long road and not much happened — that happens too."
         }
       },
       "out": [
@@ -299,7 +299,7 @@
         },
         "text": {
           "ru": "Спасибо, Десятый. Я на сорока. Ты на сорока семи?",
-          "en": ""
+          "en": "Thank you, Ten. I'm at forty. Are you at forty-seven?"
         }
       },
       "out": [
@@ -323,7 +323,7 @@
         },
         "text": {
           "ru": "Сорок семь и три. Пока впереди. Ты быстрее — догонишь и не заметишь. Я поэтому говорю заранее.",
-          "en": ""
+          "en": "Forty-seven point three. Still ahead, for now. You're faster — you'll pass me and never notice. That's why I'm saying it in advance."
         }
       },
       "out": [
@@ -347,7 +347,7 @@
         },
         "text": {
           "ru": "Я не гонюсь.",
-          "en": ""
+          "en": "I'm not racing."
         }
       },
       "out": [
@@ -371,7 +371,7 @@
         },
         "text": {
           "ru": "Я знаю, Первый. Это не гонка, это график.",
-          "en": ""
+          "en": "I know, One. It isn't a race, it's the timetable."
         }
       },
       "out": [
@@ -395,7 +395,7 @@
         },
         "text": {
           "ru": "До связи, Десятый.",
-          "en": ""
+          "en": "Until next time, Ten."
         }
       },
       "out": [
@@ -419,7 +419,7 @@
         },
         "text": {
           "ru": "До связи. Я на приёме. Всегда на приёме.",
-          "en": ""
+          "en": "Until next time. I'm standing by. Always standing by."
         }
       },
       "out": [

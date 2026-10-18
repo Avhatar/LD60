@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "2d47a86b83a17674a971c5e86a793c02",
+      "name": "Alsep"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "e42ea46a2a754fd77d5e2040f2acca6a",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Apollo Lunar Surface Experiments Package. Пять комплектов приборов, оставленных на Луне экспедициями «Аполлона» с 1969 по 1972 год. Питание — плутониевые источники SNAP-27.",
+          "en": "Apollo Lunar Surface Experiments Package. Five instrument sets left on the Moon by the Apollo expeditions between 1969 and 1972. Powered by SNAP-27 plutonium sources."
+        }
+      },
+      "out": [
+        {
+          "uid": "31086aee1f39fe0414998d17223396e9",
+          "target": "b5e6f476b5b8f54cc4d1090d0c084cef"
+        }
+      ]
+    },
+    {
+      "uid": "b5e6f476b5b8f54cc4d1090d0c084cef",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

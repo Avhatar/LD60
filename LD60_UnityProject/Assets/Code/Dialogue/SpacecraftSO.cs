@@ -35,6 +35,9 @@ namespace LD60.Dialogue
         [field: Tooltip("Shown on the final screen in place of the track that was never collected.")]
         [field: SerializeField] public LocalizedString Epitaph { get; private set; } = new LocalizedString();
 
+        [field: Tooltip("Reference entry on this spacecraft, shown when the player clicks its portrait on the record. One graph per click, in order, cycling back to the first.")]
+        [field: SerializeField] public DialogueGraph[] InfoDialogues { get; private set; } = new DialogueGraph[0];
+
         [field: Tooltip("Size of the marker drawn on the orrery.")]
         [field: SerializeField] public float DisplayDiameter { get; private set; } = 0.28f;
 

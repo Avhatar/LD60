@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Изделие Е-1. Натриевая обойма израсходована, облако наблюдалось.",
-          "en": ""
+          "en": "Article Ye-1. Sodium charge expended, cloud observed."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Расход соответствует заданию.",
-          "en": ""
+          "en": "Expenditure conforms to the assignment."
         }
       },
       "out": [

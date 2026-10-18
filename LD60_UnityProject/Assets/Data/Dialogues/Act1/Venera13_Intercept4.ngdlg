@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Изделие 4В-1. Минута сто двенадцать. Отказов по циклограмме нет.",
-          "en": ""
+          "en": "Article 4V-1. Minute one hundred and twelve. No failures against the flight sequence."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Все задачи выполнены на тридцать второй минуте. Дальнейшее в задание не входит.",
-          "en": ""
+          "en": "All tasks were completed at minute thirty-two. What follows does not form part of the assignment."
         }
       },
       "out": [

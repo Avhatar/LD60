@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "e379001760e08ce4a69f0d0e026263de",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Расчётный ресурс — тридцать две минуты. Передавала сто двадцать семь.",
+          "en": "Design life: thirty-two minutes. It transmitted for a hundred and twenty-seven."
+        }
+      },
+      "out": [
+        {
+          "uid": "32ee3e0acb7d1aad795dd2ce8d9b3e48",
+          "target": "1f37d7bb15983454f8f6cd2936175579"
+        }
+      ]
+    },
+    {
+      "uid": "1f37d7bb15983454f8f6cd2936175579",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

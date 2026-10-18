@@ -81,7 +81,7 @@ namespace NodeGraphAvr.Sandbox
                 GUILayout.Label("Choose:", GUI.skin.box);
                 for (var i = 0; i < _choice.Options.Count; i++)
                 {
-                    if (GUILayout.Button(_choice.Options[i], GUILayout.Height(28f)))
+                    if (GUILayout.Button(_choice.Options[i].Value, GUILayout.Height(28f)))
                     {
                         var request = _choice;
                         _choice = null;

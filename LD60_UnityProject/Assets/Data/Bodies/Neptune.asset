@@ -15,7 +15,7 @@ MonoBehaviour:
   <LocalizedName>k__BackingField:
     _ru: "\u041D\u0435\u043F\u0442\u0443\u043D"
     _en: Neptune
-  <SemiMajorAxisAu>k__BackingField: 74.1
+  <SemiMajorAxisAu>k__BackingField: 68
   <OrbitalPeriodDays>k__BackingField: 60182
   <RotationPeriodHours>k__BackingField: 16.11
   <DisplayRadiusOverride>k__BackingField: 0
@@ -23,5 +23,6 @@ MonoBehaviour:
   <Tint>k__BackingField: {r: 0.35, g: 0.48, b: 0.82, a: 1}
   <Surface>k__BackingField: {fileID: 2800000, guid: b9bfa4905600e924ba65deae2ea9407a, type: 3}
   <SurfaceDiscRadius>k__BackingField: 0.337
+  <Ring>k__BackingField: {fileID: 0}
   <Material>k__BackingField: {fileID: 2100000, guid: a91ee4207d745864a8027df83d3457c4, type: 2}
   <DrawOrbitRing>k__BackingField: 1

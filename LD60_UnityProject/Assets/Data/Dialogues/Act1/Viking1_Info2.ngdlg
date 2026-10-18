@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "8b8996eae30fcb9ff82503b1569cc155",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Проработал шесть лет и около двух тысяч трёхсот солов — рекорд Марса вплоть до Opportunity.",
+          "en": "It worked for six years and about two thousand three hundred sols — the Mars record until Opportunity."
+        }
+      },
+      "out": [
+        {
+          "uid": "4e949747762f53f8e8dfd56822194420",
+          "target": "9c6b9fd2c6ff15c8d452fd095542d98e"
+        }
+      ]
+    },
+    {
+      "uid": "9c6b9fd2c6ff15c8d452fd095542d98e",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Искал жизнь: эксперимент с мечеными изотопами дал положительный результат, спектрометр органики не нашёл, и спор об этом не закрыт до сих пор. Сейсмометр так и не расчехлился.",
+          "en": "It searched for life: the labelled release experiment came back positive, the spectrometer found no organics, and the argument over it is not closed to this day. The seismometer never did uncage."
+        }
+      },
+      "out": [
+        {
+          "uid": "7631c0827093ea89885a4c0258dc0231",
+          "target": "3c0c96532ee52728a2ccfbac48a41a73"
+        }
+      ]
+    },
+    {
+      "uid": "3c0c96532ee52728a2ccfbac48a41a73",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

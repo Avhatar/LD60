@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "f8c738b14ec57dbcbb20e5fb1be4c20d",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Magellan. Запущен NASA 4 мая 1989 года из грузового отсека шаттла «Атлантис» — первый планетный аппарат, выведенный не ракетой.",
+          "en": "Magellan. Launched by NASA on 4 May 1989 from the cargo bay of the shuttle Atlantis — the first planetary craft deployed by something other than a rocket."
+        }
+      },
+      "out": [
+        {
+          "uid": "38dfa318e4027190fc3a17e0e1fddd67",
+          "target": "c7423868f0eb3c9230cffc679d122252"
+        }
+      ]
+    },
+    {
+      "uid": "c7423868f0eb3c9230cffc679d122252",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Собран преимущественно из запасных частей других программ: большая антенна осталась от «Вояджера», средняя — от «Маринера-9», командный блок — от «Галилея».",
+          "en": "Assembled largely from spare parts of other programs: the high-gain antenna left over from Voyager, the medium-gain one from Mariner 9, the command unit from Galileo."
+        }
+      },
+      "out": [
+        {
+          "uid": "37a707c543ab4f51ea726a7e5a0ddce9",
+          "target": "380d1e1789a4911577d656eddcc7cb06"
+        }
+      ]
+    },
+    {
+      "uid": "380d1e1789a4911577d656eddcc7cb06",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

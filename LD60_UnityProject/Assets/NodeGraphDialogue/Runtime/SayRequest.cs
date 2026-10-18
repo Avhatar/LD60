@@ -10,14 +10,19 @@ namespace NodeGraphAvr.Dialogue
 
         public ActorData Actor { get; }
 
-        public string Text { get; }
+        public LD60.LocalizedString Line { get; }
 
-        internal SayRequest(DialogueRunner runner, ActorData actor, string text)
+        public string Text
+        {
+            get { return Line == null ? "" : Line.Value; }
+        }
+
+        internal SayRequest(DialogueRunner runner, ActorData actor, LD60.LocalizedString line)
         {
             _runner = runner;
             _runVersion = runner.RunVersion;
             Actor = actor;
-            Text = text;
+            Line = line;
         }
 
         public void Advance()

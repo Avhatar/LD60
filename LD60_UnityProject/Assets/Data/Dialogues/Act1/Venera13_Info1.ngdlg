@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "9d1540da1affe405526f557ae243434e",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Венера-13, изделие 4В-1 №309. Запущена СССР 30 октября 1981 года. Спускаемый аппарат отделился и сел на поверхность Венеры 1 марта 1982 года.",
+          "en": "Venera 13, article 4V-1 No. 309. Launched by the USSR on 30 October 1981. The descent module separated and landed on the surface of Venus on 1 March 1982."
+        }
+      },
+      "out": [
+        {
+          "uid": "3e5c3d607764646fb8ed40ce6df9f0f5",
+          "target": "ed6a39e26d7f0b66beb8227d45b9c5ae"
+        }
+      ]
+    },
+    {
+      "uid": "ed6a39e26d7f0b66beb8227d45b9c5ae",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

@@ -6,6 +6,7 @@ namespace LD60
         Dialogue,
         Intro,
         Menu,
-        Vinil
+        Vinil,
+        Ending
     }
 }

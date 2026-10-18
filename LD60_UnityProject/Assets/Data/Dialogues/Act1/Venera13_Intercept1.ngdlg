@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Изделие 4В-1, номер 309. Минута сорок четыре. Наружная температура четыреста пятьдесят семь, давление восемьдесят девять.",
-          "en": ""
+          "en": "Article 4V-1, number 309. Minute forty-four. External temperature four hundred and fifty-seven, pressure eighty-nine."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Расчётный ресурс — тридцать две минуты. Превышение штатное. Передача окончена.",
-          "en": ""
+          "en": "Design life: thirty-two minutes. Overrun is nominal. End of transmission."
         }
       },
       "out": [

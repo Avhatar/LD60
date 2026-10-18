@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "d2fc260c02dc7b2efca32b26027b49bd",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "17 февраля 1998 года его обогнал «Вояджер-1». Последний слабый сигнал приняли 23 января 2003 года с восьмидесяти астрономических единиц.",
+          "en": "On 17 February 1998 Voyager 1 overtook it. The last faint signal was received on 23 January 2003, from eighty astronomical units."
+        }
+      },
+      "out": [
+        {
+          "uid": "f54e14f9ea4b90420863438a78eb6fa4",
+          "target": "7c0bb5c0e3ce18c1b47326246a3cfaa4"
+        }
+      ]
+    },
+    {
+      "uid": "7c0bb5c0e3ce18c1b47326246a3cfaa4",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Расчётный срок службы был двадцать один месяц; он проработал тридцать лет.",
+          "en": "Its design life was twenty-one months; it worked for thirty years."
+        }
+      },
+      "out": [
+        {
+          "uid": "6807ffd158fe512937b6fced2755b11e",
+          "target": "460a11df6aae5ce521a247b94fb7231a"
+        }
+      ]
+    },
+    {
+      "uid": "460a11df6aae5ce521a247b94fb7231a",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

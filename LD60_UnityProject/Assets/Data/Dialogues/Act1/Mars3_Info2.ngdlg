@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+      "name": "Mars3"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "7fa32e22d1197f4c825987d8662e005a",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Через полторы минуты после касания включил передатчик и начал передавать панораму. Передача шла около двадцати секунд и прекратилась.",
+          "en": "A minute and a half after touchdown it switched on the transmitter and began sending a panorama. The transmission ran about twenty seconds and ceased."
+        }
+      },
+      "out": [
+        {
+          "uid": "426244f3efcbcb5352e6abe83069b9d9",
+          "target": "d84053ee6918e4b1c3930abaf235e7bf"
+        }
+      ]
+    },
+    {
+      "uid": "d84053ee6918e4b1c3930abaf235e7bf",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Полученный кадр — ровное серое поле без деталей: на Марсе в те дни бушевала пыльная буря во весь шар.",
+          "en": "The frame received is a flat grey field with no detail: in those days a planet-wide dust storm was raging on Mars."
+        }
+      },
+      "out": [
+        {
+          "uid": "8d49e683c1a0722596b93c10ed47aab1",
+          "target": "48f9f8def83a04720d6a6f1f7564f39c"
+        }
+      ]
+    },
+    {
+      "uid": "48f9f8def83a04720d6a6f1f7564f39c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

@@ -40,5 +40,13 @@ MonoBehaviour:
       \u041F\u0438\u0442\u0430\u043D\u0438\u0435 \u0443 \u043D\u0435\u0433\u043E
       \u043D\u0435 \u043A\u043E\u043D\u0447\u0430\u043B\u043E\u0441\u044C. \u0422\u044B
       \u043D\u0435 \u0443\u0441\u043F\u0435\u043B \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: "Viking 1, Mars. Landed on 20 July 1976 in Chryse \u2014 the first fully
+      successful landing on Mars. Six years of reports, longer than anything else
+      on Mars at the time. On 11 November 1982 an update came from Earth to extend
+      its life; it overwrote the antenna pointing program. Its power never ran out.
+      You never got to ask."
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: a5977ee9bea4fd74e99981415f53fb2c, type: 3}
+  - {fileID: -3764088649234750322, guid: 5b39c74f22ab58e44b13739852ab62de, type: 3}
+  - {fileID: -3764088649234750322, guid: c0ab113484aff0c45b01e6cc4ff13c38, type: 3}
   <DisplayDiameter>k__BackingField: 1.16

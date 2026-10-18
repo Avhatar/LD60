@@ -27,7 +27,7 @@ namespace LD60.UI
             if (_menuRoot != null)
                 _menuRoot.SetActive(false);
 
-            bool wired = Wired(_menuRoot, nameof(_menuRoot), "to show and hide the menu on Esc")
+            bool wired = Wired(_menuRoot, nameof(_menuRoot), "to show and hide the menu on Q")
                          & Wired(_musicLabel, nameof(_musicLabel), "to draw the localized caption of the music row")
                          & Wired(_musicValue, nameof(_musicValue), "to draw the current music volume")
                          & Wired(_musicMinus, nameof(_musicMinus), "to lower the music volume")
@@ -171,7 +171,7 @@ namespace LD60.UI
 
         private static bool ToggleRequested()
         {
-            return Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame;
+            return Keyboard.current != null && Keyboard.current.qKey.wasPressedThisFrame;
         }
     }
 }

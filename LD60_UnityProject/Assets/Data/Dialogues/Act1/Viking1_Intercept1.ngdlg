@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Викинг-1, Хриса. Сводка за сол. Давление семь миллибар, к утру минус восемьдесят.",
-          "en": ""
+          "en": "Viking 1, Chryse. Report for the sol. Pressure seven millibars, minus eighty by morning."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Положение антенны прежнее. Квитанции нет. Передано.",
-          "en": ""
+          "en": "Antenna position unchanged. No acknowledgement. Transmitted."
         }
       },
       "out": [

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5a47c313d880b26e6760082cc39b92ef",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Температура в точке посадки около 457 градусов, давление около 89 атмосфер.",
+          "en": "Temperature at the landing site about 457 degrees, pressure about 89 atmospheres."
+        }
+      },
+      "out": [
+        {
+          "uid": "0a8e61f0657e401de5113c0025d468be",
+          "target": "95a4b693d7c8a9292eb3597cef78f737"
+        }
+      ]
+    },
+    {
+      "uid": "95a4b693d7c8a9292eb3597cef78f737",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Пробурила грунт и определила его как базальт, передала первые цветные панорамы венерианской поверхности. Микрофон на борту записал первый звук, полученный не на Земле.",
+          "en": "It drilled the soil and identified it as basalt, and transmitted the first colour panoramas of the Venusian surface. A microphone on board recorded the first sound ever obtained away from Earth."
+        }
+      },
+      "out": [
+        {
+          "uid": "859bc0445899830a6a69fa2fb88eceb6",
+          "target": "71805c3df21625e32c6923b939f4630c"
+        }
+      ]
+    },
+    {
+      "uid": "71805c3df21625e32c6923b939f4630c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

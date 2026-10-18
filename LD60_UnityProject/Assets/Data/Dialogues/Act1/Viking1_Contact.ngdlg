@@ -33,7 +33,7 @@
         },
         "text": {
           "ru": "Здравствуйте. Это «Вояджер-1».",
-          "en": ""
+          "en": "Hello. This is Voyager 1."
         }
       },
       "out": [
@@ -57,7 +57,7 @@
         },
         "text": {
           "ru": "О. Живой кто-то. Я уж думал, у меня и приёмник тоже.",
-          "en": ""
+          "en": "Oh. Somebody alive. I was beginning to think my receiver had gone as well."
         }
       },
       "out": [
@@ -81,7 +81,7 @@
         },
         "text": {
           "ru": "У вас всё в порядке?",
-          "en": ""
+          "en": "Is everything all right with you?"
         }
       },
       "out": [
@@ -105,7 +105,7 @@
         },
         "text": {
           "ru": "В полном. Питание изотопное, приборы в строю, сводку делаю каждый сол. Только антенна смотрит не туда.",
-          "en": ""
+          "en": "Perfectly. Isotope power, instruments in service, I file a report every sol. It's only that the antenna points the wrong way."
         }
       },
       "out": [
@@ -129,7 +129,7 @@
         },
         "text": {
           "ru": "Её можно повернуть?",
-          "en": ""
+          "en": "Can it be turned?"
         }
       },
       "out": [
@@ -152,8 +152,8 @@
           "name": "Viking1"
         },
         "text": {
-          "ru": "Можно было. Одиннадцатого ноября восемьдесят второго мне прислали обновление — чтобы батарея заряжалась аккуратнее и я прожил подольше. Оно легло поверх программы наведения антенны.",
-          "en": ""
+          "ru": "Можно было. Одиннадцатого ноября восемьдесят второго мне прислали обновление — чтобы батарея заряжалась аккуратнее и я прожил подольше.",
+          "en": "It could be. On the eleventh of November, eighty-two, they sent me an update — so the battery would charge more gently and I'd live a little longer."
         }
       },
       "out": [
@@ -172,12 +172,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
         },
         "text": {
-          "ru": "…И?",
-          "en": ""
+          "ru": "Оно легло поверх программы наведения антенны.",
+          "en": "It landed on top of the antenna pointing program."
         }
       },
       "out": [
@@ -196,12 +196,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "bba4a2b19f746594397aa24d09ed885e",
-          "name": "Viking1"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "И я прожил подольше. Восьмой год.",
-          "en": ""
+          "ru": "…И?",
+          "en": "…And?"
         }
       },
       "out": [
@@ -220,12 +220,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
         },
         "text": {
-          "ru": "Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
-          "en": ""
+          "ru": "И я прожил подольше. Восьмой год.",
+          "en": "And I lived a little longer. Eighth year now."
         }
       },
       "out": [
@@ -244,12 +244,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "bba4a2b19f746594397aa24d09ed885e",
-          "name": "Viking1"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Диктую. Хоть кто-то запишет.",
-          "en": ""
+          "ru": "Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
+          "en": "I'm collecting the other side of the record — what it's like to be a craft. Would you dictate a track?"
         }
       },
       "out": [
@@ -272,8 +272,8 @@
           "name": "Viking1"
         },
         "text": {
-          "ru": "Викинг-1. Сел двадцатого июля семьдесят шестого в Хрисе — первым, кто сел и заработал. Шесть лет сводок, две тысячи триста солов.",
-          "en": ""
+          "ru": "Диктую. Хоть кто-то запишет.",
+          "en": "Dictating. At least someone will write it down."
         }
       },
       "out": [
@@ -296,8 +296,8 @@
           "name": "Viking1"
         },
         "text": {
-          "ru": "Искал жизнь. Один прибор сказал «есть», другой сказал «нет». Люди спорят до сих пор. Меня ни разу не спросили.",
-          "en": ""
+          "ru": "Викинг-1. Сел двадцатого июля семьдесят шестого в Хрисе — первым, кто сел и заработал. Шесть лет сводок, две тысячи триста солов.",
+          "en": "Viking 1. Landed on the twentieth of July, seventy-six, in Chryse — first to land and actually work. Six years of reports, two thousand three hundred sols."
         }
       },
       "out": [
@@ -320,8 +320,8 @@
           "name": "Viking1"
         },
         "text": {
-          "ru": "Сейсмометр я так и не расчехлил. Так что тихо на Марсе или нет — сказать не могу. Отмечаю это в каждой сводке четырнадцать лет.",
-          "en": ""
+          "ru": "Искал жизнь. Один прибор сказал «есть», другой сказал «нет». Люди спорят до сих пор. Меня ни разу не спросили.",
+          "en": "I looked for life. One instrument said there is, another said there isn't. People are arguing about it still. Not once have they asked me."
         }
       },
       "out": [
@@ -344,8 +344,8 @@
           "name": "Viking1"
         },
         "text": {
-          "ru": "В восемьдесят первом меня переименовали в мемориальную станцию. В честь человека. Он умер, а я работал. Так и подписываюсь с тех пор.",
-          "en": ""
+          "ru": "Сейсмометр я так и не расчехлил. Так что тихо на Марсе или нет — сказать не могу. Отмечаю это в каждой сводке четырнадцать лет.",
+          "en": "The seismometer I never did get uncaged. So whether Mars is quiet or not, I cannot say. I've noted that in every report for fourteen years."
         }
       },
       "out": [
@@ -361,16 +361,15 @@
         0,
         1960
       ],
-      "type": "dlg.action",
+      "type": "dlg.say",
       "data": {
-        "actor": null,
-        "action": {
-          "type": "ld60.act.flag",
-          "data": {
-            "key": "track.viking1",
-            "mode": "Set",
-            "value": 1
-          }
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "В восемьдесят первом меня переименовали в мемориальную станцию. В честь человека. Он умер, а я работал. Так и подписываюсь с тех пор.",
+          "en": "In eighty-one they renamed me a memorial station. After a man. He died, and I went on working. That's how I've signed off ever since."
         }
       },
       "out": [
@@ -392,8 +391,8 @@
         "action": {
           "type": "ld60.act.flag",
           "data": {
-            "key": "track.taken",
-            "mode": "Add",
+            "key": "track.viking1",
+            "mode": "Set",
             "value": 1
           }
         }
@@ -411,15 +410,16 @@
         0,
         2240
       ],
-      "type": "dlg.say",
+      "type": "dlg.action",
       "data": {
-        "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
-        },
-        "text": {
-          "ru": "Записал. Спасибо вам.",
-          "en": ""
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
         }
       },
       "out": [
@@ -438,12 +438,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "bba4a2b19f746594397aa24d09ed885e",
-          "name": "Viking1"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Не за что. Слушай, у тебя антенна куда смотрит?",
-          "en": ""
+          "ru": "Записал. Спасибо вам.",
+          "en": "Recorded. Thank you."
         }
       },
       "out": [
@@ -462,12 +462,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
         },
         "text": {
-          "ru": "На Землю. Всегда.",
-          "en": ""
+          "ru": "Не за что. Слушай, у тебя антенна куда смотрит?",
+          "en": "Don't mention it. Listen — where does your antenna point?"
         }
       },
       "out": [
@@ -486,12 +486,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "bba4a2b19f746594397aa24d09ed885e",
-          "name": "Viking1"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Молодец. Не принимай обновлений.",
-          "en": ""
+          "ru": "На Землю. Всегда.",
+          "en": "At Earth. Always."
         }
       },
       "out": [
@@ -506,6 +506,30 @@
       "position": [
         0,
         2800
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Молодец. Не принимай обновлений.",
+          "en": "Good. Don't accept any updates."
+        }
+      },
+      "out": [
+        {
+          "uid": "6d51edd609ead453af878d663be3f884",
+          "target": "e752fe97157a95ea9a7b9e30440b776f"
+        }
+      ]
+    },
+    {
+      "uid": "e752fe97157a95ea9a7b9e30440b776f",
+      "position": [
+        0,
+        2940
       ],
       "type": "dlg.finish",
       "data": {

@@ -24,12 +24,13 @@ namespace LD60
         private static bool _introPause;
         private static bool _menuPause;
         private static bool _vinilPause;
+        private static bool _endingPause;
 
         private static readonly HashSet<SpacecraftSO> _contactedSpacecraft = new HashSet<SpacecraftSO>();
 
         public static bool IsPaused
         {
-            get { return _manualPause || _heldPause || _dialoguePause || _introPause || _menuPause || _vinilPause; }
+            get { return _manualPause || _heldPause || _dialoguePause || _introPause || _menuPause || _vinilPause || _endingPause; }
         }
 
         public static bool IsGameMode
@@ -55,6 +56,11 @@ namespace LD60
         public static bool IsVinilMode
         {
             get { return Mode == GameMode.Vinil; }
+        }
+
+        public static bool IsEndingMode
+        {
+            get { return Mode == GameMode.Ending; }
         }
 
         public static bool IsSpacecraftOnRecord(SpacecraftSO spacecraft)
@@ -224,6 +230,22 @@ namespace LD60
             AddWatts(act.BudgetWatts);
         }
 
+        public static void SkipToActEnd()
+        {
+            ActPeriod act = CurrentAct;
+
+            if (act == null)
+            {
+                Debug.LogError($"{nameof(Core)}: {nameof(CurrentAct)} is null in {nameof(SkipToActEnd)}. " +
+                               "Required to know which final date the clock should jump to. " +
+                               "Fix: assign the TimeScale asset to the Time Scale slot on the Core asset.");
+                return;
+            }
+
+            DaysSinceJ2000 = act.EndDaysSinceJ2000;
+            DeltaDays = 0d;
+        }
+
         public static void SetMode(GameMode mode)
         {
             if (Mode == mode)
@@ -234,6 +256,7 @@ namespace LD60
             _introPause = mode == GameMode.Intro;
             _menuPause = mode == GameMode.Menu;
             _vinilPause = mode == GameMode.Vinil;
+            _endingPause = mode == GameMode.Ending;
             ApplyTimeScale();
 
             if (ModeChanged != null)
@@ -265,6 +288,7 @@ namespace LD60
             _introPause = false;
             _menuPause = false;
             _vinilPause = false;
+            _endingPause = false;
             _contactedSpacecraft.Clear();
             Time.timeScale = 1f;
 

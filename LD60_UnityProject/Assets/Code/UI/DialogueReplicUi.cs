@@ -28,6 +28,9 @@ public class DialogueReplicUi : MonoBehaviour, IPointerClickHandler
     private Coroutine _blinkRoutine;
     private bool _showsOptions;
     private int _characterCount;
+    private LocalizedString _line;
+    private IReadOnlyList<LocalizedString> _optionLines;
+    private Sprite _portrait;
 
     public RectTransform RectTransform
     {
@@ -36,14 +39,17 @@ public class DialogueReplicUi : MonoBehaviour, IPointerClickHandler
 
     public bool IsTyping { get; private set; }
 
-    public void Show(Sprite portrait, string text)
+    public void Show(Sprite portrait, LocalizedString text)
     {
         _owner = null;
         _showsOptions = false;
-        Draw(portrait, text);
+        _optionLines = null;
+        _line = text;
+        _portrait = portrait;
+        Draw(portrait, text == null ? "" : text.Value);
     }
 
-    public void ShowOptions(DialogueUi owner, IReadOnlyList<string> options, Sprite portrait)
+    public void ShowOptions(DialogueUi owner, IReadOnlyList<LocalizedString> options, Sprite portrait)
     {
         if (owner == null || options == null)
         {
@@ -53,18 +59,12 @@ public class DialogueReplicUi : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        _options.Clear();
-        for (int i = 0; i < options.Count; i++)
-        {
-            if (i > 0)
-                _options.Append('\n');
-
-            _options.Append("<link=\"").Append(i).Append("\">").Append(i + 1).Append(". ").Append(options[i]).Append("</link>");
-        }
-
         _owner = owner;
         _showsOptions = true;
-        Draw(portrait, _options.ToString());
+        _line = null;
+        _optionLines = options;
+        _portrait = portrait;
+        Draw(portrait, BuildOptions(options));
     }
 
     public void Hide()
@@ -75,6 +75,8 @@ public class DialogueReplicUi : MonoBehaviour, IPointerClickHandler
         IsTyping = false;
         _owner = null;
         _showsOptions = false;
+        _line = null;
+        _optionLines = null;
         gameObject.SetActive(false);
     }
 
@@ -171,6 +173,58 @@ public class DialogueReplicUi : MonoBehaviour, IPointerClickHandler
             return;
 
         _owner.SelectOption(index);
+    }
+
+    private void OnEnable()
+    {
+        Localization.Changed += ApplyLanguage;
+    }
+
+    private void OnDisable()
+    {
+        Localization.Changed -= ApplyLanguage;
+    }
+
+    private void ApplyLanguage()
+    {
+        if (replicText == null)
+            return;
+
+        if (_showsOptions)
+        {
+            if (_optionLines == null)
+                return;
+
+            Draw(_portrait, BuildOptions(_optionLines));
+            return;
+        }
+
+        if (_line == null)
+            return;
+
+        bool wasTyping = IsTyping;
+        Draw(_portrait, _line.Value);
+
+        if (wasTyping)
+            BeginTyping();
+        else
+            ShowCaret();
+    }
+
+    private string BuildOptions(IReadOnlyList<LocalizedString> options)
+    {
+        _options.Clear();
+
+        for (int i = 0; i < options.Count; i++)
+        {
+            if (i > 0)
+                _options.Append('\n');
+
+            _options.Append("<link=\"").Append(i).Append("\">").Append(i + 1).Append(". ")
+                    .Append(options[i] == null ? "" : options[i].Value).Append("</link>");
+        }
+
+        return _options.ToString();
     }
 
     private void Draw(Sprite portrait, string text)

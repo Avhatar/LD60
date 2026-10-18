@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "f6b674ec379d54fc5c505779a278e9a8",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Viking 1 Lander. Запущен NASA 20 августа 1975 года, сел в равнине Хриса 20 июля 1976 года — первая полностью успешная посадка на Марсе.",
+          "en": "Viking 1 Lander. Launched by NASA on 20 August 1975, landed on Chryse Planitia on 20 July 1976 — the first fully successful landing on Mars."
+        }
+      },
+      "out": [
+        {
+          "uid": "94a0a2aedce948c69f9711b4f14485db",
+          "target": "c99892079740823b5b62e56275197422"
+        }
+      ]
+    },
+    {
+      "uid": "c99892079740823b5b62e56275197422",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "В 1981 году переименован в мемориальную станцию имени Томаса Матча.",
+          "en": "In 1981 it was renamed the Thomas A. Mutch Memorial Station."
+        }
+      },
+      "out": [
+        {
+          "uid": "e1cbda58f4facb1ea09430e8b3ec3db3",
+          "target": "6cc48d79fde1dac4b45ab4d57a4ff0df"
+        }
+      ]
+    },
+    {
+      "uid": "6cc48d79fde1dac4b45ab4d57a4ff0df",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

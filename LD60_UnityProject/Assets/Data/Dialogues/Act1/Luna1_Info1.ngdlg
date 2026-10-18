@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "0e55250cf2dae16cb27de38711841510",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Луна-1, изделие Е-1 №4. Запущена СССР 2 января 1959 года. Первый аппарат, набравший вторую космическую скорость.",
+          "en": "Luna 1, article Ye-1 No. 4. Launched by the USSR on 2 January 1959. The first craft to reach escape velocity."
+        }
+      },
+      "out": [
+        {
+          "uid": "2d15d7266396e6c4bb3cb04744a10496",
+          "target": "46fc9aee300682f0126acbc7897a3478"
+        }
+      ]
+    },
+    {
+      "uid": "46fc9aee300682f0126acbc7897a3478",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

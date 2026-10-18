@@ -36,6 +36,7 @@ public class DialogueUi : MonoBehaviour
     private int _ignoreClickFrame = -1;
     private GameMode _modeBeforePlay;
     private bool _pendingLine;
+    private SpacecraftSO _forcedActor;
 
     public event Action<bool> Finished;
 
@@ -50,6 +51,11 @@ public class DialogueUi : MonoBehaviour
     }
 
     public void Play(DialogueGraph graph)
+    {
+        Play(graph, null);
+    }
+
+    public void Play(DialogueGraph graph, SpacecraftSO forcedActor)
     {
         if (graph == null)
         {
@@ -70,10 +76,11 @@ public class DialogueUi : MonoBehaviour
         Stop();
         Clear();
 
+        _forcedActor = forcedActor;
         _modeBeforePlay = Core.Mode == GameMode.Dialogue ? GameMode.Game : Core.Mode;
         Core.SetMode(GameMode.Dialogue);
         _ignoreClickFrame = Time.frameCount;
-        _player = ResolvePlayer(graph);
+        _player = forcedActor != null && forcedActor.IsPlayer ? forcedActor : ResolvePlayer(graph);
         _instance = Instantiate(graph);
         _instance.RebuildRuntimeState();
 
@@ -85,9 +92,9 @@ public class DialogueUi : MonoBehaviour
         _runner.Play();
     }
 
-    public void PlayLine(SpacecraftSO actor, string text)
+    public void PlayLine(SpacecraftSO actor, LocalizedString text)
     {
-        if (string.IsNullOrEmpty(text))
+        if (text == null || text.IsEmpty)
         {
             Debug.LogError($"{nameof(DialogueUi)}: {nameof(text)} is empty in {nameof(PlayLine)}. " +
                            "Required as the line the speaker puts on screen. " +
@@ -260,7 +267,7 @@ public class DialogueUi : MonoBehaviour
 
     private void OnSayRequested(SayRequest request)
     {
-        SpacecraftSO craft = request.Actor as SpacecraftSO;
+        SpacecraftSO craft = _forcedActor != null ? _forcedActor : request.Actor as SpacecraftSO;
         bool isPlayer = craft != null && craft.IsPlayer;
 
         DialogueReplicUi replic = ResolveReplic(isPlayer);
@@ -271,7 +278,7 @@ public class DialogueUi : MonoBehaviour
         }
 
         HideOtherCaret(isPlayer);
-        replic.Show(craft == null ? null : craft.DialoguePortrait, request.Text);
+        replic.Show(craft == null ? null : craft.DialoguePortrait, request.Line);
         replic.BeginTyping();
 
         _typingReplic = replic;
@@ -362,6 +369,7 @@ public class DialogueUi : MonoBehaviour
 
     private void Release()
     {
+        _forcedActor = null;
         Core.SetMode(_modeBeforePlay);
         HideReplics();
 

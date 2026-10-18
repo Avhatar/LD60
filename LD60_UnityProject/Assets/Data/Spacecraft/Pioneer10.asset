@@ -35,5 +35,11 @@ MonoBehaviour:
       \u0441\u043B\u0430\u0431\u044B\u0439 \u0441\u0438\u0433\u043D\u0430\u043B \u043F\u0440\u0438\u043D\u044F\u043B\u0438
       23 \u044F\u043D\u0432\u0430\u0440\u044F 2003-\u0433\u043E. \u0422\u044B \u043D\u0435
       \u0443\u0441\u043F\u0435\u043B \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: Pioneer 10, free flight. It left first, was humanity's most distant object
+      for fifteen years, and gave that place up to you on 17 February 1998. The last
+      faint signal was received on 23 January 2003. You never got to ask.
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: 89da5e662b7f0ae4290495a276b0afbb, type: 3}
+  - {fileID: -3764088649234750322, guid: acf985ab88465c24f9a54775ddc81e0d, type: 3}
+  - {fileID: -3764088649234750322, guid: 2cb322e3af22d7443908f8dd302f4046, type: 3}
   <DisplayDiameter>k__BackingField: 1.16

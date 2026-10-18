@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "146bb9e6db8d444e1197d7eca7226fac",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "13 октября 1994 года его намеренно свели в атмосферу Венеры. Связь прервалась при входе, аппарат разрушился на следующий день.",
+          "en": "On 13 October 1994 it was deliberately brought down into the atmosphere of Venus. Contact was lost on entry; the craft broke up the following day."
+        }
+      },
+      "out": [
+        {
+          "uid": "a946cb7b8ce6cf4833461697d4c0b2df",
+          "target": "a5588ba09d6cf75bdc60235f2e33464f"
+        }
+      ]
+    },
+    {
+      "uid": "a5588ba09d6cf75bdc60235f2e33464f",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

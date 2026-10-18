@@ -34,7 +34,7 @@ namespace NodeGraphAvr.Dialogue
 
         internal override void Enter(DialogueRunner runner)
         {
-            runner.RaiseSay(new SayRequest(runner, _actor, _text.Value));
+            runner.RaiseSay(new SayRequest(runner, _actor, _text));
         }
     }
 }

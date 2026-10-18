@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "3afb493bbe5be5a2e46336b04a777791",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Должна была попасть в Луну. Прошла мимо примерно в шести тысячах километров и стала первым рукотворным предметом на орбите вокруг Солнца.",
+          "en": "It was meant to strike the Moon. It passed about six thousand kilometres away and became the first man-made object in orbit around the Sun."
+        }
+      },
+      "out": [
+        {
+          "uid": "b12a437b3d38757c97315b1c6d155953",
+          "target": "a0cfb3df741462443d927e86aa9609bf"
+        }
+      ]
+    },
+    {
+      "uid": "a0cfb3df741462443d927e86aa9609bf",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "По пути выпустила килограмм натрия: облако наблюдали с Земли как оранжевую комету.",
+          "en": "On the way it released a kilogram of sodium: the cloud was observed from Earth as an orange comet."
+        }
+      },
+      "out": [
+        {
+          "uid": "15959cc405fd8513e72aa57fe5cd7b59",
+          "target": "e9b74365f975a5588590766a607224e0"
+        }
+      ]
+    },
+    {
+      "uid": "e9b74365f975a5588590766a607224e0",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Первой прямо измерила солнечный ветер и установила, что у Луны нет заметного магнитного поля.",
+          "en": "It made the first direct measurement of the solar wind and established that the Moon has no appreciable magnetic field."
+        }
+      },
+      "out": [
+        {
+          "uid": "6b78325b50bf6e040b9dddf5e310052d",
+          "target": "47ea3a8a9827cedaea2d81ad748040b9"
+        }
+      ]
+    },
+    {
+      "uid": "47ea3a8a9827cedaea2d81ad748040b9",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

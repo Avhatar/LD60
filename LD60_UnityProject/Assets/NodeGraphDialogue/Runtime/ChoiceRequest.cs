@@ -10,9 +10,9 @@ namespace NodeGraphAvr.Dialogue
         private readonly int[] _lineIndices;
         private bool _consumed;
 
-        public IReadOnlyList<string> Options { get; }
+        public IReadOnlyList<LD60.LocalizedString> Options { get; }
 
-        internal ChoiceRequest(DialogueRunner runner, string[] options, int[] lineIndices)
+        internal ChoiceRequest(DialogueRunner runner, LD60.LocalizedString[] options, int[] lineIndices)
         {
             _runner = runner;
             _runVersion = runner.RunVersion;

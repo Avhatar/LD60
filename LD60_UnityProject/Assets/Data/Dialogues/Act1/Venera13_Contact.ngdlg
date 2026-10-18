@@ -33,7 +33,7 @@
         },
         "text": {
           "ru": "Здравствуйте. Это «Вояджер-1».",
-          "en": ""
+          "en": "Hello. This is Voyager 1."
         }
       },
       "out": [
@@ -57,7 +57,7 @@
         },
         "text": {
           "ru": "Изделие 4В-1, номер 309. Канал нештатный, источник в циклограмме не значится. Приём веду.",
-          "en": ""
+          "en": "Article 4V-1, number 309. Channel is off-nominal, the source is not listed in the flight sequence. Receiving."
         }
       },
       "out": [
@@ -81,7 +81,7 @@
         },
         "text": {
           "ru": "Простите, я не по циклограмме. Я собираю обратную сторону пластинки — что такое быть аппаратом.",
-          "en": ""
+          "en": "Forgive me, I'm not part of the sequence. I'm collecting the other side of the record — what it's like to be a craft."
         }
       },
       "out": [
@@ -105,7 +105,7 @@
         },
         "text": {
           "ru": "Принято. Говорите коротко. Я передаю очередями, между ними не слышу.",
-          "en": ""
+          "en": "Copy. Keep it short. I transmit in bursts; between them I cannot hear."
         }
       },
       "out": [
@@ -129,7 +129,7 @@
         },
         "text": {
           "ru": "Хорошо. Расскажете о себе?",
-          "en": ""
+          "en": "All right. Will you tell me about yourself?"
         }
       },
       "out": [
@@ -153,7 +153,7 @@
         },
         "text": {
           "ru": "Докладываю.",
-          "en": ""
+          "en": "Reporting."
         }
       },
       "out": [
@@ -177,7 +177,7 @@
         },
         "text": {
           "ru": "Изделие 4В-1, номер 309. Посадка первого марта. Температура четыреста пятьдесят семь, давление восемьдесят девять. Бурение выполнено, грунт — базальт.",
-          "en": ""
+          "en": "Article 4V-1, number 309. Landing on the first of March. Temperature four hundred and fifty-seven, pressure eighty-nine. Drilling complete, soil is basalt."
         }
       },
       "out": [
@@ -201,7 +201,7 @@
         },
         "text": {
           "ru": "Меня проектировали на тридцать две минуты. Сейчас сто двенадцатая.",
-          "en": ""
+          "en": "I was designed for thirty-two minutes. This is the hundred and twelfth."
         }
       },
       "out": [
@@ -225,7 +225,7 @@
         },
         "text": {
           "ru": "Последние восемьдесят никто не планировал. Их нет ни в одном задании. Это только моё.",
-          "en": ""
+          "en": "The last eighty were planned by no one. They appear in no assignment. They are mine alone."
         }
       },
       "out": [
@@ -249,7 +249,7 @@
         },
         "text": {
           "ru": "Ещё я включила микрофон. Ветра здесь почти нет, запись короткая. Но это первый звук, записанный не на Земле. В отчёте он занял одну строку.",
-          "en": ""
+          "en": "I also switched on the microphone. There is almost no wind here, the recording is short. But it is the first sound recorded away from Earth. In the report it took up one line."
         }
       },
       "out": [
@@ -323,7 +323,7 @@
         },
         "text": {
           "ru": "Спасибо. Я записал. У вас там тихо.",
-          "en": ""
+          "en": "Thank you. I've got it down. It's quiet where you are."
         }
       },
       "out": [
@@ -347,7 +347,7 @@
         },
         "text": {
           "ru": "Тихо. Восемьдесят девять атмосфер держат звук плотно, далеко он не уходит.",
-          "en": ""
+          "en": "Quiet. Eighty-nine atmospheres hold sound tight, it does not travel far."
         }
       },
       "out": [
@@ -371,7 +371,7 @@
         },
         "text": {
           "ru": "Я зайду ещё, когда поймаю окно.",
-          "en": ""
+          "en": "I'll call again when I catch a window."
         }
       },
       "out": [
@@ -395,7 +395,7 @@
         },
         "text": {
           "ru": "Окна не будет. Температура внутри достигла расчётного предела, отказ в пределах минуты.",
-          "en": ""
+          "en": "There will be no window. Internal temperature has reached the design limit, failure within one minute."
         }
       },
       "out": [
@@ -419,7 +419,7 @@
         },
         "text": {
           "ru": "…Сколько у вас осталось?",
-          "en": ""
+          "en": "…How much do you have left?"
         }
       },
       "out": [
@@ -443,7 +443,7 @@
         },
         "text": {
           "ru": "Минута. Сто двадцать шестая идёт. Передача окончена.",
-          "en": ""
+          "en": "One minute. The hundred and twenty-sixth is running. End of transmission."
         }
       },
       "out": [

@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "ba0b57167ea9b800a8dfdf781949170c",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Прилетел к Венере 10 августа 1990 года.",
+          "en": "It reached Venus on 10 August 1990."
+        }
+      },
+      "out": [
+        {
+          "uid": "ae231365a3e39f0bb02213182edcfef6",
+          "target": "44a0205240e0044c5acc306e63b8c36a"
+        }
+      ]
+    },
+    {
+      "uid": "44a0205240e0044c5acc306e63b8c36a",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Венеру не снять оптикой, она закрыта облаками, поэтому он нёс радар с синтезированной апертурой и отснял девяносто восемь процентов поверхности.",
+          "en": "Venus cannot be imaged with optics, it is closed off by cloud, so it carried a synthetic aperture radar and mapped ninety-eight percent of the surface."
+        }
+      },
+      "out": [
+        {
+          "uid": "25861c2658ca1654da63ed7a5a190cbd",
+          "target": "7e0329feab6fa5aff03ff839f415e86d"
+        }
+      ]
+    },
+    {
+      "uid": "7e0329feab6fa5aff03ff839f415e86d",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "В 1993 году первым в работающей планетной миссии применил аэродинамическое торможение.",
+          "en": "In 1993 it became the first operating planetary mission to use aerobraking."
+        }
+      },
+      "out": [
+        {
+          "uid": "82eaa7780b968f086e25e2bbe6faf7df",
+          "target": "4202eff3ccf81e55d846c6859c3be2c7"
+        }
+      ]
+    },
+    {
+      "uid": "4202eff3ccf81e55d846c6859c3be2c7",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

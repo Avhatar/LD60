@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "f136f7ca2f88965517afe53fd797c729",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "11 ноября 1982 года на него загрузили обновление программы заряда батареи, чтобы продлить срок службы.",
+          "en": "On 11 November 1982 an update to the battery charging program was uploaded to it, to extend its service life."
+        }
+      },
+      "out": [
+        {
+          "uid": "5b05b544d02446c4b7e75549407d7565",
+          "target": "e53f64b25d90451e1e9cc75686c8850f"
+        }
+      ]
+    },
+    {
+      "uid": "e53f64b25d90451e1e9cc75686c8850f",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Оно затёрло программу наведения антенны. Связь восстановить не удалось. Питание у него изотопное и не кончалось.",
+          "en": "It overwrote the antenna pointing program. Contact could not be restored. Its power is isotopic and never ran out."
+        }
+      },
+      "out": [
+        {
+          "uid": "3d2ef19214881686d3e8e5c157d7eae6",
+          "target": "fadd9263cd0cccaac67c2338a9a8a53f"
+        }
+      ]
+    },
+    {
+      "uid": "fadd9263cd0cccaac67c2338a9a8a53f",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

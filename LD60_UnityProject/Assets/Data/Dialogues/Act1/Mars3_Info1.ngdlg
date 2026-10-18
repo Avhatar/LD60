@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+      "name": "Mars3"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "6e6592e6e95d8457011ad4aad89516f9",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Марс-3, спускаемый аппарат. Запущен СССР 28 мая 1971 года. Сел на Марс 2 декабря 1971 года — первая мягкая посадка на этой планете.",
+          "en": "Mars 3, descent module. Launched by the USSR on 28 May 1971. Landed on Mars on 2 December 1971 — the first soft landing on that planet."
+        }
+      },
+      "out": [
+        {
+          "uid": "5e466eeaa603a11f36d112bcf2542c70",
+          "target": "58b84b40c77f5ccc9cb480d564406396"
+        }
+      ]
+    },
+    {
+      "uid": "58b84b40c77f5ccc9cb480d564406396",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

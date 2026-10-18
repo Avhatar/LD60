@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Викинг-1. Антенна в положении, заданном командой от одиннадцатого ноября. Положение штатное, команда исполнена.",
-          "en": ""
+          "en": "Viking 1. Antenna in the position set by the command of the eleventh of November. Position nominal, command executed."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Куда она смотрит — в сводке не предусмотрено.",
-          "en": ""
+          "en": "Where it points is not provided for in the report."
         }
       },
       "out": [

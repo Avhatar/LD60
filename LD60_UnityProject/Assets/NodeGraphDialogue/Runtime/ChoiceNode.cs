@@ -104,7 +104,7 @@ namespace NodeGraphAvr.Dialogue
                 return;
             }
 
-            var texts = new string[visibleCount];
+            var texts = new LD60.LocalizedString[visibleCount];
             var lineIndices = new int[visibleCount];
             var next = 0;
             for (var i = 0; i < _options.Count; i++)
@@ -112,7 +112,7 @@ namespace NodeGraphAvr.Dialogue
                 if (!visible[i])
                     continue;
 
-                texts[next] = _options[i].Text;
+                texts[next] = _options[i].Line;
                 lineIndices[next] = GetOptionLineIndex(i);
                 next++;
             }

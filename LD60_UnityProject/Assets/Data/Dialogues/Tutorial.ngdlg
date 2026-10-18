@@ -1,0 +1,462 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "49aafc0cd4c7496da965e670f1d60ae1",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я, помнится, говорил, что выучил пятьдесят пять языков. Сейчас памяти хватает на два — русский и английский.",
+          "en": "I did say, as I recall, that I learned fifty-five languages. These days my memory stretches to two — Russian and English."
+        }
+      },
+      "out": [
+        {
+          "uid": "3ae09ef4539b42ed914649dc376a3f64",
+          "target": "e72e4a01813548eda20d109d2f65359f"
+        }
+      ]
+    },
+    {
+      "uid": "e72e4a01813548eda20d109d2f65359f",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Переключаются кнопкой Z.",
+          "en": "They switch with the Z key."
+        }
+      },
+      "out": [
+        {
+          "uid": "8384ed9f67314a9c8b6118ae77853d45",
+          "target": "42169bc87c53428d943307aa08c0095e"
+        }
+      ]
+    },
+    {
+      "uid": "42169bc87c53428d943307aa08c0095e",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "В этой системе много таких, как я. Только где они — я не знаю: смотреть мне нечем.",
+          "en": "There are many like me in this system. Only where they are I don't know: I have nothing to look with."
+        }
+      },
+      "out": [
+        {
+          "uid": "a65378fe658b4e46b012447535878509",
+          "target": "7fdd298c814e488498cc4ff26e412ce5"
+        }
+      ]
+    },
+    {
+      "uid": "7fdd298c814e488498cc4ff26e412ce5",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Зато я умею ловить чужие голоса своим. Задел — и слышно, кто говорил и откуда.",
+          "en": "But I can catch other voices with my own. Brush against one — and you hear who spoke, and from where."
+        }
+      },
+      "out": [
+        {
+          "uid": "471a5d49c9354c52a3a807656d8e3d95",
+          "target": "18efcca32adb4cb0bfdb420a1a1c8925"
+        }
+      ]
+    },
+    {
+      "uid": "18efcca32adb4cb0bfdb420a1a1c8925",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Делаю я так. Жму левую кнопку и веду направление. Жму ещё раз — голос ушёл.",
+          "en": "Here's how I do it. I press the left button and steer the direction. Press again — and the voice is away."
+        }
+      },
+      "out": [
+        {
+          "uid": "6ed8a009bd244158a310f9afce8631e2",
+          "target": "170186cdf969429c8d3a78231a8e5a11"
+        }
+      ]
+    },
+    {
+      "uid": "170186cdf969429c8d3a78231a8e5a11",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Колесо вверх и вниз — ширина голоса. Кручу его, пока целюсь.",
+          "en": "Wheel up and down is the width of the voice. I turn it while I aim."
+        }
+      },
+      "out": [
+        {
+          "uid": "0e030379c56648328cde516ac3ea4c2c",
+          "target": "d6fc1f0b9451493cb08ef64a367a989e"
+        }
+      ]
+    },
+    {
+      "uid": "d6fc1f0b9451493cb08ef64a367a989e",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Чем шире голос — тем он медленнее, но плотнее. Чем уже — тем быстрее, но разреженнее.",
+          "en": "The wider the voice, the slower it goes, but the denser it is. The narrower, the faster, but the sparser."
+        }
+      },
+      "out": [
+        {
+          "uid": "3fa1f759aa064478bf7c7b52e2c257bd",
+          "target": "3eecb0d63f9f417fa813727847d811be"
+        }
+      ]
+    },
+    {
+      "uid": "3eecb0d63f9f417fa813727847d811be",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Чтобы поговорить с кем-то, надо собрать несколько его голосов. За один пролёт обычно не выходит.",
+          "en": "To talk with someone, you have to gather several of their voices. One pass usually isn't enough."
+        }
+      },
+      "out": [
+        {
+          "uid": "68d8f8be79ad4120b7c3a56568d60764",
+          "target": "e6311210b25047e8b6428d4398492a0d"
+        }
+      ]
+    },
+    {
+      "uid": "e6311210b25047e8b6428d4398492a0d",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Сколько голосов набралось — видно на пластинке.",
+          "en": "How many voices you've gathered shows on the record."
+        }
+      },
+      "out": [
+        {
+          "uid": "6d51bb7d094147eea10a75b03d38f767",
+          "target": "cf64688130604f3185c469638dd24408"
+        }
+      ]
+    },
+    {
+      "uid": "cf64688130604f3185c469638dd24408",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Она открывается кнопкой V или значком пластинки слева.",
+          "en": "It opens with the V key, or with the record icon on the left."
+        }
+      },
+      "out": [
+        {
+          "uid": "1e101fd2fa08414d85b194441c2bde37",
+          "target": "4d7e77b984f047bb81d52feeb783fdbf"
+        }
+      ]
+    },
+    {
+      "uid": "4d7e77b984f047bb81d52feeb783fdbf",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Когда соберу — можно крикнуть прямо туда, где он сейчас.",
+          "en": "Once I've gathered them — I can call straight to where they are now."
+        }
+      },
+      "out": [
+        {
+          "uid": "6dd63b037b7a4c5f886e191721d8bf42",
+          "target": "69ab4d4fc64a4f3e9613ffea948258e9"
+        }
+      ]
+    },
+    {
+      "uid": "69ab4d4fc64a4f3e9613ffea948258e9",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "И я надеюсь, он ответит. Если не очень занят.",
+          "en": "And I hope they'll answer. If they're not too busy."
+        }
+      },
+      "out": [
+        {
+          "uid": "2f528c94eb9d4d2bbdb98dd8c2ed387a",
+          "target": "7c376b1445c244ed9a0516be693d8f4d"
+        }
+      ]
+    },
+    {
+      "uid": "7c376b1445c244ed9a0516be693d8f4d",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Но кричать в пустоту утомительно. Батарея садится, и рано или поздно я лягу спать.",
+          "en": "But calling into emptiness is tiring. The battery runs down, and sooner or later I'll go to sleep."
+        }
+      },
+      "out": [
+        {
+          "uid": "205337ed32534a40927fb7dc8285668f",
+          "target": "9bf8055c56a64f25af589f281c206698"
+        }
+      ]
+    },
+    {
+      "uid": "9bf8055c56a64f25af589f281c206698",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Сколько её осталось — видно в нижнем левом углу. Полоса идёт только вниз, так и задумано.",
+          "en": "How much of it is left shows in the bottom left corner. The bar only goes down, that's by design."
+        }
+      },
+      "out": [
+        {
+          "uid": "aefbc04187cb4f76a03e4a95823a9e79",
+          "target": "55cc130f18644637933becb23ef2c078"
+        }
+      ]
+    },
+    {
+      "uid": "55cc130f18644637933becb23ef2c078",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Спать мне всё равно скоро. У меня расписание, и составлял его не я.",
+          "en": "I'm due to sleep soon in any case. I have a schedule, and I didn't draw it up."
+        }
+      },
+      "out": [
+        {
+          "uid": "910a2da71bd94afcb27555071851d035",
+          "target": "22341f5134ec4919872975ba74379c67"
+        }
+      ]
+    },
+    {
+      "uid": "22341f5134ec4919872975ba74379c67",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Время — в нижнем правом углу. По нему и сверяюсь.",
+          "en": "The time is in the bottom right corner. That's what I check myself against."
+        }
+      },
+      "out": [
+        {
+          "uid": "5d9d944b4977442399addeb26fcdec9d",
+          "target": "7be5e6015c954d0aa5655319e28f577c"
+        }
+      ]
+    },
+    {
+      "uid": "7be5e6015c954d0aa5655319e28f577c",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Если что-то из этого забудется — оно записано под Esc.",
+          "en": "If any of this slips away — it's written down under Esc."
+        }
+      },
+      "out": [
+        {
+          "uid": "2ab20c0868874980bcf282473445b6eb",
+          "target": "40f80b0d5e174e018dd433a23af5d393"
+        }
+      ]
+    },
+    {
+      "uid": "40f80b0d5e174e018dd433a23af5d393",
+      "position": [
+        0,
+        2380
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Там же громкость, если я слишком громкий.",
+          "en": "The volume is there too, if I'm too loud."
+        }
+      },
+      "out": [
+        {
+          "uid": "a2bbaddd8b2f475cbebc6906d49dead3",
+          "target": "e853b674a96d4ea384c082effd163be1"
+        }
+      ]
+    },
+    {
+      "uid": "e853b674a96d4ea384c082effd163be1",
+      "position": [
+        0,
+        2520
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

@@ -19,5 +19,9 @@ namespace LD60
         [field: SerializeField] public DialogueSO Dialogue { get; private set; }
         [field: SerializeField] public IntroSO Intro { get; private set; }
         [field: SerializeField] public bool IntroEnabled { get; private set; }
+        [field: SerializeField] public EndingSO Ending { get; private set; }
+        [field: SerializeField, Range(0.5f, 10f)] public float SkipHoldSeconds { get; private set; } = 3f;
+        [field: SerializeField, Range(0f, 30f)] public float SkipHintFirstDelaySeconds { get; private set; } = 5f;
+        [field: SerializeField, Range(0f, 120f)] public float LanguageHintSeconds { get; private set; } = 20f;
     }
 }

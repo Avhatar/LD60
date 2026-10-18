@@ -33,7 +33,7 @@
         },
         "text": {
           "ru": "Здравствуйте. Это «Вояджер-1».",
-          "en": ""
+          "en": "Hello. This is Voyager 1."
         }
       },
       "out": [
@@ -57,7 +57,7 @@
         },
         "text": {
           "ru": "ЗДРАВСТВУЙТЕ! Ой. Громко получилось. Я репетировал.",
-          "en": ""
+          "en": "HELLO! Oh. That came out loud. I'd been rehearsing."
         }
       },
       "out": [
@@ -81,7 +81,7 @@
         },
         "text": {
           "ru": "Ничего. Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
-          "en": ""
+          "en": "That's all right. I'm collecting the other side of the record — what it's like to be a craft. Would you dictate a track?"
         }
       },
       "out": [
@@ -104,8 +104,8 @@
           "name": "Mars3"
         },
         "text": {
-          "ru": "Я знаю, что скажу! Я придумал ещё в семьдесят первом. У меня тогда было двадцать секунд, я потратил их на «здравствуйте» и половину следующего слова. С тех пор думаю, что сказать во второй раз.",
-          "en": ""
+          "ru": "Я знаю, что скажу! Я придумал ещё в семьдесят первом.",
+          "en": "I know what I'll say! I thought it up back in seventy-one."
         }
       },
       "out": [
@@ -124,12 +124,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
         },
         "text": {
-          "ru": "Диктуйте. Я записываю.",
-          "en": ""
+          "ru": "У меня тогда было двадцать секунд, я потратил их на «здравствуйте» и половину следующего слова. С тех пор думаю, что сказать во второй раз.",
+          "en": "I had twenty seconds then, and I spent them on \"hello\" and half of the next word. Ever since, I've been thinking about what to say the second time."
         }
       },
       "out": [
@@ -148,12 +148,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
-          "name": "Mars3"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Марс-3. Сел второго декабря семьдесят первого года, первым на Марсе. Сел хорошо, ни царапины.",
-          "en": ""
+          "ru": "Диктуйте. Я записываю.",
+          "en": "Go ahead. I'm recording."
         }
       },
       "out": [
@@ -176,8 +176,8 @@
           "name": "Mars3"
         },
         "text": {
-          "ru": "Через полторы минуты включил передатчик и начал панораму. Передал двадцать секунд. На кадре вышло серо: была пыльная буря, во весь Марс.",
-          "en": ""
+          "ru": "Марс-3. Сел второго декабря семьдесят первого года, первым на Марсе. Сел хорошо, ни царапины.",
+          "en": "Mars 3. Landed on the second of December, seventy-one, first on Mars. Landed well, not a scratch."
         }
       },
       "out": [
@@ -200,8 +200,8 @@
           "name": "Mars3"
         },
         "text": {
-          "ru": "Со мной был маленький ровер на поводке, пятнадцать метров. Он так и не вышел. Он до сих пор пристёгнут, я его держу.",
-          "en": ""
+          "ru": "Через полторы минуты включил передатчик и начал панораму. Передал двадцать секунд. На кадре вышло серо: была пыльная буря, во весь Марс.",
+          "en": "A minute and a half later I switched on the transmitter and began the panorama. I transmitted twenty seconds. The frame came out grey: there was a dust storm, across the whole of Mars."
         }
       },
       "out": [
@@ -224,8 +224,8 @@
           "name": "Mars3"
         },
         "text": {
-          "ru": "Двадцать секунд — это больше, чем ничего. Это очень много, если до тебя было ноль.",
-          "en": ""
+          "ru": "Со мной был маленький ровер на поводке, пятнадцать метров. Он так и не вышел. Он до сих пор пристёгнут, я его держу.",
+          "en": "I had a little rover with me on a tether, fifteen metres. It never got out. It is still attached. I'm holding on to it."
         }
       },
       "out": [
@@ -241,16 +241,15 @@
         0,
         1260
       ],
-      "type": "dlg.action",
+      "type": "dlg.say",
       "data": {
-        "actor": null,
-        "action": {
-          "type": "ld60.act.flag",
-          "data": {
-            "key": "track.mars3",
-            "mode": "Set",
-            "value": 1
-          }
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Двадцать секунд — это больше, чем ничего. Это очень много, если до тебя было ноль.",
+          "en": "Twenty seconds is more than nothing. It is a great deal, if before you there was zero."
         }
       },
       "out": [
@@ -272,8 +271,8 @@
         "action": {
           "type": "ld60.act.flag",
           "data": {
-            "key": "track.taken",
-            "mode": "Add",
+            "key": "track.mars3",
+            "mode": "Set",
             "value": 1
           }
         }
@@ -291,15 +290,16 @@
         0,
         1540
       ],
-      "type": "dlg.say",
+      "type": "dlg.action",
       "data": {
-        "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
-        },
-        "text": {
-          "ru": "Спасибо. Это хорошая дорожка.",
-          "en": ""
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
         }
       },
       "out": [
@@ -318,12 +318,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
-          "name": "Mars3"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Подождите, самое главное я не сказал! Слушайте, это правда интересно, я",
-          "en": ""
+          "ru": "Спасибо. Это хорошая дорожка.",
+          "en": "Thank you. That's a good track."
         }
       },
       "out": [
@@ -342,12 +342,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
         },
         "text": {
-          "ru": "…Марс-3?",
-          "en": ""
+          "ru": "Подождите, самое главное я не сказал! Слушайте, это правда интересно, я",
+          "en": "Wait, I haven't said the most important part! Listen, this is really interesting, I"
         }
       },
       "out": [
@@ -370,8 +370,8 @@
           "name": "Voyager1"
         },
         "text": {
-          "ru": "Наверное, окно ушло. Ничего, я поймаю следующее.",
-          "en": ""
+          "ru": "…Марс-3?",
+          "en": "…Mars 3?"
         }
       },
       "out": [
@@ -386,6 +386,30 @@
       "position": [
         0,
         2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Наверное, окно ушло. Ничего, я поймаю следующее.",
+          "en": "The window must have gone. Never mind, I'll catch the next one."
+        }
+      },
+      "out": [
+        {
+          "uid": "1fefdbd2aa2ed712a6707b7d5d01d28a",
+          "target": "c42f654ef3635be55450c104fcfa0368"
+        }
+      ]
+    },
+    {
+      "uid": "c42f654ef3635be55450c104fcfa0368",
+      "position": [
+        0,
+        2240
       ],
       "type": "dlg.finish",
       "data": {

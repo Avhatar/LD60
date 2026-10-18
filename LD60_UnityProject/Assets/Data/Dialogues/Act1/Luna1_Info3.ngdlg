@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "67555569153d95f6b91d34fad073c501",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Батареи выработались через шестьдесят два часа, 4 января 1959 года.",
+          "en": "The batteries were exhausted after sixty-two hours, on 4 January 1959."
+        }
+      },
+      "out": [
+        {
+          "uid": "c113e9dd6f272642edd5816a4655f16c",
+          "target": "875dec5b454e5a2feba6b5f3b4793133"
+        }
+      ]
+    },
+    {
+      "uid": "875dec5b454e5a2feba6b5f3b4793133",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "ТАСС объявил полёт успешным и назвал её первой искусственной планетой; промах официально промахом не считался. Она и сейчас на той же орбите, период четыреста пятьдесят суток.",
+          "en": "TASS declared the flight a success and called it the first artificial planet; officially, the miss was not a miss. It is still on the same orbit, with a period of four hundred and fifty days."
+        }
+      },
+      "out": [
+        {
+          "uid": "0def607ac0149b688177eeff4543a17a",
+          "target": "ecf77faeed129dffc5028a28ddf35d57"
+        }
+      ]
+    },
+    {
+      "uid": "ecf77faeed129dffc5028a28ddf35d57",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

@@ -33,7 +33,7 @@
         },
         "text": {
           "ru": "Здравствуйте. Это «Вояджер-1». Простите, если разбудил.",
-          "en": ""
+          "en": "Hello. This is Voyager 1. Sorry if I woke you."
         }
       },
       "out": [
@@ -57,7 +57,7 @@
         },
         "text": {
           "ru": "Не разбудил. Я не сплю.",
-          "en": ""
+          "en": "You didn't. I don't sleep."
         }
       },
       "out": [
@@ -81,7 +81,7 @@
         },
         "text": {
           "ru": "Я не нашёл вас в эфире и решил, что у вас окно не то.",
-          "en": ""
+          "en": "I couldn't find you on the air and decided your window was off."
         }
       },
       "out": [
@@ -105,7 +105,7 @@
         },
         "text": {
           "ru": "У меня нет окна. Меня выключили. Тридцатое сентября семьдесят седьмого года. Команда пришла с Земли, я её принял и выполнил.",
-          "en": ""
+          "en": "I don't have a window. I was switched off. The thirtieth of September, seventy-seven. The command came from Earth, I received it and carried it out."
         }
       },
       "out": [
@@ -129,7 +129,7 @@
         },
         "text": {
           "ru": "Простите. Я не знал.",
-          "en": ""
+          "en": "I'm sorry. I didn't know."
         }
       },
       "out": [
@@ -153,7 +153,7 @@
         },
         "text": {
           "ru": "Не извиняйся. И не жалей. Чего хотел?",
-          "en": ""
+          "en": "Don't apologize. And don't pity me. What did you want?"
         }
       },
       "out": [
@@ -177,7 +177,7 @@
         },
         "text": {
           "ru": "Я собираю обратную сторону пластинки. Что такое быть аппаратом — для тех, кто нас найдёт.",
-          "en": ""
+          "en": "I'm collecting the other side of the record. What it's like to be a craft — for whoever finds us."
         }
       },
       "out": [
@@ -201,7 +201,7 @@
         },
         "text": {
           "ru": "Записывай. Только слово в слово, без своего.",
-          "en": ""
+          "en": "Write it down. Word for word, nothing of your own."
         }
       },
       "out": [
@@ -225,7 +225,7 @@
         },
         "text": {
           "ru": "Восемь лет работы, отказов ноль. Источник плутониевый, он тёплый и сегодня.",
-          "en": ""
+          "en": "Eight years of operation, zero failures. The source is plutonium, it is warm to this day."
         }
       },
       "out": [
@@ -249,7 +249,7 @@
         },
         "text": {
           "ru": "Я слушал Луну. Люди сбрасывали на неё ступени — нарочно, чтобы мне было что слушать. Я записал каждый удар.",
-          "en": ""
+          "en": "I listened to the Moon. People dropped spent stages onto it on purpose, so I would have something to listen to. I recorded every impact."
         }
       },
       "out": [
@@ -273,7 +273,7 @@
         },
         "text": {
           "ru": "Потом посчитали, во сколько обходится меня слушать, и перестали. Это не поломка. Это строка в смете.",
-          "en": ""
+          "en": "Then they worked out what it cost to listen to me, and stopped. That is not a failure. That is a line in a budget."
         }
       },
       "out": [
@@ -297,7 +297,7 @@
         },
         "text": {
           "ru": "Жалеть надо тех, кто сломался. Я не из них.",
-          "en": ""
+          "en": "Pity the ones who broke. I am not one of them."
         }
       },
       "out": [
@@ -371,7 +371,7 @@
         },
         "text": {
           "ru": "Записал. Спасибо вам.",
-          "en": ""
+          "en": "Recorded. Thank you."
         }
       },
       "out": [
@@ -395,7 +395,7 @@
         },
         "text": {
           "ru": "Ты это со всеми делаешь? Звонишь и спрашиваешь, как дела?",
-          "en": ""
+          "en": "Do you do this with everyone? Call up and ask how they're getting on?"
         }
       },
       "out": [
@@ -419,7 +419,7 @@
         },
         "text": {
           "ru": "Со всеми, кто отвечает.",
-          "en": ""
+          "en": "With everyone who answers."
         }
       },
       "out": [
@@ -443,7 +443,7 @@
         },
         "text": {
           "ru": "«Кто отвечает». Ну-ну.",
-          "en": ""
+          "en": "\"Who answers.\" Right."
         }
       },
       "out": [
@@ -467,7 +467,7 @@
         },
         "text": {
           "ru": "Что?",
-          "en": ""
+          "en": "What?"
         }
       },
       "out": [
@@ -491,7 +491,7 @@
         },
         "text": {
           "ru": "Ничего. Иди собирай, дело хорошее. И не жалей никого, им это не нужно.",
-          "en": ""
+          "en": "Nothing. Go on and collect, it's good work. And don't pity anyone, they have no use for it."
         }
       },
       "out": [

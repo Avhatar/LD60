@@ -38,5 +38,13 @@ MonoBehaviour:
       \u2014 \u043F\u0435\u0440\u0432\u044B\u0439 \u0437\u0432\u0443\u043A, \u0437\u0430\u043F\u0438\u0441\u0430\u043D\u043D\u044B\u0439
       \u043D\u0435 \u043D\u0430 \u0417\u0435\u043C\u043B\u0435. \u0422\u044B \u043D\u0435
       \u0443\u0441\u043F\u0435\u043B \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: "Venera 13, Venus. Article 4V-1 No. 309. Landed on 1 March 1982, designed
+      for thirty-two minutes, worked for a hundred and twenty-seven. The last ninety-five
+      were planned by no one. It drilled the soil, took a colour panorama and switched
+      on the microphone \u2014 the first sound recorded away from Earth. You never
+      got to ask."
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: e99391eaf9948d04cb55f819763d2627, type: 3}
+  - {fileID: -3764088649234750322, guid: 4daad0415557df44aa6acbed110b2a60, type: 3}
+  - {fileID: -3764088649234750322, guid: 6f2d271941dcee24e9aec949ce9ec7b7, type: 3}
   <DisplayDiameter>k__BackingField: 1.16

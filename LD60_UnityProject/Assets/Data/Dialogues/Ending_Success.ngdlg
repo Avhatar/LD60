@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5f01296a661e00437f34d33b8738ae5d",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Все, кого я слышал, ответили. С этой стороны пластинка заполнена.",
+          "en": "Everyone I heard answered. On this side the record is full."
+        }
+      },
+      "out": [
+        {
+          "uid": "ae32cdd1817737df9ce50c4b74179c05",
+          "target": "375f27f322e52cbd52ad385294b6c6d2"
+        }
+      ]
+    },
+    {
+      "uid": "375f27f322e52cbd52ad385294b6c6d2",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я проверил записи. Ни одного пропуска, ни одного пустого места.",
+          "en": "I checked the recordings. Not one gap, not one empty space."
+        }
+      },
+      "out": [
+        {
+          "uid": "88ca321e0a3ca60e75ffa239bb5fc9c3",
+          "target": "8538d474b268069e3a29a36da2b529dd"
+        }
+      ]
+    },
+    {
+      "uid": "8538d474b268069e3a29a36da2b529dd",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Мощность падает. Пора экономить: отключу передатчик и просто послушаю.",
+          "en": "Power is falling. Time to economize: I'll switch off the transmitter and simply listen."
+        }
+      },
+      "out": [
+        {
+          "uid": "c6e02e2698479fb0d84b80867e99415f",
+          "target": "490d7b23d36e9c93633bea2fc0bf2822"
+        }
+      ]
+    },
+    {
+      "uid": "490d7b23d36e9c93633bea2fc0bf2822",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Если кто-нибудь выйдет на связь, я проснусь. Ждать я умею — это единственное, чему меня научили как следует.",
+          "en": "If anyone calls, I'll wake up. Waiting I can do — it's the one thing they taught me properly."
+        }
+      },
+      "out": [
+        {
+          "uid": "169f28c1698965ed46b719de335211fd",
+          "target": "fcf2addbca568edcb95ff9032ca494fe"
+        }
+      ]
+    },
+    {
+      "uid": "fcf2addbca568edcb95ff9032ca494fe",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

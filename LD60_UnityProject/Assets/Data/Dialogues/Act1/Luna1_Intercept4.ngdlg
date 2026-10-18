@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Изделие Е-1. В межпланетном пространстве присутствует поток заряженных частиц.",
-          "en": ""
+          "en": "Article Ye-1. A stream of charged particles is present in interplanetary space."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Прибором не предусмотрен. Передаю как есть.",
-          "en": ""
+          "en": "Not provided for by the instrument. Transmitting as is."
         }
       },
       "out": [

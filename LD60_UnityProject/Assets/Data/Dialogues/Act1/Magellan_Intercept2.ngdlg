@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Магеллан. Радар протестирован вхолостую, работает. Протестирую ещё раз завтра.",
-          "en": ""
+          "en": "Magellan. Radar tested dry, it works. I'll test it again tomorrow."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Венера вся в облаках, оптикой её не снять. А я могу сквозь.",
-          "en": ""
+          "en": "Venus is all cloud, you can't image it with optics. But I can see through."
         }
       },
       "out": [

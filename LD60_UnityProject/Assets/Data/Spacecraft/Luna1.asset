@@ -38,5 +38,12 @@ MonoBehaviour:
       \u0434\u0432\u0430\u0434\u0446\u0430\u0442\u044C \u0448\u0435\u0441\u0442\u043E\u0439
       \u0432\u0438\u0442\u043E\u043A. \u0422\u044B \u043D\u0435 \u0443\u0441\u043F\u0435\u043B
       \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: Luna 1 "Mechta", solar orbit. It aimed for the Moon, passed it by six thousand
+      kilometres and became humanity's first object in orbit around the Sun. It transmitted
+      for sixty-two hours, from 2 to 4 January 1959. Still there, on its twenty-sixth
+      lap. You never got to ask.
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: 4f6cce877a516c84d85a56e00fdf1eb5, type: 3}
+  - {fileID: -3764088649234750322, guid: 9b3c7ad19cd5f7d4b98bd93033148791, type: 3}
+  - {fileID: -3764088649234750322, guid: d976964d42a4d5a4dad543386e85fc7a, type: 3}
   <DisplayDiameter>k__BackingField: 1.16

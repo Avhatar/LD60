@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "2d47a86b83a17674a971c5e86a793c02",
+      "name": "Alsep"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5db6b5675ecd9958a8316c7b51c3bf8d",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "30 сентября 1977 года NASA отправило команду на выключение. Решение было бюджетным — около миллиона долларов в год.",
+          "en": "On 30 September 1977 NASA sent the shutdown command. The decision was budgetary — about a million dollars a year."
+        }
+      },
+      "out": [
+        {
+          "uid": "0c37945349d918750032d44707201941",
+          "target": "5758408bb07199c77003e403eca9d750"
+        }
+      ]
+    },
+    {
+      "uid": "5758408bb07199c77003e403eca9d750",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Все станции на тот момент были исправны, а источники питания продолжали греть ещё десятилетия.",
+          "en": "Every station was in working order at the time, and the power sources went on giving off heat for decades."
+        }
+      },
+      "out": [
+        {
+          "uid": "807064fb1408d14dcc244dc9d5eea57d",
+          "target": "136ca81b7153ed488a095b8926a09710"
+        }
+      ]
+    },
+    {
+      "uid": "136ca81b7153ed488a095b8926a09710",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

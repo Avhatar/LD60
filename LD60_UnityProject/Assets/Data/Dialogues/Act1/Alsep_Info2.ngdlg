@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "2d47a86b83a17674a971c5e86a793c02",
+      "name": "Alsep"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "d67c717d5d2e4c596960e0d7c72efd1d",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Сейсмометры, магнитометры, датчики солнечного ветра и пыли.",
+          "en": "Seismometers, magnetometers, solar wind and dust detectors."
+        }
+      },
+      "out": [
+        {
+          "uid": "26d2668e6c8687d93f79293e73db70fd",
+          "target": "66cf78a3c7da454fc8fc7b4ccfd8e510"
+        }
+      ]
+    },
+    {
+      "uid": "66cf78a3c7da454fc8fc7b4ccfd8e510",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Отработавшие ступени роняли на Луну намеренно, чтобы станции записали удар и по нему прочитали её внутреннее строение.",
+          "en": "Spent stages were dropped onto the Moon deliberately, so the stations would record the impact and read its interior structure from it."
+        }
+      },
+      "out": [
+        {
+          "uid": "f620c2fcc2bc3678cc4c90465a0bdd29",
+          "target": "d4caf3d4b8c6b79342bb4d5862f2a61c"
+        }
+      ]
+    },
+    {
+      "uid": "d4caf3d4b8c6b79342bb4d5862f2a61c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

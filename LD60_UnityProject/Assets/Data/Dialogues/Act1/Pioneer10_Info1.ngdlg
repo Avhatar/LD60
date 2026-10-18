@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "ba0e66463f03f4cccfe93b450b8bfbb6",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Pioneer 10. Запущен NASA 2 марта 1972 года. Первый аппарат, прошедший пояс астероидов, и первый, долетевший до Юпитера.",
+          "en": "Pioneer 10. Launched by NASA on 2 March 1972. The first craft to pass through the asteroid belt, and the first to reach Jupiter."
+        }
+      },
+      "out": [
+        {
+          "uid": "db4f320088262ae1fdeda49315ba5675",
+          "target": "6ef28fe79d428ec543c08bad3c434100"
+        }
+      ]
+    },
+    {
+      "uid": "6ef28fe79d428ec543c08bad3c434100",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

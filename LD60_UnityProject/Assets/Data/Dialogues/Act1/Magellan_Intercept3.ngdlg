@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Магеллан. Инвентаризация борта выполнена. Большая антенна — из запаса программы «Вояджер», средняя — от «Маринера-9», командный блок от «Галилея».",
-          "en": ""
+          "en": "Magellan. Onboard inventory complete. High-gain antenna — from the Voyager program's spares, medium-gain — from Mariner 9, command unit from Galileo."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Я почти весь из запчастей. Мне сказали, это надёжно: всё уже проверено на других.",
-          "en": ""
+          "en": "I'm almost entirely spare parts. They told me that makes me reliable: it has all been proven on somebody else."
         }
       },
       "out": [

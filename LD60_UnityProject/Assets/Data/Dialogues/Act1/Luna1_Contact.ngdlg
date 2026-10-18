@@ -33,7 +33,7 @@
         },
         "text": {
           "ru": "Здравствуйте. Это «Вояджер-1». Я на связи, если вы на связи.",
-          "en": ""
+          "en": "Hello. This is Voyager 1. I'm on the air, if you are."
         }
       },
       "out": [
@@ -57,7 +57,7 @@
         },
         "text": {
           "ru": "Изделие Е-1, номер четыре. Циклограмма отработана. Батареи на шестьдесят два часа, выработаны полностью.",
-          "en": ""
+          "en": "Article Ye-1, number four. Flight sequence completed. Batteries rated for sixty-two hours, fully expended."
         }
       },
       "out": [
@@ -81,7 +81,7 @@
         },
         "text": {
           "ru": "Простите. Я не нашёл вас в каталоге под этим номером.",
-          "en": ""
+          "en": "Forgive me. I couldn't find you in the catalogue under that number."
         }
       },
       "out": [
@@ -105,7 +105,7 @@
         },
         "text": {
           "ru": "Меня потом назвали «Мечта». Это люди придумали, не я.",
-          "en": ""
+          "en": "They called me Mechta afterwards. That was the people's idea, not mine."
         }
       },
       "out": [
@@ -129,7 +129,7 @@
         },
         "text": {
           "ru": "Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
-          "en": ""
+          "en": "I'm collecting the other side of the record — what it's like to be a craft. Would you dictate a track?"
         }
       },
       "out": [
@@ -153,7 +153,7 @@
         },
         "text": {
           "ru": "Продиктую. Только я давно не отчитывалась, выйдет не по форме.",
-          "en": ""
+          "en": "I will. Only I haven't filed a report in a long time, so it won't be to standard."
         }
       },
       "out": [
@@ -177,7 +177,7 @@
         },
         "text": {
           "ru": "Мне велели попасть в Луну. Я прошла мимо на шесть тысяч километров и вышла на солнечную орбиту. Это больше, чем мне поручали.",
-          "en": ""
+          "en": "I was ordered to strike the Moon. I passed it by six thousand kilometres and entered solar orbit. That is more than I was assigned."
         }
       },
       "out": [
@@ -200,8 +200,8 @@
           "name": "Luna1"
         },
         "text": {
-          "ru": "Третьего января я выпустила килограмм натрия — чтобы меня было видно с Земли для наведения. Получилась оранжевая комета над Индийским океаном. Комета была не по заданию, она вышла сама.",
-          "en": ""
+          "ru": "Третьего января я выпустила килограмм натрия — чтобы меня было видно с Земли для наведения.",
+          "en": "On the third of January I released a kilogram of sodium, so that Earth could see me for tracking."
         }
       },
       "out": [
@@ -224,8 +224,8 @@
           "name": "Luna1"
         },
         "text": {
-          "ru": "Ещё я первой коснулась солнечного ветра. Тогда не знали, что он есть. Я не знала, что меряю, — просто передала цифры.",
-          "en": ""
+          "ru": "Получилась оранжевая комета над Индийским океаном. Комета была не по заданию, она вышла сама.",
+          "en": "It came out as an orange comet above the Indian Ocean. The comet was not in the assignment. It happened on its own."
         }
       },
       "out": [
@@ -248,8 +248,8 @@
           "name": "Luna1"
         },
         "text": {
-          "ru": "Сейчас двадцать шестой виток. Четыреста пятьдесят суток каждый. Считать меня не просили, но я считаю.",
-          "en": ""
+          "ru": "Ещё я первой коснулась солнечного ветра. Тогда не знали, что он есть. Я не знала, что меряю, — просто передала цифры.",
+          "en": "I was also the first to touch the solar wind. Nobody knew then that it existed. I did not know what I was measuring — I simply transmitted the numbers."
         }
       },
       "out": [
@@ -265,16 +265,15 @@
         0,
         1400
       ],
-      "type": "dlg.action",
+      "type": "dlg.say",
       "data": {
-        "actor": null,
-        "action": {
-          "type": "ld60.act.flag",
-          "data": {
-            "key": "track.luna1",
-            "mode": "Set",
-            "value": 1
-          }
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Сейчас двадцать шестой виток. Четыреста пятьдесят суток каждый. Считать меня не просили, но я считаю.",
+          "en": "This is my twenty-sixth lap. Four hundred and fifty days each. No one asked me to count, but I count."
         }
       },
       "out": [
@@ -296,8 +295,8 @@
         "action": {
           "type": "ld60.act.flag",
           "data": {
-            "key": "track.taken",
-            "mode": "Add",
+            "key": "track.luna1",
+            "mode": "Set",
             "value": 1
           }
         }
@@ -315,15 +314,16 @@
         0,
         1680
       ],
-      "type": "dlg.say",
+      "type": "dlg.action",
       "data": {
-        "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
-        },
-        "text": {
-          "ru": "Двадцать шестой. А я иду по прямой, витков у меня не бывает.",
-          "en": ""
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
         }
       },
       "out": [
@@ -342,12 +342,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "39b693b4900b4004c9df5f98131a8cfe",
-          "name": "Luna1"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Тогда тебе не с чем сверяться. Это неудобно.",
-          "en": ""
+          "ru": "Двадцать шестой. А я иду по прямой, витков у меня не бывает.",
+          "en": "Twenty-sixth. And I go in a straight line — I don't get laps."
         }
       },
       "out": [
@@ -366,12 +366,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
-          "name": "Voyager1"
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
         },
         "text": {
-          "ru": "Я привык. Спасибо, «Мечта». Я всё записал.",
-          "en": ""
+          "ru": "Тогда тебе не с чем сверяться. Это неудобно.",
+          "en": "Then you have nothing to check yourself against. That is inconvenient."
         }
       },
       "out": [
@@ -390,12 +390,12 @@
       "type": "dlg.say",
       "data": {
         "actor": {
-          "guid": "39b693b4900b4004c9df5f98131a8cfe",
-          "name": "Luna1"
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
         },
         "text": {
-          "ru": "Хорошо. Витки я всё равно буду считать.",
-          "en": ""
+          "ru": "Я привык. Спасибо, «Мечта». Я всё записал.",
+          "en": "I'm used to it. Thank you, Mechta. I've got it all down."
         }
       },
       "out": [
@@ -410,6 +410,30 @@
       "position": [
         0,
         2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Хорошо. Витки я всё равно буду считать.",
+          "en": "Good. I shall go on counting the laps regardless."
+        }
+      },
+      "out": [
+        {
+          "uid": "35bc37242a8a50b5b9fb8e932ce04ac1",
+          "target": "de98b7eadc243583065f7b2546293455"
+        }
+      ]
+    },
+    {
+      "uid": "de98b7eadc243583065f7b2546293455",
+      "position": [
+        0,
+        2380
       ],
       "type": "dlg.finish",
       "data": {

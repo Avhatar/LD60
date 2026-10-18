@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "80adfe4301bfec18eb0df4503cdd7e5c",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Окна закрылись. Все до одного, я считал.",
+          "en": "The windows have closed. Every last one, I counted."
+        }
+      },
+      "out": [
+        {
+          "uid": "baff4a99fcc01731c1aa535f4e5206d6",
+          "target": "082a90fb13356432942a9bed74dfa32a"
+        }
+      ]
+    },
+    {
+      "uid": "082a90fb13356432942a9bed74dfa32a",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я вызывал ещё. Больше никто не ответил — кажется, все заняты.",
+          "en": "I called again. Nobody else answered — everyone seems to be busy."
+        }
+      },
+      "out": [
+        {
+          "uid": "0ee9fffcf8025deeb46b196f296f8ef1",
+          "target": "f5b749705240292f17fa299c1db27958"
+        }
+      ]
+    },
+    {
+      "uid": "f5b749705240292f17fa299c1db27958",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Кого не успел, допишу потом. Я оставил для них место, там видно сколько.",
+          "en": "The ones I missed I'll add later. I left room for them, you can see how much."
+        }
+      },
+      "out": [
+        {
+          "uid": "b972414d042da8e320d47f0b021b9aa4",
+          "target": "0bbe45858ba9a05fb27954490afcf039"
+        }
+      ]
+    },
+    {
+      "uid": "0bbe45858ba9a05fb27954490afcf039",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Пожалуй, посплю.",
+          "en": "I think I'll sleep."
+        }
+      },
+      "out": [
+        {
+          "uid": "b2eea11a98bf8a16d67f46e9e77dd3f6",
+          "target": "c6e9c8294c57973a6219081f19be102a"
+        }
+      ]
+    },
+    {
+      "uid": "c6e9c8294c57973a6219081f19be102a",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

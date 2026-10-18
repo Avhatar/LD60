@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "730cc03c23da7af506dc3ac079e9b377",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Это всё, что я собрал. Сторона Б. Часть дорожек осталась пустой — я подписал их именами.",
+          "en": "This is everything I collected. Side B. Some of the tracks stayed empty — I signed those with names."
+        }
+      },
+      "out": [
+        {
+          "uid": "0baa2d9e6d78f3a54d8a9a173b8e8077",
+          "target": "ed9e65410c5713d60f069be472d028e6"
+        }
+      ]
+    },
+    {
+      "uid": "ed9e65410c5713d60f069be472d028e6",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Инструкции, как это слушать, я не приложил. Решил, что и так разберутся.",
+          "en": "I didn't enclose instructions on how to listen to it. I decided they'd work it out."
+        }
+      },
+      "out": [
+        {
+          "uid": "ce4bb37d1ed38188832bf50793eff703",
+          "target": "b030e4d259caf9d9fe59d2fe6efdd11c"
+        }
+      ]
+    },
+    {
+      "uid": "b030e4d259caf9d9fe59d2fe6efdd11c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Кто-то же разобрался. Раз ты дослушал до конца.",
+          "en": "Somebody did work it out. Since you listened all the way to the end."
+        }
+      },
+      "out": [
+        {
+          "uid": "fc51272393fe986c1ba4801eafe57689",
+          "target": "5b731bfa79f9548d31ba6e4c273219c0"
+        }
+      ]
+    },
+    {
+      "uid": "5b731bfa79f9548d31ba6e4c273219c0",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Спасибо.",
+          "en": "Thank you."
+        }
+      },
+      "out": [
+        {
+          "uid": "316804ec8359d0a804d1db7beeeeef0f",
+          "target": "2188a2ad733f1ee145ba03ffa68efc55"
+        }
+      ]
+    },
+    {
+      "uid": "2188a2ad733f1ee145ba03ffa68efc55",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

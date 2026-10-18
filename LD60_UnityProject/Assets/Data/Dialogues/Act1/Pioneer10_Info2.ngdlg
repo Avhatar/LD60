@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "e57e8c89afc3362c6e5c0a9544f0d7bc",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "С 1983 года — самый дальний рукотворный предмет. Несёт пластину с изображением двух людей, схемой Солнечной системы и водородной линией.",
+          "en": "From 1983 on, the most distant man-made object. It carries a plaque with two human figures, a diagram of the Solar System and the hydrogen line."
+        }
+      },
+      "out": [
+        {
+          "uid": "5c05638be374d0257ae4161988d3e713",
+          "target": "e403ed5a2d1aa9d2e62e14c25c45cd55"
+        }
+      ]
+    },
+    {
+      "uid": "e403ed5a2d1aa9d2e62e14c25c45cd55",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Идёт в сторону Альдебарана, расчётно два миллиона лет.",
+          "en": "It is heading toward Aldebaran, an estimated two million years out."
+        }
+      },
+      "out": [
+        {
+          "uid": "d87d45005142444b3be259a36ca2777a",
+          "target": "e3ea26bf0d97e2a4cb93b9480d0c270f"
+        }
+      ]
+    },
+    {
+      "uid": "e3ea26bf0d97e2a4cb93b9480d0c270f",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

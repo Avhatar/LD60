@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "f2ce227276b5170eca7368ca41deab92",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Мощности меньше, чем нужно на передачу. Приборы отключаются по одному, это штатно.",
+          "en": "There is less power than a transmission needs. The instruments are shutting down one by one, that's nominal."
+        }
+      },
+      "out": [
+        {
+          "uid": "5091301777f36058c34ddd33b7fb6ce5",
+          "target": "9d1c34b5f6c36a2ee2416753e448b60c"
+        }
+      ]
+    },
+    {
+      "uid": "9d1c34b5f6c36a2ee2416753e448b60c",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я не всех успел. Несколько номеров остались ненабранными — наверное, у них было неудобное окно.",
+          "en": "I didn't reach everyone. A few numbers went undialled — their window must have been an awkward one."
+        }
+      },
+      "out": [
+        {
+          "uid": "4c50055fdbfaa6c7a07f028649248014",
+          "target": "ee08cdd9d87d3b889b55c617fa51d928"
+        }
+      ]
+    },
+    {
+      "uid": "ee08cdd9d87d3b889b55c617fa51d928",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Ничего. Они никуда не денутся.",
+          "en": "Never mind. They're not going anywhere."
+        }
+      },
+      "out": [
+        {
+          "uid": "7c592d88ccecd3fdc8901fbf63f31d26",
+          "target": "34ba2f6fc413121577f1b511e609f287"
+        }
+      ]
+    },
+    {
+      "uid": "34ba2f6fc413121577f1b511e609f287",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я посплю. Разбудите, если что.",
+          "en": "I'll sleep. Wake me if anything happens."
+        }
+      },
+      "out": [
+        {
+          "uid": "803de2334823507915aafed557b8314f",
+          "target": "e458ced4aa3cbf6a54dbcc0e00beddd7"
+        }
+      ]
+    },
+    {
+      "uid": "e458ced4aa3cbf6a54dbcc0e00beddd7",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

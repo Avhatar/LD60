@@ -34,5 +34,12 @@ MonoBehaviour:
       \u041F\u043B\u0443\u0442\u043E\u043D\u0438\u0435\u0432\u044B\u0435 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u0438
       \u0433\u0440\u0435\u044E\u0442 \u0434\u043E \u0441\u0438\u0445 \u043F\u043E\u0440.
       \u0422\u044B \u043D\u0435 \u0443\u0441\u043F\u0435\u043B \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C."
-    _en: 
+    _en: 'ALSEP, the Moon. Five stations left behind by the Apollo expeditions. Not
+      one of them broke: on 30 September 1977 they were switched off by a command
+      from Earth, to save money. The plutonium sources are still warm. You never
+      got to ask.'
+  <InfoDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: 5c4069b2a602de245a6b617611a30160, type: 3}
+  - {fileID: -3764088649234750322, guid: 3593ba65c5e9e1a4ebf334a42482b0fe, type: 3}
+  - {fileID: -3764088649234750322, guid: 64c22be25e284044bbd99cd0cd5a7024, type: 3}
   <DisplayDiameter>k__BackingField: 0.26

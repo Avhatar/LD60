@@ -11,8 +11,13 @@ namespace LD60.UI
 
         private InterceptMarkerSO _settings;
         private LineRenderer[] _rings = new LineRenderer[0];
+        private LineRenderer _traceLine;
+        private LineRenderer _traceRing;
         private MaterialPropertyBlock _block;
         private bool _dataDirty;
+        private int _traceSender = -1;
+        private Vector2 _tracePoint;
+        private float _traceAlpha;
 
         private void OnEnable()
         {
@@ -41,6 +46,8 @@ namespace LD60.UI
             }
 
             _block = new MaterialPropertyBlock();
+            _traceRing = CreateTrace("Speaking Ring", true);
+            _traceLine = CreateTrace("Speaking Line", false);
             SyncData();
         }
 
@@ -89,6 +96,121 @@ namespace LD60.UI
 
                 Draw(_rings[i], target.position, _director.SenderObjectRadius(i) + _settings.ReadyRingMargin);
             }
+
+            DrawSpeakingTrace();
+        }
+
+        private void DrawSpeakingTrace()
+        {
+            if (_traceLine == null || _traceRing == null)
+                return;
+
+            int speaking = _director.SpeakingSender;
+
+            if (speaking >= 0)
+            {
+                _traceSender = speaking;
+                _tracePoint = _director.SpeakingCapturePoint;
+                _traceAlpha = 1f;
+            }
+            else if (_traceAlpha > 0f && _settings.DialogueTraceFadeSeconds > 0f)
+            {
+                _traceAlpha = Mathf.Max(0f, _traceAlpha - Time.unscaledDeltaTime / _settings.DialogueTraceFadeSeconds);
+            }
+            else
+            {
+                _traceAlpha = 0f;
+            }
+
+            Transform owner = _traceAlpha > 0f && _traceSender >= 0 && _traceSender < _director.SenderCount
+                ? _director.SenderObject(_traceSender)
+                : null;
+
+            if (owner == null || (!Core.IsGameMode && !Core.IsDialogueMode))
+            {
+                _traceSender = -1;
+                _traceAlpha = 0f;
+                Show(_traceRing, false);
+                Show(_traceLine, false);
+                return;
+            }
+
+            Vector3 centre = owner.position;
+            float radius = _director.SenderObjectRadius(_traceSender) + _settings.ReadyRingMargin;
+            bool ringNeeded = !_director.IsAwaitingContact(_traceSender) || !Core.IsGameMode;
+
+            Show(_traceRing, ringNeeded);
+
+            if (ringNeeded)
+            {
+                PaintTrace(_traceRing, _settings.ReadyRingWidth);
+                Draw(_traceRing, centre, radius);
+            }
+
+            Vector2 outward = _tracePoint - (Vector2)centre;
+            float distance = outward.magnitude;
+
+            if (distance <= radius)
+            {
+                Show(_traceLine, false);
+                return;
+            }
+
+            Vector2 edge = (Vector2)centre + outward / distance * radius;
+            float depth = centre.z - _settings.ReadyRingDepthTowardCamera;
+
+            Show(_traceLine, true);
+            PaintTrace(_traceLine, _settings.DialogueTraceWidth);
+
+            if (_traceLine.positionCount != 2)
+                _traceLine.positionCount = 2;
+
+            _traceLine.SetPosition(0, new Vector3(_tracePoint.x, _tracePoint.y, depth));
+            _traceLine.SetPosition(1, new Vector3(edge.x, edge.y, depth));
+        }
+
+        private static void Show(LineRenderer line, bool shown)
+        {
+            if (line.enabled != shown)
+                line.enabled = shown;
+        }
+
+        private void PaintTrace(LineRenderer line, float width)
+        {
+            Color color = _settings.DialogueTraceColor;
+            color.a *= _traceAlpha;
+
+            line.widthMultiplier = width;
+            line.startColor = color;
+            line.endColor = color;
+
+            if (_ringMaterial == null)
+                return;
+
+            Color emissive = color;
+            float emission = Mathf.Max(_settings.DialogueTraceEmission, 0f);
+            emissive.r *= emission;
+            emissive.g *= emission;
+            emissive.b *= emission;
+
+            line.sharedMaterial = _ringMaterial;
+            _block.Clear();
+            _block.SetColor(Shader.PropertyToID("_BaseColor"), emissive);
+            line.SetPropertyBlock(_block);
+        }
+
+        private LineRenderer CreateTrace(string label, bool loop)
+        {
+            GameObject holder = new GameObject(label);
+            holder.transform.SetParent(transform, false);
+
+            LineRenderer line = holder.AddComponent<LineRenderer>();
+            line.useWorldSpace = true;
+            line.loop = loop;
+            line.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            line.receiveShadows = false;
+            line.enabled = false;
+            return line;
         }
 
         private void Draw(LineRenderer ring, Vector3 centre, float radius)

@@ -23,3 +23,6 @@ MonoBehaviour:
   <Dialogue>k__BackingField: {fileID: 11400000, guid: 2d09379782b035a41abb2517426b2ecb, type: 2}
   <Intro>k__BackingField: {fileID: 11400000, guid: f03674db3bec70c4e8d77c8f5763bc3c, type: 2}
   <IntroEnabled>k__BackingField: 1
+  <Ending>k__BackingField: {fileID: 11400000, guid: 02db1d861f0027141b8fbc9258621985, type: 2}
+  <SkipHoldSeconds>k__BackingField: 3
+  <SkipHintFirstDelaySeconds>k__BackingField: 5

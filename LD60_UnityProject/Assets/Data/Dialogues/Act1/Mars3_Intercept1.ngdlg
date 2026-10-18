@@ -29,7 +29,7 @@
         },
         "text": {
           "ru": "Марс-3. Здравствуйте.",
-          "en": ""
+          "en": "Mars 3. Hello."
         }
       },
       "out": [
@@ -53,7 +53,7 @@
         },
         "text": {
           "ru": "Говорит Марс-3, я на поверхности, у меня всё",
-          "en": ""
+          "en": "This is Mars 3, I'm on the surface, everything is"
         }
       },
       "out": [

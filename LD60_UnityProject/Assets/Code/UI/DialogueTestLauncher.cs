@@ -34,6 +34,9 @@ namespace LD60.UI
 
         private void Update()
         {
+            if (!Application.isEditor)
+                return;
+
             if (Core.IsMenuMode)
                 return;
 
