@@ -44,12 +44,16 @@ namespace LD60.Space
 
         private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         private static readonly int BaseMapId = Shader.PropertyToID("_BaseMap");
+        private static readonly int RingMapId = Shader.PropertyToID("_RingMap");
+        private static readonly int RingOpacityId = Shader.PropertyToID("_RingOpacity");
         private static readonly int DiscRadiusId = Shader.PropertyToID("_DiscRadius");
         private static readonly int SpinId = Shader.PropertyToID("_Spin");
         private static readonly int SunDirId = Shader.PropertyToID("_SunDir");
         private static readonly int OrbitRadiusId = Shader.PropertyToID("_OrbitRadius");
 
         public Transform PlayerAnchor { get; private set; }
+
+        public SpacecraftSO PlayerSpacecraft { get; private set; }
 
         private MaterialPropertyBlock PropertyBlock
         {
@@ -100,6 +104,52 @@ namespace LD60.Space
                 return 0f;
 
             return _bodies[index].Data.DisplayDiameter * _bodies[index].Data.SurfaceDiscRadius;
+        }
+
+        public Transform FindSpacecraftTransform(SpacecraftSO craft)
+        {
+            for (int i = 0; i < _freeFlyers.Length; i++)
+            {
+                if (_freeFlyers[i].Data == craft)
+                    return _freeFlyers[i].Root;
+            }
+
+            return null;
+        }
+
+        public Transform FindHitTarget(Vector2 point, Transform ignored, out float hitRadius, out int bodyIndex)
+        {
+            hitRadius = 0f;
+            bodyIndex = -1;
+
+            for (int i = 0; i < _bodies.Length; i++)
+            {
+                if (_bodies[i].Root == ignored)
+                    continue;
+
+                if (!IsHitAt(i, point))
+                    continue;
+
+                hitRadius = GetHitRadius(i);
+                bodyIndex = i;
+                return _bodies[i].Root;
+            }
+
+            for (int i = 0; i < _freeFlyers.Length; i++)
+            {
+                if (_freeFlyers[i].Data == null || _freeFlyers[i].Root == null || _freeFlyers[i].Root == ignored)
+                    continue;
+
+                float radius = _freeFlyers[i].Data.DisplayDiameter * 0.5f;
+
+                if (((Vector2)_freeFlyers[i].Root.position - point).sqrMagnitude > radius * radius)
+                    continue;
+
+                hitRadius = radius;
+                return _freeFlyers[i].Root;
+            }
+
+            return null;
         }
 
         public float GetHitRadiusOf(CelestialBodySO body)
@@ -317,7 +367,7 @@ namespace LD60.Space
                 view.Data = data;
                 view.OrbitRadius = _system.DisplayRadius(data);
                 view.Root.gameObject.SetActive(true);
-                view.Root.name = data.DisplayName;
+                view.Root.name = data.LocalizedName.Value;
                 view.Root.localScale = Vector3.one * data.DisplayDiameter;
                 view.Renderer.sharedMaterial = data.Material != null ? data.Material : _bodyMaterial;
                 view.SpinTurnsPerDay = _system.SpinTurnsPerDay(data);
@@ -385,7 +435,7 @@ namespace LD60.Space
             if (!visible)
                 return;
 
-            view.Ring.gameObject.name = view.Data.DisplayName + " Orbit";
+            view.Ring.gameObject.name = view.Data.LocalizedName.Value + " Orbit";
             view.Ring.widthMultiplier = _system.OrbitRingWidth;
             view.Ring.startColor = _system.OrbitRingColor;
             view.Ring.endColor = _system.OrbitRingColor;
@@ -414,6 +464,7 @@ namespace LD60.Space
             ActPeriod act = Core.CurrentAct;
             ResizeFreeFlyers(CountFreeFlyers(act));
             PlayerAnchor = null;
+            PlayerSpacecraft = null;
 
             if (act == null)
                 return;
@@ -448,7 +499,7 @@ namespace LD60.Space
 
                 view.Data = entry.Spacecraft;
                 view.Root.gameObject.SetActive(true);
-                view.Root.name = entry.Spacecraft.DisplayName;
+                view.Root.name = entry.Spacecraft.LocalizedName.Value;
 
                 SyncFreeFlyerVisual(view);
 
@@ -457,7 +508,10 @@ namespace LD60.Space
                 view.Root.localPosition = new Vector3(Mathf.Cos(radians) * radius, Mathf.Sin(radians) * radius, 0f);
 
                 if (entry.Spacecraft.IsPlayer)
+                {
                     PlayerAnchor = view.Root;
+                    PlayerSpacecraft = entry.Spacecraft;
+                }
             }
         }
 
@@ -576,6 +630,11 @@ namespace LD60.Space
                 PropertyBlock.SetTexture(BaseMapId, view.Data.Surface);
                 PropertyBlock.SetFloat(DiscRadiusId, view.Data.SurfaceDiscRadius);
             }
+
+            if (view.Data.Ring != null)
+                PropertyBlock.SetTexture(RingMapId, view.Data.Ring);
+
+            PropertyBlock.SetFloat(RingOpacityId, view.Data.Ring != null ? 1f : 0f);
 
             PropertyBlock.SetFloat(SpinId, (float)view.SpinTurns);
             PropertyBlock.SetVector(SunDirId, DirectionToStar(view));

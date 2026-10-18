@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Venus
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Venus
+  <LocalizedName>k__BackingField:
+    _ru: "\u0412\u0435\u043D\u0435\u0440\u0430"
+    _en: Venus
   <SemiMajorAxisAu>k__BackingField: 0.723
   <OrbitalPeriodDays>k__BackingField: 224.7
   <RotationPeriodHours>k__BackingField: -5832.5
-  <MeanLongitudeJ2000Degrees>k__BackingField: 181.98
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 0.89
   <Tint>k__BackingField: {r: 0.89, g: 0.78, b: 0.52, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.344
   <Material>k__BackingField: {fileID: 2100000, guid: f33207d51e863fb4988c5cfdabef0a19, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

@@ -24,10 +24,22 @@ MonoBehaviour:
   <MaxDots>k__BackingField: 48
   <SecondsToFullPower>k__BackingField: 1.2
   <DotSize>k__BackingField: 0.13
+  <DotEdgeSoftness>k__BackingField: 0.35
   <LandedSurfaceOffset>k__BackingField: 0.1
   <PreviewArcRadius>k__BackingField: 2.2
   <MaxTravelRadius>k__BackingField: 26
+  <DotLifetimeSeconds>k__BackingField: 10
+  <CaptureRadius>k__BackingField: 0.22
+  <OursSound>k__BackingField: {fileID: 11400000, guid: 00e70d34f406d11449606349f2baa1dd, type: 2}
+  <ForeignSound>k__BackingField: {fileID: 11400000, guid: 733efb8f946367f4c8d8d1c28b73dbb3, type: 2}
+  <ReplySound>k__BackingField: {fileID: 11400000, guid: 3cb36b70ed431e44a8404bb624b02070, type: 2}
+  <ContactSound>k__BackingField: {fileID: 11400000, guid: 77826c78fc896ca40827107b06d95f0b, type: 2}
+  <DotFadeOutSeconds>k__BackingField: 1.5
+  <DotColorBlendSeconds>k__BackingField: 0.35
+  <ArrivedColor>k__BackingField: {r: 0.45, g: 1, b: 0.55, a: 0.95}
+  <ArrivedDotEmission>k__BackingField: 2
   <ForeignColor>k__BackingField: {r: 0.95, g: 0.72, b: 0.35, a: 0.9}
+  <ForeignDotEmission>k__BackingField: 1.2
   <ForeignDotSize>k__BackingField: 0.11
   <ForeignSpawnFraction>k__BackingField: 0
   <PauseWhileAiming>k__BackingField: 0
@@ -36,7 +48,9 @@ MonoBehaviour:
   <CostPerSpeedUnit>k__BackingField: 0.4
   <CostPerDot>k__BackingField: 0.25
   <PreviewColor>k__BackingField: {r: 0.4, g: 0.8, b: 1, a: 0.35}
+  <PreviewDotEmission>k__BackingField: 0.8
   <SignalColor>k__BackingField: {r: 0.6, g: 0.95, b: 1, a: 0.95}
+  <DotEmission>k__BackingField: 1.4
   <HitFlashColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <HitFlashSeconds>k__BackingField: 0.45
   <PreviewLineWidth>k__BackingField: 0.025

@@ -6,7 +6,7 @@ namespace LD60.Space
     [CreateAssetMenu(fileName = "Body", menuName = "LD60/Celestial Body")]
     public class CelestialBodySO : GameDataSO
     {
-        [field: SerializeField] public string DisplayName { get; private set; } = "Body";
+        [field: SerializeField] public LocalizedString LocalizedName { get; private set; } = new LocalizedString();
         [field: SerializeField] public float SemiMajorAxisAu { get; private set; }
         [field: SerializeField] public float OrbitalPeriodDays { get; private set; }
         [field: SerializeField] public float RotationPeriodHours { get; private set; }
@@ -18,6 +18,9 @@ namespace LD60.Space
         [field: SerializeField, Range(0.05f, 0.5f), Tooltip("Radius of the painted globe inside Surface, in UV units from its center. " +
             "The shader treats that circle as the sphere; anything painted outside it (rings, flares) is left unrotated.")]
         public float SurfaceDiscRadius { get; private set; } = 0.37f;
+        [field: SerializeField, Tooltip("Ring artwork pushed into the body material as _RingMap. Drawn over the globe on the same quad, " +
+            "in unrotated UV space, so it never spins with the surface. Leave empty for bodies without a ring.")]
+        public Texture2D Ring { get; private set; }
         [field: SerializeField, Tooltip("Material the body quad is drawn with. Leave empty to use the Orrery fallback material tinted by Tint.")]
         public Material Material { get; private set; }
         [field: SerializeField] public bool DrawOrbitRing { get; private set; } = true;
@@ -26,7 +29,7 @@ namespace LD60.Space
         public void ApplyOrbitalData(string displayName, float semiMajorAxisAu, float orbitalPeriodDays,
             float rotationPeriodHours, float displayDiameter, Color tint)
         {
-            DisplayName = displayName;
+            LocalizedName = new LocalizedString(displayName, displayName);
             SemiMajorAxisAu = semiMajorAxisAu;
             OrbitalPeriodDays = orbitalPeriodDays;
             RotationPeriodHours = rotationPeriodHours;

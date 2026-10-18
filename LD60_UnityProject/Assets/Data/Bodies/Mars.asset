@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Mars
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Mars
+  <LocalizedName>k__BackingField:
+    _ru: "\u041C\u0430\u0440\u0441"
+    _en: Mars
   <SemiMajorAxisAu>k__BackingField: 2.96
   <OrbitalPeriodDays>k__BackingField: 686.98
   <RotationPeriodHours>k__BackingField: 24.623
-  <MeanLongitudeJ2000Degrees>k__BackingField: 355.43
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 0.76
   <Tint>k__BackingField: {r: 0.78, g: 0.42, b: 0.28, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.339
   <Material>k__BackingField: {fileID: 2100000, guid: 12730573e21421341aff0a2ee932b2ee, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

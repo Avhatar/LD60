@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Saturn
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Saturn
+  <LocalizedName>k__BackingField:
+    _ru: "\u0421\u0430\u0442\u0443\u0440\u043D"
+    _en: Saturn
   <SemiMajorAxisAu>k__BackingField: 18.75
   <OrbitalPeriodDays>k__BackingField: 10759.22
   <RotationPeriodHours>k__BackingField: 10.656
-  <MeanLongitudeJ2000Degrees>k__BackingField: 49.94
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 2.26
   <Tint>k__BackingField: {r: 0.85, g: 0.78, b: 0.58, a: 1}
-  <Surface>k__BackingField: {fileID: 2800000, guid: e26c4f1c2f6838544b3e72a2cf360001, type: 3}
+  <Surface>k__BackingField: {fileID: 2800000, guid: a7f006316410bba4695edae33249cd87, type: 3}
   <SurfaceDiscRadius>k__BackingField: 0.284
+  <Ring>k__BackingField: {fileID: 2800000, guid: 44758c63a54990048868614b268694e5, type: 3}
   <Material>k__BackingField: {fileID: 2100000, guid: 28fd7cdc231bb8341b3bb568d3be81c7, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

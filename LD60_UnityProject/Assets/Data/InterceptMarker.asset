@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8349d31e6cb40284eb4eff3ad9c80f8a, type: 3}
+  m_Name: InterceptMarker
+  m_EditorClassIdentifier: 
+  <Font>k__BackingField: {fileID: 11400000, guid: 393d43696da9dc546a74b3ae20db130f, type: 2}
+  <UnknownIcon>k__BackingField: {fileID: 21300000, guid: 8e4936fc6f15c44409920dc91de05823, type: 3}
+  <FontSize>k__BackingField: 22
+  <IconSize>k__BackingField: 22
+  <IconGap>k__BackingField: 4
+  <Color>k__BackingField: {r: 0.95, g: 0.72, b: 0.35, a: 0.95}
+  <UnlockedColor>k__BackingField: {r: 0.45, g: 1, b: 0.55, a: 0.95}
+  <ScreenOffset>k__BackingField: {x: 0, y: 30}
+  <StackSpacing>k__BackingField: 22
+  <LabelWidth>k__BackingField: 170

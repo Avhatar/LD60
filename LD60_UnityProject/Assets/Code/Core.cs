@@ -19,10 +19,11 @@ namespace LD60
         private static bool _manualPause;
         private static bool _heldPause;
         private static bool _dialoguePause;
+        private static bool _introPause;
 
         public static bool IsPaused
         {
-            get { return _manualPause || _heldPause || _dialoguePause; }
+            get { return _manualPause || _heldPause || _dialoguePause || _introPause; }
         }
 
         public static bool IsGameMode
@@ -33,6 +34,11 @@ namespace LD60
         public static bool IsDialogueMode
         {
             get { return Mode == GameMode.Dialogue; }
+        }
+
+        public static bool IsIntroMode
+        {
+            get { return Mode == GameMode.Intro; }
         }
 
         public static double DaysSinceJ2000 { get; private set; }
@@ -103,6 +109,7 @@ namespace LD60
 
             Mode = mode;
             _dialoguePause = mode == GameMode.Dialogue;
+            _introPause = mode == GameMode.Intro;
             ApplyTimeScale();
 
             if (ModeChanged != null)
@@ -131,6 +138,7 @@ namespace LD60
             _manualPause = false;
             _heldPause = false;
             _dialoguePause = false;
+            _introPause = false;
             Time.timeScale = 1f;
 
             ActIndex = 0;
@@ -214,7 +222,7 @@ namespace LD60
 
         private static bool LanguageToggleRequested()
         {
-            return Keyboard.current != null && Keyboard.current.f2Key.wasPressedThisFrame;
+            return Keyboard.current != null && Keyboard.current.zKey.wasPressedThisFrame;
         }
 
         private static bool PauseToggleRequested()

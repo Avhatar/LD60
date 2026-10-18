@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Uranus
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Uranus
+  <LocalizedName>k__BackingField:
+    _ru: "\u0423\u0440\u0430\u043D"
+    _en: Uranus
   <SemiMajorAxisAu>k__BackingField: 36.5
   <OrbitalPeriodDays>k__BackingField: 30688.5
   <RotationPeriodHours>k__BackingField: -17.24
-  <MeanLongitudeJ2000Degrees>k__BackingField: 313.23
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 1.56
   <Tint>k__BackingField: {r: 0.6, g: 0.8, b: 0.82, a: 1}
-  <Surface>k__BackingField: {fileID: 2800000, guid: 7364fc24d1db74b46b3bb5ae2e95e32c, type: 3}
+  <Surface>k__BackingField: {fileID: 2800000, guid: 678e3915aafd2f24794ce8bc45784949, type: 3}
   <SurfaceDiscRadius>k__BackingField: 0.3
+  <Ring>k__BackingField: {fileID: 2800000, guid: 0ec7c074f464b6942af5ba358149c83a, type: 3}
   <Material>k__BackingField: {fileID: 2100000, guid: f33207d51e863fb4988c5cfdabef0a19, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

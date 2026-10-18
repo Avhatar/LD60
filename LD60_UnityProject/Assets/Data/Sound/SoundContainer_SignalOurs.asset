@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73ac48fbf7dc30499f537abae4668fb, type: 3}
+  m_Name: SoundContainer_SignalOurs
+  m_EditorClassIdentifier: 
+  <AudioClips>k__BackingField:
+  - {fileID: 8300000, guid: ed61bea2910b023409cdda9c47b00807, type: 3}
+  - {fileID: 8300000, guid: 9071724cac6691d4e9630ef34d835888, type: 3}
+  - {fileID: 8300000, guid: 72a24f6112ad84f4b943c2c4c7942f04, type: 3}
+  - {fileID: 8300000, guid: 03668fd9dc2a41648a175eca2a6a8336, type: 3}
+  - {fileID: 8300000, guid: 75f9861bc264cde4498563e2674582a0, type: 3}
+  - {fileID: 8300000, guid: a060fac626d0e924db9d7190a467bec2, type: 3}
+  - {fileID: 8300000, guid: 9da0797794dacb14d937b5a41437f3c8, type: 3}
+  - {fileID: 8300000, guid: 480b0d1b75581a24a9c9b25493f84027, type: 3}
+  - {fileID: 8300000, guid: 5e1c00b8fdc043241be5c939512d8160, type: 3}
+  - {fileID: 8300000, guid: 497d1e18f8449b84690442cc1d0be115, type: 3}
+  - {fileID: 8300000, guid: 482ce66ec14b49846b0583f42b56c359, type: 3}
+  <Volume>k__BackingField: 0.385
+  <VolumeVariance>k__BackingField: 0
+  <Pitch>k__BackingField: 0.69
+  <PitchVariance>k__BackingField: 0
+  <SpatialBlend>k__BackingField: 0
+  <StereoPan>k__BackingField: 0
+  <Loop>k__BackingField: 0
+  <RandomSound>k__BackingField: 1

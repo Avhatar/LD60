@@ -22,4 +22,4 @@ MonoBehaviour:
   <Speed>k__BackingField: 0.9
   <TransmitPeriodSeconds>k__BackingField: 26
   <DotsToCapture>k__BackingField: 6
-  <InterceptDialogue>k__BackingField: {fileID: 0}
+  <InterceptDialogues>k__BackingField: []

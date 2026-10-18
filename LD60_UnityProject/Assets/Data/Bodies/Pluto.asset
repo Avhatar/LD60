@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Pluto
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Pluto
+  <LocalizedName>k__BackingField:
+    _ru: "\u041F\u043B\u0443\u0442\u043E\u043D"
+    _en: Pluto
   <SemiMajorAxisAu>k__BackingField: 123.2
   <OrbitalPeriodDays>k__BackingField: 90560
   <RotationPeriodHours>k__BackingField: 153.29
-  <MeanLongitudeJ2000Degrees>k__BackingField: 238.93
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 0.47
   <Tint>k__BackingField: {r: 0.76, g: 0.66, b: 0.58, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.335
   <Material>k__BackingField: {fileID: 2100000, guid: ad8a9b20a0ac1af488eac822e9d66694, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

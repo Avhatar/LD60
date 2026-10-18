@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Viking1
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Viking 1
+  <LocalizedName>k__BackingField:
+    _ru: "\u0412\u0438\u043A\u0438\u043D\u0433-1"
+    _en: Viking 1
   <SpaceSprite>k__BackingField: {fileID: 0}
   <DialoguePortrait>k__BackingField: {fileID: 0}
   <Accent>k__BackingField: {r: 0.82, g: 0.62, b: 0.42, a: 1}
@@ -21,6 +24,4 @@ MonoBehaviour:
   <LastContactYear>k__BackingField: 1982
   <GivesRecordTrack>k__BackingField: 1
   <Epitaph>k__BackingField: 
-  <FreeFlightDistanceAu>k__BackingField: 0
-  <FreeFlightAngleDegrees>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 0.28

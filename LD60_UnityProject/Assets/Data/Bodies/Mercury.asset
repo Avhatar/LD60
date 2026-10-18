@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Mercury
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Mercury
+  <LocalizedName>k__BackingField:
+    _ru: "\u041C\u0435\u0440\u043A\u0443\u0440\u0438\u0439"
+    _en: Mercury
   <SemiMajorAxisAu>k__BackingField: 0.387
   <OrbitalPeriodDays>k__BackingField: 87.97
   <RotationPeriodHours>k__BackingField: 1407.6
-  <MeanLongitudeJ2000Degrees>k__BackingField: 252.25
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 0.51
   <Tint>k__BackingField: {r: 0.62, g: 0.58, b: 0.54, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.33
   <Material>k__BackingField: {fileID: 2100000, guid: 533f59db8d9933d4e9fd615254a6f43f, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

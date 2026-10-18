@@ -12,20 +12,37 @@ namespace LD60.Signals
         private Vector2[] _directions;
         private Vector2[] _positions;
         private Vector2[] _landedOffsets;
-        private int[] _landedBodies;
+        private Transform[] _landedOn;
         private bool[] _inFlight;
-        private bool[] _visible;
+        private float[] _weights;
+        private float[] _arrivedBlends;
+        private bool[] _arrived;
         private int _count;
         private int _inFlightCount;
         private float _speed;
         private float _travelled;
         private float _endRadius;
-        private CelestialBodySO _ignoredBody;
-        private SignalDotMesh _arrivedDots;
-        private bool[] _arrivedVisible;
+        private Transform _ignored;
         private float _age;
 
         public ActSpacecraftSO Source { get; private set; }
+
+        public bool Answered { get; private set; }
+
+        public void MarkAnswered()
+        {
+            Answered = true;
+        }
+
+        public void ApplyBaseLook(bool studied)
+        {
+            if (_dots == null || _settings == null)
+                return;
+
+            _dots.SetLook(studied ? _settings.StudiedColor : _settings.ForeignColor,
+                          studied ? _settings.StudiedDotEmission : _settings.ForeignDotEmission,
+                          _settings.DotEdgeSoftness);
+        }
 
         public int DotCount
         {
@@ -49,15 +66,15 @@ namespace LD60.Signals
 
             _inFlight[index] = false;
             _inFlightCount--;
-            _visible[index] = false;
+            _weights[index] = 0f;
         }
 
         public void Launch(SignalSO settings, ActSpacecraftSO source, Orrery orrery, Material dotMaterial,
-            Vector2 origin, Vector2 aimPoint, CelestialBodySO ignoredBody, float clearance)
+            Vector2 origin, Vector2 aimPoint, Transform ignored, float clearance, bool studied)
         {
             _settings = settings;
             _orrery = orrery;
-            _ignoredBody = ignoredBody;
+            _ignored = ignored;
             Source = source;
             _origin = origin;
             _speed = source.Speed;
@@ -75,9 +92,11 @@ namespace LD60.Signals
             _directions = new Vector2[_count];
             _positions = new Vector2[_count];
             _landedOffsets = new Vector2[_count];
-            _landedBodies = new int[_count];
+            _landedOn = new Transform[_count];
             _inFlight = new bool[_count];
-            _visible = new bool[_count];
+            _weights = new float[_count];
+            _arrivedBlends = new float[_count];
+            _arrived = new bool[_count];
 
             for (int i = 0; i < _count; i++)
             {
@@ -85,20 +104,15 @@ namespace LD60.Signals
                 float angle = (baseAngle - halfWidth + source.ArcWidthDegrees * t) * Mathf.Deg2Rad;
                 _directions[i] = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 _positions[i] = origin + _directions[i] * _travelled;
-                _landedBodies[i] = -1;
                 _inFlight[i] = true;
-                _visible[i] = true;
+                _weights[i] = 1f;
             }
 
-            _arrivedVisible = new bool[_count];
-
-            _dots = new SignalDotMesh(gameObject, dotMaterial, settings.ForeignColor, _count);
-            _dots.Rebuild(_positions, _visible, _count, settings.ForeignDotSize);
-
-            GameObject arrived = new GameObject("Arrived");
-            arrived.transform.SetParent(transform, false);
-            _arrivedDots = new SignalDotMesh(arrived, dotMaterial, settings.ArrivedColor, _count);
-            _arrivedDots.Rebuild(_positions, _arrivedVisible, _count, settings.ForeignDotSize);
+            _dots = new SignalDotMesh(gameObject, dotMaterial, _count);
+            ApplyBaseLook(studied);
+            _dots.SetAltLook(settings.ArrivedColor, settings.ArrivedDotEmission);
+            _dots.SetFade(settings.FadeForAge(0f));
+            _dots.Rebuild(_positions, _weights, _arrivedBlends, _count, settings.ForeignDotSize);
         }
 
         private void Update()
@@ -127,8 +141,20 @@ namespace LD60.Signals
             }
 
             FollowLandedBodies();
-            _dots.Rebuild(_positions, _visible, _count, _settings.ForeignDotSize);
-            _arrivedDots.Rebuild(_positions, _arrivedVisible, _count, _settings.ForeignDotSize);
+            AdvanceArrivedBlends();
+            _dots.SetFade(_settings.FadeForAge(_age));
+            _dots.Rebuild(_positions, _weights, _arrivedBlends, _count, _settings.ForeignDotSize);
+        }
+
+        private void AdvanceArrivedBlends()
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (!_arrived[i] || _arrivedBlends[i] >= 1f)
+                    continue;
+
+                _arrivedBlends[i] = _settings.AdvanceColorBlend(_arrivedBlends[i], Time.deltaTime);
+            }
         }
 
         private void AdvanceDots()
@@ -140,63 +166,46 @@ namespace LD60.Signals
 
                 _positions[i] = _origin + _directions[i] * _travelled;
 
-                int body = FindBodyUnder(i);
+                float hitRadius;
+                int bodyIndex;
+                Transform hit = _orrery.FindHitTarget(_positions[i], _ignored, out hitRadius, out bodyIndex);
 
-                if (body >= 0)
+                if (hit != null)
                 {
                     _inFlight[i] = false;
                     _inFlightCount--;
-                    _landedBodies[i] = body;
-                    _landedOffsets[i] = LandedOffsetFor(i, body);
-                    _positions[i] = (Vector2)_orrery.GetBodyTransform(body).position + _landedOffsets[i];
+                    _landedOn[i] = hit;
+                    _landedOffsets[i] = LandedOffsetFor(i, hit, hitRadius);
+                    _positions[i] = (Vector2)hit.position + _landedOffsets[i];
 
-                    if (_orrery.GetBody(body) != Source.TransmitTo)
+                    if (bodyIndex < 0 || _orrery.GetBody(bodyIndex) != Source.TransmitTo)
                         continue;
 
-                    _visible[i] = false;
-                    _arrivedVisible[i] = true;
+                    _arrived[i] = true;
                 }
             }
         }
 
-        private Vector2 LandedOffsetFor(int dot, int body)
+        private Vector2 LandedOffsetFor(int dot, Transform hit, float hitRadius)
         {
-            Vector2 outward = _positions[dot] - (Vector2)_orrery.GetBodyTransform(body).position;
+            Vector2 outward = _positions[dot] - (Vector2)hit.position;
 
             if (outward.sqrMagnitude < 0.000001f)
                 outward = -_directions[dot];
 
-            return outward.normalized * (_orrery.GetHitRadius(body) + _settings.LandedSurfaceOffset);
+            return outward.normalized * (hitRadius + _settings.LandedSurfaceOffset);
         }
 
         private void FollowLandedBodies()
         {
             for (int i = 0; i < _count; i++)
             {
-                if (_inFlight[i] || _landedBodies[i] < 0)
+                if (_inFlight[i] || _landedOn[i] == null)
                     continue;
 
-                Transform body = _orrery.GetBodyTransform(_landedBodies[i]);
-
-                if (body == null)
-                    continue;
-
-                _positions[i] = (Vector2)body.position + _landedOffsets[i];
+                _positions[i] = (Vector2)_landedOn[i].position + _landedOffsets[i];
             }
         }
 
-        private int FindBodyUnder(int dot)
-        {
-            for (int body = 0; body < _orrery.BodyCount; body++)
-            {
-                if (_orrery.GetBody(body) == _ignoredBody)
-                    continue;
-
-                if (_orrery.IsHitAt(body, _positions[dot]))
-                    return body;
-            }
-
-            return -1;
-        }
     }
 }

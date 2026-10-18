@@ -13,6 +13,10 @@ namespace LD60
         [field: SerializeField] public SignalSO Signal { get; private set; }
         [field: SerializeField] public AudioSO Audio { get; private set; }
         [field: SerializeField] public UiTextSO UiText { get; private set; }
+        [field: SerializeField] public TargetFrameSO TargetFrame { get; private set; }
+        [field: SerializeField] public InterceptMarkerSO InterceptMarker { get; private set; }
         [field: SerializeField] public DialogueSO Dialogue { get; private set; }
+        [field: SerializeField] public IntroSO Intro { get; private set; }
+        [field: SerializeField] public bool IntroEnabled { get; private set; }
     }
 }

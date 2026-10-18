@@ -49,6 +49,12 @@ MonoBehaviour:
     <Spacecraft>k__BackingField:
     - {fileID: 11400000, guid: e22c22a04b3f18b44926b17c2f52a7e7, type: 2}
     - {fileID: 11400000, guid: ccc2575a594eee6499252285c9e800cf, type: 2}
+    - {fileID: 11400000, guid: 2a3ca418033b5a74ea6c3a56c00f52cb, type: 2}
+    - {fileID: 11400000, guid: 290d9f6ff8483a44e92bd3938ccd1596, type: 2}
+    - {fileID: 11400000, guid: 8c032cd298bbef346bc4950ba68fc3e6, type: 2}
+    - {fileID: 11400000, guid: c890621e44e50f949adf4fa81a937045, type: 2}
+    - {fileID: 11400000, guid: d8d2c3d48c08cb644bba346a54b6c7de, type: 2}
+    - {fileID: 11400000, guid: 1ac3b8300a474e14db476458618e246f, type: 2}
   - <Name>k__BackingField: Act 2 - 2010
     <Start>k__BackingField:
       _year: 2010

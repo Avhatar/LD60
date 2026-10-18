@@ -19,7 +19,7 @@ namespace LD60.Space
         [field: Tooltip("Heliocentric angle during this act. Used only when Body is empty.")]
         [field: SerializeField, Range(0f, 360f)] public float AngleDegrees { get; private set; }
 
-        [field: Tooltip("Body it transmits to. Earth in almost every case.")]
+        [field: Tooltip("Body it transmits to. Earth in almost every case. Never the body it sits on: that transmission starts and ends in the same place and only draws dots on top of it. Something parked on a body either stays silent and is reached another way, or transmits outward to a different body.")]
         [field: SerializeField] public CelestialBodySO TransmitTo { get; private set; }
 
         [field: Tooltip("Arc width of its transmissions, in degrees.")]
@@ -37,7 +37,26 @@ namespace LD60.Space
         [field: Tooltip("Dots of its signal that have to be caught before it can be talked to directly.")]
         [field: SerializeField] public int DotsToCapture { get; private set; } = 8;
 
-        [field: Tooltip("Dialogue started when one of its dots is caught.")]
-        [field: SerializeField] public DialogueGraph InterceptDialogue { get; private set; }
+        [field: Tooltip("Dialogues this spacecraft can be overheard saying. One is picked at random each time its transmission is caught.")]
+        [field: SerializeField] public DialogueGraph[] InterceptDialogues { get; private set; } = new DialogueGraph[0];
+
+        public bool TransmitsOntoItself
+        {
+            get { return Body != null && TransmitTo == Body; }
+        }
+
+#if UNITY_EDITOR
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+
+            if (!TransmitsOntoItself)
+                return;
+
+            Debug.LogError($"{nameof(ActSpacecraftSO)}: {nameof(TransmitTo)} is the same body as {nameof(Body)} on '{name}'. " +
+                           "Required to differ, because a transmission that starts and ends on one body just draws dots on top of it. " +
+                           $"Fix: aim {nameof(TransmitTo)} at a different body, or clear it and set {nameof(TransmitPeriodSeconds)} to zero to keep this one silent.");
+        }
+#endif
     }
 }

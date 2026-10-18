@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Voyager1
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Voyager 1
+  <LocalizedName>k__BackingField:
+    _ru: "\u0412\u043E\u044F\u0434\u0436\u0435\u0440-1"
+    _en: Voyager 1
   <SpaceSprite>k__BackingField: {fileID: 21300000, guid: accfd7ac2c0076449be76e31ebecb883, type: 3}
   <DialoguePortrait>k__BackingField: {fileID: 21300000, guid: 9e69e7611e3a5134fa2987348adb501b, type: 3}
   <Accent>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
@@ -21,6 +24,4 @@ MonoBehaviour:
   <LastContactYear>k__BackingField: 0
   <GivesRecordTrack>k__BackingField: 0
   <Epitaph>k__BackingField: 
-  <FreeFlightDistanceAu>k__BackingField: 311.1
-  <FreeFlightAngleDegrees>k__BackingField: 27.1
   <DisplayDiameter>k__BackingField: 0.59

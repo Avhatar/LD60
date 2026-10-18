@@ -13,18 +13,51 @@ namespace LD60.Signals
         private Vector2[] _directions;
         private Vector2[] _positions;
         private Vector2[] _landedOffsets;
-        private int[] _landedBodies;
+        private Transform[] _landedOn;
         private bool[] _inFlight;
-        private bool[] _visible;
+        private float[] _weights;
+        private float[] _altBlends;
         private int _count;
         private int _inFlightCount;
         private float _speed;
         private float _travelled;
         private float _age;
+        private Transform _ignored;
+
+        public int DotCount
+        {
+            get { return _count; }
+        }
+
+        public Vector2 DotPosition(int index)
+        {
+            return _positions[index];
+        }
+
+        public Transform DotLandedOn(int index)
+        {
+            return _landedOn[index];
+        }
+
+        public bool IsDotInFlight(int index)
+        {
+            return _inFlight[index];
+        }
+
+        public void MarkDotSpent(int index)
+        {
+            if (!_inFlight[index])
+                return;
+
+            _inFlight[index] = false;
+            _inFlightCount--;
+            _altBlends[index] = 1f;
+        }
 
         public void Launch(SignalSO settings, Orrery orrery, SignalLauncher launcher, Material dotMaterial,
-            Vector2 origin, Vector2 direction, float widthDegrees, float speed, int dotCount)
+            Vector2 origin, Vector2 direction, float widthDegrees, float speed, int dotCount, Transform ignored)
         {
+            _ignored = ignored;
             _settings = settings;
             _orrery = orrery;
             _launcher = launcher;
@@ -37,9 +70,10 @@ namespace LD60.Signals
             _directions = new Vector2[_count];
             _positions = new Vector2[_count];
             _landedOffsets = new Vector2[_count];
-            _landedBodies = new int[_count];
+            _landedOn = new Transform[_count];
             _inFlight = new bool[_count];
-            _visible = new bool[_count];
+            _weights = new float[_count];
+            _altBlends = new float[_count];
 
             float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float halfWidth = widthDegrees * 0.5f;
@@ -50,13 +84,15 @@ namespace LD60.Signals
                 float angle = (baseAngle - halfWidth + widthDegrees * t) * Mathf.Deg2Rad;
                 _directions[i] = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 _positions[i] = origin;
-                _landedBodies[i] = -1;
                 _inFlight[i] = true;
-                _visible[i] = true;
+                _weights[i] = 1f;
             }
 
-            _dots = new SignalDotMesh(gameObject, dotMaterial, settings.SignalColor, _count);
-            _dots.Rebuild(_positions, _visible, _count, settings.DotSize);
+            _dots = new SignalDotMesh(gameObject, dotMaterial, _count);
+            _dots.SetLook(settings.SignalColor, settings.DotEmission, settings.DotEdgeSoftness);
+            _dots.SetAltLook(settings.ArrivedColor, settings.ArrivedDotEmission);
+            _dots.SetFade(settings.FadeForAge(0f));
+            _dots.Rebuild(_positions, _weights, _altBlends, _count, settings.DotSize);
         }
 
         private void Update()
@@ -85,7 +121,8 @@ namespace LD60.Signals
             }
 
             FollowLandedBodies();
-            _dots.Rebuild(_positions, _visible, _count, _settings.DotSize);
+            _dots.SetFade(_settings.FadeForAge(_age));
+            _dots.Rebuild(_positions, _weights, _altBlends, _count, _settings.DotSize);
         }
 
         private void AdvanceDots()
@@ -97,56 +134,47 @@ namespace LD60.Signals
 
                 _positions[i] = _origin + _directions[i] * _travelled;
 
-                int body = FindBodyUnder(i);
+                float hitRadius;
+                int bodyIndex;
+                Transform hit = _orrery.FindHitTarget(_positions[i], _ignored, out hitRadius, out bodyIndex);
 
-                if (body >= 0)
+                if (hit != null)
                 {
                     _inFlight[i] = false;
                     _inFlightCount--;
-                    _landedBodies[i] = body;
-                    _landedOffsets[i] = LandedOffsetFor(i, body);
-                    _positions[i] = (Vector2)_orrery.GetBodyTransform(body).position + _landedOffsets[i];
-                    _orrery.FlashBody(body, _settings.HitFlashColor, _settings.HitFlashSeconds);
-                    _launcher.ReportHit(_orrery.GetBody(body).DisplayName);
+                    _landedOn[i] = hit;
+                    _landedOffsets[i] = LandedOffsetFor(i, hit, hitRadius);
+                    _positions[i] = (Vector2)hit.position + _landedOffsets[i];
+
+                    if (bodyIndex >= 0)
+                    {
+                        _orrery.FlashBody(bodyIndex, _settings.HitFlashColor, _settings.HitFlashSeconds);
+                        _launcher.ReportHit(_orrery.GetBody(bodyIndex).LocalizedName);
+                    }
                 }
             }
         }
 
-        private Vector2 LandedOffsetFor(int dot, int body)
+        private Vector2 LandedOffsetFor(int dot, Transform hit, float hitRadius)
         {
-            Vector2 outward = _positions[dot] - (Vector2)_orrery.GetBodyTransform(body).position;
+            Vector2 outward = _positions[dot] - (Vector2)hit.position;
 
             if (outward.sqrMagnitude < 0.000001f)
                 outward = -_directions[dot];
 
-            return outward.normalized * (_orrery.GetHitRadius(body) + _settings.LandedSurfaceOffset);
+            return outward.normalized * (hitRadius + _settings.LandedSurfaceOffset);
         }
 
         private void FollowLandedBodies()
         {
             for (int i = 0; i < _count; i++)
             {
-                if (_inFlight[i] || _landedBodies[i] < 0)
+                if (_inFlight[i] || _landedOn[i] == null)
                     continue;
 
-                Transform body = _orrery.GetBodyTransform(_landedBodies[i]);
-
-                if (body == null)
-                    continue;
-
-                _positions[i] = (Vector2)body.position + _landedOffsets[i];
+                _positions[i] = (Vector2)_landedOn[i].position + _landedOffsets[i];
             }
         }
 
-        private int FindBodyUnder(int dot)
-        {
-            for (int body = 0; body < _orrery.BodyCount; body++)
-            {
-                if (_orrery.IsHitAt(body, _positions[dot]))
-                    return body;
-            }
-
-            return -1;
-        }
     }
 }

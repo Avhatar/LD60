@@ -15,6 +15,11 @@ Shader "LD60/Space/Body"
         _Flatten ("Flatten Projection", Range(0, 1)) = 0.5
         _OuterPassthrough ("Keep Art Outside Disc", Range(0, 1)) = 1
 
+        [Header(Ring)]
+        [Space(4)]
+        _RingMap ("Ring Overlay (unrotated)", 2D) = "black" {}
+        _RingOpacity ("Ring Opacity", Range(0, 1)) = 0
+
         [Header(Shading)]
         [Space(4)]
         _LimbDarken ("Limb Darken", Range(0, 1)) = 0
@@ -80,6 +85,9 @@ Shader "LD60/Space/Body"
             TEXTURE2D(_BaseMap);
             SAMPLER(sampler_BaseMap);
 
+            TEXTURE2D(_RingMap);
+            SAMPLER(sampler_RingMap);
+
             CBUFFER_START(UnityPerMaterial)
             float4 _BaseMap_ST;
             float4 _BaseColor;
@@ -97,6 +105,7 @@ Shader "LD60/Space/Body"
             float _DifferentialSpin;
             float _Flatten;
             float _OuterPassthrough;
+            float _RingOpacity;
             float _LimbDarken;
             float _FarSideDim;
             float _FarSideDrift;
@@ -189,6 +198,13 @@ Shader "LD60/Space/Body"
                 outer.a *= _OuterPassthrough * step(dot(fromCenter, fromCenter), 0.25);
 
                 half4 color = r2 <= 1.0 ? sphere : outer;
+
+                half4 ring = SAMPLE_TEXTURE2D_LOD(_RingMap, sampler_RingMap, uv, 0);
+                float ringAlpha = ring.a * _RingOpacity;
+                float stacked = ringAlpha + color.a * (1.0 - ringAlpha);
+                color.rgb = (ring.rgb * ringAlpha + color.rgb * color.a * (1.0 - ringAlpha)) / max(stacked, 1e-4);
+                color.a = stacked;
+
                 color *= _BaseColor;
 
                 float sunLength = length(_SunDir.xy);

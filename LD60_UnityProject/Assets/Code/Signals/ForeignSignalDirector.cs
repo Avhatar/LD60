@@ -8,12 +8,81 @@ namespace LD60.Signals
     {
         [SerializeField] private Orrery _orrery;
         [SerializeField] private Material _dotMaterial;
+        [SerializeField] private SignalLauncher _launcher;
+        [SerializeField] private DialogueUi _dialogueUi;
 
         private SignalSO _settings;
         private ActPeriod _act;
         private ActSpacecraftSO[] _senders = new ActSpacecraftSO[0];
         private float[] _countdowns = new float[0];
         private ForeignSignal[] _lastSent = new ForeignSignal[0];
+        private int[] _captured = new int[0];
+        private bool[] _discovered = new bool[0];
+        private bool[][] _usedDialogues = new bool[0][];
+        private bool[] _contacted = new bool[0];
+
+        public int SenderCount
+        {
+            get { return _senders.Length; }
+        }
+
+        public ActSpacecraftSO GetSender(int index)
+        {
+            return _senders[index];
+        }
+
+        public bool IsDiscovered(int index)
+        {
+            return _discovered[index];
+        }
+
+        public int CapturedDots(int index)
+        {
+            return _captured[index];
+        }
+
+        public int RemainingDots(int index)
+        {
+            return Mathf.Max(0, _senders[index].DotsToCapture - _captured[index]);
+        }
+
+        public bool TryGetSenderPosition(int index, out Vector2 position)
+        {
+            return TryGetPosition(_senders[index].Body, _senders[index], out position);
+        }
+
+        public bool IsContacted(int index)
+        {
+            return _contacted[index];
+        }
+
+        public bool IsAwaitingContact(int index)
+        {
+            return IsUnlocked(index) && !_contacted[index];
+        }
+
+        public Transform SenderObject(int index)
+        {
+            ActSpacecraftSO entry = _senders[index];
+
+            return entry.Body != null
+                ? _orrery.FindBodyTransform(entry.Body)
+                : _orrery.FindSpacecraftTransform(entry.Spacecraft);
+        }
+
+        public float SenderObjectRadius(int index)
+        {
+            ActSpacecraftSO entry = _senders[index];
+
+            return entry.Body != null
+                ? _orrery.GetHitRadiusOf(entry.Body)
+                : entry.Spacecraft.DisplayDiameter * 0.5f;
+        }
+
+        public bool IsUnlocked(int index)
+        {
+            return _captured[index] >= _senders[index].DotsToCapture;
+        }
 
         private void Start()
         {
@@ -54,6 +123,9 @@ namespace LD60.Signals
             if (!Core.IsGameMode)
                 return;
 
+            CaptureDots();
+            CheckContactShots();
+
             for (int i = 0; i < _senders.Length; i++)
             {
                 _countdowns[i] -= Time.deltaTime;
@@ -89,6 +161,10 @@ namespace LD60.Signals
             _senders = new ActSpacecraftSO[count];
             _countdowns = new float[count];
             _lastSent = new ForeignSignal[count];
+            _captured = new int[count];
+            _discovered = new bool[count];
+            _usedDialogues = new bool[count][];
+            _contacted = new bool[count];
 
             if (_act == null)
                 return;
@@ -101,9 +177,217 @@ namespace LD60.Signals
                     continue;
 
                 _senders[slot] = _act.Spacecraft[i];
+                _usedDialogues[slot] = new bool[_act.Spacecraft[i].InterceptDialogues.Length];
                 _countdowns[slot] = _act.Spacecraft[i].TransmitPeriodSeconds * Random.value;
                 slot++;
             }
+        }
+
+        private void CaptureDots()
+        {
+            if (_launcher == null)
+                return;
+
+            Signal ours = _launcher.ActiveSignal;
+
+            if (ours == null)
+                return;
+
+            float radius = _settings.CaptureRadius;
+            float radiusSquared = radius * radius;
+
+            for (int t = 0; t < transform.childCount; t++)
+            {
+                ForeignSignal theirs = transform.GetChild(t).GetComponent<ForeignSignal>();
+
+                if (theirs == null)
+                    continue;
+
+                int sender = IndexOfSender(theirs.Source);
+
+                if (sender < 0)
+                    continue;
+
+                for (int d = 0; d < theirs.DotCount; d++)
+                {
+                    if (!theirs.IsDotCapturable(d))
+                        continue;
+
+                    int ourDot = FindOurDotNear(ours, theirs.DotPosition(d), radiusSquared);
+
+                    if (ourDot < 0)
+                        continue;
+
+                    ours.MarkDotSpent(ourDot);
+                    theirs.ConsumeDot(d);
+                    RegisterCapture(sender, theirs);
+                }
+            }
+        }
+
+        private void CheckContactShots()
+        {
+            if (_launcher == null)
+                return;
+
+            Signal ours = _launcher.ActiveSignal;
+
+            if (ours == null)
+                return;
+
+            for (int i = 0; i < _senders.Length; i++)
+            {
+                if (!IsAwaitingContact(i))
+                    continue;
+
+                Transform target = SenderObject(i);
+
+                if (target == null)
+                    continue;
+
+                for (int d = 0; d < ours.DotCount; d++)
+                {
+                    if (ours.DotLandedOn(d) != target)
+                        continue;
+
+                    _contacted[i] = true;
+                    break;
+                }
+            }
+        }
+
+        private void RegisterCapture(int sender, ForeignSignal theirs)
+        {
+            if (IsUnlocked(sender))
+            {
+                if (theirs.Answered)
+                    return;
+
+                theirs.MarkAnswered();
+                PlayInterceptDialogue(sender, false);
+                return;
+            }
+
+            _captured[sender]++;
+            _discovered[sender] = true;
+
+            bool justUnlocked = IsUnlocked(sender);
+
+            if (justUnlocked)
+            {
+                PlaySound(_settings.ContactSound);
+                theirs.ApplyBaseLook(true);
+            }
+
+            if (theirs.Answered)
+                return;
+
+            theirs.MarkAnswered();
+
+            if (!justUnlocked)
+                PlaySound(_settings.ReplySound);
+
+            PlayInterceptDialogue(sender, true);
+        }
+
+        private void PlayInterceptDialogue(int sender, bool allowRepeats)
+        {
+            if (_dialogueUi == null || _dialogueUi.IsRunning)
+                return;
+
+            NodeGraphAvr.Dialogue.DialogueGraph graph = PickUnusedDialogue(sender, allowRepeats);
+
+            if (graph == null)
+                return;
+
+            _dialogueUi.Play(graph);
+        }
+
+        private NodeGraphAvr.Dialogue.DialogueGraph PickUnusedDialogue(int sender, bool allowRepeats)
+        {
+            NodeGraphAvr.Dialogue.DialogueGraph[] all = _senders[sender].InterceptDialogues;
+
+            if (all.Length == 0)
+                return null;
+
+            bool[] used = _usedDialogues[sender];
+
+            if (used.Length != all.Length)
+            {
+                used = new bool[all.Length];
+                _usedDialogues[sender] = used;
+            }
+
+            int unused = 0;
+
+            for (int i = 0; i < all.Length; i++)
+            {
+                if (!used[i] && all[i] != null)
+                    unused++;
+            }
+
+            if (unused == 0)
+            {
+                if (!allowRepeats)
+                    return null;
+
+                for (int i = 0; i < used.Length; i++)
+                    used[i] = false;
+
+                unused = all.Length;
+            }
+
+            int wanted = Random.Range(0, unused);
+
+            for (int i = 0; i < all.Length; i++)
+            {
+                if (used[i] || all[i] == null)
+                    continue;
+
+                if (wanted > 0)
+                {
+                    wanted--;
+                    continue;
+                }
+
+                used[i] = true;
+                return all[i];
+            }
+
+            return null;
+        }
+
+        private static void PlaySound(LD60.Settings.SoundContainerSO sound)
+        {
+            if (sound == null || LD60.Sound.AudioController.Instance == null)
+                return;
+
+            LD60.Sound.AudioController.Instance.Play2D(sound);
+        }
+
+        private static int FindOurDotNear(Signal ours, Vector2 point, float radiusSquared)
+        {
+            for (int i = 0; i < ours.DotCount; i++)
+            {
+                if (!ours.IsDotInFlight(i))
+                    continue;
+
+                if ((ours.DotPosition(i) - point).sqrMagnitude <= radiusSquared)
+                    return i;
+            }
+
+            return -1;
+        }
+
+        private int IndexOfSender(ActSpacecraftSO entry)
+        {
+            for (int i = 0; i < _senders.Length; i++)
+            {
+                if (_senders[i] == entry)
+                    return i;
+            }
+
+            return -1;
         }
 
         private static bool IsSender(ActSpacecraftSO entry)
@@ -111,6 +395,7 @@ namespace LD60.Signals
             return entry != null
                 && entry.Spacecraft != null
                 && entry.TransmitTo != null
+                && !entry.TransmitsOntoItself
                 && entry.TransmitPeriodSeconds > 0f;
         }
 
@@ -126,15 +411,25 @@ namespace LD60.Signals
             if (!TryGetLeadPoint(entry, origin, out aimPoint))
                 return null;
 
-            float clearance = entry.Body == null
-                ? 0f
-                : _orrery.GetHitRadiusOf(entry.Body) + _settings.LandedSurfaceOffset;
+            Transform senderTransform = entry.Body != null
+                ? _orrery.FindBodyTransform(entry.Body)
+                : _orrery.FindSpacecraftTransform(entry.Spacecraft);
 
-            GameObject spawned = new GameObject(entry.Spacecraft.DisplayName + " Transmission");
+            float senderRadius = entry.Body != null
+                ? _orrery.GetHitRadiusOf(entry.Body)
+                : entry.Spacecraft.DisplayDiameter * 0.5f;
+
+            float clearance = senderRadius + _settings.LandedSurfaceOffset;
+
+            GameObject spawned = new GameObject(entry.Spacecraft.LocalizedName.Value + " Transmission");
             spawned.transform.SetParent(transform, false);
 
             ForeignSignal signal = spawned.AddComponent<ForeignSignal>();
-            signal.Launch(_settings, entry, _orrery, _dotMaterial, origin, aimPoint, entry.Body, clearance);
+            int senderIndex = IndexOfSender(entry);
+            signal.Launch(_settings, entry, _orrery, _dotMaterial, origin, aimPoint, senderTransform, clearance,
+                          senderIndex >= 0 && IsUnlocked(senderIndex));
+
+            PlaySound(_settings.ForeignSound);
             return signal;
         }
 
@@ -172,7 +467,7 @@ namespace LD60.Signals
 
                 if (found == null)
                 {
-                    Debug.LogError($"{nameof(ForeignSignalDirector)}: body '{body.DisplayName}' is not in the orrery in {nameof(TryGetPosition)}. " +
+                    Debug.LogError($"{nameof(ForeignSignalDirector)}: body '{body.name}' is not in the orrery in {nameof(TryGetPosition)}. " +
                                    "Required to know where a transmission starts or ends. " +
                                    "Fix: add that body to the Bodies list on the SolarSystem asset.");
                     return false;

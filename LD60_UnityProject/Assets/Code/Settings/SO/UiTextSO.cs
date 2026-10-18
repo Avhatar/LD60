@@ -17,6 +17,12 @@ namespace LD60.Settings
         [field: SerializeField] public LocalizedString HitPrefix { get; private set; } =
             new LocalizedString("ЦЕЛЬ: ", "HIT: ");
 
+        [field: SerializeField] public LocalizedString SelfFrameLabel { get; private set; } =
+            new LocalizedString("Я", "Me");
+
+        [field: SerializeField] public LocalizedString InterceptProgressFormat { get; private set; } =
+            new LocalizedString("{0} / {1}", "{0} / {1}");
+
         [field: SerializeField] public LocalizedString AimReadoutFormat { get; private set; } =
             new LocalizedString(
                 "{0:0.0} град   {1:0.0} ед/с   {3} точек   {2:0.0} Вт\nДержать ЛКМ — мощность, отпустить — пуск · ПКМ отмена",

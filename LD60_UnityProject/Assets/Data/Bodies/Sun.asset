@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Sun
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Sun
+  <LocalizedName>k__BackingField:
+    _ru: "\u0421\u043E\u043B\u043D\u0446\u0435"
+    _en: Sun
   <SemiMajorAxisAu>k__BackingField: 0
   <OrbitalPeriodDays>k__BackingField: 0
   <RotationPeriodHours>k__BackingField: 609.12
-  <MeanLongitudeJ2000Degrees>k__BackingField: 0
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 3.71
   <Tint>k__BackingField: {r: 1, g: 0.85, b: 0.45, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.365
   <Material>k__BackingField: {fileID: 2100000, guid: 64b22be8963330847867e5b8246e5ee0, type: 2}
   <DrawOrbitRing>k__BackingField: 0
-  <Spacecraft>k__BackingField: []

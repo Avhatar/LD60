@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AudioClips>k__BackingField:
   - {fileID: 8300000, guid: b8756d6abf0c267428bcd53075325db8, type: 3}
-  <Volume>k__BackingField: 0.195
+  <Volume>k__BackingField: 0.1
   <VolumeVariance>k__BackingField: 0
-  <Pitch>k__BackingField: 0.87
+  <Pitch>k__BackingField: 0.61
   <PitchVariance>k__BackingField: 0
   <SpatialBlend>k__BackingField: 0
   <StereoPan>k__BackingField: 0

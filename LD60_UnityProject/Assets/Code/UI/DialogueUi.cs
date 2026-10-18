@@ -34,6 +34,7 @@ public class DialogueUi : MonoBehaviour
     private SpacecraftSO _player;
     private int _pendingSelectionIndex;
     private int _ignoreClickFrame = -1;
+    private GameMode _modeBeforePlay;
 
     public event Action<bool> Finished;
 
@@ -68,6 +69,7 @@ public class DialogueUi : MonoBehaviour
         Stop();
         Clear();
 
+        _modeBeforePlay = Core.Mode == GameMode.Dialogue ? GameMode.Game : Core.Mode;
         Core.SetMode(GameMode.Dialogue);
         _ignoreClickFrame = Time.frameCount;
         _player = ResolvePlayer(graph);
@@ -298,7 +300,7 @@ public class DialogueUi : MonoBehaviour
 
     private void Release()
     {
-        Core.SetMode(GameMode.Game);
+        Core.SetMode(_modeBeforePlay);
         HideReplics();
 
         if (_runner != null)

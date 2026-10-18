@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Ceres
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Ceres
+  <LocalizedName>k__BackingField:
+    _ru: "\u0426\u0435\u0440\u0435\u0440\u0430"
+    _en: Ceres
   <SemiMajorAxisAu>k__BackingField: 4.69
   <OrbitalPeriodDays>k__BackingField: 1681.63
   <RotationPeriodHours>k__BackingField: 9.074
-  <MeanLongitudeJ2000Degrees>k__BackingField: 231.36
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 0.43
   <Tint>k__BackingField: {r: 0.55, g: 0.53, b: 0.5, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.37
   <Material>k__BackingField: {fileID: 2100000, guid: f33207d51e863fb4988c5cfdabef0a19, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using LD60.Settings;
 using LD60.Space;
 
 namespace LD60.Signals
@@ -16,7 +17,8 @@ namespace LD60.Signals
         private GameObject _previewDotsObject;
         private SignalDotMesh _previewDots;
         private Vector2[] _previewPositions;
-        private bool[] _previewAlive;
+        private float[] _previewWeights;
+        private float[] _previewAltBlends;
         private MaterialPropertyBlock _propertyBlock;
         private Transform _origin;
         private Vector2 _aimDirection = Vector2.right;
@@ -28,7 +30,7 @@ namespace LD60.Signals
         public float WidthDegrees { get; private set; }
         public float Speed { get; private set; }
         public int PowerDots { get; private set; }
-        public string LastHitName { get; private set; }
+        public LocalizedString LastHitName { get; private set; }
         public bool IsAiming { get; private set; }
         public bool IsCharging { get; private set; }
 
@@ -280,10 +282,10 @@ namespace LD60.Signals
                 float t = dots == 1 ? 0.5f : i / (float)(dots - 1);
                 float angle = (baseAngle - halfWidth + WidthDegrees * t) * Mathf.Deg2Rad;
                 _previewPositions[i] = origin + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * _settings.PreviewArcRadius;
-                _previewAlive[i] = true;
+                _previewWeights[i] = 1f;
             }
 
-            _previewDots.Rebuild(_previewPositions, _previewAlive, dots, _settings.DotSize);
+            _previewDots.Rebuild(_previewPositions, _previewWeights, _previewAltBlends, dots, _settings.DotSize);
         }
 
         private Vector2 PointerWorldPosition(Mouse mouse)
@@ -302,10 +304,25 @@ namespace LD60.Signals
             spawned.transform.SetParent(transform, false);
 
             _lastSignal = spawned.AddComponent<Signal>();
-            _lastSignal.Launch(_settings, _orrery, this, _dotMaterial, origin, direction, WidthDegrees, Speed, PowerDots);
+            _lastSignal.Launch(_settings, _orrery, this, _dotMaterial, origin, direction, WidthDegrees, Speed, PowerDots, _origin);
+
+            PlaySound(_settings.OursSound);
         }
 
-        public void ReportHit(string bodyName)
+        private static void PlaySound(SoundContainerSO sound)
+        {
+            if (sound == null || LD60.Sound.AudioController.Instance == null)
+                return;
+
+            LD60.Sound.AudioController.Instance.Play2D(sound);
+        }
+
+        public Signal ActiveSignal
+        {
+            get { return _lastSignal; }
+        }
+
+        public void ReportHit(LocalizedString bodyName)
         {
             LastHitName = bodyName;
         }
@@ -326,9 +343,12 @@ namespace LD60.Signals
 
             _previewDotsObject = new GameObject("Aim Dots");
             _previewDotsObject.transform.SetParent(transform, false);
-            _previewDots = new SignalDotMesh(_previewDotsObject, _dotMaterial, _settings.SignalColor, _settings.MaxDots);
+            _previewDots = new SignalDotMesh(_previewDotsObject, _dotMaterial, _settings.MaxDots);
+            _previewDots.SetLook(_settings.SignalColor, _settings.PreviewDotEmission, _settings.DotEdgeSoftness);
+            _previewDots.SetFade(1f);
             _previewPositions = new Vector2[_settings.MaxDots];
-            _previewAlive = new bool[_settings.MaxDots];
+            _previewWeights = new float[_settings.MaxDots];
+            _previewAltBlends = new float[_settings.MaxDots];
             _previewDotsObject.SetActive(false);
         }
 
@@ -340,6 +360,9 @@ namespace LD60.Signals
             _preview.widthMultiplier = _settings.PreviewLineWidth;
             _preview.startColor = _settings.PreviewColor;
             _preview.endColor = _settings.PreviewColor;
+
+            if (_previewDots != null)
+                _previewDots.SetLook(_settings.SignalColor, _settings.PreviewDotEmission, _settings.DotEdgeSoftness);
 
             if (_lineMaterial == null)
                 return;

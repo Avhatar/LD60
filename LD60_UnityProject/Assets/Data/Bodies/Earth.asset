@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Earth
+  <LocalizedName>k__BackingField:
+    _ru: "\u0417\u0435\u043C\u043B\u044F"
+    _en: Earth
   <SemiMajorAxisAu>k__BackingField: 1.72
   <OrbitalPeriodDays>k__BackingField: 365.26
   <RotationPeriodHours>k__BackingField: 23.934
-  <MeanLongitudeJ2000Degrees>k__BackingField: 100.46
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 1.07
   <Tint>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.335
   <Material>k__BackingField: {fileID: 2100000, guid: f33207d51e863fb4988c5cfdabef0a19, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []

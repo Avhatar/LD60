@@ -77,9 +77,9 @@ namespace LD60.UI
 
             if (!_launcher.IsAiming)
             {
-                string hit = string.IsNullOrEmpty(_launcher.LastHitName)
+                string hit = _launcher.LastHitName == null || _launcher.LastHitName.IsEmpty
                     ? string.Empty
-                    : "\n" + _text.HitPrefix.Value + _launcher.LastHitName;
+                    : "\n" + _text.HitPrefix.Value + _launcher.LastHitName.Value;
 
                 return _text.AimHint.Value + pause + hit;
             }

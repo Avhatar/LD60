@@ -7,6 +7,9 @@ namespace LD60.Dialogue
     [CreateAssetMenu(fileName = "Spacecraft", menuName = "LD60/Spacecraft")]
     public class SpacecraftSO : ActorData
     {
+        [field: Tooltip("Name shown to the player. The inherited Display Name stays an editor-only label for the actor picker.")]
+        [field: SerializeField] public LocalizedString LocalizedName { get; private set; } = new LocalizedString();
+
         [field: Tooltip("Sprite drawn for this spacecraft on the orrery. Empty falls back to a tinted quad.")]
         [field: FormerlySerializedAs("<Portrait>k__BackingField")]
         [field: SerializeField] public Sprite SpaceSprite { get; private set; }

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca091b85d57bd499a8fc1bf7ebb4f9, type: 3}
   m_Name: Neptune
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Neptune
+  <LocalizedName>k__BackingField:
+    _ru: "\u041D\u0435\u043F\u0442\u0443\u043D"
+    _en: Neptune
   <SemiMajorAxisAu>k__BackingField: 74.1
   <OrbitalPeriodDays>k__BackingField: 60182
   <RotationPeriodHours>k__BackingField: 16.11
-  <MeanLongitudeJ2000Degrees>k__BackingField: 304.88
   <DisplayRadiusOverride>k__BackingField: 0
   <DisplayDiameter>k__BackingField: 1.44
   <Tint>k__BackingField: {r: 0.35, g: 0.48, b: 0.82, a: 1}
@@ -24,4 +25,3 @@ MonoBehaviour:
   <SurfaceDiscRadius>k__BackingField: 0.337
   <Material>k__BackingField: {fileID: 2100000, guid: a91ee4207d745864a8027df83d3457c4, type: 2}
   <DrawOrbitRing>k__BackingField: 1
-  <Spacecraft>k__BackingField: []
