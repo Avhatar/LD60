@@ -143,10 +143,15 @@ namespace LD60.UI
 
         private bool IsHovered(int index)
         {
-            if (_frames == null || _frames.HoveredBody == null)
+            if (_frames == null)
                 return false;
 
-            return _frames.HoveredBody == _director.GetSender(index).Body;
+            ActSpacecraftSO sender = _director.GetSender(index);
+
+            if (_frames.HoveredBody != null && _frames.HoveredBody == sender.Body)
+                return true;
+
+            return _frames.HoveredCraft != null && _frames.HoveredCraft == sender.Spacecraft;
         }
 
         private void Paint(int index)

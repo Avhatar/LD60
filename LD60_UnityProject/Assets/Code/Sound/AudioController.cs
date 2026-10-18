@@ -10,7 +10,19 @@ namespace LD60.Sound
     {
         public const float Min3DSpatialBlend = 0.9f;
 
+        private const string MasterVolumeKey = "LD60.MasterVolume";
+        private const string MusicVolumeKey = "LD60.MusicVolume";
+
         public static AudioController Instance { get; private set; }
+
+        public int MasterVolumePercent { get; private set; }
+
+        public int MusicVolumePercent { get; private set; }
+
+        public int MaxVolumePercent
+        {
+            get { return _settings == null ? 0 : _settings.MaxVolumePercent; }
+        }
 
         private AudioSO _settings;
         private AudioSource[] _pool;
@@ -18,6 +30,7 @@ namespace LD60.Sound
         private float[] _startTimes;
         private Coroutine[] _fadeRoutines;
         private AudioSource _musicSource;
+        private float _musicBaseVolume = 1f;
 
         private void Awake()
         {
@@ -70,6 +83,10 @@ namespace LD60.Sound
             _musicSource = musicGo.AddComponent<AudioSource>();
             _musicSource.playOnAwake = false;
             _musicSource.spatialBlend = 0f;
+
+            MasterVolumePercent = ReadStoredVolume(MasterVolumeKey);
+            MusicVolumePercent = ReadStoredVolume(MusicVolumeKey);
+            ApplyMasterVolume();
 
             Instance = this;
 
@@ -134,8 +151,91 @@ namespace LD60.Sound
             }
 
             ApplyContainer(_musicSource, music);
+            _musicBaseVolume = _musicSource.volume;
+            ApplyMusicVolume();
             _musicSource.clip = PickClip(music);
             _musicSource.Play();
+        }
+
+        public void AdjustMasterVolume(int direction)
+        {
+            if (_settings == null)
+            {
+                Debug.LogError($"{nameof(AudioController)}.{nameof(AdjustMasterVolume)}: {nameof(_settings)} is null on '{name}'. " +
+                               "Required to know the volume step and the maximum. " +
+                               "Fix: assign an AudioSO asset to the Audio slot on the CoreSO asset.", this);
+                return;
+            }
+
+            SetMasterVolume(MasterVolumePercent + direction * _settings.VolumeStepPercent);
+        }
+
+        public void AdjustMusicVolume(int direction)
+        {
+            if (_settings == null)
+            {
+                Debug.LogError($"{nameof(AudioController)}.{nameof(AdjustMusicVolume)}: {nameof(_settings)} is null on '{name}'. " +
+                               "Required to know the volume step and the maximum. " +
+                               "Fix: assign an AudioSO asset to the Audio slot on the CoreSO asset.", this);
+                return;
+            }
+
+            SetMusicVolume(MusicVolumePercent + direction * _settings.VolumeStepPercent);
+        }
+
+        public void SetMasterVolume(int percent)
+        {
+            int clamped = ClampVolume(percent);
+
+            if (clamped == MasterVolumePercent)
+                return;
+
+            MasterVolumePercent = clamped;
+            PlayerPrefs.SetInt(MasterVolumeKey, clamped);
+            PlayerPrefs.Save();
+            ApplyMasterVolume();
+        }
+
+        public void SetMusicVolume(int percent)
+        {
+            int clamped = ClampVolume(percent);
+
+            if (clamped == MusicVolumePercent)
+                return;
+
+            MusicVolumePercent = clamped;
+            PlayerPrefs.SetInt(MusicVolumeKey, clamped);
+            PlayerPrefs.Save();
+            ApplyMusicVolume();
+        }
+
+        private int ReadStoredVolume(string key)
+        {
+            return ClampVolume(PlayerPrefs.GetInt(key, _settings.MaxVolumePercent));
+        }
+
+        private int ClampVolume(int percent)
+        {
+            if (percent < 0)
+                return 0;
+
+            if (percent > _settings.MaxVolumePercent)
+                return _settings.MaxVolumePercent;
+
+            return percent;
+        }
+
+        private void ApplyMasterVolume()
+        {
+            AudioListener.volume = MasterVolumePercent / (float)_settings.MaxVolumePercent;
+        }
+
+        private void ApplyMusicVolume()
+        {
+            if (_musicSource == null)
+                return;
+
+            _musicSource.volume = _musicBaseVolume * (MusicVolumePercent / (float)_settings.MaxVolumePercent);
         }
 
         private void PlayInternal(SoundContainerSO sound, float pitchMultiplier, bool spatial, Vector3 position, Transform follow, string callerName)

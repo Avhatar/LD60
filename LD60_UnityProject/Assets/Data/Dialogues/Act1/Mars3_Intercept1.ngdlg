@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+      "name": "Mars3"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "0c4859659587d5f22733d70a027564d3",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Марс-3. Здравствуйте.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "756314db03b0644492bf90a713e68b7c",
+          "target": "de82201cb4c94bc66483d59334ead377"
+        }
+      ]
+    },
+    {
+      "uid": "de82201cb4c94bc66483d59334ead377",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Говорит Марс-3, я на поверхности, у меня всё",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "e782146898b7721cf7f9c0268d2822af",
+          "target": "43e721283995d3f0d681ad654682708d"
+        }
+      ]
+    },
+    {
+      "uid": "43e721283995d3f0d681ad654682708d",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

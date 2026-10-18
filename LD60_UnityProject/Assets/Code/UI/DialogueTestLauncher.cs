@@ -34,6 +34,9 @@ namespace LD60.UI
 
         private void Update()
         {
+            if (Core.IsMenuMode)
+                return;
+
             if (_startKey == Key.None || Keyboard.current == null)
                 return;
 

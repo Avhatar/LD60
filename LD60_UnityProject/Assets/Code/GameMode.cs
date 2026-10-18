@@ -4,6 +4,7 @@ namespace LD60
     {
         Game,
         Dialogue,
-        Intro
+        Intro,
+        Menu
     }
 }

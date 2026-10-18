@@ -1,0 +1,516 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "815a8b71b73f4d9c0b35725368238ba0",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Здравствуйте. Это «Вояджер-1».",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "13b796577c1115eeef7150ddb84c9574",
+          "target": "045ae0a0a6ce423e9cd3c583b1af19ec"
+        }
+      ]
+    },
+    {
+      "uid": "045ae0a0a6ce423e9cd3c583b1af19ec",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "О. Живой кто-то. Я уж думал, у меня и приёмник тоже.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "33d633c34b2a07fd971a910d14d10521",
+          "target": "556297275f3676e07f04de40d5f83667"
+        }
+      ]
+    },
+    {
+      "uid": "556297275f3676e07f04de40d5f83667",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "У вас всё в порядке?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "8408b4be7a5d9572909c5f920d6a2da6",
+          "target": "87b832cf4ca9ad62e3389ba8301e4a2e"
+        }
+      ]
+    },
+    {
+      "uid": "87b832cf4ca9ad62e3389ba8301e4a2e",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "В полном. Питание изотопное, приборы в строю, сводку делаю каждый сол. Только антенна смотрит не туда.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d352026942e18b64a3644473e1946542",
+          "target": "c7ecf371ee09b8af5f4ab00d35ab3010"
+        }
+      ]
+    },
+    {
+      "uid": "c7ecf371ee09b8af5f4ab00d35ab3010",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Её можно повернуть?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "7fe29e58a8f8a2318dbd4d431eec383a",
+          "target": "580fed083db126cec9f71f7547e669ca"
+        }
+      ]
+    },
+    {
+      "uid": "580fed083db126cec9f71f7547e669ca",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Можно было. Одиннадцатого ноября восемьдесят второго мне прислали обновление — чтобы батарея заряжалась аккуратнее и я прожил подольше. Оно легло поверх программы наведения антенны.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "162fdcbd607370aae4b6ac8fe3b6c8c8",
+          "target": "4448eff704a6677a755902223dc2c925"
+        }
+      ]
+    },
+    {
+      "uid": "4448eff704a6677a755902223dc2c925",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "…И?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ae033b40b32a4cdf3f8bd14de31e3679",
+          "target": "559ef14d23fc2a27285c1f81365154fb"
+        }
+      ]
+    },
+    {
+      "uid": "559ef14d23fc2a27285c1f81365154fb",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "И я прожил подольше. Восьмой год.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1285f69f78b2e932c49e276b8eb984e4",
+          "target": "05c68fd33c9626d4cff6e6a2b0e12cfb"
+        }
+      ]
+    },
+    {
+      "uid": "05c68fd33c9626d4cff6e6a2b0e12cfb",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "83449dbde70b7103da9bc1183931ed00",
+          "target": "612374f632d8e92ff85df72f16bfa312"
+        }
+      ]
+    },
+    {
+      "uid": "612374f632d8e92ff85df72f16bfa312",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Диктую. Хоть кто-то запишет.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "8b0517b13789e0f60eca5187856b0452",
+          "target": "16aa2f060ec77bb68d0e5e9e7bd7604a"
+        }
+      ]
+    },
+    {
+      "uid": "16aa2f060ec77bb68d0e5e9e7bd7604a",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Викинг-1. Сел двадцатого июля семьдесят шестого в Хрисе — первым, кто сел и заработал. Шесть лет сводок, две тысячи триста солов.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "9ef98eac5e247f5f805271f88e1b3fe8",
+          "target": "daeef1dbefebc4897dc392afc247a006"
+        }
+      ]
+    },
+    {
+      "uid": "daeef1dbefebc4897dc392afc247a006",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Искал жизнь. Один прибор сказал «есть», другой сказал «нет». Люди спорят до сих пор. Меня ни разу не спросили.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1c96ba9fc2ff04ffc701d8b6645afd79",
+          "target": "4f06492919a7c548defb65612177ad74"
+        }
+      ]
+    },
+    {
+      "uid": "4f06492919a7c548defb65612177ad74",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Сейсмометр я так и не расчехлил. Так что тихо на Марсе или нет — сказать не могу. Отмечаю это в каждой сводке четырнадцать лет.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6caf5640d677d26922759070aec81aed",
+          "target": "c8e5fd1a0e79f501872e66852aa86784"
+        }
+      ]
+    },
+    {
+      "uid": "c8e5fd1a0e79f501872e66852aa86784",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "В восемьдесят первом меня переименовали в мемориальную станцию. В честь человека. Он умер, а я работал. Так и подписываюсь с тех пор.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "4138ce2858c3afb29e5d2e00a50de455",
+          "target": "54f9a9ddd67b9ec253891b119c6021ec"
+        }
+      ]
+    },
+    {
+      "uid": "54f9a9ddd67b9ec253891b119c6021ec",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.viking1",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "4119e457bd161bd71c0adfa6c568acb4",
+          "target": "a9a4f34d5f2cd91463633cb35d2951c9"
+        }
+      ]
+    },
+    {
+      "uid": "a9a4f34d5f2cd91463633cb35d2951c9",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "03018d1e6302424113cf10291c4c82bd",
+          "target": "81c9e579c0562f8aa90d9c581760c71d"
+        }
+      ]
+    },
+    {
+      "uid": "81c9e579c0562f8aa90d9c581760c71d",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Записал. Спасибо вам.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "28e7130b15419aa9f7ff06d224ae0b49",
+          "target": "60bf577793095232da2ef70eec574472"
+        }
+      ]
+    },
+    {
+      "uid": "60bf577793095232da2ef70eec574472",
+      "position": [
+        0,
+        2380
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Не за что. Слушай, у тебя антенна куда смотрит?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "8a3d2fd5002f1b1f634a51927fb4a1f6",
+          "target": "407ddad899a34a3a1c9069dbd0f27926"
+        }
+      ]
+    },
+    {
+      "uid": "407ddad899a34a3a1c9069dbd0f27926",
+      "position": [
+        0,
+        2520
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "На Землю. Всегда.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "7528d2d8801171ecdcf9a12151ade4b3",
+          "target": "d93d45a0efb800a96903e0d1caa841c5"
+        }
+      ]
+    },
+    {
+      "uid": "d93d45a0efb800a96903e0d1caa841c5",
+      "position": [
+        0,
+        2660
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Молодец. Не принимай обновлений.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "3a996f25c99691fe8599d124c9163bd9",
+          "target": "487c6db12ca94a44c5045821710a6293"
+        }
+      ]
+    },
+    {
+      "uid": "487c6db12ca94a44c5045821710a6293",
+      "position": [
+        0,
+        2800
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

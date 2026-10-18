@@ -22,3 +22,10 @@ MonoBehaviour:
   <ScreenOffset>k__BackingField: {x: 0, y: 30}
   <StackSpacing>k__BackingField: 22
   <LabelWidth>k__BackingField: 170
+  <ReadyRingColor>k__BackingField: {r: 0.45, g: 1, b: 0.55, a: 0.9}
+  <ReadyRingEmission>k__BackingField: 1.82
+  <ReadyRingMargin>k__BackingField: 0.12
+  <ReadyRingWidth>k__BackingField: 0.01
+  <ReadyRingSegments>k__BackingField: 48
+  <ReadyRingDepthTowardCamera>k__BackingField: 0.05
+  <IconOutlineScale>k__BackingField: 1.25

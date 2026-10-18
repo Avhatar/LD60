@@ -14,12 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Spacecraft>k__BackingField: {fileID: 11400000, guid: fa5f23fcade604644aa3dcb3909d2e87, type: 2}
   <Body>k__BackingField: {fileID: 0}
-  <DistanceAu>k__BackingField: 75.4
+  <DistanceAu>k__BackingField: 35.9
   <AngleDegrees>k__BackingField: 27.1
+  <TravelAuDuringAct>k__BackingField: 33.5
+  <AuPerYear>k__BackingField: 0
+  <DegreesPerYear>k__BackingField: 0
+  <MotionScale>k__BackingField: 1
   <TransmitTo>k__BackingField: {fileID: 0}
   <ArcWidthDegrees>k__BackingField: 10
   <DotCount>k__BackingField: 12
   <Speed>k__BackingField: 1.2
   <TransmitPeriodSeconds>k__BackingField: 0
   <DotsToCapture>k__BackingField: 0
-  <InterceptDialogue>k__BackingField: {fileID: 0}
+  <KnownFromStart>k__BackingField: 0
+  <InterceptDialogues>k__BackingField: []
+  <ContactDialogue>k__BackingField: {fileID: 0}

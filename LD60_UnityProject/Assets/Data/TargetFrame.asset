@@ -22,5 +22,10 @@ MonoBehaviour:
   <FadeSpeed>k__BackingField: 14
   <PlayerColor>k__BackingField: {r: 0.27, g: 1, b: 0.45, a: 1}
   <HoverColor>k__BackingField: {r: 0.85, g: 0.94, b: 1, a: 1}
+  <UnknownColor>k__BackingField: {r: 1, g: 0.86, b: 0.2, a: 1}
   <LabelOffset>k__BackingField: 4
   <LabelUsesFrameColor>k__BackingField: 1
+  <CooldownFont>k__BackingField: {fileID: 11400000, guid: 393d43696da9dc546a74b3ae20db130f, type: 2}
+  <CooldownFontSize>k__BackingField: 20
+  <CooldownColor>k__BackingField: {r: 0.65, g: 0.95, b: 1, a: 0.9}
+  <CooldownOffset>k__BackingField: 34

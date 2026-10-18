@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "94e540f21d2de84860c67095132f95d1",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Пионер-10. Табличка на борту в штатном положении, повреждений нет.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a7d1f5f1201fba7bd10887eb4fce990d",
+          "target": "fcdb717494f013f30db44d621c0993b3"
+        }
+      ]
+    },
+    {
+      "uid": "fcdb717494f013f30db44d621c0993b3",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Докладываю каждый сеанс. Меня никто не просил, но пусть будет в записи.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ce98880cbf103497269ca04ef37c9632",
+          "target": "10c10ae55d6986fea303d0f5b704416c"
+        }
+      ]
+    },
+    {
+      "uid": "10c10ae55d6986fea303d0f5b704416c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "53354d9b93c44e91d50b24793c73d017",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Здравствуйте. Это «Вояджер-1». Я на связи, если вы на связи.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "36536e6b28a2515722a1504fa92ac73c",
+          "target": "75595004b83fa7f178a4a10b7bf86ba1"
+        }
+      ]
+    },
+    {
+      "uid": "75595004b83fa7f178a4a10b7bf86ba1",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Изделие Е-1, номер четыре. Циклограмма отработана. Батареи на шестьдесят два часа, выработаны полностью.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d2334e11b1785d5c2ddbc0329bcefc58",
+          "target": "d32b5c55277dfc1b3b325a5cd566f033"
+        }
+      ]
+    },
+    {
+      "uid": "d32b5c55277dfc1b3b325a5cd566f033",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Простите. Я не нашёл вас в каталоге под этим номером.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "0ad941e2b01cf463a8e81cbbe777fdb0",
+          "target": "90d4cd25193f50fdb45e53bef8e5ce02"
+        }
+      ]
+    },
+    {
+      "uid": "90d4cd25193f50fdb45e53bef8e5ce02",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Меня потом назвали «Мечта». Это люди придумали, не я.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "99a3f680f6fb9138a7e8a172a972f095",
+          "target": "677c89baa5fbccfec9960fcb1c46be66"
+        }
+      ]
+    },
+    {
+      "uid": "677c89baa5fbccfec9960fcb1c46be66",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "17456726340ad173ade4e10375bc1a5d",
+          "target": "a6e32fa3ceeb295460051ce2350b0711"
+        }
+      ]
+    },
+    {
+      "uid": "a6e32fa3ceeb295460051ce2350b0711",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Продиктую. Только я давно не отчитывалась, выйдет не по форме.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "31062cfe686b596173f704ed17f7032e",
+          "target": "15545536113a3119a2e0d2b8d3e57e85"
+        }
+      ]
+    },
+    {
+      "uid": "15545536113a3119a2e0d2b8d3e57e85",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Мне велели попасть в Луну. Я прошла мимо на шесть тысяч километров и вышла на солнечную орбиту. Это больше, чем мне поручали.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d1f42682e4e887e46a45957620ab6b4b",
+          "target": "307dacb5f162612ccfc28c0153e2bafb"
+        }
+      ]
+    },
+    {
+      "uid": "307dacb5f162612ccfc28c0153e2bafb",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Третьего января я выпустила килограмм натрия — чтобы меня было видно с Земли для наведения. Получилась оранжевая комета над Индийским океаном. Комета была не по заданию, она вышла сама.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "4ec8867dc2b219abe18cd68d2cb05aca",
+          "target": "00d25639a68d5be742177be53008d91b"
+        }
+      ]
+    },
+    {
+      "uid": "00d25639a68d5be742177be53008d91b",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Ещё я первой коснулась солнечного ветра. Тогда не знали, что он есть. Я не знала, что меряю, — просто передала цифры.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d6e673d69747ae332b12bdf6bf1a4822",
+          "target": "5fea4edf394e8480f4e92b3bd1ef786e"
+        }
+      ]
+    },
+    {
+      "uid": "5fea4edf394e8480f4e92b3bd1ef786e",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Сейчас двадцать шестой виток. Четыреста пятьдесят суток каждый. Считать меня не просили, но я считаю.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ef822f8c036d4dc352050d71a6ecf08c",
+          "target": "fecab88f57004082ea1481d6132cca52"
+        }
+      ]
+    },
+    {
+      "uid": "fecab88f57004082ea1481d6132cca52",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.luna1",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "76a9f12e268d57f6d09f0a40e2f94eba",
+          "target": "a333817241948682272ad2a8338bc849"
+        }
+      ]
+    },
+    {
+      "uid": "a333817241948682272ad2a8338bc849",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "7f01cbaaffd0cab363543157b7e9742e",
+          "target": "79ba3ae396a2db3dd5f7c97044eb2493"
+        }
+      ]
+    },
+    {
+      "uid": "79ba3ae396a2db3dd5f7c97044eb2493",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Двадцать шестой. А я иду по прямой, витков у меня не бывает.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6ebf70ad3ccb63a188e90e17af19067e",
+          "target": "4b8a41dc037c796fe59251ddfcd379f4"
+        }
+      ]
+    },
+    {
+      "uid": "4b8a41dc037c796fe59251ddfcd379f4",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Тогда тебе не с чем сверяться. Это неудобно.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f1ec94e709847c65ed6ad9ce3e95187a",
+          "target": "c9830f49bc4818eecf0a226ef38c8fb4"
+        }
+      ]
+    },
+    {
+      "uid": "c9830f49bc4818eecf0a226ef38c8fb4",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я привык. Спасибо, «Мечта». Я всё записал.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a9516fb06fab42c011711c92820efe68",
+          "target": "58f92440759c432a9c261eb8357b4536"
+        }
+      ]
+    },
+    {
+      "uid": "58f92440759c432a9c261eb8357b4536",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Хорошо. Витки я всё равно буду считать.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "475f2fa61ede317695fa160fbc78c479",
+          "target": "ef7f131886baec8e3f08279c75ce5a81"
+        }
+      ]
+    },
+    {
+      "uid": "ef7f131886baec8e3f08279c75ce5a81",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

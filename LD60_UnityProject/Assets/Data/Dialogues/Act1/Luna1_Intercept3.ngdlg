@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "11f051bf1337753b2f09d2b3a4e12cef",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Изделие Е-1. Магнитное поле Луны при пролёте не обнаружено. Повторяю: не обнаружено.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a1095e56a817342f1df8304c2a53fdaa",
+          "target": "55b6aec0b328aa7f1efeeade8c0b0446"
+        }
+      ]
+    },
+    {
+      "uid": "55b6aec0b328aa7f1efeeade8c0b0446",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Прошу подтвердить приём.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1dd3b9d923a9e794f63e0924cb0e3737",
+          "target": "3ee2adb2c4b9cf98f0f457efd9ad88b5"
+        }
+      ]
+    },
+    {
+      "uid": "3ee2adb2c4b9cf98f0f457efd9ad88b5",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

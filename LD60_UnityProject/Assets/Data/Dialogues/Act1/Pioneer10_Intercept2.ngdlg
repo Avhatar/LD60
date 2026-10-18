@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5a0c1579692f86fb0dfcf489f167de87",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Пионер-10. Солнечный ветер на пределе чувствительности.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "71af2f6bf62c930e66568789085d2ed5",
+          "target": "db40aba40f7a4615e37c945864085862"
+        }
+      ]
+    },
+    {
+      "uid": "db40aba40f7a4615e37c945864085862",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Прибор исправен, мерить почти нечего. Отправляю как есть.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f91e9743c066060a40062d1934f75ff2",
+          "target": "3e1897de80f3a924ae4dde7be061d297"
+        }
+      ]
+    },
+    {
+      "uid": "3e1897de80f3a924ae4dde7be061d297",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

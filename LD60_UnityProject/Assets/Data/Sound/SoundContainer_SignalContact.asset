@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f32c6c1efafd85a4ca7201b88e718947, type: 3}
   - {fileID: 8300000, guid: cb0243f2ba0580b4d98da3ed4db6d2a1, type: 3}
   - {fileID: 8300000, guid: 45fca4392d6f2de4dba57f072e295ab9, type: 3}
-  <Volume>k__BackingField: 1
+  <Volume>k__BackingField: 0.667
   <VolumeVariance>k__BackingField: 0
   <Pitch>k__BackingField: 1
   <PitchVariance>k__BackingField: 0

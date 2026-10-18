@@ -39,6 +39,9 @@ namespace LD60.Settings
         [field: SerializeField, Tooltip("Colour of the ring around an object that has enough caught dots and is waiting to be shot.")]
         public Color ReadyRingColor { get; private set; } = new Color(0.45f, 1f, 0.55f, 0.9f);
 
+        [field: SerializeField, Tooltip("Multiplies the ring colour above 1 so bloom picks it up. 1 = no glow.")]
+        public float ReadyRingEmission { get; private set; } = 2f;
+
         [field: SerializeField, Tooltip("Gap between the object's edge and its ring, in world units.")]
         public float ReadyRingMargin { get; private set; } = 0.12f;
 
@@ -47,6 +50,9 @@ namespace LD60.Settings
 
         [field: SerializeField, Tooltip("Segments the ring is drawn with.")]
         public int ReadyRingSegments { get; private set; } = 48;
+
+        [field: SerializeField, Tooltip("How far in front of the object the ring is drawn, toward the camera, in world units. Keeps it off the background grid plane.")]
+        public float ReadyRingDepthTowardCamera { get; private set; } = 0.05f;
 
         [field: SerializeField, Tooltip("How much larger the green halo behind a contacted icon is.")]
         public float IconOutlineScale { get; private set; } = 1.25f;

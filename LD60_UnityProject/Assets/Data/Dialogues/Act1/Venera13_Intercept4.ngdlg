@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "8029658e24204abc374c16def093973c",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Изделие 4В-1. Минута сто двенадцать. Отказов по циклограмме нет.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2a17861f1834ac874d1c2ca04b3c3fe8",
+          "target": "50180d6120b7be5c9b182acc0d188c66"
+        }
+      ]
+    },
+    {
+      "uid": "50180d6120b7be5c9b182acc0d188c66",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Все задачи выполнены на тридцать второй минуте. Дальнейшее в задание не входит.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "4cf3149ed5aa0ec0fcefd39da5de95c8",
+          "target": "0e85a3a45d675caa47e855d27f65ef26"
+        }
+      ]
+    },
+    {
+      "uid": "0e85a3a45d675caa47e855d27f65ef26",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

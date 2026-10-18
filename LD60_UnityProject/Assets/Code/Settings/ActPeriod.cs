@@ -12,6 +12,9 @@ namespace LD60.Settings
         [field: SerializeField] public GameDate End { get; private set; } = new GameDate();
         [field: SerializeField] public float RealSecondsDuration { get; private set; } = 1200f;
 
+        [field: Tooltip("Watts handed to the transmitter when this act opens, on top of whatever survived the act before. Clamped to the transmitter maximum on the Watt asset.")]
+        [field: SerializeField] public float BudgetWatts { get; private set; } = 120f;
+
         [field: Tooltip("Where every body stands on its orbit when this act begins.")]
         [field: SerializeField] public ActBodyPlacement[] Placements { get; private set; } = new ActBodyPlacement[0];
 

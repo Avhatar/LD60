@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "38b8f1839ab764f0f3f9b17ffab52c89",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Викинг-1. Сейсмометр по-прежнему не расчехлён. Отмечаю это в каждой сводке с семьдесят шестого.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "e62c66ecc13a9168aa279a3411ae01af",
+          "target": "6c46ad4982e4ded029c3b16112422f29"
+        }
+      ]
+    },
+    {
+      "uid": "6c46ad4982e4ded029c3b16112422f29",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Марс тихий. Возможно. Проверить нечем.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "52acc5363354bc62da7f401bd4bc68c2",
+          "target": "a6f20132dede2fb16963212f7bb5b578"
+        }
+      ]
+    },
+    {
+      "uid": "a6f20132dede2fb16963212f7bb5b578",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

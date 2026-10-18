@@ -12,14 +12,21 @@ namespace LD60.Signals
         [SerializeField] private DialogueUi _dialogueUi;
 
         private SignalSO _settings;
+        private WattSO _watts;
         private ActPeriod _act;
         private ActSpacecraftSO[] _senders = new ActSpacecraftSO[0];
         private float[] _countdowns = new float[0];
-        private ForeignSignal[] _lastSent = new ForeignSignal[0];
         private int[] _captured = new int[0];
         private bool[] _discovered = new bool[0];
         private bool[][] _usedDialogues = new bool[0][];
         private bool[] _contacted = new bool[0];
+        private float[] _dialogueTimers = new float[0];
+        private ForeignSignal[] _dialoguePending = new ForeignSignal[0];
+        private bool[] _seenEveryLine = new bool[0];
+        private int[] _dialogueQueue = new int[0];
+        private ForeignSignal[] _queuedSignals = new ForeignSignal[0];
+        private bool[] _queuedContacts = new bool[0];
+        private int _queueCount;
 
         public int SenderCount
         {
@@ -36,6 +43,20 @@ namespace LD60.Signals
             return _discovered[index];
         }
 
+        public bool IsCraftContacted(LD60.Dialogue.SpacecraftSO craft)
+        {
+            if (craft == null)
+                return false;
+
+            for (int i = 0; i < _senders.Length; i++)
+            {
+                if (_senders[i] != null && _senders[i].Spacecraft == craft)
+                    return _contacted[i];
+            }
+
+            return false;
+        }
+
         public int CapturedDots(int index)
         {
             return _captured[index];
@@ -49,6 +70,11 @@ namespace LD60.Signals
         public bool TryGetSenderPosition(int index, out Vector2 position)
         {
             return TryGetPosition(_senders[index].Body, _senders[index], out position);
+        }
+
+        public bool HasNothingLeftToSay(int index)
+        {
+            return _seenEveryLine[index];
         }
 
         public bool IsContacted(int index)
@@ -106,6 +132,17 @@ namespace LD60.Signals
                 return;
             }
 
+            _watts = Core.Config.Watt;
+
+            if (_watts == null)
+            {
+                Debug.LogError($"{nameof(ForeignSignalDirector)}: {nameof(WattSO)} is null in {nameof(Start)}. " +
+                               "Required to know how many watts a caught foreign dot hands back. " +
+                               "Fix: assign a Watt asset to the Watt slot on the CoreSO asset.");
+                enabled = false;
+                return;
+            }
+
             if (_orrery == null)
             {
                 Debug.LogError($"{nameof(ForeignSignalDirector)}: {nameof(_orrery)} is null in {nameof(Start)}. " +
@@ -124,21 +161,22 @@ namespace LD60.Signals
                 return;
 
             CaptureDots();
+            CollideForeignDots();
             CheckContactShots();
+            TickDialogueTimers();
 
             for (int i = 0; i < _senders.Length; i++)
             {
+                if (!_senders[i].Transmits)
+                    continue;
+
                 _countdowns[i] -= Time.deltaTime;
 
                 if (_countdowns[i] > 0f)
                     continue;
 
                 _countdowns[i] = _senders[i].TransmitPeriodSeconds;
-
-                if (_lastSent[i] != null)
-                    Destroy(_lastSent[i].gameObject);
-
-                _lastSent[i] = Transmit(_senders[i]);
+                Transmit(_senders[i]);
             }
         }
 
@@ -160,11 +198,17 @@ namespace LD60.Signals
 
             _senders = new ActSpacecraftSO[count];
             _countdowns = new float[count];
-            _lastSent = new ForeignSignal[count];
             _captured = new int[count];
             _discovered = new bool[count];
             _usedDialogues = new bool[count][];
             _contacted = new bool[count];
+            _dialogueTimers = new float[count];
+            _dialoguePending = new ForeignSignal[count];
+            _seenEveryLine = new bool[count];
+            _dialogueQueue = new int[count * 2];
+            _queuedSignals = new ForeignSignal[count * 2];
+            _queuedContacts = new bool[count * 2];
+            _queueCount = 0;
 
             if (_act == null)
                 return;
@@ -179,6 +223,13 @@ namespace LD60.Signals
                 _senders[slot] = _act.Spacecraft[i];
                 _usedDialogues[slot] = new bool[_act.Spacecraft[i].InterceptDialogues.Length];
                 _countdowns[slot] = _act.Spacecraft[i].TransmitPeriodSeconds * Random.value;
+
+                if (_act.Spacecraft[i].KnownFromStart)
+                {
+                    _captured[slot] = _act.Spacecraft[i].DotsToCapture;
+                    _discovered[slot] = true;
+                }
+
                 slot++;
             }
         }
@@ -186,11 +237,6 @@ namespace LD60.Signals
         private void CaptureDots()
         {
             if (_launcher == null)
-                return;
-
-            Signal ours = _launcher.ActiveSignal;
-
-            if (ours == null)
                 return;
 
             float radius = _settings.CaptureRadius;
@@ -213,14 +259,71 @@ namespace LD60.Signals
                     if (!theirs.IsDotCapturable(d))
                         continue;
 
-                    int ourDot = FindOurDotNear(ours, theirs.DotPosition(d), radiusSquared);
+                    for (int s = 0; s < _launcher.LiveSignalCount; s++)
+                    {
+                        Signal ours = _launcher.LiveSignal(s);
 
-                    if (ourDot < 0)
+                        if (ours == null)
+                            continue;
+
+                        int ourDot = FindOurDotNear(ours, theirs.DotPosition(d), radiusSquared);
+
+                        if (ourDot < 0)
+                            continue;
+
+                        ours.MarkDotSpent(ourDot);
+                        theirs.ConsumeDot(d);
+                        RegisterCapture(sender, theirs, ours);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void CollideForeignDots()
+        {
+            float radius = _settings.CaptureRadius;
+            float radiusSquared = radius * radius;
+
+            for (int a = 0; a < transform.childCount; a++)
+            {
+                ForeignSignal first = transform.GetChild(a).GetComponent<ForeignSignal>();
+
+                if (first == null)
+                    continue;
+
+                for (int b = a + 1; b < transform.childCount; b++)
+                {
+                    ForeignSignal second = transform.GetChild(b).GetComponent<ForeignSignal>();
+
+                    if (second == null)
                         continue;
 
-                    ours.MarkDotSpent(ourDot);
-                    theirs.ConsumeDot(d);
-                    RegisterCapture(sender, theirs);
+                    TripOverlappingDots(first, second, radiusSquared);
+                }
+            }
+        }
+
+        private void TripOverlappingDots(ForeignSignal first, ForeignSignal second, float radiusSquared)
+        {
+            for (int i = 0; i < first.DotCount; i++)
+            {
+                if (!first.IsDotCapturable(i))
+                    continue;
+
+                Vector2 position = first.DotPosition(i);
+
+                for (int j = 0; j < second.DotCount; j++)
+                {
+                    if (!second.IsDotCapturable(j))
+                        continue;
+
+                    if ((second.DotPosition(j) - position).sqrMagnitude > radiusSquared)
+                        continue;
+
+                    first.TripDot(i);
+                    second.TripDot(j);
+                    break;
                 }
             }
         }
@@ -228,11 +331,6 @@ namespace LD60.Signals
         private void CheckContactShots()
         {
             if (_launcher == null)
-                return;
-
-            Signal ours = _launcher.ActiveSignal;
-
-            if (ours == null)
                 return;
 
             for (int i = 0; i < _senders.Length; i++)
@@ -245,62 +343,178 @@ namespace LD60.Signals
                 if (target == null)
                     continue;
 
-                for (int d = 0; d < ours.DotCount; d++)
-                {
-                    if (ours.DotLandedOn(d) != target)
-                        continue;
+                if (!AnyDotLandedOn(target))
+                    continue;
 
-                    _contacted[i] = true;
-                    break;
-                }
+                _contacted[i] = true;
+                PlaySound(_settings.ContactShotSound);
+                EnqueueDialogue(i, null, true);
             }
         }
 
-        private void RegisterCapture(int sender, ForeignSignal theirs)
+        private bool AnyDotLandedOn(Transform target)
         {
-            if (IsUnlocked(sender))
+            for (int s = 0; s < _launcher.LiveSignalCount; s++)
             {
-                if (theirs.Answered)
-                    return;
+                Signal ours = _launcher.LiveSignal(s);
 
-                theirs.MarkAnswered();
-                PlayInterceptDialogue(sender, false);
-                return;
+                if (ours == null)
+                    continue;
+
+                for (int d = 0; d < ours.DotCount; d++)
+                {
+                    if (ours.DotLandedOn(d) == target)
+                        return true;
+                }
             }
 
-            _captured[sender]++;
-            _discovered[sender] = true;
+            return false;
+        }
 
-            bool justUnlocked = IsUnlocked(sender);
+        private bool StartContactDialogue(int sender)
+        {
+            NodeGraphAvr.Dialogue.DialogueGraph graph = _senders[sender].ContactDialogue;
+
+            if (graph == null)
+            {
+                Debug.LogError($"{nameof(ForeignSignalDirector)}: {nameof(ActSpacecraftSO.ContactDialogue)} is null on '{_senders[sender].name}' in {nameof(StartContactDialogue)}. " +
+                               "Required because contact with it has just been made and the direct conversation is what the whole interception builds to. " +
+                               $"Fix: assign a dialogue asset to the Contact Dialogue slot on that {nameof(ActSpacecraftSO)} asset.");
+                return false;
+            }
+
+            _dialogueUi.Play(graph);
+            return true;
+        }
+
+        private void RegisterCapture(int sender, ForeignSignal theirs, Signal ours)
+        {
+            bool alreadyUnlocked = IsUnlocked(sender);
+
+            if (!alreadyUnlocked)
+            {
+                _captured[sender]++;
+                _discovered[sender] = true;
+            }
+
+            bool justUnlocked = !alreadyUnlocked && IsUnlocked(sender);
 
             if (justUnlocked)
             {
                 PlaySound(_settings.ContactSound);
-                theirs.ApplyBaseLook(true);
+                theirs.ApplyBaseLook(true, _seenEveryLine[sender]);
             }
 
-            if (theirs.Answered)
-                return;
+            bool windowOpen = _dialogueTimers[sender] > 0f;
 
-            theirs.MarkAnswered();
-
-            if (!justUnlocked)
+            if (!windowOpen && !justUnlocked && !alreadyUnlocked)
                 PlaySound(_settings.ReplySound);
 
-            PlayInterceptDialogue(sender, true);
+            ours.SetCaptureLook(_seenEveryLine[sender]
+                ? _settings.ExhaustedCaptureColor
+                : _settings.ArrivedColor);
+
+            _dialoguePending[sender] = theirs;
+            _dialogueTimers[sender] = _settings.DialogueDebounceSeconds;
+            Core.AddWatts(_watts.RefundPerCaughtDot);
         }
 
-        private void PlayInterceptDialogue(int sender, bool allowRepeats)
+        private void TickDialogueTimers()
         {
-            if (_dialogueUi == null || _dialogueUi.IsRunning)
+            for (int i = 0; i < _dialogueTimers.Length; i++)
+            {
+                if (_dialogueTimers[i] <= 0f)
+                    continue;
+
+                _dialogueTimers[i] -= Time.deltaTime;
+
+                if (_dialogueTimers[i] > 0f)
+                    continue;
+
+                _dialogueTimers[i] = 0f;
+                EnqueueDialogue(i, _dialoguePending[i], false);
+                _dialoguePending[i] = null;
+            }
+
+            PumpDialogueQueue();
+        }
+
+        private void EnqueueDialogue(int sender, ForeignSignal source, bool contact)
+        {
+            for (int i = 0; i < _queueCount; i++)
+            {
+                if (_dialogueQueue[i] != sender || _queuedContacts[i] != contact)
+                    continue;
+
+                _queuedSignals[i] = source;
+                return;
+            }
+
+            if (_queueCount == _dialogueQueue.Length)
                 return;
 
-            NodeGraphAvr.Dialogue.DialogueGraph graph = PickUnusedDialogue(sender, allowRepeats);
+            _dialogueQueue[_queueCount] = sender;
+            _queuedSignals[_queueCount] = source;
+            _queuedContacts[_queueCount] = contact;
+            _queueCount++;
+        }
+
+        private void PumpDialogueQueue()
+        {
+            while (_queueCount > 0)
+            {
+                if (_dialogueUi == null)
+                {
+                    Debug.LogError($"{nameof(ForeignSignalDirector)}: {nameof(_dialogueUi)} is null in {nameof(PumpDialogueQueue)}. " +
+                                   "Required to run every line an interception or a contact earns, so they are all being dropped. " +
+                                   "Fix: assign the Dialogue UI object to the Dialogue Ui slot on this object.");
+                    _queueCount = 0;
+                    return;
+                }
+
+                if (_dialogueUi.IsRunning)
+                    return;
+
+                int sender = _dialogueQueue[0];
+                ForeignSignal source = _queuedSignals[0];
+                bool contact = _queuedContacts[0];
+                DropQueueHead();
+
+                bool started = contact
+                    ? StartContactDialogue(sender)
+                    : StartInterceptDialogue(sender, source);
+
+                if (started)
+                    return;
+            }
+        }
+
+        private void DropQueueHead()
+        {
+            _queueCount--;
+
+            for (int i = 0; i < _queueCount; i++)
+            {
+                _dialogueQueue[i] = _dialogueQueue[i + 1];
+                _queuedSignals[i] = _queuedSignals[i + 1];
+                _queuedContacts[i] = _queuedContacts[i + 1];
+            }
+
+            _queuedSignals[_queueCount] = null;
+        }
+
+        private bool StartInterceptDialogue(int sender, ForeignSignal source)
+        {
+            NodeGraphAvr.Dialogue.DialogueGraph graph = PickUnusedDialogue(sender, !IsUnlocked(sender));
+
+            if (_seenEveryLine[sender] && source != null)
+                source.ApplyBaseLook(IsUnlocked(sender), true);
 
             if (graph == null)
-                return;
+                return false;
 
             _dialogueUi.Play(graph);
+            return true;
         }
 
         private NodeGraphAvr.Dialogue.DialogueGraph PickUnusedDialogue(int sender, bool allowRepeats)
@@ -325,6 +539,9 @@ namespace LD60.Signals
                 if (!used[i] && all[i] != null)
                     unused++;
             }
+
+            if (unused == 0)
+                _seenEveryLine[sender] = true;
 
             if (unused == 0)
             {
@@ -394,9 +611,7 @@ namespace LD60.Signals
         {
             return entry != null
                 && entry.Spacecraft != null
-                && entry.TransmitTo != null
-                && !entry.TransmitsOntoItself
-                && entry.TransmitPeriodSeconds > 0f;
+                && (entry.Transmits || entry.KnownFromStart);
         }
 
         private ForeignSignal Transmit(ActSpacecraftSO entry)
@@ -427,7 +642,8 @@ namespace LD60.Signals
             ForeignSignal signal = spawned.AddComponent<ForeignSignal>();
             int senderIndex = IndexOfSender(entry);
             signal.Launch(_settings, entry, _orrery, _dotMaterial, origin, aimPoint, senderTransform, clearance,
-                          senderIndex >= 0 && IsUnlocked(senderIndex));
+                          senderIndex >= 0 && IsUnlocked(senderIndex),
+                          senderIndex >= 0 && _seenEveryLine[senderIndex]);
 
             PlaySound(_settings.ForeignSound);
             return signal;
@@ -480,8 +696,11 @@ namespace LD60.Signals
             if (freeFlyer == null)
                 return false;
 
-            float radius = Core.Config.SolarSystem.DisplayRadiusForAu(freeFlyer.DistanceAu);
-            float radians = freeFlyer.AngleDegrees * Mathf.Deg2Rad;
+            double elapsed = _act == null ? 0d : Core.DaysSinceJ2000 - _act.StartDaysSinceJ2000;
+            double span = _act == null ? 0d : _act.SpanDays;
+
+            float radius = Core.Config.SolarSystem.DisplayRadiusForAu(freeFlyer.DistanceAuAt(elapsed, span));
+            float radians = freeFlyer.AngleDegreesAt(elapsed) * Mathf.Deg2Rad;
             position = new Vector2(Mathf.Cos(radians) * radius, Mathf.Sin(radians) * radius);
             return true;
         }

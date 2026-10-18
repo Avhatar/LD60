@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "e5b042bb2915a2db73250a80b5cc0340",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Изделие 4В-1, номер 309. Минута сорок четыре. Наружная температура четыреста пятьдесят семь, давление восемьдесят девять.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "da8bf33f9d6861fb01b31aa96a5b5238",
+          "target": "4b2c69e7d3c4625b122dde0ad25592ef"
+        }
+      ]
+    },
+    {
+      "uid": "4b2c69e7d3c4625b122dde0ad25592ef",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Расчётный ресурс — тридцать две минуты. Превышение штатное. Передача окончена.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "719595afda77fb7ec22623a198ff2250",
+          "target": "a1535a2d16452c7e697b61b54a7ae612"
+        }
+      ]
+    },
+    {
+      "uid": "a1535a2d16452c7e697b61b54a7ae612",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

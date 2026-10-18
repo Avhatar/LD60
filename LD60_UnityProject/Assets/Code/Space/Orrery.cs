@@ -23,6 +23,7 @@ namespace LD60.Space
         private class FreeFlyerView
         {
             public SpacecraftSO Data;
+            public ActSpacecraftSO Entry;
             public Transform Root;
             public Transform Visual;
             public SpriteRenderer Sprite;
@@ -104,6 +105,48 @@ namespace LD60.Space
                 return 0f;
 
             return _bodies[index].Data.DisplayDiameter * _bodies[index].Data.SurfaceDiscRadius;
+        }
+
+        public int FreeFlyerCount
+        {
+            get { return _freeFlyers.Length; }
+        }
+
+        public SpacecraftSO GetFreeFlyer(int index)
+        {
+            if (index < 0 || index >= _freeFlyers.Length)
+                return null;
+
+            return _freeFlyers[index].Data;
+        }
+
+        public Transform GetFreeFlyerTransform(int index)
+        {
+            if (index < 0 || index >= _freeFlyers.Length || _freeFlyers[index].Data == null)
+                return null;
+
+            return _freeFlyers[index].Root;
+        }
+
+        public float GetFreeFlyerHitRadius(int index)
+        {
+            if (index < 0 || index >= _freeFlyers.Length || _freeFlyers[index].Data == null)
+                return 0f;
+
+            return _freeFlyers[index].Data.DisplayDiameter * 0.5f;
+        }
+
+        public bool IsFreeFlyerHitAt(int index, Vector2 worldPoint)
+        {
+            if (index < 0 || index >= _freeFlyers.Length || _freeFlyers[index].Data == null || _freeFlyers[index].Root == null)
+                return false;
+
+            float radius = _freeFlyers[index].Data.DisplayDiameter * 0.5f;
+
+            if (radius <= 0f)
+                return false;
+
+            return ((Vector2)_freeFlyers[index].Root.position - worldPoint).sqrMagnitude <= radius * radius;
         }
 
         public Transform FindSpacecraftTransform(SpacecraftSO craft)
@@ -286,6 +329,7 @@ namespace LD60.Space
 
             SyncData();
             UpdateBodyPositions();
+            UpdateFreeFlyerPositions();
         }
 
         private void Update()
@@ -299,6 +343,7 @@ namespace LD60.Space
             double deltaDays = Core.DeltaDays;
 
             UpdateBodyPositions();
+            UpdateFreeFlyerPositions();
             UpdateFlashes();
             UpdateSpin(deltaDays);
         }
@@ -498,14 +543,11 @@ namespace LD60.Space
                 slot++;
 
                 view.Data = entry.Spacecraft;
+                view.Entry = entry;
                 view.Root.gameObject.SetActive(true);
                 view.Root.name = entry.Spacecraft.LocalizedName.Value;
 
                 SyncFreeFlyerVisual(view);
-
-                float radius = _system.DisplayRadiusForAu(entry.DistanceAu);
-                float radians = entry.AngleDegrees * Mathf.Deg2Rad;
-                view.Root.localPosition = new Vector3(Mathf.Cos(radians) * radius, Mathf.Sin(radians) * radius, 0f);
 
                 if (entry.Spacecraft.IsPlayer)
                 {
@@ -607,7 +649,7 @@ namespace LD60.Space
             }
 
             view.Sprite.sprite = data.SpaceSprite;
-            view.Sprite.color = data.Accent;
+            view.Sprite.color = Color.white;
 
             if (_spacecraftMaterial != null)
                 view.Sprite.sharedMaterial = _spacecraftMaterial;
@@ -718,6 +760,28 @@ namespace LD60.Space
                 double degrees = startAngle + days / view.Data.OrbitalPeriodDays * 360d;
                 float radians = (float)(degrees % 360d) * Mathf.Deg2Rad;
                 view.Root.localPosition = new Vector3(Mathf.Cos(radians) * view.OrbitRadius, Mathf.Sin(radians) * view.OrbitRadius, 0f);
+            }
+        }
+
+        private void UpdateFreeFlyerPositions()
+        {
+            if (_freeFlyers.Length == 0)
+                return;
+
+            ActPeriod act = Core.CurrentAct;
+            double elapsed = act == null ? 0d : CurrentDaysSinceJ2000 - act.StartDaysSinceJ2000;
+            double span = act == null ? 0d : act.SpanDays;
+
+            for (int i = 0; i < _freeFlyers.Length; i++)
+            {
+                FreeFlyerView view = _freeFlyers[i];
+
+                if (view.Entry == null)
+                    continue;
+
+                float radius = _system.DisplayRadiusForAu(view.Entry.DistanceAuAt(elapsed, span));
+                float radians = view.Entry.AngleDegreesAt(elapsed) * Mathf.Deg2Rad;
+                view.Root.localPosition = new Vector3(Mathf.Cos(radians) * radius, Mathf.Sin(radians) * radius, 0f);
             }
         }
 

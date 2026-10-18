@@ -24,6 +24,45 @@ MonoBehaviour:
   <HitPrefix>k__BackingField:
     _ru: "\u0426\u0415\u041B\u042C: "
     _en: 'HIT: '
+  <SelfFrameLabel>k__BackingField:
+    _ru: "\u042F"
+    _en: Me
+  <InterceptProgressFormat>k__BackingField:
+    _ru: '{0} / {1}'
+    _en: '{0} / {1}'
+  <MusicVolumeLabel>k__BackingField:
+    _ru: "\u041C\u0423\u0417\u042B\u041A\u0410"
+    _en: MUSIC
+  <SoundVolumeLabel>k__BackingField:
+    _ru: "\u0417\u0412\u0423\u041A"
+    _en: SOUND
+  <VolumeValueFormat>k__BackingField:
+    _ru: '{0}%'
+    _en: '{0}%'
+  <HelpText>k__BackingField:
+    _ru: "\u0423\u041F\u0420\u0410\u0412\u041B\u0415\u041D\u0418\u0415\n\n\u041B\u041A\u041C
+      \u2014 \u043D\u0430\u0432\u0435\u0441\u0442\u0438 \u0430\u043D\u0442\u0435\u043D\u043D\u0443,
+      \u0434\u0435\u0440\u0436\u0430\u0442\u044C \u2014 \u043D\u0430\u0431\u0440\u0430\u0442\u044C
+      \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043E\u0442\u043F\u0443\u0441\u0442\u0438\u0442\u044C
+      \u2014 \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0441\u0438\u0433\u043D\u0430\u043B\n\u041F\u041A\u041C
+      \u2014 \u043E\u0442\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0440\u0438\u0446\u0435\u043B\u0438\u0432\u0430\u043D\u0438\u0435\n\u041F\u0420\u041E\u0411\u0415\u041B
+      \u0438\u043B\u0438 \u0421\u041A\u041C \u2014 \u043F\u0430\u0443\u0437\u0430\nZ
+      \u2014 \u0441\u043C\u0435\u043D\u0438\u0442\u044C \u044F\u0437\u044B\u043A\nESC
+      \u2014 \u044D\u0442\u043E \u043C\u0435\u043D\u044E"
+    _en: 'CONTROLS
+
+
+      LMB - aim the antenna, hold to charge power, release to
+      send the signal
+
+      RMB - cancel aiming
+
+      SPACE or MMB - pause
+
+      Z
+      - switch language
+
+      ESC - this menu'
   <AimReadoutFormat>k__BackingField:
     _ru: "{0:0.0} \u0433\u0440\u0430\u0434   {1:0.0} \u0435\u0434/\u0441   {3} \u0442\u043E\u0447\u0435\u043A  
       {2:0.0} \u0412\u0442\n\u0414\u0435\u0440\u0436\u0430\u0442\u044C \u041B\u041A\u041C

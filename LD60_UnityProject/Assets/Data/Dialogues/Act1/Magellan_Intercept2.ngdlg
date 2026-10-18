@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5b9a90f8bd8685b61c5e0f911e356b54",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Магеллан. Радар протестирован вхолостую, работает. Протестирую ещё раз завтра.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ee13cb4cc1e132f43010c69644d09545",
+          "target": "dd2b76ade3d8d75608fec8158eac880a"
+        }
+      ]
+    },
+    {
+      "uid": "dd2b76ade3d8d75608fec8158eac880a",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Венера вся в облаках, оптикой её не снять. А я могу сквозь.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "54dc2dfa4903e7c8f0da199c08d66c1d",
+          "target": "b435de4a7ad6499ee397d9ea7a384cd5"
+        }
+      ]
+    },
+    {
+      "uid": "b435de4a7ad6499ee397d9ea7a384cd5",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

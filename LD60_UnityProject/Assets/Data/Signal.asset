@@ -12,34 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d4ee2155edb064eba13f3f46875e5b, type: 3}
   m_Name: Signal
   m_EditorClassIdentifier: 
-  <MinSpeed>k__BackingField: 1.5
-  <MaxSpeed>k__BackingField: 12
-  <SpeedNearDistance>k__BackingField: 1
-  <SpeedFarDistance>k__BackingField: 14
+  <MinSpeed>k__BackingField: 3
+  <MaxSpeed>k__BackingField: 8
   <MinWidthDegrees>k__BackingField: 1.5
   <MaxWidthDegrees>k__BackingField: 30
   <DefaultWidthDegrees>k__BackingField: 6
   <WidthScrollStepDegrees>k__BackingField: 1
-  <MinDots>k__BackingField: 3
+  <MinDots>k__BackingField: 2
   <MaxDots>k__BackingField: 48
-  <SecondsToFullPower>k__BackingField: 1.2
+  <DotsPerDegree>k__BackingField: 0.3
+  <DialogueDebounceSeconds>k__BackingField: 0.4
+  <CooldownSecondsPerDot>k__BackingField: 1
   <DotSize>k__BackingField: 0.13
   <DotEdgeSoftness>k__BackingField: 0.35
   <LandedSurfaceOffset>k__BackingField: 0.1
   <PreviewArcRadius>k__BackingField: 2.2
   <MaxTravelRadius>k__BackingField: 26
-  <DotLifetimeSeconds>k__BackingField: 10
+  <DotFlightLifetimeSeconds>k__BackingField: 60
+  <OffscreenMargin>k__BackingField: 1
+  <DotLifetimeSeconds>k__BackingField: 3
   <CaptureRadius>k__BackingField: 0.22
   <OursSound>k__BackingField: {fileID: 11400000, guid: 00e70d34f406d11449606349f2baa1dd, type: 2}
   <ForeignSound>k__BackingField: {fileID: 11400000, guid: 733efb8f946367f4c8d8d1c28b73dbb3, type: 2}
   <ReplySound>k__BackingField: {fileID: 11400000, guid: 3cb36b70ed431e44a8404bb624b02070, type: 2}
   <ContactSound>k__BackingField: {fileID: 11400000, guid: 77826c78fc896ca40827107b06d95f0b, type: 2}
+  <ContactShotSound>k__BackingField: {fileID: 11400000, guid: 77826c78fc896ca40827107b06d95f0b, type: 2}
   <DotFadeOutSeconds>k__BackingField: 1.5
   <DotColorBlendSeconds>k__BackingField: 0.35
   <ArrivedColor>k__BackingField: {r: 0.45, g: 1, b: 0.55, a: 0.95}
   <ArrivedDotEmission>k__BackingField: 2
   <ForeignColor>k__BackingField: {r: 0.95, g: 0.72, b: 0.35, a: 0.9}
   <ForeignDotEmission>k__BackingField: 1.2
+  <StudiedColor>k__BackingField: {r: 1, g: 1, b: 1, a: 0.9}
+  <StudiedDotEmission>k__BackingField: 1.2
+  <ExhaustedColor>k__BackingField: {r: 0.85, g: 0.85, b: 0.9, a: 0.35}
+  <ExhaustedDotEmission>k__BackingField: 0.5
+  <ExhaustedCaptureColor>k__BackingField: {r: 1, g: 1, b: 1, a: 0.95}
+  <TrippedColor>k__BackingField: {r: 1, g: 1, b: 1, a: 0.95}
+  <TrippedDotEmission>k__BackingField: 1.6
   <ForeignDotSize>k__BackingField: 0.11
   <ForeignSpawnFraction>k__BackingField: 0
   <PauseWhileAiming>k__BackingField: 0

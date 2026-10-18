@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "6f69c404a9002c5f931830a2aa53328a",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Викинг-1. Проба грунта взята, анализ выполнен. Результат тот же, что в прошлый раз.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "243802c5190599ed32c44bf60b0a7855",
+          "target": "da369a87c2e409660b99a3c54a963dff"
+        }
+      ]
+    },
+    {
+      "uid": "da369a87c2e409660b99a3c54a963dff",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Спор о нём идёт четырнадцатый год. Я в нём не участвую.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "49776dd950ff124ada28702e6fa53528",
+          "target": "a47752d0fdc0a9305d83b002e26c2d9a"
+        }
+      ]
+    },
+    {
+      "uid": "a47752d0fdc0a9305d83b002e26c2d9a",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

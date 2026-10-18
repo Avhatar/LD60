@@ -15,29 +15,28 @@ namespace LD60.Signals
         private Transform[] _landedOn;
         private bool[] _inFlight;
         private float[] _weights;
-        private float[] _arrivedBlends;
-        private bool[] _arrived;
+        private float[] _trippedBlends;
+        private float[] _lifeLeft;
+        private Camera _camera;
         private int _count;
         private int _inFlightCount;
         private float _speed;
         private float _travelled;
         private float _endRadius;
         private Transform _ignored;
-        private float _age;
 
         public ActSpacecraftSO Source { get; private set; }
 
-        public bool Answered { get; private set; }
-
-        public void MarkAnswered()
-        {
-            Answered = true;
-        }
-
-        public void ApplyBaseLook(bool studied)
+        public void ApplyBaseLook(bool studied, bool exhausted)
         {
             if (_dots == null || _settings == null)
                 return;
+
+            if (exhausted)
+            {
+                _dots.SetLook(_settings.ExhaustedColor, _settings.ExhaustedDotEmission, _settings.DotEdgeSoftness);
+                return;
+            }
 
             _dots.SetLook(studied ? _settings.StudiedColor : _settings.ForeignColor,
                           studied ? _settings.StudiedDotEmission : _settings.ForeignDotEmission,
@@ -64,17 +63,42 @@ namespace LD60.Signals
             if (!_inFlight[index])
                 return;
 
+            GroundDot(index);
+            StartFadeOut(index);
+        }
+
+        public void TripDot(int index)
+        {
+            if (!_inFlight[index])
+                return;
+
+            GroundDot(index);
+            StartFadeOut(index);
+            _trippedBlends[index] = 1f;
+        }
+
+        private void GroundDot(int index)
+        {
+            if (!_inFlight[index])
+                return;
+
             _inFlight[index] = false;
             _inFlightCount--;
-            _weights[index] = 0f;
+        }
+
+        private void StartFadeOut(int index)
+        {
+            if (_lifeLeft[index] > _settings.DotFadeOutSeconds)
+                _lifeLeft[index] = _settings.DotFadeOutSeconds;
         }
 
         public void Launch(SignalSO settings, ActSpacecraftSO source, Orrery orrery, Material dotMaterial,
-            Vector2 origin, Vector2 aimPoint, Transform ignored, float clearance, bool studied)
+            Vector2 origin, Vector2 aimPoint, Transform ignored, float clearance, bool studied, bool exhausted)
         {
             _settings = settings;
             _orrery = orrery;
             _ignored = ignored;
+            _camera = Camera.main;
             Source = source;
             _origin = origin;
             _speed = source.Speed;
@@ -95,8 +119,8 @@ namespace LD60.Signals
             _landedOn = new Transform[_count];
             _inFlight = new bool[_count];
             _weights = new float[_count];
-            _arrivedBlends = new float[_count];
-            _arrived = new bool[_count];
+            _trippedBlends = new float[_count];
+            _lifeLeft = new float[_count];
 
             for (int i = 0; i < _count; i++)
             {
@@ -106,13 +130,14 @@ namespace LD60.Signals
                 _positions[i] = origin + _directions[i] * _travelled;
                 _inFlight[i] = true;
                 _weights[i] = 1f;
+                _lifeLeft[i] = settings.DotFlightLifetimeSeconds;
             }
 
             _dots = new SignalDotMesh(gameObject, dotMaterial, _count);
-            ApplyBaseLook(studied);
-            _dots.SetAltLook(settings.ArrivedColor, settings.ArrivedDotEmission);
-            _dots.SetFade(settings.FadeForAge(0f));
-            _dots.Rebuild(_positions, _weights, _arrivedBlends, _count, settings.ForeignDotSize);
+            ApplyBaseLook(studied, exhausted);
+            _dots.SetAltLook(settings.TrippedColor, settings.TrippedDotEmission);
+            _dots.SetFade(1f);
+            _dots.Rebuild(_positions, _weights, _trippedBlends, _count, settings.ForeignDotSize);
         }
 
         private void Update()
@@ -126,14 +151,6 @@ namespace LD60.Signals
                 return;
             }
 
-            _age += Time.deltaTime;
-
-            if (_age >= _settings.DotLifetimeSeconds)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             if (_inFlightCount > 0)
             {
                 _travelled += _speed * Time.deltaTime;
@@ -141,20 +158,39 @@ namespace LD60.Signals
             }
 
             FollowLandedBodies();
-            AdvanceArrivedBlends();
-            _dots.SetFade(_settings.FadeForAge(_age));
-            _dots.Rebuild(_positions, _weights, _arrivedBlends, _count, _settings.ForeignDotSize);
+
+            if (!AgeDots())
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _dots.Rebuild(_positions, _weights, _trippedBlends, _count, _settings.ForeignDotSize);
         }
 
-        private void AdvanceArrivedBlends()
+        private bool AgeDots()
         {
+            bool anyAlive = false;
+
             for (int i = 0; i < _count; i++)
             {
-                if (!_arrived[i] || _arrivedBlends[i] >= 1f)
+                if (_lifeLeft[i] <= 0f)
                     continue;
 
-                _arrivedBlends[i] = _settings.AdvanceColorBlend(_arrivedBlends[i], Time.deltaTime);
+                if (ViewBounds.IsOutside(_camera, _positions[i], _settings.OffscreenMargin))
+                {
+                    GroundDot(i);
+                    StartFadeOut(i);
+                }
+
+                _lifeLeft[i] -= Time.deltaTime;
+                _weights[i] = _settings.FadeForRemaining(_lifeLeft[i]);
+
+                if (_lifeLeft[i] > 0f)
+                    anyAlive = true;
             }
+
+            return anyAlive;
         }
 
         private void AdvanceDots()
@@ -175,13 +211,10 @@ namespace LD60.Signals
                     _inFlight[i] = false;
                     _inFlightCount--;
                     _landedOn[i] = hit;
+                    _lifeLeft[i] = _settings.DotLifetimeSeconds;
                     _landedOffsets[i] = LandedOffsetFor(i, hit, hitRadius);
                     _positions[i] = (Vector2)hit.position + _landedOffsets[i];
 
-                    if (bodyIndex < 0 || _orrery.GetBody(bodyIndex) != Source.TransmitTo)
-                        continue;
-
-                    _arrived[i] = true;
                 }
             }
         }

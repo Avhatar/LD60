@@ -20,10 +20,11 @@ namespace LD60
         private static bool _heldPause;
         private static bool _dialoguePause;
         private static bool _introPause;
+        private static bool _menuPause;
 
         public static bool IsPaused
         {
-            get { return _manualPause || _heldPause || _dialoguePause || _introPause; }
+            get { return _manualPause || _heldPause || _dialoguePause || _introPause || _menuPause; }
         }
 
         public static bool IsGameMode
@@ -41,11 +42,84 @@ namespace LD60
             get { return Mode == GameMode.Intro; }
         }
 
+        public static bool IsMenuMode
+        {
+            get { return Mode == GameMode.Menu; }
+        }
+
         public static double DaysSinceJ2000 { get; private set; }
 
         public static double DeltaDays { get; private set; }
 
         public static int ActIndex { get; private set; }
+
+        public static float Watts { get; private set; }
+
+        public static event Action<float> WattsChanged;
+
+        public static float WattsCapacity
+        {
+            get
+            {
+                if (Config == null || Config.Watt == null)
+                    return 0f;
+
+                return Config.Watt.MaxWatts;
+            }
+        }
+
+        public static float WattsFraction
+        {
+            get
+            {
+                float capacity = WattsCapacity;
+
+                if (capacity <= 0f)
+                    return 0f;
+
+                return Mathf.Clamp01(Watts / capacity);
+            }
+        }
+
+        public static bool TrySpendWatts(float amount)
+        {
+            if (amount <= 0f)
+                return true;
+
+            if (Watts < amount)
+                return false;
+
+            Watts -= amount;
+
+            if (WattsChanged != null)
+                WattsChanged.Invoke(-amount);
+
+            return true;
+        }
+
+        public static void AddWatts(float amount)
+        {
+            if (amount <= 0f)
+                return;
+
+            if (Config == null || Config.Watt == null)
+            {
+                Debug.LogError($"{nameof(Core)}: {nameof(CoreSO.Watt)} is null in {nameof(AddWatts)}. " +
+                               "Required to know the transmitter maximum the pool is clamped to. " +
+                               "Fix: assign a Watt asset to the Watt slot on the Core asset.");
+                return;
+            }
+
+            float granted = Mathf.Min(amount, Config.Watt.MaxWatts - Watts);
+
+            if (granted <= 0f)
+                return;
+
+            Watts += granted;
+
+            if (WattsChanged != null)
+                WattsChanged.Invoke(granted);
+        }
 
         public static DateTime CurrentDate
         {
@@ -100,6 +174,7 @@ namespace LD60
             ActIndex = index;
             DaysSinceJ2000 = act.StartDaysSinceJ2000;
             DeltaDays = 0d;
+            AddWatts(act.BudgetWatts);
         }
 
         public static void SetMode(GameMode mode)
@@ -110,6 +185,7 @@ namespace LD60
             Mode = mode;
             _dialoguePause = mode == GameMode.Dialogue;
             _introPause = mode == GameMode.Intro;
+            _menuPause = mode == GameMode.Menu;
             ApplyTimeScale();
 
             if (ModeChanged != null)
@@ -139,11 +215,20 @@ namespace LD60
             _heldPause = false;
             _dialoguePause = false;
             _introPause = false;
+            _menuPause = false;
             Time.timeScale = 1f;
 
             ActIndex = 0;
             DaysSinceJ2000 = 0d;
             DeltaDays = 0d;
+            Watts = 0f;
+
+            if (_config.Watt == null)
+            {
+                Debug.LogError($"{nameof(Core)}: {nameof(CoreSO.Watt)} is null in {nameof(Awake)}. " +
+                               "Required to know how many watts the transmitter holds, what a dot costs and how the bar reads. " +
+                               "Fix: assign a Watt asset to the Watt slot on the Core asset.");
+            }
 
             if (_config.TimeScale == null)
             {
@@ -159,6 +244,9 @@ namespace LD60
         private void Update()
         {
             AdvanceClock();
+
+            if (IsMenuMode)
+                return;
 
             if (LanguageToggleRequested())
                 Localization.Toggle();

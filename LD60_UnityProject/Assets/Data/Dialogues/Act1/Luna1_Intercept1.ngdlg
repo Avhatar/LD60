@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "6b5cebd09bc5fc683deb0dc95d4f453e",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Изделие Е-1, номер четыре. Циклограмма отработана штатно.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "9b41182525e3649a1c11b344861d64a8",
+          "target": "5bc96bf4caaea4610ab26e3d03663586"
+        }
+      ]
+    },
+    {
+      "uid": "5bc96bf4caaea4610ab26e3d03663586",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Отклонение от расчётной точки — шесть тысяч километров. Отклонение зафиксировано.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d1ebdd57052a1b4e1b34efd3b66768a6",
+          "target": "f6a738e7f5e9c0b1a91cb4aa35685a54"
+        }
+      ]
+    },
+    {
+      "uid": "f6a738e7f5e9c0b1a91cb4aa35685a54",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

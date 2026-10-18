@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5bba492f6b7fb3dd210aba0b507c2c5e",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Изделие 4В-1. Минута шестьдесят один. Бурение выполнено, проба взята, анализ передан.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "9940d492606d6e09b4d17244be358464",
+          "target": "40d92799734c591a43eee6e03c05c777"
+        }
+      ]
+    },
+    {
+      "uid": "40d92799734c591a43eee6e03c05c777",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Грунт — базальт. Съёмка панорамная, цветная. Продолжаю работу.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d792bec73be3f396b02e17ea2958b4ad",
+          "target": "054b4b63b4a89bf6b9f1d30f7ae10b96"
+        }
+      ]
+    },
+    {
+      "uid": "054b4b63b4a89bf6b9f1d30f7ae10b96",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

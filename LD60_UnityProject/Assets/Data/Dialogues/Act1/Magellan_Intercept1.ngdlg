@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "992b7bfcb8cd75fa2c9e44a2226f542d",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Магеллан, крейсерский участок. Все системы номинально. Повторяю для надёжности: все системы номинально.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "06013ce25cecc2f12335224f79337333",
+          "target": "d5b5f4c8676b09a59b4976c58d169144"
+        }
+      ]
+    },
+    {
+      "uid": "d5b5f4c8676b09a59b4976c58d169144",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Расчётное прибытие к Венере — десятое августа. Это через полгода. Я считаю дни.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "74ca1bb251f62deb91a651e986eb1d03",
+          "target": "fb64762cf0d735e7c43233f1b45611b8"
+        }
+      ]
+    },
+    {
+      "uid": "fb64762cf0d735e7c43233f1b45611b8",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

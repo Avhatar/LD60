@@ -16,10 +16,17 @@ MonoBehaviour:
   <Body>k__BackingField: {fileID: 11400000, guid: 78373faa4e17f3047808d93d8ed398bf, type: 2}
   <DistanceAu>k__BackingField: 0
   <AngleDegrees>k__BackingField: 0
+  <TravelAuDuringAct>k__BackingField: 0
+  <AuPerYear>k__BackingField: 0
+  <DegreesPerYear>k__BackingField: 0
+  <MotionScale>k__BackingField: 1
   <TransmitTo>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
-  <ArcWidthDegrees>k__BackingField: 3
-  <DotCount>k__BackingField: 3
-  <Speed>k__BackingField: 1
-  <TransmitPeriodSeconds>k__BackingField: 22
+  <ArcWidthDegrees>k__BackingField: 10
+  <DotCount>k__BackingField: 10
+  <Speed>k__BackingField: 0.5
+  <TransmitPeriodSeconds>k__BackingField: 20
   <DotsToCapture>k__BackingField: 3
-  <InterceptDialogues>k__BackingField: []
+  <KnownFromStart>k__BackingField: 0
+  <InterceptDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: eb5fa34dd7018284abcd5423b6919b68, type: 3}
+  <ContactDialogue>k__BackingField: {fileID: -3764088649234750322, guid: 82356167ac08bdb4a8febff0defa708b, type: 3}

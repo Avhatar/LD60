@@ -10,7 +10,10 @@ namespace LD60.UI
     {
         public CelestialBodySO HoveredBody { get; private set; }
 
+        public SpacecraftSO HoveredCraft { get; private set; }
+
         [SerializeField] private Orrery _orrery;
+        [SerializeField] private LD60.Signals.ForeignSignalDirector _director;
         [SerializeField] private TargetFrame _playerFrame;
         [SerializeField] private TargetFrame _hoverFrame;
 
@@ -41,6 +44,16 @@ namespace LD60.UI
                 Debug.LogError($"{nameof(TargetFrameUi)}: {nameof(_orrery)} is null in {nameof(Start)} on '{name}'. " +
                                "Required to find our own spacecraft and the body under the pointer. " +
                                "Fix: assign the Orrery object to the Orrery slot on this object.", this);
+                enabled = false;
+                return;
+            }
+
+            if (_director == null)
+            {
+                Debug.LogError($"{nameof(TargetFrameUi)}: {nameof(_director)} is null in {nameof(Start)} on '{name}'. " +
+                               "Required to know whether we have already talked to the spacecraft under the pointer, " +
+                               "which decides between its name and question marks. " +
+                               "Fix: assign the Foreign Signals object to the Director slot on this object.", this);
                 enabled = false;
                 return;
             }
@@ -151,6 +164,7 @@ namespace LD60.UI
             Mouse mouse = Mouse.current;
 
             HoveredBody = null;
+            HoveredCraft = null;
 
             if (mouse == null)
             {
@@ -159,7 +173,8 @@ namespace LD60.UI
             }
 
             Vector2 pointer = PointerWorldPosition(mouse);
-            int hovered = -1;
+            int hoveredBody = -1;
+            int hoveredCraft = -1;
             float hoveredRadius = float.MaxValue;
 
             for (int i = 0; i < _orrery.BodyCount; i++)
@@ -173,17 +188,48 @@ namespace LD60.UI
                     continue;
 
                 hoveredRadius = radius;
-                hovered = i;
+                hoveredBody = i;
             }
 
-            if (hovered < 0)
+            for (int i = 0; i < _orrery.FreeFlyerCount; i++)
             {
-                _hoverFrame.Release();
+                SpacecraftSO craft = _orrery.GetFreeFlyer(i);
+
+                if (craft == null || craft == _orrery.PlayerSpacecraft)
+                    continue;
+
+                if (!_orrery.IsFreeFlyerHitAt(i, pointer))
+                    continue;
+
+                float radius = _orrery.GetFreeFlyerHitRadius(i);
+
+                if (radius >= hoveredRadius)
+                    continue;
+
+                hoveredRadius = radius;
+                hoveredCraft = i;
+                hoveredBody = -1;
+            }
+
+            if (hoveredCraft >= 0)
+            {
+                TrackCraft(hoveredCraft, hoveredRadius);
                 return;
             }
 
-            Transform body = _orrery.GetBodyTransform(hovered);
-            CelestialBodySO data = _orrery.GetBody(hovered);
+            if (hoveredBody >= 0)
+            {
+                TrackBody(hoveredBody, hoveredRadius);
+                return;
+            }
+
+            _hoverFrame.Release();
+        }
+
+        private void TrackBody(int index, float radius)
+        {
+            Transform body = _orrery.GetBodyTransform(index);
+            CelestialBodySO data = _orrery.GetBody(index);
 
             if (body == null || data == null)
             {
@@ -192,7 +238,29 @@ namespace LD60.UI
             }
 
             HoveredBody = data;
-            _hoverFrame.Track(_camera, body.position, hoveredRadius, data.LocalizedName.Value, _settings.HoverColor);
+            _hoverFrame.Track(_camera, body.position, radius, data.LocalizedName.Value, _settings.HoverColor);
+        }
+
+        private void TrackCraft(int index, float radius)
+        {
+            Transform root = _orrery.GetFreeFlyerTransform(index);
+            SpacecraftSO craft = _orrery.GetFreeFlyer(index);
+
+            if (root == null || craft == null)
+            {
+                _hoverFrame.Release();
+                return;
+            }
+
+            HoveredCraft = craft;
+
+            if (_director.IsCraftContacted(craft))
+            {
+                _hoverFrame.Track(_camera, root.position, radius, craft.LocalizedName.Value, _settings.HoverColor);
+                return;
+            }
+
+            _hoverFrame.Track(_camera, root.position, radius, _text.UnknownFrameLabel.Value, _settings.UnknownColor);
         }
 
         private Vector2 PointerWorldPosition(Mouse mouse)

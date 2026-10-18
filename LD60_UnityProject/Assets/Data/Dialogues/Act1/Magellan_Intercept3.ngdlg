@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "2cda4ade9629355f4f993bcac771ead7",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Магеллан. Инвентаризация борта выполнена. Большая антенна — из запаса программы «Вояджер», средняя — от «Маринера-9», командный блок от «Галилея».",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "06998d68c8fd6c5d4c6235027b2f6daa",
+          "target": "7e8e1167dff7644936424959e159b895"
+        }
+      ]
+    },
+    {
+      "uid": "7e8e1167dff7644936424959e159b895",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Я почти весь из запчастей. Мне сказали, это надёжно: всё уже проверено на других.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f40252cc165cfe5d7a3bb27ba9c543df",
+          "target": "ce418e5c5b4ce9cbe746387635e44043"
+        }
+      ]
+    },
+    {
+      "uid": "ce418e5c5b4ce9cbe746387635e44043",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

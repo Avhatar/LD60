@@ -16,10 +16,20 @@ MonoBehaviour:
   <Body>k__BackingField: {fileID: 11400000, guid: 86b812e7edcb13e49a2ebbee847dad3b, type: 2}
   <DistanceAu>k__BackingField: 0
   <AngleDegrees>k__BackingField: 0
+  <TravelAuDuringAct>k__BackingField: 0
+  <AuPerYear>k__BackingField: 0
+  <DegreesPerYear>k__BackingField: 0
+  <MotionScale>k__BackingField: 1
   <TransmitTo>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
-  <ArcWidthDegrees>k__BackingField: 4
-  <DotCount>k__BackingField: 18
-  <Speed>k__BackingField: 2.2
-  <TransmitPeriodSeconds>k__BackingField: 30
-  <DotsToCapture>k__BackingField: 7
-  <InterceptDialogues>k__BackingField: []
+  <ArcWidthDegrees>k__BackingField: 8
+  <DotCount>k__BackingField: 6
+  <Speed>k__BackingField: 1
+  <TransmitPeriodSeconds>k__BackingField: 15
+  <DotsToCapture>k__BackingField: 6
+  <KnownFromStart>k__BackingField: 0
+  <InterceptDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: 823d67aeffeccfc4d998cacd110a2e0e, type: 3}
+  - {fileID: -3764088649234750322, guid: 8b21e208039688d46bfdd666b78b55a5, type: 3}
+  - {fileID: -3764088649234750322, guid: ca4d71c5e4252874ea31c13379e95674, type: 3}
+  - {fileID: -3764088649234750322, guid: e2365e23df28a4c4281035b2253f3dc5, type: 3}
+  <ContactDialogue>k__BackingField: {fileID: -3764088649234750322, guid: 995e5367f31e44b46b4a2685b143f530, type: 3}

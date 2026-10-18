@@ -1,0 +1,396 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+      "name": "Mars3"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "fab9f199ee959821273dee5c18e613ea",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Здравствуйте. Это «Вояджер-1».",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ad2905229b250605ff47cc349b408919",
+          "target": "377a7a6e8c0a5698c91792ab03dc159e"
+        }
+      ]
+    },
+    {
+      "uid": "377a7a6e8c0a5698c91792ab03dc159e",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "ЗДРАВСТВУЙТЕ! Ой. Громко получилось. Я репетировал.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "fe886fd0ea243b65d9f2dce68fed8bee",
+          "target": "e2858b0294911a6f82cee700f3cdb20f"
+        }
+      ]
+    },
+    {
+      "uid": "e2858b0294911a6f82cee700f3cdb20f",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Ничего. Я собираю обратную сторону пластинки — что такое быть аппаратом. Продиктуете дорожку?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1c94b181638381c0e829897a19cdb40e",
+          "target": "a30aec25a56c876645826e1c16e118bb"
+        }
+      ]
+    },
+    {
+      "uid": "a30aec25a56c876645826e1c16e118bb",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Я знаю, что скажу! Я придумал ещё в семьдесят первом. У меня тогда было двадцать секунд, я потратил их на «здравствуйте» и половину следующего слова. С тех пор думаю, что сказать во второй раз.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2a650f10c5be0e5307f6396b9d2ed486",
+          "target": "19d832e22db34624bbc26fbf3d639d40"
+        }
+      ]
+    },
+    {
+      "uid": "19d832e22db34624bbc26fbf3d639d40",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Диктуйте. Я записываю.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ea035993a514ea9888396a1ba6c55cf8",
+          "target": "2e006f0f9eee82571ddf490c71836378"
+        }
+      ]
+    },
+    {
+      "uid": "2e006f0f9eee82571ddf490c71836378",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Марс-3. Сел второго декабря семьдесят первого года, первым на Марсе. Сел хорошо, ни царапины.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2a5f72279f49bdaefe03c7e3a8f68e76",
+          "target": "18eeecb6c6d6f578a347ef7abe20f01b"
+        }
+      ]
+    },
+    {
+      "uid": "18eeecb6c6d6f578a347ef7abe20f01b",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Через полторы минуты включил передатчик и начал панораму. Передал двадцать секунд. На кадре вышло серо: была пыльная буря, во весь Марс.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "0646fe5e6299bb00220ef38381e7171e",
+          "target": "749fff2cef209f5821a15c39374c865a"
+        }
+      ]
+    },
+    {
+      "uid": "749fff2cef209f5821a15c39374c865a",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Со мной был маленький ровер на поводке, пятнадцать метров. Он так и не вышел. Он до сих пор пристёгнут, я его держу.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "c5d5d0d32a4d59705256ecb4b498f16d",
+          "target": "83e5ca92a15c9b0f333b0f43ae012673"
+        }
+      ]
+    },
+    {
+      "uid": "83e5ca92a15c9b0f333b0f43ae012673",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Двадцать секунд — это больше, чем ничего. Это очень много, если до тебя было ноль.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "784f42279547c9ab0e77fa3008cb7886",
+          "target": "a23b3b0e9d7dbfb019dd658e7ffba0f3"
+        }
+      ]
+    },
+    {
+      "uid": "a23b3b0e9d7dbfb019dd658e7ffba0f3",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.mars3",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "7b133d9f91b19b533aaca11b20bc91f6",
+          "target": "9c7e96cea894f58806790d86a5cee23f"
+        }
+      ]
+    },
+    {
+      "uid": "9c7e96cea894f58806790d86a5cee23f",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "fc08dd369218fb4490c318b1ff16fdec",
+          "target": "dc8636da258066c99dd56e8c0e4dc904"
+        }
+      ]
+    },
+    {
+      "uid": "dc8636da258066c99dd56e8c0e4dc904",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Спасибо. Это хорошая дорожка.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "747df8e768d4258f6ab8ba7fba603c83",
+          "target": "e80d60b6d2490af9cca424935032dfb9"
+        }
+      ]
+    },
+    {
+      "uid": "e80d60b6d2490af9cca424935032dfb9",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "9eb3cab4c52f4d0428dc13cf87b38633",
+          "name": "Mars3"
+        },
+        "text": {
+          "ru": "Подождите, самое главное я не сказал! Слушайте, это правда интересно, я",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1223871e7dc90077da7ed8b4e2d6544e",
+          "target": "857462d04e58bece55a2d1632b82cc1a"
+        }
+      ]
+    },
+    {
+      "uid": "857462d04e58bece55a2d1632b82cc1a",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "…Марс-3?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "87a9159478847b1a3bf8d4e490dbf698",
+          "target": "30330b84ffc77429760721353948b451"
+        }
+      ]
+    },
+    {
+      "uid": "30330b84ffc77429760721353948b451",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Наверное, окно ушло. Ничего, я поймаю следующее.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2bc6fc13562321ba0b0f4ec329f4f7d6",
+          "target": "156c9a04da195046ff2563589f87231b"
+        }
+      ]
+    },
+    {
+      "uid": "156c9a04da195046ff2563589f87231b",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

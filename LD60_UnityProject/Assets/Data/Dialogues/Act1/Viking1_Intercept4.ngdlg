@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "8b11de86cfd23e1d50969258d36d5238",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Викинг-1. Антенна в положении, заданном командой от одиннадцатого ноября. Положение штатное, команда исполнена.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "77ac613f72a58cc9e70aaca7b7523fb3",
+          "target": "1e61acea432b62a7966094e12c8bd034"
+        }
+      ]
+    },
+    {
+      "uid": "1e61acea432b62a7966094e12c8bd034",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Куда она смотрит — в сводке не предусмотрено.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "4431b24036830b3f747f1197ecd4f318",
+          "target": "a744b5b4e680d952a79375237024b460"
+        }
+      ]
+    },
+    {
+      "uid": "a744b5b4e680d952a79375237024b460",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

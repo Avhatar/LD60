@@ -14,12 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Spacecraft>k__BackingField: {fileID: 11400000, guid: 0e04c5e6d0e1bce47805bfc99f6b3543, type: 2}
   <Body>k__BackingField: {fileID: 0}
-  <DistanceAu>k__BackingField: 1.5
-  <AngleDegrees>k__BackingField: 152
+  <DistanceAu>k__BackingField: 6.1
+  <AngleDegrees>k__BackingField: 0
+  <TravelAuDuringAct>k__BackingField: 0
+  <AuPerYear>k__BackingField: 0
+  <DegreesPerYear>k__BackingField: 430
+  <MotionScale>k__BackingField: 1
   <TransmitTo>k__BackingField: {fileID: 11400000, guid: fa9f8a956e8c7b04b820d2cf14860e84, type: 2}
-  <ArcWidthDegrees>k__BackingField: 18
-  <DotCount>k__BackingField: 16
-  <Speed>k__BackingField: 1.7
+  <ArcWidthDegrees>k__BackingField: 12
+  <DotCount>k__BackingField: 12
+  <Speed>k__BackingField: 1
   <TransmitPeriodSeconds>k__BackingField: 9
   <DotsToCapture>k__BackingField: 3
-  <InterceptDialogues>k__BackingField: []
+  <KnownFromStart>k__BackingField: 0
+  <InterceptDialogues>k__BackingField:
+  - {fileID: -3764088649234750322, guid: b59202c354b1cd24ea86f8390db538a4, type: 3}
+  - {fileID: -3764088649234750322, guid: 30e72751cb7bb9c40917691666a73582, type: 3}
+  - {fileID: -3764088649234750322, guid: da83aaa0a1470bb41a0f6b48e2b12465, type: 3}
+  - {fileID: -3764088649234750322, guid: 4485dfe176c896f48b754fea83568202, type: 3}
+  <ContactDialogue>k__BackingField: {fileID: -3764088649234750322, guid: c08cc7b6133203d439f3794371b405e1, type: 3}

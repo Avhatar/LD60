@@ -6,17 +6,11 @@ namespace LD60.Signals
     [CreateAssetMenu(fileName = "Signal", menuName = "LD60/Signal")]
     public class SignalSO : GameDataSO
     {
-        [field: Tooltip("Speed when the pointer sits on top of the spacecraft.")]
+        [field: Tooltip("Speed of the narrowest possible volley. Narrow means fast.")]
         [field: SerializeField] public float MinSpeed { get; private set; } = 1.5f;
 
-        [field: Tooltip("Speed when the pointer is at or past the far distance below.")]
+        [field: Tooltip("Speed of the widest possible volley. Wide means slow.")]
         [field: SerializeField] public float MaxSpeed { get; private set; } = 12f;
-
-        [field: Tooltip("Pointer distance from the spacecraft that maps to Min Speed.")]
-        [field: SerializeField] public float SpeedNearDistance { get; private set; } = 1f;
-
-        [field: Tooltip("Pointer distance from the spacecraft that maps to Max Speed.")]
-        [field: SerializeField] public float SpeedFarDistance { get; private set; } = 14f;
 
         [field: SerializeField] public float MinWidthDegrees { get; private set; } = 1.5f;
         [field: SerializeField] public float MaxWidthDegrees { get; private set; } = 40f;
@@ -29,8 +23,14 @@ namespace LD60.Signals
         [field: Tooltip("Dots in the arc at full charge.")]
         [field: SerializeField] public int MaxDots { get; private set; } = 48;
 
-        [field: Tooltip("How long the fire button must be held to reach Max Dots.")]
-        [field: SerializeField] public float SecondsToFullPower { get; private set; } = 1.2f;
+        [field: Tooltip("Dots packed into one degree of arc. The whole dot count follows from the angle.")]
+        [field: SerializeField] public float DotsPerDegree { get; private set; } = 1.2f;
+
+        [field: Tooltip("Quiet period after a dot is caught before the intercept dialogue starts. Every further dot caught from the same transmission restarts it, so the line waits for the whole volley to arrive.")]
+        [field: SerializeField] public float DialogueDebounceSeconds { get; private set; } = 0.2f;
+
+        [field: Tooltip("Seconds of cooldown each dot in the volley costs.")]
+        [field: SerializeField] public float CooldownSecondsPerDot { get; private set; } = 1f;
 
         [field: SerializeField] public float DotSize { get; private set; } = 0.13f;
 
@@ -42,7 +42,13 @@ namespace LD60.Signals
         [field: SerializeField] public float PreviewArcRadius { get; private set; } = 2.2f;
         [field: SerializeField] public float MaxTravelRadius { get; private set; } = 26f;
 
-        [field: Tooltip("How long dots stay on screen after they were sent. They also vanish early if their sender transmits again.")]
+        [field: Tooltip("How long a dot lives while it is still flying and has touched nothing. Long enough to leave the screen.")]
+        [field: SerializeField] public float DotFlightLifetimeSeconds { get; private set; } = 30f;
+
+        [field: Tooltip("How far past the edge of the view a dot may drift before it is dropped. Stops captures happening where the player cannot see them.")]
+        [field: SerializeField] public float OffscreenMargin { get; private set; } = 1f;
+
+        [field: Tooltip("How long a dot lives after it touched something - landed on an object or caught another dot.")]
         [field: SerializeField] public float DotLifetimeSeconds { get; private set; } = 10f;
 
         [field: Tooltip("How close our dot has to pass a foreign dot to catch it. Kept generous on purpose, dot-on-dot precision would read as a lottery.")]
@@ -59,6 +65,9 @@ namespace LD60.Signals
 
         [field: Tooltip("Played once, on the dot that completes a sender and opens contact.")]
         [field: SerializeField] public SoundContainerSO ContactSound { get; private set; }
+
+        [field: Tooltip("Played on the dot that lands on an unlocked sender and opens the direct conversation.")]
+        [field: SerializeField] public SoundContainerSO ContactShotSound { get; private set; }
 
         [field: Tooltip("How long the whole transmission takes to dim away at the end of its lifetime.")]
         [field: SerializeField] public float DotFadeOutSeconds { get; private set; } = 1.5f;
@@ -82,6 +91,19 @@ namespace LD60.Signals
         [field: SerializeField] public Color StudiedColor { get; private set; } = new Color(1f, 1f, 1f, 0.9f);
 
         [field: SerializeField] public float StudiedDotEmission { get; private set; } = 1.2f;
+
+        [field: Tooltip("Colour of transmissions from a spacecraft whose every line we have already heard. Faded on purpose - nothing new to get here.")]
+        [field: SerializeField] public Color ExhaustedColor { get; private set; } = new Color(0.85f, 0.85f, 0.9f, 0.35f);
+
+        [field: SerializeField] public float ExhaustedDotEmission { get; private set; } = 0.5f;
+
+        [field: Tooltip("Colour our own dot turns when it catches a transmission that has no lines left.")]
+        [field: SerializeField] public Color ExhaustedCaptureColor { get; private set; } = new Color(1f, 1f, 1f, 0.95f);
+
+        [field: Tooltip("Colour a foreign dot turns when it trips over a dot from another transmission. Both dots stop there and fade.")]
+        [field: SerializeField] public Color TrippedColor { get; private set; } = new Color(1f, 1f, 1f, 0.95f);
+
+        [field: SerializeField] public float TrippedDotEmission { get; private set; } = 1.6f;
 
         [field: Tooltip("Dot size of transmissions sent by other spacecraft.")]
         [field: SerializeField] public float ForeignDotSize { get; private set; } = 0.11f;
@@ -110,6 +132,17 @@ namespace LD60.Signals
         [field: SerializeField] public float PreviewLineWidth { get; private set; } = 0.025f;
         [field: SerializeField] public int ArcSegments { get; private set; } = 24;
 
+        public float FadeForRemaining(float secondsLeft)
+        {
+            if (secondsLeft <= 0f)
+                return 0f;
+
+            if (DotFadeOutSeconds <= 0f)
+                return 1f;
+
+            return Mathf.Clamp01(secondsLeft / DotFadeOutSeconds);
+        }
+
         public float FadeForAge(float ageSeconds)
         {
             if (DotFadeOutSeconds <= 0f)
@@ -131,20 +164,22 @@ namespace LD60.Signals
             return Mathf.Clamp(widthDegrees, MinWidthDegrees, MaxWidthDegrees);
         }
 
-        public float SpeedForPointerDistance(float distance)
+        public int DotsForWidth(float widthDegrees)
         {
-            if (SpeedFarDistance <= SpeedNearDistance)
-                return MinSpeed;
-
-            return Mathf.Lerp(MinSpeed, MaxSpeed, Mathf.InverseLerp(SpeedNearDistance, SpeedFarDistance, distance));
+            return Mathf.Clamp(Mathf.RoundToInt(widthDegrees * DotsPerDegree), MinDots, MaxDots);
         }
 
-        public int DotsForHoldSeconds(float heldSeconds)
+        public float SpeedForWidth(float widthDegrees)
         {
-            if (SecondsToFullPower <= 0f)
-                return MaxDots;
+            if (MaxWidthDegrees <= MinWidthDegrees)
+                return MaxSpeed;
 
-            return Mathf.RoundToInt(Mathf.Lerp(MinDots, MaxDots, Mathf.Clamp01(heldSeconds / SecondsToFullPower)));
+            return Mathf.Lerp(MaxSpeed, MinSpeed, Mathf.InverseLerp(MinWidthDegrees, MaxWidthDegrees, widthDegrees));
+        }
+
+        public float CooldownForDots(int dots)
+        {
+            return dots * CooldownSecondsPerDot;
         }
 
         public float CostFor(float widthDegrees, float speed, int dots)

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "976d3db169be81452eda7ceffac2d6de",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Магеллан. Меня запустили не с ракеты, а из грузового отсека «Атлантиса». Первым из планетных аппаратов.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6de3915d87415483ae5614295da75a1c",
+          "target": "dc6f31c251a9515e3904f0da57d5d5ef"
+        }
+      ]
+    },
+    {
+      "uid": "dc6f31c251a9515e3904f0da57d5d5ef",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Это записано в документах. Я проверял. Там так и написано — первым.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d732f3f82392b9b8a9a3c28649f9f1d7",
+          "target": "498cca1e9c9aa57d3ead5b01402afe58"
+        }
+      ]
+    },
+    {
+      "uid": "498cca1e9c9aa57d3ead5b01402afe58",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

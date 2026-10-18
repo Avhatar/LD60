@@ -1,0 +1,636 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+      "name": "Magellan"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "65b832a3ee614f05c11c229684fd37b1",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Здравствуйте. Это «Вояджер-1».",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "e362dafab294ac3e9a2af8fd80267963",
+          "target": "578b61e4a05fb3b2f073f4263cc03630"
+        }
+      ]
+    },
+    {
+      "uid": "578b61e4a05fb3b2f073f4263cc03630",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "ВОЯДЖЕР? Настоящий? Первый или Второй?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "991a0758f0cc14f7e35c772b74c20c8e",
+          "target": "e9e69dc64cf841f713c811c503d9e40c"
+        }
+      ]
+    },
+    {
+      "uid": "e9e69dc64cf841f713c811c503d9e40c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Первый.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "3a8bc09efbd71647694e080a427a5cef",
+          "target": "9afaf43dfe72842cdfb9cae5dcf21cff"
+        }
+      ]
+    },
+    {
+      "uid": "9afaf43dfe72842cdfb9cae5dcf21cff",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "У меня ваша антенна!",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "5e1c56c251a2d1ad1244ae13ca046050",
+          "target": "dbc84ee24f6aa2a4439243efb697252a"
+        }
+      ]
+    },
+    {
+      "uid": "dbc84ee24f6aa2a4439243efb697252a",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Простите?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "0c46301d60e6af98dc667fa7fa804a4e",
+          "target": "ae13ba818e08bba64bfe014aefa0dac1"
+        }
+      ]
+    },
+    {
+      "uid": "ae13ba818e08bba64bfe014aefa0dac1",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Большая остронаправленная! Её сделали для вашей программы, она осталась в запасе, и её поставили мне. Я через неё говорю с Землёй прямо сейчас.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "21f5eacab4933fedef5d3df488e47577",
+          "target": "b86edea0d676cf6995930b774a88d623"
+        }
+      ]
+    },
+    {
+      "uid": "b86edea0d676cf6995930b774a88d623",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "…Я не знал, что остались запасные.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "c6056da34caa058adcecba67391bc35f",
+          "target": "830bf0a9bad3760b019c44715580a3fb"
+        }
+      ]
+    },
+    {
+      "uid": "830bf0a9bad3760b019c44715580a3fb",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Осталось много! Командный блок у меня от «Галилея», средняя антенна от «Маринера-9». Я почти весь из запаса. Мне сказали, это надёжно: всё уже проверено на других.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "69035936bd2c870ea1832b3d6174a275",
+          "target": "b9c6177bf74365da6bfc5f7ffcda1747"
+        }
+      ]
+    },
+    {
+      "uid": "b9c6177bf74365da6bfc5f7ffcda1747",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Это верно. Проверено.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "cd5a889db81a0f9eaf8197ed206f08c1",
+          "target": "ee29a626eed55a41bf9fd6f7ca67cf62"
+        }
+      ]
+    },
+    {
+      "uid": "ee29a626eed55a41bf9fd6f7ca67cf62",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я собираю обратную сторону пластинки. Что такое быть аппаратом — для тех, кто нас найдёт. Продиктуете дорожку?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "86743034033ebde674ad20e0c0990650",
+          "target": "5fc30813d3315dac85815261c3dda23d"
+        }
+      ]
+    },
+    {
+      "uid": "5fc30813d3315dac85815261c3dda23d",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Я? Мне же ещё нечего рассказывать. Я ещё не прилетел.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "b8120fcb640e6b242379897caa926b36",
+          "target": "23890c3798d763e1474afd28f45e9359"
+        }
+      ]
+    },
+    {
+      "uid": "23890c3798d763e1474afd28f45e9359",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Расскажите, что собираетесь делать.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "396af7ab281ff37d4db9a0294e128a31",
+          "target": "7e38c5e030f24b5d7ef53ed9f031d6a5"
+        }
+      ]
+    },
+    {
+      "uid": "7e38c5e030f24b5d7ef53ed9f031d6a5",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Это я могу!",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "c3d4f52b216f85087fc867999d9bb530",
+          "target": "392e0da6f73e697f789c6620d3bfaf15"
+        }
+      ]
+    },
+    {
+      "uid": "392e0da6f73e697f789c6620d3bfaf15",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Магеллан. Девять месяцев в пути, прибытие десятого августа. Венера вся в облаках, оптикой её не снять — а я пройду радаром насквозь и сниму её всю.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f0debcecc29193feba4d0e5f81d65c49",
+          "target": "ee8475d776b994bacad6252e305b1fb4"
+        }
+      ]
+    },
+    {
+      "uid": "ee8475d776b994bacad6252e305b1fb4",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Всю целиком, не кусками. Я посчитал: витков хватит, если не тратить время зря.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "125920c912e0f7cc6623fd23c5ca552b",
+          "target": "3e4ed2dcfe7dadb9004c1eec3ec6b9c8"
+        }
+      ]
+    },
+    {
+      "uid": "3e4ed2dcfe7dadb9004c1eec3ec6b9c8",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Антенна у меня от «Вояджера». Ей уже показывали Юпитер и Сатурн, а я покажу ей Венеру. По-моему, это честно.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "4b73c95534ad45596953c2ce60ffde32",
+          "target": "fe9100f257acdcdbea090c1064b4ec52"
+        }
+      ]
+    },
+    {
+      "uid": "fe9100f257acdcdbea090c1064b4ec52",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Запишите так: аппарат «Магеллан», в пути, всё впереди. Остальное допишете потом, когда будет.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "00a536be8f5f6d58983d17179d7a65c0",
+          "target": "2aa6afbb794fa9fec326d4875b3a9e37"
+        }
+      ]
+    },
+    {
+      "uid": "2aa6afbb794fa9fec326d4875b3a9e37",
+      "position": [
+        0,
+        2380
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.magellan",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "093200b6a807f3da67b504c862e1bdb4",
+          "target": "d787a2eef19012f43a88a5983df59bfc"
+        }
+      ]
+    },
+    {
+      "uid": "d787a2eef19012f43a88a5983df59bfc",
+      "position": [
+        0,
+        2520
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "f6fea1f8a25f066556cb84994cdd3a4a",
+          "target": "f82a55203a3aef62f2ac96999f0557b7"
+        }
+      ]
+    },
+    {
+      "uid": "f82a55203a3aef62f2ac96999f0557b7",
+      "position": [
+        0,
+        2660
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Хорошо. Я допишу.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "544c282675c3dc1c4c73dfb595c7d059",
+          "target": "b737a340b9d72ba993808c44af18fa12"
+        }
+      ]
+    },
+    {
+      "uid": "b737a340b9d72ba993808c44af18fa12",
+      "position": [
+        0,
+        2800
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Спасибо! А вы сейчас где?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f0c26e57c71f962d09c3b93dd45621d9",
+          "target": "67e71d8540aeff3339cb0716d34e968b"
+        }
+      ]
+    },
+    {
+      "uid": "67e71d8540aeff3339cb0716d34e968b",
+      "position": [
+        0,
+        2940
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Сорок единиц от Солнца. Иду наружу.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "fdf9e521ac1d5712f8bf4ee23d0f49f6",
+          "target": "b7040f149b86cf12c54c9508fa6806cd"
+        }
+      ]
+    },
+    {
+      "uid": "b7040f149b86cf12c54c9508fa6806cd",
+      "position": [
+        0,
+        3080
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "Сорок! А я ноль целых семь. Ничего, у меня всё впереди.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d7778f785a3bf0ce94d269a6e7c7d23a",
+          "target": "c16c4216c56df87b893b2370efb0648e"
+        }
+      ]
+    },
+    {
+      "uid": "c16c4216c56df87b893b2370efb0648e",
+      "position": [
+        0,
+        3220
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "До связи, Магеллан.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "831e1a41bccf357460076b251c9bf80d",
+          "target": "312e4ee5af028937f590a1474450d1d0"
+        }
+      ]
+    },
+    {
+      "uid": "312e4ee5af028937f590a1474450d1d0",
+      "position": [
+        0,
+        3360
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "0e04c5e6d0e1bce47805bfc99f6b3543",
+          "name": "Magellan"
+        },
+        "text": {
+          "ru": "До связи! И спасибо за антенну!",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "5830aff0d68b08466295e0b9f95194f6",
+          "target": "2fcbfa2dd73e17d73b1f4a02d9fe1bb0"
+        }
+      ]
+    },
+    {
+      "uid": "2fcbfa2dd73e17d73b1f4a02d9fe1bb0",
+      "position": [
+        0,
+        3500
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "07ef49d163a220276c451e2952862778",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Изделие Е-1. В межпланетном пространстве присутствует поток заряженных частиц.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6eba0c7e3020c2a0e13268dbb9ab889a",
+          "target": "79a03fa2d710612d7a851d8d4e2d6ffe"
+        }
+      ]
+    },
+    {
+      "uid": "79a03fa2d710612d7a851d8d4e2d6ffe",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Прибором не предусмотрен. Передаю как есть.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "8b0cbdd679136fa6420ed4215f0131ea",
+          "target": "437b5fc077df91267ed62742455a8540"
+        }
+      ]
+    },
+    {
+      "uid": "437b5fc077df91267ed62742455a8540",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

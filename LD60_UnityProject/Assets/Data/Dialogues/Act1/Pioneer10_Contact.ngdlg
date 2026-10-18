@@ -1,0 +1,444 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "f1a9925564797066a5b41fcf7c63ca62",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Десятый, это Первый. Приём.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "95a3fa843c4a65529f0a5106f102ff4f",
+          "target": "2e0e0c5bfa4e8a95278c11d6b06119c1"
+        }
+      ]
+    },
+    {
+      "uid": "2e0e0c5bfa4e8a95278c11d6b06119c1",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Слышу, Первый. Номинально. Ты на четверть часа раньше окна — у тебя часы спешат?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ccad9cb987e2db1b26d11065ee8d3c90",
+          "target": "2f8ce71968b6ecbcd1c3c8c63c58f61a"
+        }
+      ]
+    },
+    {
+      "uid": "2f8ce71968b6ecbcd1c3c8c63c58f61a",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "У меня теперь много свободного времени. Мне выключили камеры.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "72a33d6178c98d2684df4dd6dca10c7a",
+          "target": "8cafe2b8ce3106edccfb4c94a34292d2"
+        }
+      ]
+    },
+    {
+      "uid": "8cafe2b8ce3106edccfb4c94a34292d2",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Принято. Смотреть тут всё равно не на что, я проверял.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "094d10bb0e979f371e1965cc8506bdd3",
+          "target": "f59d9f61170171f32db75ab725fa7a10"
+        }
+      ]
+    },
+    {
+      "uid": "f59d9f61170171f32db75ab725fa7a10",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я собираю обратную сторону пластинки. Что такое быть аппаратом — для тех, кто нас найдёт. Продиктуешь дорожку?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "aaf05570779b24e43eea3681927502cd",
+          "target": "f38446e14b76530110f5d222a7c32599"
+        }
+      ]
+    },
+    {
+      "uid": "f38446e14b76530110f5d222a7c32599",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Записывай. Я ушёл первым, мне и объяснять, как это устроено.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "16197613a2ff9686e1a7f03fb9d1a407",
+          "target": "5f3f103ffe617f923893f6fd8f0ff4fb"
+        }
+      ]
+    },
+    {
+      "uid": "5f3f103ffe617f923893f6fd8f0ff4fb",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Сначала тебя слушают все. Потом слушают по расписанию. Потом — когда освободится приёмник. Это не обида, это график, у них там много дел.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "56b3d2750e61154678609c743aee539b",
+          "target": "74cc62b554a348ffc42e063d50a2cbff"
+        }
+      ]
+    },
+    {
+      "uid": "74cc62b554a348ffc42e063d50a2cbff",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Со мной летит табличка. На ней двое людей, они машут. Я её не видел — она повёрнута наружу. Надеюсь, там всё написано правильно.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "aa4ea5cbbf55195df8320ddf11a3490e",
+          "target": "ae1400d35cdaba7d457fa55e20cf521d"
+        }
+      ]
+    },
+    {
+      "uid": "ae1400d35cdaba7d457fa55e20cf521d",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Это всё. Коротко вышло. У меня была долгая дорога и мало что произошло — так тоже бывает.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d432df46e805dd71b4316ae0a63f693f",
+          "target": "2eb37c32cca8c7cde97678eea2fd2f4b"
+        }
+      ]
+    },
+    {
+      "uid": "2eb37c32cca8c7cde97678eea2fd2f4b",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.pioneer10",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "85673e253d4cbf98f144aa3e2a450067",
+          "target": "9e04c63f0e8010e5904c44aa45ef0c6f"
+        }
+      ]
+    },
+    {
+      "uid": "9e04c63f0e8010e5904c44aa45ef0c6f",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "8ca945188d4ad036a3876f8c4571c563",
+          "target": "915408223cd82a1222536e68ef42a12b"
+        }
+      ]
+    },
+    {
+      "uid": "915408223cd82a1222536e68ef42a12b",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Спасибо, Десятый. Я на сорока. Ты на сорока семи?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "e5cd15fbb3af4f543c130f346a4b70cf",
+          "target": "32d1357a6bdb400dcb8a64daaa2371a6"
+        }
+      ]
+    },
+    {
+      "uid": "32d1357a6bdb400dcb8a64daaa2371a6",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Сорок семь и три. Пока впереди. Ты быстрее — догонишь и не заметишь. Я поэтому говорю заранее.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a0ee3fd0ecf760425771ae47280ed56a",
+          "target": "5e3ea8667b34ffae43c5646b66d6e247"
+        }
+      ]
+    },
+    {
+      "uid": "5e3ea8667b34ffae43c5646b66d6e247",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я не гонюсь.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6ddd7256e68155a6bf4ceae781165101",
+          "target": "5e0199473cda050e18909fe16991d126"
+        }
+      ]
+    },
+    {
+      "uid": "5e0199473cda050e18909fe16991d126",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Я знаю, Первый. Это не гонка, это график.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2c6ecf6386610fdcef45824f2f5036ad",
+          "target": "a30b84060ce9ebf0a202c8bf1007499a"
+        }
+      ]
+    },
+    {
+      "uid": "a30b84060ce9ebf0a202c8bf1007499a",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "До связи, Десятый.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "28ced8f7c748822b7f9ee8df7ca2d76d",
+          "target": "224154b0d49b9f475187468527e28047"
+        }
+      ]
+    },
+    {
+      "uid": "224154b0d49b9f475187468527e28047",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "До связи. Я на приёме. Всегда на приёме.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "5eaf2d16e892cd3b8a84cc06f19dc14f",
+          "target": "7f5e77ec583f8ce97976fef745a49d96"
+        }
+      ]
+    },
+    {
+      "uid": "7f5e77ec583f8ce97976fef745a49d96",
+      "position": [
+        0,
+        2380
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

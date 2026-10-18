@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "8d9173d690e2da896d0185a5d14b60b7",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Пионер-10, плановый сеанс. Детектор частиц — номинально. Плазменный анализатор — номинально.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "90c59a5b4039a74f33ae8ef728cf092b",
+          "target": "e22506f6f36082de4089ab9fde6493aa"
+        }
+      ]
+    },
+    {
+      "uid": "e22506f6f36082de4089ab9fde6493aa",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Сорок семь единиц от Солнца. По-прежнему дальше всех.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "5fcda8f1d0077418522c571a5023d302",
+          "target": "0590de44211567acd7415cf373647e25"
+        }
+      ]
+    },
+    {
+      "uid": "0590de44211567acd7415cf373647e25",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

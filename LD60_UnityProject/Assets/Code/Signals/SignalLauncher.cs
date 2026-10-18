@@ -12,6 +12,7 @@ namespace LD60.Signals
         [SerializeField] private Material _dotMaterial;
 
         private SignalSO _settings;
+        private WattSO _watts;
         private Camera _camera;
         private LineRenderer _preview;
         private GameObject _previewDotsObject;
@@ -22,21 +23,40 @@ namespace LD60.Signals
         private MaterialPropertyBlock _propertyBlock;
         private Transform _origin;
         private Vector2 _aimDirection = Vector2.right;
-        private float _chargeSeconds;
-        private bool _awaitingReleaseOfEntryClick;
+        private float _cooldownLeft;
+        private float _cooldownTotal;
         private bool _dataDirty;
-        private Signal _lastSignal;
+        private Signal[] _live = new Signal[8];
+        private int _liveCount;
 
         public float WidthDegrees { get; private set; }
         public float Speed { get; private set; }
         public int PowerDots { get; private set; }
         public LocalizedString LastHitName { get; private set; }
         public bool IsAiming { get; private set; }
-        public bool IsCharging { get; private set; }
+        public float CooldownLeft
+        {
+            get { return _cooldownLeft; }
+        }
+
+        public float CooldownTotal
+        {
+            get { return _cooldownTotal; }
+        }
+
+        public bool IsCoolingDown
+        {
+            get { return _cooldownLeft > 0f; }
+        }
 
         public float CurrentCost
         {
-            get { return _settings == null ? 0f : _settings.CostFor(WidthDegrees, Speed, PowerDots); }
+            get { return _watts == null ? 0f : PowerDots * _watts.WattsPerDot; }
+        }
+
+        public bool HasPowerForShot
+        {
+            get { return Core.Watts >= CurrentCost; }
         }
 
         public bool IsReady
@@ -81,6 +101,17 @@ namespace LD60.Signals
                 return;
             }
 
+            _watts = Core.Config.Watt;
+
+            if (_watts == null)
+            {
+                Debug.LogError($"{nameof(SignalLauncher)}: {nameof(WattSO)} is null in {nameof(Start)}. " +
+                               "Required to know what one dot of a volley costs, so the shot can be charged for. " +
+                               "Fix: assign a Watt asset to the Watt slot on the CoreSO asset.");
+                enabled = false;
+                return;
+            }
+
             if (_orrery == null)
             {
                 Debug.LogError($"{nameof(SignalLauncher)}: {nameof(_orrery)} is null in {nameof(Start)}. " +
@@ -102,8 +133,7 @@ namespace LD60.Signals
             }
 
             WidthDegrees = _settings.ClampWidth(_settings.DefaultWidthDegrees);
-            Speed = _settings.MinSpeed;
-            PowerDots = _settings.MinDots;
+            ApplyWidth(_settings.ClampWidth(_settings.DefaultWidthDegrees));
 
             CreatePreview();
 
@@ -137,8 +167,17 @@ namespace LD60.Signals
                 return;
             }
 
+            if (Core.Config.Watt == null)
+            {
+                Debug.LogError($"{nameof(SignalLauncher)}: {nameof(WattSO)} is null in {nameof(SyncData)}. " +
+                               "Required to re-read what one dot of a volley costs after a data edit. " +
+                               "Fix: assign a Watt asset to the Watt slot on the CoreSO asset.");
+                return;
+            }
+
             _settings = Core.Config.Signal;
-            WidthDegrees = _settings.ClampWidth(WidthDegrees);
+            _watts = Core.Config.Watt;
+            ApplyWidth(_settings.ClampWidth(WidthDegrees));
             ApplyPreviewLook();
         }
 
@@ -146,6 +185,8 @@ namespace LD60.Signals
         {
             if (_dataDirty)
                 SyncData();
+
+            PruneLiveSignals();
 
             if (!Core.IsGameMode)
             {
@@ -171,9 +212,17 @@ namespace LD60.Signals
                 return;
             }
 
+            if (_cooldownLeft > 0f)
+            {
+                _cooldownLeft -= Time.deltaTime;
+
+                if (_cooldownLeft <= 0f)
+                    _cooldownLeft = 0f;
+            }
+
             if (!IsAiming)
             {
-                if (mouse.leftButton.wasPressedThisFrame)
+                if (mouse.leftButton.wasPressedThisFrame && !IsCoolingDown)
                     BeginAiming();
 
                 return;
@@ -187,58 +236,41 @@ namespace LD60.Signals
             if (aim.sqrMagnitude > 0.0001f)
                 _aimDirection = aim.normalized;
 
-            Speed = _settings.SpeedForPointerDistance(aim.magnitude);
-
             if (mouse.rightButton.wasPressedThisFrame)
             {
                 EndAiming();
                 return;
             }
 
-            ReadCharge(mouse);
             DrawPreview(origin);
 
-            if (IsCharging && mouse.leftButton.wasReleasedThisFrame)
+            if (mouse.leftButton.wasPressedThisFrame)
             {
+                if (!Core.TrySpendWatts(CurrentCost))
+                    return;
+
                 Launch(origin, _aimDirection);
+                StartCooldown();
                 EndAiming();
             }
         }
 
-        private void ReadCharge(Mouse mouse)
+        private void ApplyWidth(float widthDegrees)
         {
-            if (_awaitingReleaseOfEntryClick)
-            {
-                if (mouse.leftButton.wasReleasedThisFrame)
-                    _awaitingReleaseOfEntryClick = false;
+            WidthDegrees = widthDegrees;
+            PowerDots = _settings.DotsForWidth(WidthDegrees);
+            Speed = _settings.SpeedForWidth(WidthDegrees);
+        }
 
-                PowerDots = _settings.MinDots;
-                return;
-            }
-
-            if (mouse.leftButton.wasPressedThisFrame)
-            {
-                IsCharging = true;
-                _chargeSeconds = 0f;
-            }
-
-            if (!IsCharging)
-            {
-                PowerDots = _settings.MinDots;
-                return;
-            }
-
-            _chargeSeconds += Time.unscaledDeltaTime;
-            PowerDots = _settings.DotsForHoldSeconds(_chargeSeconds);
+        private void StartCooldown()
+        {
+            _cooldownTotal = _settings.CooldownForDots(PowerDots);
+            _cooldownLeft = _cooldownTotal;
         }
 
         private void BeginAiming()
         {
             IsAiming = true;
-            IsCharging = false;
-            _chargeSeconds = 0f;
-            _awaitingReleaseOfEntryClick = true;
-            PowerDots = _settings.MinDots;
             _preview.enabled = true;
             _previewDotsObject.SetActive(true);
 
@@ -249,8 +281,6 @@ namespace LD60.Signals
         private void EndAiming()
         {
             IsAiming = false;
-            IsCharging = false;
-            _chargeSeconds = 0f;
             _preview.enabled = false;
             _previewDotsObject.SetActive(false);
 
@@ -265,7 +295,7 @@ namespace LD60.Signals
             if (Mathf.Approximately(scroll, 0f))
                 return;
 
-            WidthDegrees = _settings.ClampWidth(WidthDegrees + Mathf.Sign(scroll) * _settings.WidthScrollStepDegrees);
+            ApplyWidth(_settings.ClampWidth(WidthDegrees + Mathf.Sign(scroll) * _settings.WidthScrollStepDegrees));
         }
 
         private void DrawPreview(Vector2 origin)
@@ -297,16 +327,49 @@ namespace LD60.Signals
 
         private void Launch(Vector2 origin, Vector2 direction)
         {
-            if (_lastSignal != null)
-                Destroy(_lastSignal.gameObject);
-
             GameObject spawned = new GameObject("Signal");
             spawned.transform.SetParent(transform, false);
 
-            _lastSignal = spawned.AddComponent<Signal>();
-            _lastSignal.Launch(_settings, _orrery, this, _dotMaterial, origin, direction, WidthDegrees, Speed, PowerDots, _origin);
+            Signal signal = spawned.AddComponent<Signal>();
+            signal.Launch(_settings, _orrery, this, _dotMaterial, origin, direction, WidthDegrees, Speed, PowerDots, _origin);
+            AddLiveSignal(signal);
 
             PlaySound(_settings.OursSound);
+        }
+
+        private void AddLiveSignal(Signal signal)
+        {
+            if (_liveCount == _live.Length)
+            {
+                Signal[] grown = new Signal[_live.Length * 2];
+
+                for (int i = 0; i < _liveCount; i++)
+                    grown[i] = _live[i];
+
+                _live = grown;
+            }
+
+            _live[_liveCount] = signal;
+            _liveCount++;
+        }
+
+        private void PruneLiveSignals()
+        {
+            int kept = 0;
+
+            for (int i = 0; i < _liveCount; i++)
+            {
+                if (_live[i] == null)
+                    continue;
+
+                _live[kept] = _live[i];
+                kept++;
+            }
+
+            for (int i = kept; i < _liveCount; i++)
+                _live[i] = null;
+
+            _liveCount = kept;
         }
 
         private static void PlaySound(SoundContainerSO sound)
@@ -317,9 +380,14 @@ namespace LD60.Signals
             LD60.Sound.AudioController.Instance.Play2D(sound);
         }
 
-        public Signal ActiveSignal
+        public int LiveSignalCount
         {
-            get { return _lastSignal; }
+            get { return _liveCount; }
+        }
+
+        public Signal LiveSignal(int index)
+        {
+            return _live[index];
         }
 
         public void ReportHit(LocalizedString bodyName)

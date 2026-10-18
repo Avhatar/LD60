@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "bba4a2b19f746594397aa24d09ed885e",
+      "name": "Viking1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "f3a3b93decf0f6710a90c37390ac89e0",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Викинг-1, Хриса. Сводка за сол. Давление семь миллибар, к утру минус восемьдесят.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "33af98a946332cce56925c2ad8053302",
+          "target": "b69cfb0824e258739a840edcd010d553"
+        }
+      ]
+    },
+    {
+      "uid": "b69cfb0824e258739a840edcd010d553",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "bba4a2b19f746594397aa24d09ed885e",
+          "name": "Viking1"
+        },
+        "text": {
+          "ru": "Положение антенны прежнее. Квитанции нет. Передано.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "5ac10f15c9ea3ac6b7b117fc9117027e",
+          "target": "e95dbf2e27e353de8886856cc586e36c"
+        }
+      ]
+    },
+    {
+      "uid": "e95dbf2e27e353de8886856cc586e36c",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

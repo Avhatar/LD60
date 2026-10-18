@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "55a974de4431c804c819e0863d0af00e",
+      "name": "Pioneer10"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "713a450073391e7754a5b3d9806b5420",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Пионер-10. Курс на Альдебаран, расчётное время в пути два миллиона лет.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "84cbb2c04d16be75f8740c04f025a6ed",
+          "target": "d661d8ccf217a837c0dd94f51de422f7"
+        }
+      ]
+    },
+    {
+      "uid": "d661d8ccf217a837c0dd94f51de422f7",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "55a974de4431c804c819e0863d0af00e",
+          "name": "Pioneer10"
+        },
+        "text": {
+          "ru": "Отклонений нет, иду по графику.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "3a7e02f9e84fc87d1fb38503bab394e4",
+          "target": "1661a8aa0376ed8f7b083e420de12ea9"
+        }
+      ]
+    },
+    {
+      "uid": "1661a8aa0376ed8f7b083e420de12ea9",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

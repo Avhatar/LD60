@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "39b693b4900b4004c9df5f98131a8cfe",
+      "name": "Luna1"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "5327cd5c414b4f734f3b7facf1d35e92",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Изделие Е-1. Натриевая обойма израсходована, облако наблюдалось.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "b81db2ee2dc62e7acb27d6273996d6a7",
+          "target": "3daa8d522ee041be32becbb378c4a109"
+        }
+      ]
+    },
+    {
+      "uid": "3daa8d522ee041be32becbb378c4a109",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "39b693b4900b4004c9df5f98131a8cfe",
+          "name": "Luna1"
+        },
+        "text": {
+          "ru": "Расход соответствует заданию.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "cc3bd47752241aa1192fbe6a5aab8184",
+          "target": "3dc92242c78f422569ff7f6b57b4bf6b"
+        }
+      ]
+    },
+    {
+      "uid": "3dc92242c78f422569ff7f6b57b4bf6b",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

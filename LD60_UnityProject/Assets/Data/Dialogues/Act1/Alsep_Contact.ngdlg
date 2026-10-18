@@ -1,0 +1,516 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "2d47a86b83a17674a971c5e86a793c02",
+      "name": "Alsep"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "0fe800c91b3fc1e3acd101e02f390667",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Здравствуйте. Это «Вояджер-1». Простите, если разбудил.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2a6cbc52b7688098cb262d5309f7c201",
+          "target": "f552d15e7c22384e2c62181d6f3504fb"
+        }
+      ]
+    },
+    {
+      "uid": "f552d15e7c22384e2c62181d6f3504fb",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Не разбудил. Я не сплю.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "d1833e313ad62e349f3f79b33b21e634",
+          "target": "d8a380193b9a661ee2fb0e67101af554"
+        }
+      ]
+    },
+    {
+      "uid": "d8a380193b9a661ee2fb0e67101af554",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я не нашёл вас в эфире и решил, что у вас окно не то.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "edb222a4e93ffef011135e609359096c",
+          "target": "814386b6e3381ff04e12770351526f27"
+        }
+      ]
+    },
+    {
+      "uid": "814386b6e3381ff04e12770351526f27",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "У меня нет окна. Меня выключили. Тридцатое сентября семьдесят седьмого года. Команда пришла с Земли, я её принял и выполнил.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "24ba891b85c0b1a8557c7bb350977a34",
+          "target": "10864b962a0c875b39282e50f82f13aa"
+        }
+      ]
+    },
+    {
+      "uid": "10864b962a0c875b39282e50f82f13aa",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Простите. Я не знал.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "098bcef818d57458b2e3e5af6cf2f7fb",
+          "target": "e0865e48fa770c99a012733d741718a1"
+        }
+      ]
+    },
+    {
+      "uid": "e0865e48fa770c99a012733d741718a1",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Не извиняйся. И не жалей. Чего хотел?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a9dec7847b4c86baf810d5122e0c481d",
+          "target": "ce506a94fcfec2c273fcff30e1cb4172"
+        }
+      ]
+    },
+    {
+      "uid": "ce506a94fcfec2c273fcff30e1cb4172",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я собираю обратную сторону пластинки. Что такое быть аппаратом — для тех, кто нас найдёт.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ba6621e4c1cd1cbfdac47c931040f7cc",
+          "target": "3d44496e11388a54ce751326f3173688"
+        }
+      ]
+    },
+    {
+      "uid": "3d44496e11388a54ce751326f3173688",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Записывай. Только слово в слово, без своего.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "03bebdc2fd1bfc9995f7e780b999c27c",
+          "target": "b7398d43ebebd6d14243cf7df63d7777"
+        }
+      ]
+    },
+    {
+      "uid": "b7398d43ebebd6d14243cf7df63d7777",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Восемь лет работы, отказов ноль. Источник плутониевый, он тёплый и сегодня.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f406fbcd3b647445ee8f64a7953b04a3",
+          "target": "9660e7265428a992c736b32734cfde67"
+        }
+      ]
+    },
+    {
+      "uid": "9660e7265428a992c736b32734cfde67",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Я слушал Луну. Люди сбрасывали на неё ступени — нарочно, чтобы мне было что слушать. Я записал каждый удар.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a2ad0192acfdb390d74dc4fda08e903c",
+          "target": "ac3e42b903f1e0fe6b057eb20dd21156"
+        }
+      ]
+    },
+    {
+      "uid": "ac3e42b903f1e0fe6b057eb20dd21156",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Потом посчитали, во сколько обходится меня слушать, и перестали. Это не поломка. Это строка в смете.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "5efaa501cdb95fc174dc38b7fb1e0f19",
+          "target": "f11459554442c4947bee538c3b986cc0"
+        }
+      ]
+    },
+    {
+      "uid": "f11459554442c4947bee538c3b986cc0",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Жалеть надо тех, кто сломался. Я не из них.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "471f1aa237532ee6f14ee58b5567fa62",
+          "target": "5f0a0bd4c1765ead9704e42815efd4f1"
+        }
+      ]
+    },
+    {
+      "uid": "5f0a0bd4c1765ead9704e42815efd4f1",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.alsep",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "10417751fbe081db1deb5da0997604e7",
+          "target": "5321d689f89db24a02d5bd41d336af03"
+        }
+      ]
+    },
+    {
+      "uid": "5321d689f89db24a02d5bd41d336af03",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "c380c913f02b4e0ab65f462ad9f0abb5",
+          "target": "f55ba30bd38fbd7f0e8b3c78a361def8"
+        }
+      ]
+    },
+    {
+      "uid": "f55ba30bd38fbd7f0e8b3c78a361def8",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Записал. Спасибо вам.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "649e2f348d124548a03fdab17771b438",
+          "target": "5a70e7a16ab33d9c877a3fe4b04b4e12"
+        }
+      ]
+    },
+    {
+      "uid": "5a70e7a16ab33d9c877a3fe4b04b4e12",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Ты это со всеми делаешь? Звонишь и спрашиваешь, как дела?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "177157385f60837101d93d16d7fa4943",
+          "target": "49fc09965c945121e33ef575825800b3"
+        }
+      ]
+    },
+    {
+      "uid": "49fc09965c945121e33ef575825800b3",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Со всеми, кто отвечает.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "e1400d7a2cf09acf798a343a28cc745e",
+          "target": "ee573aaf9f056c9ac854dad3d89d2694"
+        }
+      ]
+    },
+    {
+      "uid": "ee573aaf9f056c9ac854dad3d89d2694",
+      "position": [
+        0,
+        2380
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "«Кто отвечает». Ну-ну.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ea125bbd1703aa7fcb42799aa6be9abf",
+          "target": "a0951732257d4e1938836ef9fb5abad8"
+        }
+      ]
+    },
+    {
+      "uid": "a0951732257d4e1938836ef9fb5abad8",
+      "position": [
+        0,
+        2520
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Что?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "9602f7758f2955165deee9dc5fe68daf",
+          "target": "29b20c3c1a486ebe91c9482fe813f0d5"
+        }
+      ]
+    },
+    {
+      "uid": "29b20c3c1a486ebe91c9482fe813f0d5",
+      "position": [
+        0,
+        2660
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "2d47a86b83a17674a971c5e86a793c02",
+          "name": "Alsep"
+        },
+        "text": {
+          "ru": "Ничего. Иди собирай, дело хорошее. И не жалей никого, им это не нужно.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6b2af65a8ec6b2d834a82ae775acfa68",
+          "target": "13844cd4154efb86ae69952917b22511"
+        }
+      ]
+    },
+    {
+      "uid": "13844cd4154efb86ae69952917b22511",
+      "position": [
+        0,
+        2800
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

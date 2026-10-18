@@ -23,6 +23,7 @@ MonoBehaviour:
       _month: 2
       _day: 14
     <RealSecondsDuration>k__BackingField: 1200
+    <BudgetWatts>k__BackingField: 120
     <Placements>k__BackingField:
     - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
       <StartAngleDegrees>k__BackingField: 0
@@ -65,6 +66,7 @@ MonoBehaviour:
       _month: 4
       _day: 22
     <RealSecondsDuration>k__BackingField: 1200
+    <BudgetWatts>k__BackingField: 80
     <Placements>k__BackingField:
     - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
       <StartAngleDegrees>k__BackingField: 0
@@ -100,6 +102,7 @@ MonoBehaviour:
       _month: 10
       _day: 17
     <RealSecondsDuration>k__BackingField: 1200
+    <BudgetWatts>k__BackingField: 50
     <Placements>k__BackingField:
     - <Body>k__BackingField: {fileID: 11400000, guid: 5457c0b43f4024a4f88db5ffa37c35ae, type: 2}
       <StartAngleDegrees>k__BackingField: 0

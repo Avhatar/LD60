@@ -34,13 +34,30 @@ namespace LD60.Settings
         [field: SerializeField, Tooltip("Colour of the frame around our own spacecraft.")]
         public Color PlayerColor { get; private set; } = new Color(0.27f, 1f, 0.45f, 1f);
 
-        [field: SerializeField, Tooltip("Colour of the frame that follows the pointer onto a celestial body.")]
+        [field: SerializeField, Tooltip("Colour of the frame that follows the pointer onto a celestial body, " +
+            "and onto a spacecraft we have already talked to.")]
         public Color HoverColor { get; private set; } = new Color(0.85f, 0.94f, 1f, 1f);
+
+        [field: SerializeField, Tooltip("Colour of the frame over a spacecraft we have not talked to yet, " +
+            "the one drawn with question marks in place of a name.")]
+        public Color UnknownColor { get; private set; } = new Color(1f, 0.86f, 0.2f, 1f);
 
         [field: SerializeField, Tooltip("Gap between the top edge of the frame and the bottom of its label, in UI units.")]
         public float LabelOffset { get; private set; } = 4f;
 
         [field: SerializeField, Tooltip("Tint the label with the frame colour. Disable to keep the colour authored on the label itself.")]
         public bool LabelUsesFrameColor { get; private set; } = true;
+
+        [field: SerializeField, Tooltip("Font of the cooldown counter under the player frame.")]
+        public TMPro.TMP_FontAsset CooldownFont { get; private set; }
+
+        [field: SerializeField, Tooltip("Size of the cooldown counter, in UI units.")]
+        public float CooldownFontSize { get; private set; } = 20f;
+
+        [field: SerializeField, Tooltip("Colour of the cooldown counter.")]
+        public Color CooldownColor { get; private set; } = new Color(0.65f, 0.95f, 1f, 0.9f);
+
+        [field: SerializeField, Tooltip("How far below the player frame the counter sits, in UI units.")]
+        public float CooldownOffset { get; private set; } = 34f;
     }
 }

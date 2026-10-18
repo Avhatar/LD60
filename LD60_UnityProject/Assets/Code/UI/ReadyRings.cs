@@ -98,10 +98,14 @@ namespace LD60.UI
             if (ring.positionCount != segments)
                 ring.positionCount = segments;
 
+            float depth = centre.z - _settings.ReadyRingDepthTowardCamera;
+
             for (int i = 0; i < segments; i++)
             {
                 float angle = i * Mathf.PI * 2f / segments;
-                ring.SetPosition(i, centre + new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0f));
+                ring.SetPosition(i, new Vector3(centre.x + Mathf.Cos(angle) * radius,
+                                                centre.y + Mathf.Sin(angle) * radius,
+                                                depth));
             }
         }
 
@@ -156,9 +160,15 @@ namespace LD60.UI
             if (_ringMaterial == null)
                 return;
 
+            Color emissive = _settings.ReadyRingColor;
+            float emission = Mathf.Max(_settings.ReadyRingEmission, 0f);
+            emissive.r *= emission;
+            emissive.g *= emission;
+            emissive.b *= emission;
+
             line.sharedMaterial = _ringMaterial;
             _block.Clear();
-            _block.SetColor(Shader.PropertyToID("_BaseColor"), _settings.ReadyRingColor);
+            _block.SetColor(Shader.PropertyToID("_BaseColor"), emissive);
             line.SetPropertyBlock(_block);
         }
     }

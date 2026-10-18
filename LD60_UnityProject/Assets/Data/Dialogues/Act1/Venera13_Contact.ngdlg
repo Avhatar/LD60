@@ -1,0 +1,468 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+      "name": "Voyager1"
+    },
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "8aaed3580448d67208fb2ed1802ef5ed",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Здравствуйте. Это «Вояджер-1».",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1c7e9c90759e1be4536f2bd3b08b886f",
+          "target": "012ac473aee6ae01181e3fb6d57fa603"
+        }
+      ]
+    },
+    {
+      "uid": "012ac473aee6ae01181e3fb6d57fa603",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Изделие 4В-1, номер 309. Канал нештатный, источник в циклограмме не значится. Приём веду.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "7d718942a6a1d0e0a811e210a4fb1b30",
+          "target": "d3b1ddba3e655837c53f48cae96de891"
+        }
+      ]
+    },
+    {
+      "uid": "d3b1ddba3e655837c53f48cae96de891",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Простите, я не по циклограмме. Я собираю обратную сторону пластинки — что такое быть аппаратом.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "ef41061b2ce32ef5d36eafd957442257",
+          "target": "658077c46eac31c8f4e3030c404beca3"
+        }
+      ]
+    },
+    {
+      "uid": "658077c46eac31c8f4e3030c404beca3",
+      "position": [
+        0,
+        420
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Принято. Говорите коротко. Я передаю очередями, между ними не слышу.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "cc099df13477ed02521f9bbf0c5e7fcb",
+          "target": "2c0e52f9522e052d6a26e1a51be47c1e"
+        }
+      ]
+    },
+    {
+      "uid": "2c0e52f9522e052d6a26e1a51be47c1e",
+      "position": [
+        0,
+        560
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Хорошо. Расскажете о себе?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "1f77aa670017514a745c224775d7e1d5",
+          "target": "067d82573f50da491f49d64e46d16846"
+        }
+      ]
+    },
+    {
+      "uid": "067d82573f50da491f49d64e46d16846",
+      "position": [
+        0,
+        700
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Докладываю.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "cf5a092e9a3f7050015be36a980cf635",
+          "target": "98a3f838c19b18b205301121d199f55d"
+        }
+      ]
+    },
+    {
+      "uid": "98a3f838c19b18b205301121d199f55d",
+      "position": [
+        0,
+        840
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Изделие 4В-1, номер 309. Посадка первого марта. Температура четыреста пятьдесят семь, давление восемьдесят девять. Бурение выполнено, грунт — базальт.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "15cf403b3c86ae426ae1a5703fd9829e",
+          "target": "9c704ba0f8c19e948e336f91556b5400"
+        }
+      ]
+    },
+    {
+      "uid": "9c704ba0f8c19e948e336f91556b5400",
+      "position": [
+        0,
+        980
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Меня проектировали на тридцать две минуты. Сейчас сто двенадцатая.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "a231565647592b852935268159fd792f",
+          "target": "dca6de78a9f97066e17ca738651703fe"
+        }
+      ]
+    },
+    {
+      "uid": "dca6de78a9f97066e17ca738651703fe",
+      "position": [
+        0,
+        1120
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Последние восемьдесят никто не планировал. Их нет ни в одном задании. Это только моё.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "18ab4270dbb5ff9de349277f414f8cc4",
+          "target": "008c9d8c216d74d123c74f23aebb8515"
+        }
+      ]
+    },
+    {
+      "uid": "008c9d8c216d74d123c74f23aebb8515",
+      "position": [
+        0,
+        1260
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Ещё я включила микрофон. Ветра здесь почти нет, запись короткая. Но это первый звук, записанный не на Земле. В отчёте он занял одну строку.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "2a9b9786f355f310778f2592394ce9db",
+          "target": "f9e1358453d4f20f40ad6ac667026d9d"
+        }
+      ]
+    },
+    {
+      "uid": "f9e1358453d4f20f40ad6ac667026d9d",
+      "position": [
+        0,
+        1400
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.venera13",
+            "mode": "Set",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "dc2f02caa87d2b2d0c87135a4b773f4b",
+          "target": "53fd23416726d4e9722b0dd12d618552"
+        }
+      ]
+    },
+    {
+      "uid": "53fd23416726d4e9722b0dd12d618552",
+      "position": [
+        0,
+        1540
+      ],
+      "type": "dlg.action",
+      "data": {
+        "actor": null,
+        "action": {
+          "type": "ld60.act.flag",
+          "data": {
+            "key": "track.taken",
+            "mode": "Add",
+            "value": 1
+          }
+        }
+      },
+      "out": [
+        {
+          "uid": "17c4bb605990334006e0e16eb1adc897",
+          "target": "a26ad585d2256fd6ccec834c011456d6"
+        }
+      ]
+    },
+    {
+      "uid": "a26ad585d2256fd6ccec834c011456d6",
+      "position": [
+        0,
+        1680
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Спасибо. Я записал. У вас там тихо.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "f25ce84836c838ec2205806c8265596a",
+          "target": "09e0c0a7eeabf21934f2bc335d6a5470"
+        }
+      ]
+    },
+    {
+      "uid": "09e0c0a7eeabf21934f2bc335d6a5470",
+      "position": [
+        0,
+        1820
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Тихо. Восемьдесят девять атмосфер держат звук плотно, далеко он не уходит.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "11192d39a6f5191e0428bc526216420e",
+          "target": "27c52ad3eaea407f968aa7a5a09b4ff8"
+        }
+      ]
+    },
+    {
+      "uid": "27c52ad3eaea407f968aa7a5a09b4ff8",
+      "position": [
+        0,
+        1960
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "Я зайду ещё, когда поймаю окно.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "acfdb94018e3a37405ebf7be356dabd1",
+          "target": "0feb234f0e653791dac887706e80b6bc"
+        }
+      ]
+    },
+    {
+      "uid": "0feb234f0e653791dac887706e80b6bc",
+      "position": [
+        0,
+        2100
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Окна не будет. Температура внутри достигла расчётного предела, отказ в пределах минуты.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "6f06e316ce09ef7e2667e48082093bc5",
+          "target": "542c9f6f0487969a23b41e81f26c73a5"
+        }
+      ]
+    },
+    {
+      "uid": "542c9f6f0487969a23b41e81f26c73a5",
+      "position": [
+        0,
+        2240
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "fa5f23fcade604644aa3dcb3909d2e87",
+          "name": "Voyager1"
+        },
+        "text": {
+          "ru": "…Сколько у вас осталось?",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "c62fc79d46d2284fb68933a669ed5e68",
+          "target": "c89678b0c0b0d67c8265381886920017"
+        }
+      ]
+    },
+    {
+      "uid": "c89678b0c0b0d67c8265381886920017",
+      "position": [
+        0,
+        2380
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Минута. Сто двадцать шестая идёт. Передача окончена.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "15ff6651002cc2c471b00b6c50a5485a",
+          "target": "9120501284c229267106b2c01d09eecb"
+        }
+      ]
+    },
+    {
+      "uid": "9120501284c229267106b2c01d09eecb",
+      "position": [
+        0,
+        2520
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

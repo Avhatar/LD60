@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "kind": "dlg",
+  "view": {
+    "pan": [
+      0,
+      0
+    ],
+    "zoom": 1
+  },
+  "actors": [
+    {
+      "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+      "name": "Venera13"
+    }
+  ],
+  "nodes": [
+    {
+      "uid": "a2eb2dfe25ca12dac41cc32169e61bc8",
+      "position": [
+        0,
+        0
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Изделие 4В-1. Минута восемьдесят. Произведена запись акустической обстановки. Впервые.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "0fb25a4064c989945f2238a12d93b32c",
+          "target": "6a0adccd8d11f9703f51c8c40ac1c108"
+        }
+      ]
+    },
+    {
+      "uid": "6a0adccd8d11f9703f51c8c40ac1c108",
+      "position": [
+        0,
+        140
+      ],
+      "type": "dlg.say",
+      "data": {
+        "actor": {
+          "guid": "4a3b89070b7b4f246b939e8a9e25f40d",
+          "name": "Venera13"
+        },
+        "text": {
+          "ru": "Ветра почти нет. Шумы отнесены к работе бура. Запись передана.",
+          "en": ""
+        }
+      },
+      "out": [
+        {
+          "uid": "b7d736a7ca11c04b3a60b90f79a50cb6",
+          "target": "5e358c9852140a8f6d0f2ebe1708d1c7"
+        }
+      ]
+    },
+    {
+      "uid": "5e358c9852140a8f6d0f2ebe1708d1c7",
+      "position": [
+        0,
+        280
+      ],
+      "type": "dlg.finish",
+      "data": {
+        "success": true
+      }
+    }
+  ]
+}

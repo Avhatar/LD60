@@ -15,6 +15,7 @@ MonoBehaviour:
   <TimeScale>k__BackingField: {fileID: 11400000, guid: 79a5a2c2b4de40344afe23dc6135e6d2, type: 2}
   <SolarSystem>k__BackingField: {fileID: 11400000, guid: ffa6fef145998194f8601c92b3eb0e23, type: 2}
   <Signal>k__BackingField: {fileID: 11400000, guid: b34fe4372faeed44aacebfd6cd933510, type: 2}
+  <Watt>k__BackingField: {fileID: 11400000, guid: 5ddb90e9753843f42b9dcac4531bdb3e, type: 2}
   <Audio>k__BackingField: {fileID: 11400000, guid: 6b641173b8e96414d82ca966b4305db3, type: 2}
   <UiText>k__BackingField: {fileID: 11400000, guid: d7bf75d5e1268e74f9f32e9017a7dae1, type: 2}
   <TargetFrame>k__BackingField: {fileID: 11400000, guid: 77d15e34a6dcbbc46aff168c47f61878, type: 2}

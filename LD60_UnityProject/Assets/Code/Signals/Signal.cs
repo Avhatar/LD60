@@ -21,7 +21,9 @@ namespace LD60.Signals
         private int _inFlightCount;
         private float _speed;
         private float _travelled;
-        private float _age;
+        private float[] _lifeLeft;
+        private Camera _camera;
+        private bool _captureLookSet;
         private Transform _ignored;
 
         public int DotCount
@@ -32,6 +34,15 @@ namespace LD60.Signals
         public Vector2 DotPosition(int index)
         {
             return _positions[index];
+        }
+
+        public void SetCaptureLook(Color color)
+        {
+            if (_captureLookSet || _dots == null)
+                return;
+
+            _captureLookSet = true;
+            _dots.SetAltLook(color, _settings.ArrivedDotEmission);
         }
 
         public Transform DotLandedOn(int index)
@@ -52,12 +63,14 @@ namespace LD60.Signals
             _inFlight[index] = false;
             _inFlightCount--;
             _altBlends[index] = 1f;
+            _lifeLeft[index] = _settings.DotLifetimeSeconds;
         }
 
         public void Launch(SignalSO settings, Orrery orrery, SignalLauncher launcher, Material dotMaterial,
             Vector2 origin, Vector2 direction, float widthDegrees, float speed, int dotCount, Transform ignored)
         {
             _ignored = ignored;
+            _camera = Camera.main;
             _settings = settings;
             _orrery = orrery;
             _launcher = launcher;
@@ -73,6 +86,7 @@ namespace LD60.Signals
             _landedOn = new Transform[_count];
             _inFlight = new bool[_count];
             _weights = new float[_count];
+            _lifeLeft = new float[_count];
             _altBlends = new float[_count];
 
             float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -86,12 +100,13 @@ namespace LD60.Signals
                 _positions[i] = origin;
                 _inFlight[i] = true;
                 _weights[i] = 1f;
+                _lifeLeft[i] = settings.DotFlightLifetimeSeconds;
             }
 
             _dots = new SignalDotMesh(gameObject, dotMaterial, _count);
             _dots.SetLook(settings.SignalColor, settings.DotEmission, settings.DotEdgeSoftness);
             _dots.SetAltLook(settings.ArrivedColor, settings.ArrivedDotEmission);
-            _dots.SetFade(settings.FadeForAge(0f));
+            _dots.SetFade(1f);
             _dots.Rebuild(_positions, _weights, _altBlends, _count, settings.DotSize);
         }
 
@@ -106,14 +121,6 @@ namespace LD60.Signals
                 return;
             }
 
-            _age += Time.deltaTime;
-
-            if (_age >= _settings.DotLifetimeSeconds)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             if (_inFlightCount > 0)
             {
                 _travelled += _speed * Time.deltaTime;
@@ -121,8 +128,45 @@ namespace LD60.Signals
             }
 
             FollowLandedBodies();
-            _dots.SetFade(_settings.FadeForAge(_age));
+
+            if (!AgeDots())
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             _dots.Rebuild(_positions, _weights, _altBlends, _count, _settings.DotSize);
+        }
+
+        private bool AgeDots()
+        {
+            bool anyAlive = false;
+
+            for (int i = 0; i < _count; i++)
+            {
+                if (_lifeLeft[i] <= 0f)
+                    continue;
+
+                if (ViewBounds.IsOutside(_camera, _positions[i], _settings.OffscreenMargin))
+                {
+                    if (_inFlight[i])
+                    {
+                        _inFlight[i] = false;
+                        _inFlightCount--;
+                    }
+
+                    if (_lifeLeft[i] > _settings.DotFadeOutSeconds)
+                        _lifeLeft[i] = _settings.DotFadeOutSeconds;
+                }
+
+                _lifeLeft[i] -= Time.deltaTime;
+                _weights[i] = _settings.FadeForRemaining(_lifeLeft[i]);
+
+                if (_lifeLeft[i] > 0f)
+                    anyAlive = true;
+            }
+
+            return anyAlive;
         }
 
         private void AdvanceDots()
@@ -143,6 +187,7 @@ namespace LD60.Signals
                     _inFlight[i] = false;
                     _inFlightCount--;
                     _landedOn[i] = hit;
+                    _lifeLeft[i] = _settings.DotLifetimeSeconds;
                     _landedOffsets[i] = LandedOffsetFor(i, hit, hitRadius);
                     _positions[i] = (Vector2)hit.position + _landedOffsets[i];
 
